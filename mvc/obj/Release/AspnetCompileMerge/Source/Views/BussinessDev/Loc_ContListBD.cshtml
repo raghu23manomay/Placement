@@ -1,0 +1,31 @@
+﻿@model IEnumerable<mvc.Models.FetchClientBD>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+
+
+
+
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-user"></i> @item.contactPerson_Name </div>
+        <div class="col-xs-6">@item.mobile</div>
+        <div class="col-xs-6"><small>@item.emailid</small></div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

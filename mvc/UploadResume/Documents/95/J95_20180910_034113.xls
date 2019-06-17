@@ -1,0 +1,25 @@
+<table border='2px'><tr bgcolor='#87AFC6'>
+                                    <th>ReqID</th>
+                                    <th>vendor</th>
+                                    <th>CandidateName</th>
+                                    <th>emailid</th>
+                                    <th>mobile</th>
+                                    <th>Notice_period</th>
+                                    <th>Total_Exp</th>
+                                    <th>currently_drawn_salary</th>
+                                    <th>expected_salary</th>
+                                    <th>loc_desc</th>
+                                    <th>candID</th>
+                            </tr>
+                                        <td>50</td>
+                                        <td> Kodak India Ltd </td>
+                                        <td>bahubali</td>
+                                        <td>bahu@gmail.com</td>
+                                        <td>9890044316</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Punalur</td>
+                                        <td>98</td>
+                                </tr></table>

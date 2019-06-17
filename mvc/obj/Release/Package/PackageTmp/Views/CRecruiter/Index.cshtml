@@ -1,0 +1,57 @@
+﻿@model  mvc.Models.RecruiterList
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6" id="profiledetails">
+
+        </div>
+        <div class="col-sm-6" id="addrecruiter">
+
+        </div>
+    </div>
+
+</div>
+           
+       
+
+
+<script>
+    $(document).ready(function() {
+          $.ajax({
+            url: "@Url.Action("AddRecruiterProfile", "CRecruiter")",
+            data: {
+               
+            },
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 //data3 = data;
+                 $('#addrecruiter').html(data);
+
+            }
+        });
+
+         $.ajax({
+            url: "@Url.Action("DisplayRecruiterProfile", "CRecruiter")",
+            data: {
+               
+            },
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 //data3 = data;
+                 $('#profiledetails').html(data);
+
+            }
+            });
+    });
+  
+
+</script>

@@ -1,0 +1,191 @@
+﻿@*@model IEnumerable<mvc.Models.CandidateList>*@
+
+@model  IEnumerable<mvc.Models.DesignationList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+
+    System.Data.DataTable dt = new System.Data.DataTable();
+    dt = Session["UserPermission"] as System.Data.DataTable;
+}
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Candidates" id="txtName" name="txtName" autocomplete="off">
+                <span class="input-group-addon">
+                    <i class="fa fa-search" name="btnnameSearch" id="btnnameSearch"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h2>Designation List</h2>
+        </div>
+        <div class="col-sm-offset-7">
+
+            @{
+                System.Data.DataRow[] HeadingFields = dt.Select("submenuname = 'DesignationMaster' and FeatureName = 'Create'");
+                if (HeadingFields[0].ItemArray[6].ToString() == "1")
+                {
+                    @Html.ActionLink("Add New", "DesignationList", "Master",null,
+                    new Dictionary<string, object>
+                    {
+                        { "class", "btn btn-danger pull-right m-r-sm" },
+                        { "data-toggle" , "modal"},
+                        { "data-target", "#mdlAddDesignation"},
+                        { "title", "New Candidate"}
+
+                    })
+                }
+            }
+
+        </div>
+
+        <div id="mdlAddDesignation" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+    </div>
+</div>
+<div class="container m-t-md">
+    <div class="row">
+        @*@Html.Partial("_SearchForm")*@
+
+        <div id="grid1" class="col-sm-12">
+            @Html.Partial("PageGrid")
+        </div>
+
+        <div class="col-sm-10">
+            <div class="container m-t-md">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>*@
+    @Scripts.Render("~/bundles/Script-custom-editor")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            fnReloadCandidate();
+
+            $('#txtName').keypress(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadDataForDesignation","Master")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: 1, Name: $('#txtName').val() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+        });
+
+        function PagedOnCompleteBinds() {
+            $(document).ready(function () {
+
+                $('.grid-header-title a').on('click', function (e) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    var sturl = "@Url.Action("IndexForDesignation", "Master")" + $(this).attr('href');
+                    $('form#CustomFilter').attr('action', sturl).submit();
+                });
+
+                $('#mgrid .pagination li a').on('click', function (e) {
+
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    var sturl = $('#mgrid .sorted.grid-header-title a').attr('href');
+                    if (typeof sturl != 'undefined') {
+                        var gdir = url("?grid-dir", sturl);
+                        sturl = sturl.replace(/grid-dir=\d+/i, 'grid-dir=' + (parseInt(gdir) == 0 ? 1 : 0));
+                        sturl = sturl.replace('?', '&');
+                    }
+
+                    var sturl2 = $(this).attr('href');
+                    if (sturl2 == undefined) {
+                        sturl2 = "@Url.Action("IndexForDesignation", "Master")?page=" + parseInt($(this).html());
+                    }
+                    sturl = sturl2 + sturl.replace(/page=\d+/i, "");
+                    $('form#CustomFilter').attr('action', sturl).submit();
+                });
+
+            });
+        }
+
+        function PagedOnComplete(obj) {
+            //  $('#mgrid table').unmask();
+            PagedOnCompleteBinds();
+        }
+
+        $(document).ready(function () {
+            PagedOnCompleteBinds();
+            var lbht = $(window).height();
+            lbht = (lbht / 2) - 80;
+            $(".leftBlockHt").css("height", lbht + "px");
+
+            $("#candidateActn .dropdown-item").click(function (e) {
+                var _this = $(this).attr("id");
+                var str = "#" + _this + "Block";
+                $("#candidateTab a[href=" + str + "]").tab('show');
+            });
+        });
+
+        function fnReloadCandidate() {
+            $.ajax({
+                url: "@Url.Action("DesignationList", "Master")",// + @ViewBag.MoveID,
+                success: function (data) {
+                    $('#pnl-AddCandidate').html(data);
+                }
+            });
+        }
+    </script>
+
+}
+
+
+
+
+
+
+

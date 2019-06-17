@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Position</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">working_from_Date</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>raghvendra mudgal</td><td>Executive</td><td>rmudgal23@gmail.com</td><td>8237175481</td><td>1</td><td>1 year</td><td>2.5 ctc</td><td>5.5 ctc</td><td>Sangli</td><td>software developer</td><td>BE</td><td>&nbsp;</td><td>Sep 15 2018 12:00AM</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

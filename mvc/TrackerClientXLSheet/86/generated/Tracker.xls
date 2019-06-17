@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Sreelakshmi M</td><td>Senior Java Developer </td><td>Executive</td><td>sreelakshmi.m25@gmail.com</td><td>7358668660</td><td>14 days</td><td>7.10 yrs</td><td>&nbsp;</td><td>&#160;Capgemini</td><td>Consultant</td><td>9 lpa(offer of 13 lpa)</td><td>15 lpa</td><td>Chennai</td><td>B.Tech/B.E.</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

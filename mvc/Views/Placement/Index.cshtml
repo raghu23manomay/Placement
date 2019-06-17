@@ -1,0 +1,674 @@
+﻿@model  IEnumerable<mvc.Models.CandidateList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+
+    System.Data.DataTable dt = new System.Data.DataTable();
+    dt = Session["UserPermission"] as System.Data.DataTable;
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+
+<div id="mdlAddCandidate" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-11">
+            @{System.Data.DataRow[] HeadingFields4 = dt.Select("submenuname = 'AddCandidate' and FeatureName = 'Add Candidate'");
+                if (HeadingFields4.Count() != 0)
+                {
+                    if (HeadingFields4[0].ItemArray[6].ToString() == "1")
+                    {
+                        @Html.ActionLink("Add Candidate", "AddCandidate", null,
+                         new Dictionary<string, object>
+                         {
+                             { "class", "btn btn-danger pull-right m-r-sm" },
+                             { "data-toggle" , "modal"},
+                             { "data-target", "#mdlAddCandidate"},
+                             { "title", "New Candidate"}
+                         })
+                    }
+                }
+            }
+
+        </div>
+        <div class="col-sm-1">
+            <select id="Status" class="form-control text pull-right" style="width:95px;">
+                <option value="8">-Select-</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">50</option>
+                <option value="70">70</option>
+                <option value="100">100</option>
+            </select>
+         </div>
+        </div>
+    </div>
+
+<div class="container m-t-md">
+    <div class="row">
+        @*<div class="col-sm-2" style="background: #dee0eb;height:315px;">
+
+            @Html.Partial("_SearchForm")
+
+        </div>*@
+
+        <div class="col-sm-12">
+            <div class="row">
+
+                <div class="col-sm-1">
+                    @*@if (Session["Name"]!=null) {if (Session["Name"].ToString() != ""){<a href="@Url.Action("ClearSession", "Placement", new { @sessionName = "Name" })"><span>Clear</span></a>} }*@
+                    <label class="label-light"> <input type="text" value="@Session["Name"]" class="form-control" placeholder="Candidates" id="txtName" name="txtName"> </label>
+
+                </div>
+                <div class="col-sm-2">
+                    @*@if (Session["CName"] != null){if (Session["CName"].ToString() != "") {<a href="@Url.Action("ClearSession", "Placement", new { @sessionName = "CName" })"><span>Clear</span></a>} }*@
+
+                    <label class="label-light"><input type="text" value="@Session["CName"]" class="form-control" placeholder="Client" id="txtClient" name="txtClient"></label>
+                </div>
+                <div class="col-sm-2">
+                    <label class="label-light"> <input type="text" value="@Session["DName"]" class="form-control" placeholder="Designation" id="txtDesignation" name="txtDesignation"> </label>
+                </div>
+                <div class="col-sm-1">
+
+                    <label class="label-light"><input type="text" value="@Session["Mob"]" class="form-control" placeholder="Mobile" id="txtMobile" name="txtMobile"></label>
+                </div>
+
+                <div class="col-sm-1">
+                    <label class="label-light"> <input type="text" value="@Session["Stage"]" class="form-control" placeholder="Stage" id="txtStage" name="txtStage"> </label>
+                </div>
+
+                <div class="col-sm-1">
+                    <label class="label-light"><input type="text" value="@Session["Activity"]" class="form-control" placeholder="Activity" id="txtActivity" name="txtActivity"></label>
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="label-light">
+                        <input type="date" value="@Session["Date"]" class="form-control" id="txtDate" name="txtDate">
+                    </label>
+                </div>
+                <div class="col-sm-2">
+
+                    @Html.DropDownList("model.userid", new SelectList((System.Collections.IEnumerable)ViewData["UserList"], "Value", "Text"), "Select USer", new { @class = "form-control input-sm", @id = "userid", Title = "ModeName",@style= "height: auto;" })
+
+                </div>
+
+            </div>
+            <div id="grid1">
+                @Html.Partial("_PartialGrid")
+            </div>
+
+        </div>
+        <input id="rowsession" type="text" value="@Session["PageRowNumber"]" class="hidden" />
+        <input id="useridsession" type="text" value="@Session["userid"]" class="hidden" />
+
+        <div class="col-sm-10">
+            <div class="container m-t-md">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+@section Scripts{
+
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>*@
+
+
+    @Scripts.Render("~/bundles/Script-custom-editor")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        var con = "";
+        $(document).ready(function () {
+
+            var str = window.location.href;
+            var lastLetter = str[str.length], i, temp;
+
+
+            for (i = 0; i < str.length; i++) {
+                if (str[i] == '=') {
+                    myfun(i);
+                    break;
+                }
+            }
+
+            function myfun(temp) {
+
+                temp = temp + 1;
+                for (i = temp; i < [str.length]; i++) {
+
+                    con = con + str[i];
+                }
+                parseInt(con);
+
+            }
+        });
+
+
+        $(document).ready(function () {
+            var temp = $("#rowsession").val();
+            var tempuserid = $("#useridsession").val();
+            $("#Status option[value = '" + temp + "']").attr("selected", "selected");
+            $("#userid option[value = '" + tempuserid + "']").attr("selected", "selected");
+
+            getdesignation();
+            GetClientList();
+
+
+            $('#Status').change(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: 1,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                       $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                       $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+            $('#searchall').click(function () {
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: 1,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+            });
+         });
+
+
+        $('#txtName').keyup(function () {
+
+               $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+        $('#txtActivity').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+
+            $('#txtDesignation').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+
+        $('#txtClient').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+
+        $('#txtEmail').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+        $('#txtMobile').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+
+        $('#txtStage').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+
+
+        $('#txtDate').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+        //});
+
+        $('#userid').change(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: 1,
+                        PageRowNumber: $('#Status').val(),
+                        userid: $('#userid').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+                        $('#pageLoader').hide();
+                    },
+                    error: function (data) {
+                       $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                       $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+
+        function fnReloadCandidate() {
+            $.ajax({
+                url: "@Url.Action("AddCandidate", "Placement")",// + @ViewBag.MoveID,
+                success: function (data) {
+                    $('#pnl-AddCandidate').html(data);
+                }
+            });
+                }
+
+        function fnReloadDesignation() {
+            $.ajax({
+                url: "@Url.Action("add_data", "Master")",// + @ViewBag.MoveID,
+                success: function (data) {
+                    $('#pnl-AddCandidate').html(data);
+                }
+            });
+                }
+
+    function getdesignation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetDesignationList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#txtDesignation").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#txtSearchid").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+        }
+
+        function GetClientList()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetClientList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#txtClient").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#txtSearchid").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+    </script>
+
+}
+
+
+
+
+
+

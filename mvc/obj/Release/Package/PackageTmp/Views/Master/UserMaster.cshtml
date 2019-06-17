@@ -1,0 +1,151 @@
+﻿
+@model  IEnumerable<mvc.Models.UserMasterGridList>
+
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+<html>
+<head>
+    <!-- Using the jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- Using the jquery dataTables CSS CDN -->
+</head>
+@{
+
+    System.Data.DataTable dt = new System.Data.DataTable();
+    dt = Session["UserPermission"] as System.Data.DataTable;
+}
+<body>
+    <div class="container">
+        <table id="example" class="display table table-security-block dataTable no-footer" style="width:100%">
+            <thead>
+
+                <tr>
+                    <th>Full Name</th>
+                    <th>User name</th>
+                    <th>Role</th>
+                    <th>Mobile</th>
+                    <th>email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Full Name</th>
+                    <th>User name</th>
+                    <th>Role</th>
+                    <th>Mobile</th>
+                    <th>email</th>
+                    <th>Status</th>
+                    <th class="hidden">Action</th>
+                </tr>
+            </tfoot>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+
+                        <td>
+
+                            @item.Full_Name
+
+                        </td>
+                        <td>
+
+                            @item.User_Name
+
+                        </td>
+
+                        <td>
+
+                            @item.RoleName
+
+                        </td>
+
+                        <td>
+
+                            @item.Mobile
+
+                        </td>
+                        <td>
+
+                            @item.emailId
+
+                        </td>
+
+
+
+                        @if (item.Isactive == 1)
+                        {
+                            <td>  Active</td>
+
+                        }
+                        else
+                        {
+                            <td>  Inactive</td>
+                        }
+
+                        <td>
+                            @*<a href="@Url.Action("edit", "Master",new { @desig_id=@item.desig_id})" data-toggle="modal" data-target="#mdlAddDesignation" class="dropdown-item1 ember-view"> <i class="fa fa-pencil-square-o m-r-sm" style="font-size:20px;color:orange" aria-hidden="true"></i><span></span></a>*@
+                            <div class="btn-group m-t-xs7 pull-right">
+                                <button type="button" class="btn dropdown btn-dot-dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                                <div id="candidateActn" class="dropdown-menu is-right-aligned">
+                                    @{System.Data.DataRow[] HeadingFields = dt.Select("submenuname = 'UserMaster' and FeatureName = 'Update'");
+                                        if (HeadingFields[0].ItemArray[6].ToString() == "1")
+                                        {
+                                            <a href="@Url.Action("FetchUser", "Master", new { @User_id = item.User_id})" data-toggle="modal" data-target="#mdlAddUser" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit User</span></a>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+
+
+</html>
+<script>
+    $(document).ready(function () {        
+      
+        // Setup - add a text input to each footer cell
+        $('#example tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" class="form-control" placeholder="Search ' + title + '" />');
+        });
+
+        // DataTable
+        var table = $('#example').DataTable();
+
+        // Apply the search
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+
+        $('#example tfoot tr').appendTo('#example thead');
+        $('#example_filter').hide();
+        
+    });
+
+</script>

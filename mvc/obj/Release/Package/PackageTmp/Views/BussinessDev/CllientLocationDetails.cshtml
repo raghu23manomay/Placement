@@ -1,0 +1,14 @@
+﻿@model  IEnumerable<mvc.Models.clientLocationdetails>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+@foreach (var item in Model)
+{
+
+    <div class="row">
+        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> @item.loc_desc</div>
+        <div class="col-xs-6"> +91 @item.DID_no</div>
+    </div>
+
+}

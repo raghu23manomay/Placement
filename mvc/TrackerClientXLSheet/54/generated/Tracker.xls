@@ -1,0 +1,25 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td> Vitthal Nagnath Devkar</td><td>Java Developer</td><td>Executive</td><td>vitthal.devkar31@gmail.com</td><td>9850186421</td><td>90 days</td><td>6.5 yrs</td><td>&nbsp;</td><td>Capita</td><td>Senior Software Engineer</td><td>10.5 lpa</td><td>15 lpa</td><td>Pune</td><td>MS/M.Sc</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Bhushan Subhash Kale</td><td>Java Developer</td><td>Executive</td><td>bhush3004@gmail.com</td><td>9028191360</td><td> 90 days </td><td> 5.4 yrs</td><td>&nbsp;</td><td>KPIT Cummins Infosystems</td><td>Software Engineer</td><td>10 lpa</td><td> 14 lpa</td><td>Pune</td><td>MCA </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>soni jagdish sharma</td><td>Java Developer</td><td>Executive</td><td>mail2sonisharma@gmail.com</td><td>9028055225</td><td>60 days</td><td>7.5 yrs</td><td>&nbsp;</td><td>Synechron Technologies</td><td>Technical Lead </td><td> 13.15 lpa</td><td>22 lpa</td><td>Pune</td><td>MCA </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Appasaheb Bandgar</td><td>Java Developer</td><td>Executive</td><td>abandgar10@gmail.com</td><td>8007460754</td><td> 1 month</td><td>8 yrs</td><td>&nbsp;</td><td>Capgemini india pvt ltd</td><td>Associate Consultant </td><td>6.8  lpa</td><td> 12 lpa</td><td>Pune</td><td>MCA </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Deepika Balwani</td><td>Java Developer</td><td>Executive</td><td>deepika2668.balwani@gmail.com</td><td>7263966399</td><td>3 month</td><td> 4.5 yrs</td><td>&nbsp;</td><td>Capgemini</td><td>Consultant </td><td>8 lpa</td><td>12 lpa</td><td>Pune</td><td>B.Tech/B.E</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>pravin sonawane</td><td>Java Developer</td><td>Executive</td><td>pravintsonawane@gmail.com</td><td>8600468356</td><td>45 days</td><td>5.1 yrs</td><td>&nbsp;</td><td>Yash Technologies</td><td>Senior Software Engineer</td><td>8 lpa</td><td>12 lpa</td><td>Pune</td><td>MCA (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>shailendra singh bhadoriya</td><td>Java Developer</td><td>Executive</td><td>ssbhadoriya001@gmail.com</td><td>9527236615</td><td>3 months</td><td>6.3 yrs</td><td>&nbsp;</td><td>Tata Consultancy Services</td><td>Team lead and Senior Java Developer </td><td>9.95 lpa</td><td>45% hike</td><td>Pune</td><td>MCA (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Madhura Patil</td><td>Java Developer</td><td>Executive</td><td>msp24mp@gmail.com</td><td>8697710770</td><td>3 month (Negotiable)</td><td>5.7 yrs</td><td>&nbsp;</td><td>Tata Consultancy Services</td><td>IT Analyst</td><td>7.8 lpa</td><td>13 lpa</td><td>Pune</td><td>B.Tech/B.E</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Ravindra Kumar Saini</td><td>Java Developer</td><td>Executive</td><td>ersaini088@gmail.com</td><td>9923380066</td><td>3 months</td><td>6.3 yrs</td><td>&nbsp;</td><td>Capgemini Consulting</td><td>Consultant</td><td>10.9 lpa</td><td>16 lpa</td><td>Pune</td><td>B.Tech/B.E. (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

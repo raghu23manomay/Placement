@@ -1,0 +1,21 @@
+﻿
+
+@model   mvc.Models.mail
+
+<div id="content">
+    
+
+    </div>
+@*<div class="blank-state" id="tblHistory">
+    <p>There are no messages</p>
+</div>*@
+<div class="form-group" id="maildescriptionDiv">
+
+    @Html.TextAreaFor(m => m.mailDescription, new { rows = "20", style = "resize:none;width:400px;", placeholder = Html.DisplayNameFor(m => m.mailDescription), @class = "form-control input-lg textarea-editor" })
+
+</div>
+
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+<script src="~/Scripts/script-custom-editor.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">

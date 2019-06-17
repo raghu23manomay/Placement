@@ -1,0 +1,29 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Sachin Rawalekar</td><td>Project Lead</td><td>Executive</td><td>srrawalekar2006@gmail.com</td><td>8433722652</td><td>1</td><td>7 yrs</td><td>May  1 2013 12:00AM</td><td>Reliance Industries Limited</td><td>Manager-Research Scientist</td><td>14.5 lpa</td><td>20 lpa</td><td>Navi Mumbai</td><td>MS/M.Sc(Science) (Chemistry) 2005</td><td>Ph.D/Doctorate (Chemistry) 2011</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Devesh Kumar Shukla</td><td>Project Lead</td><td>Executive</td><td>dks.iitr@gmail.com</td><td>9662531369</td><td>3</td><td>6 yrs</td><td>May  1 2013 12:00AM</td><td>Reliance industries Limited </td><td>New Product Development</td><td>13 lpa</td><td>35% hike</td><td>Vadodara</td><td>B.Sc (Chemistry) 1999</td><td>PhD in Polymer science &amp; technology</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Santhosh S Nair</td><td>Project Lead</td><td>Executive</td><td>santhosh.snr@gmail.com</td><td>8301084393</td><td>1</td><td>5.3 yrs</td><td>Jun  1 2018 12:00AM</td><td>BioFinox</td><td>Project Manager,Scientist</td><td>10+ lpa</td><td>As per company standard</td><td>Hyderabad</td><td>B.Sc (Chemistry) 2006</td><td>Ph.D/Doctorate (Chemistry) 2014</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Amitkumar Chandubhai Brahmbhatt </td><td>Project Lead</td><td>Executive</td><td>acbrahmbhatt@rediffmail.com</td><td>08460610151,</td><td>3 month (negotiable)</td><td>10 yrs</td><td>Aug  1 2010 12:00AM</td><td>Lanxess India Pvt. Ltd</td><td>Executive – Ion Exchange Resins laboratory</td><td>15 lpa</td><td>As per company standard</td><td>Bharuch</td><td>Ph.D</td><td>NA</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>MANAV GUPTA</td><td>Project Lead</td><td>Executive</td><td>manav.guptac@gmail.com</td><td>8971377998</td><td>2 month</td><td>8 yrs</td><td>Jan  1 2017 12:00AM</td><td>Momentive Performance Materials Bangalore India</td><td>Lead Scientist</td><td>31 lpa</td><td>10% hike</td><td>Bengaluru</td><td>Ph.D.</td><td>NA</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>KIRAN RAMNATH PHATANGARE</td><td>Project Lead</td><td>Executive</td><td>phatangarekiran@gmail.com</td><td>7276514751</td><td>2 month</td><td>5.4 yrs</td><td>Feb  1 2016 12:00AM</td><td>AQUAPHARM CHEMICAL PVT LTD, PUNE</td><td>Assistant Manager</td><td>NA</td><td>NA</td><td>Pune</td><td>Ph.D</td><td>NA</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>SREENIVAS KUMMARA </td><td>Project Lead</td><td>Executive</td><td>sreepolymer@gmail.com</td><td>9490384809</td><td>1 month</td><td>9 yrs</td><td>Apr  1 2017 12:00AM</td><td>Institute Postdoctoral Fellow</td><td>NA</td><td>10 lpa</td><td>As per company standard</td><td>Mumbai</td><td>Ph.D</td><td>NA</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Sachin Gondhalekar</td><td>Project Lead</td><td>Executive</td><td>sachin.gondhalekar@gmail.com</td><td>9664320827</td><td>3 months (Nego.)</td><td>6.5 Years</td><td>&nbsp;</td><td>Aditya Birla Science and Technology Co. Pvt. Ltd.</td><td>Senior Scientist </td><td>13 Lakhs</td><td>40% Hike</td><td>Navi Mumbai</td><td>B.Sc (Chemistry)</td><td>M.Sc(Science) (Chemistry)</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Dr. Vivek J Dave</td><td>Project Lead</td><td>Executive</td><td>vj.dave121@gmail.com</td><td>7798499363</td><td>3 months</td><td>5 Years</td><td>&nbsp;</td><td>UFLEX INDUSTRIES</td><td>Assistant Manager Research Development</td><td>7.2 Lakhs</td><td>11 Lakhs</td><td>Pune</td><td>B.Sc (Chemistry) </td><td>M.Sc(Science) (Chemistry)</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Ankush Mane</td><td>Project Lead</td><td>Executive</td><td>ankushtmane@gmail.com</td><td>9769337582</td><td>2 months</td><td>6.5 Years</td><td>&nbsp;</td><td>TATA CHEMICALS LTD</td><td>Application Scientist Nano Materials Science &amp; Technology</td><td>16.5 Lakhs</td><td>As per market hike</td><td>Pune</td><td>B.Sc (Chemistry) </td><td>M.Sc(Science) (Chemistry)</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Anuradha Satpute</td><td>Project Lead</td><td>Executive</td><td>asatpute227@gmail.com</td><td>9096060907</td><td>15 Days</td><td>9 Years</td><td>&nbsp;</td><td>BEHR Process Paints India Pvt.Ltd.</td><td>Project Scientist</td><td>15 Lakhs</td><td>40% Hike</td><td>Pune</td><td>B.Sc (Chemistry)</td><td>M.Sc(Science) (Chemistry) </td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

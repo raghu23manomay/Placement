@@ -1,0 +1,23 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>JIMIT R SHUKLA</td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>cajimitrshukla@gmail.com</td><td>9998191106</td><td>1 MONTH</td><td>6 YRS</td><td>&nbsp;</td><td>Indospace Development Pvt Ltd</td><td>Finance Manager</td><td>12.5 LPA</td><td>30% HIKE</td><td>Mumbai</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Pinal patel</td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>castu_pinal@yahoo.com</td><td>7620064739</td><td>8+yrs</td><td>8+yrs</td><td>&nbsp;</td><td>Endress Hauser</td><td>Executive&#160;</td><td>7.5 LPA</td><td>12 LPA</td><td>Aurangabad</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Payal Gupta</td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>caguptapayal@gmail.com</td><td>8080209072</td><td>2 month</td><td>6 yrs</td><td>&nbsp;</td><td>Vodafone India Services Pvt. Ltd.</td><td>Deputy Manager Finance</td><td>13.6 lpa</td><td>30% hike</td><td>Pune</td><td>CS</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Nikita Suheel Gaikwad</td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>nikitasgaikwad@hotmail.com</td><td>9168723230</td><td>2 MONTH</td><td>7 yrs</td><td>&nbsp;</td><td>Vodafone Shared Services India</td><td>Assistant Manager</td><td>10.83 lpa</td><td>15 lpa</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Paresh Gidhwani</td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>pareshthebest51@yahoo.com</td><td>9099053387</td><td>2 MONTH</td><td>5 YRS</td><td>&nbsp;</td><td>Reliance Jio Infocomm Ltd.</td><td>Senior Manager</td><td>12.5 LPA</td><td>17 LPA</td><td>Mumbai</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Umesh kumar khandelwal&#160;</td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>umesh.khandelwal@bilt.com</td><td>9422079001</td><td>3 MONTH</td><td>15 YRS</td><td>&nbsp;</td><td>&#160;Bilt Graphics Paper Products Ltd</td><td>Dy. Manager</td><td>14 LPA</td><td>17 LPA</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Nitin Purushottam Pingle </td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>np.pingle@gmail.com</td><td>+91988140176</td><td>1 month</td><td>17 yrs</td><td>&nbsp;</td><td>Cummins India Limited</td><td>Senior Manager Commercial - Distribution Business</td><td>14 lpa</td><td>25% hike</td><td>Pune</td><td>B.Com (Commerce)</td><td>Mastes (Tax mdanagement and Tax Administration)</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Vivek Patil</td><td>Finance Controller (GM/DGM Finance)</td><td>Executive</td><td>vivekpatilcma@gmail.com</td><td>9850693998</td><td>2 month</td><td>14+ yrs</td><td>&nbsp;</td><td>SPECTRA-TECH</td><td>Financial Controller</td><td>9.6 lpa</td><td>11 lpa</td><td>Pune</td><td>CMA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

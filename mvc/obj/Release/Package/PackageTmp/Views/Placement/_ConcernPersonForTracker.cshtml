@@ -1,0 +1,18 @@
+﻿@model mvc.Models.ConcernPerForTracker
+<br/>
+<div class="form-group">
+      
+        @Html.DropDownList("model.clientCD_ID", new SelectList((System.Collections.IEnumerable)ViewData["contactPerson_NameList"], "Value", "Text"), "Ehiring8@gmail.com", new { @class = "form-control input-sm", @id = "contactPerson_NameList", Title = "clientCD_ID" })
+        @Html.HiddenFor(model => model.clientCD_ID)
+      
+    </div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#validationcc").hide();
+
+    });
+
+</script>

@@ -1,0 +1,19 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Vaibhava Pandey</td><td>SAP Business Intelligence (BI)</td><td>Executive</td><td>vibhu2892@gmail.com</td><td>9823988578</td><td>45 DAYS</td><td>4.5 YRS</td><td>&nbsp;</td><td>Yash Technologies</td><td>SAP BI Consultant</td><td>7.5 LPA</td><td>11 LPA</td><td>Pune</td><td>B.Tech/B.E.</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Ananya Shrivastava</td><td>SAP Business Intelligence (BI)</td><td>Executive</td><td>shrivastava.1187@gmail.com</td><td>7974821733</td><td>Currently serving notice period(last working day- 14 December)</td><td>7+ YRS</td><td>&nbsp;</td><td>KPIT Technologies</td><td>SAP BO BI Consultant </td><td>5.5 LPA</td><td>8.5 LPA</td><td>Pune</td><td>B.Tech/B.E.</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Rohit Maheshwari</td><td>SAP Business Intelligence (BI)</td><td>Executive</td><td>rohitmaheshwari54@gmail.com</td><td>8605435236</td><td>1 month</td><td>4.8 lpa</td><td>&nbsp;</td><td>Tata Consultancy Services</td><td>Rohit Maheshwari</td><td>7.4 lpa</td><td>10.5 lpa</td><td>Pune</td><td> B.Tech/B.E. (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Piyush Bhanuse</td><td>SAP Business Intelligence (BI)</td><td>Executive</td><td>Piyushbhanuse@gmail.com</td><td>7276824329</td><td>3 month(nego.upto 45 days)</td><td>5 yrs</td><td>&nbsp;</td><td>HCL Technologies</td><td>Consultant</td><td>9 lpa</td><td>13 lpa</td><td>Pune</td><td>B.Tech/B.E. </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> SREEKANTH K</td><td>SAP Business Intelligence (BI)</td><td>Executive</td><td>sreekanthsapbi8@gmail.com</td><td>9049737950</td><td>3 month</td><td>6 yrs</td><td>&nbsp;</td><td> IBM India</td><td>SAP BW BI Consultant</td><td>9.2 lpa</td><td>30% hike</td><td>Pune</td><td>B.Tech/B.E.</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Silpi Yadav</td><td>SAP Business Intelligence (BI)</td><td>Executive</td><td>silpi.silpi22@gmail.com</td><td>9168692694</td><td>2 month</td><td>4 yrs</td><td>&nbsp;</td><td>Vodafone India Services Pvt. Ltd.</td><td>Assistant Manager </td><td>6.5 lpa</td><td>9 lpa</td><td>Pune</td><td>B.Tech/B.E</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

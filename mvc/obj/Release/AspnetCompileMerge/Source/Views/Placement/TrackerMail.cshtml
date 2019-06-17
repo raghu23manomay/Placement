@@ -1,0 +1,498 @@
+﻿@model IEnumerable<mvc.Models.ModelViewJD>
+@{
+    ViewBag.Title = "TrackerMail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<script src="~/Scripts/jquery.validate.min.js"></script>*@
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate", enctype = "multipart/form-data" }))
+{
+    <div class="container" id="pnl-mailTemplateData">
+        <div id="mailTemplateData">
+
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-left">
+            <select id="msgTemplate" class="form-control hidden">
+                <option value="0">Select template</option>
+                <option value="1">Call letter</option>
+                <option value="2">Teliphonic Interview Schedule</option>
+            </select>
+            <p id="client" class="hidden">@Session["clientid"]</p>
+        </div>
+
+
+        @if (Model.Count() != 0)
+        {
+
+            @Html.Hidden("RecID", Model.First().RecID.ToString(), new { id = "RecID" })
+
+            foreach (var item in Model)
+            {
+                <div class="row ibox m-t-xs">
+                    <div class="col-sm-6 ">
+                        <div class="fl">
+                            <div>
+                                @item.FileName <a href="@item.DPath" target="_blank">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-sm-12">
+                <div class="alert alert-warning" style="margin-top: 22px;height: 47px;">
+                   <h4 class="pull-left"> No resume record is found</h4>
+                </div>
+            </div>
+        }
+
+            <div class="ibox m-t-xs">
+                <div class="row">
+                    @if (Model.Count() != 0)
+                    {
+                        <div class="col-sm-2" style="text-align:left!important;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="" id="chkmail">
+                                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>Attach File
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 checkbox" style="text-align:left!important;" id="DefaultExcel">
+
+                            <p> System Generated Tracker <a href="~/TrackerClientXLSheet/@Model.First().RecID/generated/Tracker.xls" target="_blank"> Download </a></p>
+
+
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="alert alert-warning" style="margin-top:62px;height:47px;">
+                            <h4 class="pull-left"> Tracker is not available</h4>
+                        </div>
+
+
+                    }
+                    <div class="col-sm-2  checkbox AttachExcel" style="text-align:left!important;display:none;" id="AttachExcel">
+                        <div class="form-group row">
+                            <div class="checkbox" style="padding-right: 0px;padding-left: 0px;">
+                                <input type="file" id="FileUpload" name="file" required data-val="true" data-val-required="please select a file" />
+                                <p id="validation" style="color:red;">Select File</p>
+                                <div class="text-danger" id="error_msg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 checkbox AttachExcel" style="text-align:left!important;display:none;" id="AttachButton">
+                        <input type="button" id="BtnUpload" class="btn btn-dark" value="Upload" title="Click to upload file" />
+
+                    </div>
+                    <div class="col-sm-3 checkbox AttachExcel" style="text-align:left!important;display:none;" id="AttachButton">
+                        @if (Model.Count() != 0)
+                        {
+                            <p id="reqid" class="hidden">@Model.First().RecID</p>
+                        }
+
+                        @*Manualy Uploaded Tracker <a href="~/TrackerClientXLSheet/@Model.First().RecID/manual/Tracker.xlsx" target="_blank">Download</a>*@
+                        <div id="grid5">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" row ibox m-t-xs ">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="pull-left">Enter Mail Subject <span class="text-danger">*</span></label>
+
+                            <input type="text" class="form-control" placeholder="Mail Subject" id="txtmailsubject" name="txtClient">
+
+                            <p id="MailValidation" style="color:red;" class="pull-left">PLEASE ENTER MAIL SUBJECT</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <br />
+                        <label class="pull-left">Select Concern Person For Mail CC <span class="text-danger">*</span></label>
+                        <div id="grid1"></div>
+                        <p id="validationcc" style="color:red;" class="pull-left">PLEASE SELECT ATLEAST ONE CONCERN PERSON</p>
+
+                    </div>
+
+                    <div class="col-sm-1 pull-left">
+                        <br />
+                        <br />
+
+                        <a id="add" class="btn btn-primary pull-left">Add </a>
+
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        <br />
+                        <label class="pull-left">Select Concern Person To Mail <span class="text-danger">*</span></label>
+                        <div id="grid2"></div>
+                        <p id="validation1" style="color:red;" class="pull-left">PLEASE SELECT ATLEAST ONE CONCERN PERSON</p>
+                    </div>
+                    <div class="col-sm-3 pull-left">
+                        <br />
+                        <label class="pull-left">Select From Mail <span class="text-danger">*</span></label>
+                        <div id="grid3"></div>
+                        <p id="validation2" style="color:red;" class="pull-left">PLEASE SELECT FROM EMAIL</p>
+
+                    </div>
+                </div>
+
+                <div class="row ibox m-t-xs " style="text-align:left;">
+                    <div class="col-sm-4">
+                        <table id="detailsTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody id="tbl"></tbody>
+                        </table>
+
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+
+                </div>
+                @if (Model.Count() != 0)
+                {
+                    <button type="button" class="btn btn-primary" id="sendmail">Send Mail</button>
+                }
+
+                <a href="@Url.Action("JobList", "Placement")" target="_blank" class="btn btn-default">Cancel</a>
+            </div>
+    </div>
+}
+
+<div id="mdlmailtracker" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+@*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>*@
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+
+
+<script>
+
+    $(document).ready(function () {
+
+        manualtraker();
+
+        function manualtraker() {
+
+
+          $.ajax({
+                    url: "@Url.Action("ManualTrackerPath", "Placement")",
+                    contentType: "application/json",
+              data: JSON.stringify({ req_id: $("#reqid").html() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid5').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+        }
+
+        $('#chkmail').on('click', function (e) {
+
+            if ($("#chkmail").prop('checked') == true) {
+                $('#DefaultExcel').hide();
+                $('.AttachExcel').show();
+
+            }
+            else {
+                $('#DefaultExcel').show();
+                $('.AttachExcel').hide();
+
+            }
+
+        });
+
+        $('#BtnUpload').click(function () {
+
+            // Checking whether FormData is available in browser
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#FileUpload").get(0);
+                var files = fileUpload.files;
+                var ext = $('#FileUpload').val().split('.').pop().toLowerCase();
+
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+
+                // Adding one more key to FormData object
+
+                var RecID = $("#RecID").val();
+                fileData.append('RecID', RecID);
+                $.ajax({
+                    url: '/Placement/UploadFiles',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result) {
+                        alert('file Uploaded sucesssfully');
+                        manualtraker();
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                });
+            }
+            else
+            {
+                alert("FormData is not supported.");
+            }
+        });
+
+        $("#add").click(function (e) {
+            e.preventDefault();
+
+            var contactPerson_Name = $("#contactPerson_NameList option:selected").text(),
+                clientCD_ID = $("#contactPerson_NameList").val(),
+                detailsTableBody = $("#detailsTable tbody");
+
+            var productItem = '<tr><td>' + contactPerson_Name + '</td><td class="hidden">' + clientCD_ID + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            detailsTableBody.append(productItem);
+
+        });
+
+        // After Add A New Order In The List, If You Want, You Can Remove It.
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+
+        $.ajax({
+                    url: "@Url.Action("BindConcernForMail", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ ClientId: $("#client").html() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+        });
+
+
+         $.ajax({
+                    url: "@Url.Action("BindConcernForMail1", "Placement")",
+                    contentType: "application/json",
+            data: JSON.stringify({ ClientId: $("#client").html() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+             success: function (data) {
+
+                        $('#grid2').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+        });
+
+
+
+         $.ajax({
+                    url: "@Url.Action("BindEmailList", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid3').html(data);
+
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+
+        $.ajax({
+            url: "@Url.Action("GetTemplateData", "Placement")",
+            data: {
+                "candID":328,
+                "templateid": 8,
+
+            },
+            success: function (data) {
+
+                $('#mailTemplateData').html(data);
+
+            }
+        });
+
+
+        function savedata(data) {
+
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Placement/SendmailTracker",
+                data: data,
+
+                success: function (da) {
+                    if (da == "Mail Send Sucessfully")
+                    {
+                        toastr.success("mail sent successfully.");
+                    }
+                    else
+                    {
+                        toastr.error(da);
+                    }
+
+                },
+                error: function (errorData) {
+                    toastr.success("mail error");
+                    // alert('mail error');
+
+                }
+
+
+            });
+        }
+
+
+        function bindlocation() {
+
+
+            var orderArr = [];
+            orderArr.length = 0;
+            var UploadType = 0;
+            if ($("#chkmail").prop('checked') == true) {
+                UploadType = 1;
+            }
+            else {
+                UploadType = 0;
+            }
+            $.each($("#detailsTable tbody tr"), function () {
+                orderArr.push({
+                    contactPerson_Name: $(this).find('td:eq(0)').html(),
+                    clientCD_ID: $(this).find('td:eq(1)').html(),
+                    "ReqID": $('#RecID').val(),
+                    UploadType: UploadType,
+                    Emailid1: $('#EmailList').val(),
+                    ClientConcernId: $('#contactPersonList').val(),
+                    MailSubject: $('#txtmailsubject').val(),
+                    Description: JSON.stringify($("#mailDescription").val(), )
+
+                });
+            });
+
+            var data = JSON.stringify({
+                ConcernPerForTracker: orderArr
+            });
+
+            $.when(savedata(data)).then(function (response) {
+
+            }).fail(function (err) {
+                console.log(err);
+            });
+
+        }
+
+
+
+        $("#validation").hide();
+        $("#MailValidation").hide();
+
+        $('#sendmail').on('click', function (e) {
+
+
+
+            if ($("#tbl").html() == "") {
+
+                $("#validationcc").show();
+                $("#validation1").hide();
+                $("#MailValidation").hide();
+                // alert("show");
+            }
+            else if ($("#contactPersonList").val() == 0) {
+                // alert("hide");
+                $("#validationcc").hide();
+                $("#validation1").show();
+                $("#MailValidation").hide();
+
+            }
+            else if ($("#EmailList").val() == 0)
+            {
+                $("#validationcc").hide();
+                $("#validation1").hide();
+                $("#validation2").show();
+                $("#MailValidation").hide();
+            }
+            else if ($("#txtmailsubject").val() == "") {
+
+                $("#validation").hide();
+                $("#validation1").hide();
+                $("#validation2").hide();
+                $("#MailValidation").show();
+            }
+            else
+            {
+                $("#validation1").hide();
+                $("#validationcc").hide();
+                $("#validation2").hide();
+                $("#MailValidation").hide();
+                bindlocation();
+            }
+
+        });
+    });
+
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Script-custom-editor")
+
+}

@@ -1,0 +1,767 @@
+﻿@model  IEnumerable<mvc.Models.WFCountList>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    //Layout = null;
+}
+@{
+    var Reqid = Request.Url.Segments[3];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>list</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />  
+    <link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" /> 
+    <link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        @Scripts.Render("~/bundles/Script-custom-editor")
+        @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/assets/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+        
+</head>
+<body>
+
+    <div class="container-fluid m-t-md">
+        <div class="row">
+
+            <div class="col-sm-1" style="width: 214px;">
+                <h3><small>Source</small></h3>
+
+                <div class="ibox-grey">
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag users between list</p>
+                    <ul id="source" class="sortable-list connectList agile-list ui-sortable">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "Source")
+                            {
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="Apply to this position" />
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-1" style="width: 280px;">
+                <h3><small>APPLIED</small></h3>
+                <div class="ibox-grey">
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag users between list</p>
+
+                    <ul id="applied" class="sortable-list connectList agile-list ui-sortable">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "Applied")
+                            {
+                                <li class="info-element ui-sortable-handle" id="@item.CandID">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="INTERVIEW" />
+                                    </div>
+
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                </div>
+            </div>
+
+
+
+            @*<div class="col-sm-1" style="width: 280px;">
+                    <h3><small>Rejected</small></h3>
+                    <div class="ibox-grey">
+                        <p class="small"><i class="fa fa-hand-o-up"></i> Drag users between list</p>
+
+                        <ul id="Rejected" class="sortable-list connectList agile-list ui-sortable">
+                            @foreach (var item in Model)
+                            {
+                                if (item.StageName == "Rejected")
+                                {
+
+                                    <li class="info-element ui-sortable-handle">
+                                        <div class="round" style="overflow-wrap: break-word;">
+                                            @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                            {
+                                                <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                            }
+                                            else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                            {
+                                                <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                            }
+                                            else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                            { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                        {
+                                            <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+
+                                            @item.CandName
+
+
+                                            <input type="hidden" name="CandID" value="@item.CandID" />
+                                            <input type="hidden" name="StageID" value="@item.StageID" />
+                                            <input type="hidden" name="NextStageID" value="3" />
+                                            <input type="hidden" name="CandName" value="@item.CandName" />
+                                            <input type="hidden" name="StageName" value="@item.StageName" />
+                                        </div>
+                                        <div class="round">
+                                            <div class="fl">
+                                                @if (item.ActivityDate.Trim() != "--")
+                                                {
+                                                    <div class="small">
+                                                        <i class="fa fa-phone text-success" aria-hidden="true"></i> @item.ActivityDate
+                                                        <a href="@Url.Action("EditSchedule", "Placement", new { @CanID = @item.CandID, @ReqID = Reqid})" data-toggle="modal" data-target="#mdlEditSchedule" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>*@
+            <div class="col-sm-1" style="width: 280px;">
+                <h3><small>INTERVIEW</small></h3>
+                <div class="ibox-grey">
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag users between list</p>
+                    <ul id="interview" class="sortable-list connectList agile-list ui-sortable">
+                        <span style="color:#6f6b6b;">Interview</span>
+                        <hr style="margin-bottom: 9px!important; margin-top: 5px!important;" />
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "INTERVIEW")
+                            {
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="Offer" />
+                                    </div>
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        <div class="fl">
+                                            @if (item.InterDescription.Trim() != "--")
+                                            {
+                                                <div class="small" style="color:darkgray;">
+                                                    @*<i class="fa fa-phone text-success" aria-hidden="true"></i>*@ @*@item.ActivityDate*@
+                                                    @item.InterDescription
+                                                    @item.FeedbackRemark
+                                                    <a href="#" id="@item.CandID" name="@Reqid" class="editschedule"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+
+                        }
+                        <span style="color:#6f6b6b;margin-bottom: 9px!important; margin-top: 5px!important;">Attended</span>
+                        <hr style="margin-bottom: 9px!important; margin-top: 5px!important;" />
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "Attended")
+                            {
+
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="Offer" />
+                                    </div>
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        <div class="fl">
+                                            @if (item.InterDescription.Trim() != "--")
+                                            {
+                                                <div class="small" style="color:darkgray;">
+                                                    @*<i class="fa fa-phone text-success" aria-hidden="true"></i>*@ @*@item.ActivityDate*@
+                                                    @item.InterDescription
+                                                    @item.FeedbackRemark
+                                                    <a href="#" id="@item.CandID" name="@Reqid" class="editschedule"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+                        }
+
+                        <span style="color:#6f6b6b;">Pending</span>
+                        <hr style="margin-bottom: 9px!important; margin-top: 5px!important;" />
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "Pending")
+                            {
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="Offer" />
+                                    </div>
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        <div class="color-gray font11px">
+
+                                        </div>
+                                        <div class="fl">
+                                            @if (item.InterDescription.Trim() != "--")
+                                            {
+                                                <div class="small" style="color:darkgray;">
+                                                    @*<i class="fa fa-phone text-success" aria-hidden="true"></i>*@ @*@item.ActivityDate*@
+                                                    @item.InterDescription
+                                                    @item.FeedbackRemark
+                                                    <a href="#" id="@item.CandID" name="@Reqid" class="editschedule"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+
+                        }
+
+                        <span style="color:#6f6b6b;">Rejected</span>
+                        <hr style="margin-bottom: 9px!important; margin-top: 5px!important;" />
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageID == 3 && item.StageName == "Rejected")
+                            {
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="Offer" />
+                                    </div>
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        <div class="fl">
+                                            @if (item.InterDescription.Trim() != "--")
+                                            {
+                                                <div class="small" style="color:darkgray;">
+                                                    @*<i class="fa fa-phone text-success" aria-hidden="true"></i>*@ @*@item.ActivityDate*@
+                                                    @item.InterDescription
+                                                    @item.FeedbackRemark
+                                                    <a href="#" id="@item.CandID" name="@Reqid" class="editschedule"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+
+                        }
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-sm-1" style="width: 280px;">
+                <h3><small>OFFER</small></h3>
+                <div class="ibox-grey">
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag users between list</p>
+                    <ul id="offer" class="sortable-list connectList agile-list ui-sortable">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "Offer")
+                            {
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs" id="@item.CandID">
+                                                @item.CandName.Substring(0, 1).ToUpper()
+                                                <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                            </span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs" id="@item.CandID">
+                                                @item.CandName.Substring(0, 1).ToUpper()
+                                                <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                            </span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs" id="@item.CandID">
+                                                @item.CandName.Substring(0, 1).ToUpper()
+                                                <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                            </span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                        {
+                                            <span class="label label-info label-circle m-t-n-xs" id="@item.CandID">
+                                                @item.CandName.Substring(0, 1).ToUpper()
+                                                <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+
+                                        @item.CandName
+
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="SELECTED" />
+                                    </div>
+
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        <div class="color-gray font11px">
+
+                                        </div>
+                                        <div class="fl">
+                                            @if (item.InterDescription.Trim() != "--")
+                                            {
+                                                <div class="small" style="color:darkgray;">
+                                                    @item.InterDescription
+                                                    @item.FeedbackRemark
+                                                    <a href="#" id="@item.CandID" name="@Reqid" class="editschedule"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+
+                        <span style="color:#6f6b6b;margin-bottom: 9px!important; margin-top: 5px!important;">In descussion</span>
+                        <hr style="margin-bottom: 9px!important; margin-top: 5px!important;" />
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "InDiscussion")
+                            {
+
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="Selected" />
+                                    </div>
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        <div class="fl">
+                                            @if (item.InterDescription.Trim() != "--")
+                                            {
+                                                <div class="small" style="color:darkgray;">
+                                                    @*<i class="fa fa-phone text-success" aria-hidden="true"></i>*@ @*@item.ActivityDate*@
+                                                    @item.InterDescription
+                                                    @item.FeedbackRemark
+                                                    <a href="#" id="@item.CandID" name="@Reqid" class="editschedule"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+                        }
+
+                        <span style="color:#6f6b6b;">Rejected</span>
+                        <hr style="margin-bottom: 9px!important; margin-top: 5px!important;" />
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageID == 4 && item.StageName == "Rejected")
+                            {
+                                <li class="info-element ui-sortable-handle">
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                        {
+                                            <span class="label label-warning label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                        {
+                                            <span class="label label-danger label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                        }
+                                        else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                        { <span class="label label-default label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                    {
+                                        <span class="label label-info label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                    }
+
+                                        @item.CandName
+                                        <input type="hidden" name="CandID" value="@item.CandID" />
+                                        <input type="hidden" name="StageID" value="@item.StageID" />
+                                        <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                        <input type="hidden" name="CandName" value="@item.CandName" />
+                                        <input type="hidden" name="StageName" value="Offer" />
+                                    </div>
+                                    <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                        <div class="fl">
+                                            @if (item.InterDescription.Trim() != "--")
+                                            {
+                                                <div class="small" style="color:darkgray;">
+                                                    @*<i class="fa fa-phone text-success" aria-hidden="true"></i>*@ @*@item.ActivityDate*@
+                                                    @item.InterDescription
+                                                    @item.FeedbackRemark
+                                                    <a href="#" id="@item.CandID" name="@Reqid" class="editschedule"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i></a>
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-1" style="width: 280px;">
+                <h3><small>SELECTED</small></h3>
+                <div class="ibox-grey">
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag users between list</p>
+                    <ul id="SELECTED" class="sortable-list connectList agile-list ui-sortable">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StageName == "SELECTED")
+                            {
+                        <li class="info-element ui-sortable-handle">
+                            <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                @if (Convert.ToInt32(item.CandID) % 2 == 0)
+                                {
+                                    <span class="label label-warning label-circle m-t-n-xs" id="@item.CandID">
+                                        @item.CandName.Substring(0, 1).ToUpper()
+                                        <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                    </span>
+                                }
+                                else if (Convert.ToInt32(item.CandID) % 3 == 0)
+                                {
+                                    <span class="label label-danger label-circle m-t-n-xs" id="@item.CandID">
+                                        @item.CandName.Substring(0, 1).ToUpper()
+                                        <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                    </span>
+                                }
+                                else if (Convert.ToInt32(item.CandID) % 4 == 0)
+                                { <span class="label label-default label-circle m-t-n-xs" id="@item.CandID">
+                                        @item.CandName.Substring(0, 1).ToUpper()
+                                        <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                    </span>
+                                }
+                                else if (Convert.ToInt32(item.CandID) % 5 == 0)
+                                {
+                                    <span class="label label-info label-circle m-t-n-xs" id="@item.CandID">
+                                        @item.CandName.Substring(0, 1).ToUpper()
+                                        <input type="hidden" name="CandIDs" value="@item.CandID" />
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="label label-success label-circle m-t-n-xs">@item.CandName.Substring(0, 1).ToUpper()</span>
+                                }
+
+                                @item.CandName
+
+                                <input type="hidden" name="CandID" value="@item.CandID" />
+                                <input type="hidden" name="StageID" value="@item.StageID" />
+                                <input type="hidden" name="NextStageID" value="@item.NextStageID" />
+                                <input type="hidden" name="CandName" value="@item.CandName" />
+                                <input type="hidden" name="StageName" value="@item.StageName" />
+                            </div>
+                            <div class="round" style="overflow-wrap: break-word;display: flex;">
+                                <div class="fl">
+                                    @if (item.InterDescription.Trim() != "--")
+                                    {
+                                        <div class="small" style="color:darkgray;">
+                                            @*<i class="fa fa-phone text-success" aria-hidden="true"></i>*@ @*@item.ActivityDate*@
+                                            @item.InterDescription
+                                            @item.FeedbackRemark
+                                      
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                            }
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="mdlSchedule" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+
+    </div>
+    <div id="mdlEditSchedule" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+    </div>
+    @*<div id="mdlEditSchedule" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+            <div class="modal-dialog" id="pnl-mdlEditSchedule">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>*@
+    @*<div id="mdlEditSchedule" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+            <div class="modal-dialog" id="pnl-mdlEditSchedule">
+                <div class="modal-content">
+                    Html.Partial("_Schedule")
+                </div>
+            </div>
+        </div>*@
+
+    <span class="popupTrigger hide-element" data-toggle="modal" data-target="#mymodal">Open Modal</span>
+    <!-- Modal popup-->
+    <div id="mymodal" class="modal fade" role="dialog">
+
+    </div>
+</body>
+
+</html>
+<script>
+
+
+    $(document).ready(function () {
+
+        $(".sortable-list").sortable({
+            connectWith: ".connectList",
+            update: function (event, ui) {
+
+                if (!($(this).attr("id") == ui.item.parent()[0].id)) {
+                    var id = ui.item.attr("id");
+                    var CandID = ui.item.find('input[name="CandID"]').val();
+                    var CandName =ui.item.find('input[name="CandName"]').val();
+                    var StageID = ui.item.find('input[name="StageID"]').val();
+                    var NextStageID =ui.item.find('input[name="NextStageID"]').val();
+                    var StageName =ui.item.find('input[name="StageName"]').val();
+                    //var NextStageID = $(this).closest('div').find('input[name="NextStageID"]').val();
+                    fnReloadScedule(CandID, CandName, StageID, NextStageID, StageName);
+                   
+                    $(".popupTrigger").click();
+
+                }
+            }
+        }).disableSelection();
+
+        $('.editschedule').on('click', function () {
+            var Reqid = $(this).attr('name');
+            var CandID = $(this).attr('id');
+             $.ajax({
+            url: "@Url.Action("EditSchedule", "Placement")",
+                 data: { "CanID": CandID, "ReqID": Reqid},
+            success: function (data) {
+              
+                $('#mymodal').html(data);
+                $(".popupTrigger").click();
+            }
+
+        });
+      });
+    });
+    
+    function fnReloadScedule(CandID,CandName,StageID,NextStageID,StageName) {
+        
+        $.ajax({
+            url: "@Url.Action("Schedule", "Placement")",
+            data: { "reqid": @Reqid, "candID":CandID,"candName":CandName,"StageID":StageID,"NextStageID":NextStageID ,"StageName":StageName},
+            success: function (data) {
+              
+                $('#mymodal').html(data);
+            }
+
+        });
+
+    }
+</script>

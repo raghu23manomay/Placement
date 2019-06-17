@@ -1,0 +1,422 @@
+﻿
+@model mvc.Models.Schedule
+
+@{
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+
+<div class="modal-dialog" id="pnl-mdlSchedule" style="width:50%">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "frmc" }))
+    {
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Schedule Stage</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="stage"> ID:@Model.CandID   Name : @Model.CandName</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="stage">Stage</label>
+                    @Html.TextBoxFor(a => a.StageName, new { @class = "form-control text", placeholder = "StageName", title = "StageName", @id = "StageName" })
+                    @Html.HiddenFor(model => model.StageID, new { @id = "StageID" })
+
+                    @Html.HiddenFor(model => model.CandID, new { @id = "CandID" })
+                    @Html.HiddenFor(model => model.ReqID, new { @id = "ReqID" })
+                    @Html.HiddenFor(model => model.NextStageID, new { @id = "NextStageID" })
+
+                    <div class="text-danger" id="StageName_error_msg"></div>
+                </div>
+                <div class="form-group">
+                    <label for="stagecomment">select Mode</label>
+                    @Html.DropDownList("model.ModeName", new SelectList((System.Collections.IEnumerable)ViewData["InterviewModeList"], "Value", "Text"), "Select Mode", new { @class = "form-control input-sm", @id = "ModeName", Title = "ModeName" })
+                    @Html.HiddenFor(model => model.ModeID)
+                    @Html.HiddenFor(model => model.ModeName, new { @id = "ModeName1" })
+                    @Html.ValidationMessageFor(model => model.ModeID, "", new { @class = "text-danger" })
+                    <div class="text-danger" id="ModeName_error_msg"></div>
+                </div>
+
+
+                <div class="col-md-6" style="padding-right: 0px;padding-left: 0px;">
+                    <div class="form-group">
+                        <label for="stagedate">Date</label>
+                        @Html.TextBoxFor(model => model.ActivityDate, new { type = "date", @class = "form-control text" })
+                    </div>
+                </div>
+                <div class="col-md-6" style="padding-right: 0px;">
+                    <div class="form-group">
+                        <label for="stagetime">Time</label>
+                        @Html.TextBoxFor(model => model.ActivityTime, new { type = "time", @class = "form-control text", @id = "ActivityTime" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stagecomment">Comment</label>
+                    @Html.TextBoxFor(a => a.Remark, new { @class = "form-control text", placeholder = "Comment", title = "Comment", @id = "Remark" })
+                    <div class="text-danger" id="Remark_error_msg"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="stagecomment">Select Status</label>
+                    <select id="candStatus" class="form-control text">
+                        <option value="0">Select Status</option>
+                        <option value="1">Shortlisted</option>
+                        <option value="2">Schedule confirmed by Candidate</option>
+                        <option value="3">Rejected</option>
+                        <option value="4">Pending</option>
+                        @*<option value="5">Not Attended</option>*@
+                        <option value="6">Reshedule</option>
+                        <option value="7">Attended</option>
+                        <option value="8">In Descision</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="stagenotify">People to notify</label>
+                    <select id="stagenotify" class="form-control text">
+                        <option>Candidate</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="" id="chkmail">
+                            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>Mail
+                        </label>
+                    </div>
+
+                    @Html.DropDownList("model.EmailTemplateList", new SelectList((System.Collections.IEnumerable)ViewData["EmailTemplateList"], "Value", "Text"), "Select Template", new { @class = "form-control input-sm", @id = "msgTemplate", Title = "msgTemplate" })
+                    @Html.HiddenFor(model => model.temp_id)
+
+                    @*<select id="msgTemplate" class="form-control">
+                        <option value="0">Select template</option>
+                        <option value="1">Call letter</option>
+                        <option value="2">Teliphonic Interview Schedule</option>
+                        <option value="3">Candidate Sortlisted</option>
+                        <option value="4">Final Round Inteview</option>
+                        <option value="5">Offerd</option>
+                        <option value="6">Second Round Interview</option>
+                        <option value="7">Candidate Rejected</option>
+
+                    </select>*@
+
+                </div>
+                <div class="form-group">
+                    <div id="mailBlock" class="tab-pane m-t m-r m-l" style="display:none;">
+                        <div id="pnl-mailTemplateData">
+                            <div id="mailTemplateData">
+
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary" id="sendmail">Send Mail</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btnsave" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+
+  
+    var str = window.location.href;
+    var lastLetter = str[str.length], i, temp;
+    var con = "";
+
+    for (i = 0; i < str.length; i++) {
+        if (str[i] == '=') {
+            myfun(i);
+            break;
+        }
+    }
+
+    function myfun(temp) {
+
+        temp = temp + 1;
+        for (i = temp; i < [str.length]; i++) {
+
+            con = con + str[i];
+        }
+        parseInt(con);
+
+    }
+    
+</script>
+
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#btnsave').on('click', function (e) {
+            
+            var error = 0;
+            if ($('#Remark').val() == '') {
+                error = 1;
+                $('#Remark_error_msg').html("The Remark field is required.");
+                $('#Remark_error_msg').show();
+            }
+            else {
+                $('#Remark_error_msg').hide();
+            }
+
+            if ($('#StageName').val() == '') {
+                error = 1;
+                $('#StageName_error_msg').html("The StageName field is required.");
+                $('#StageName_error_msg').show();
+            }
+            else {
+                $('#StageName_error_msg').hide();
+            }
+
+            if ($('#ModeName').val() == '') {
+                error = 1;
+                $('#ModeName_error_msg').html("The StageName field is required.");
+                $('#ModeName_error_msg').show();
+            }
+            else {
+                $('#ModeName_error_msg').hide();
+            }
+            var ActivityDate = $("#ActivityDate").val();
+            if (error) {
+                return false;
+            } else {
+
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "/Placement/Schedule",
+                    data: {
+                        "StageID": $("#NextStageID").val(),
+                        "ModeID": $("#ModeName").val(),
+                        "Remark": $("#Remark").val(),
+                        "ReqID": $("#ReqID").val(),
+                        "CandID": $("#CandID").val(),
+                        "StatusID": $("#candStatus").val(),
+                        "ActivityDate": $("#ActivityDate").val(),
+                        "ActivityTime": $("#ActivityTime").val()
+                    },
+                    success: function (result) {
+                        //$("#pnl-mdlSchedule").html(result);
+                        
+                        toastr.success("Data saved successfully.");
+                        $("#mdlSchedule .close").click()                     
+                        refresh();
+                       
+                    },
+                    error: function (errorData) {
+                    }
+                });
+            }
+            return true;
+        });
+
+        toastr.options = {
+            "closeButton": true,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "0",
+            "showMethod": "fadeIn"
+        };
+
+        $.ajax({
+            url: "@Url.Action("GetTemplateData", "Placement")",
+            data: {
+                "CandID": $("#CandID").val(),
+                "templateid": $('#msgTemplate').val(),
+
+            },
+            success: function (data) {
+                $('#mailTemplateData').html(data);
+            }
+        });
+
+        $('#sendmail').on('click', function (e) {
+         
+            var candid = $("#CandID").val();
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "/Placement/sendmail",
+                data: {
+                    "candID": candid,
+                    "Description": JSON.stringify($("#mailDescription").val()),
+                    msgTemplate: $("#msgTemplate").val()
+                },
+                success: function (result) {
+                    toastr.success("mail sent successfully.");
+                    if (result.Success) {
+                    }
+                },
+                error: function (errorData) {
+                }
+            });
+        });
+
+        $('#chkmail').on('click', function (e) {
+            $('#mailBlock').show();
+
+        });
+        $('#Editmail').on('click', function (e) {
+
+            $('#content').hide();
+            $('#maildescriptionDiv').show();
+            $('#tblHistory').show();
+        });
+        $('#Previewmail').on('click', function (e) {
+
+            $('#content').show();
+            $('#maildescriptionDiv').hide();
+            $('#tblHistory').hide();
+
+        });
+        $('#msgTemplate').change(function (e) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+
+            var cid = $("#CandID").val();
+
+            var dd = $('#ActivityDate').val().substr(0,10);
+            var abc = new Date(dd);
+            var ActivityDate = abc.toString().substr(0,15);
+            //alert(ActivityDate);
+            var ActivityTime = $('#ActivityTime').val();
+
+                $.ajax({
+                    url: "@Url.Action("GetTemplateData", "Placement")",
+                    data: {
+                        "candID": cid,
+                        "templateid": $('#msgTemplate').val(),
+                        "ActivityDate": ActivityDate,
+                        "ActivityTime": ActivityTime,
+                        "ModeOfInterview": $("#ModeName").val(),
+                    },
+                    success: function (data) {
+                        
+                        $('#mailTemplateData').html(data);
+                        var ActivityDate = $('#ActivityDate').val()
+                        var ActivityTime = $('#ActivityTime').val()
+                        
+                    }
+                });
+
+        });
+    });
+
+
+    function refresh() {
+     //   refreshjs();
+                  $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                      data: JSON.stringify({
+                          page: con,
+                          PageRowNumber: $('#Status').val(),
+                          Name: $('#txtName').val(),
+                          DName: $('#txtDesignation').val(),
+                          CName: $('#txtClient').val(),
+                          Eid: $('#txtEmail').val(),
+                          Mob: $('#txtMobile').val(),
+                          Stage: $('#txtStage').val(),
+                          Date: $('#txtDate').val(),
+                          Activity: $('#txtActivity').val()
+                      }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+                        $('.modal-backdrop').remove();
+                        $('#mymodal').hide();
+
+                    },
+                    error: function (data) {
+                        
+                        $('.modal-backdrop').remove();
+
+                    },
+                    complete: function () {
+                        
+                        $('.modal-backdrop').remove();
+
+
+                    }
+
+        });
+       return true;
+
+    }
+
+    function refreshforclosebutton() {
+       // refreshjs();
+               // $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: con,
+                        PageRowNumber: $('#Status').val(),
+                        Name: $('#txtName').val(),
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val(),
+                        Eid: $('#txtEmail').val(),
+                        Mob: $('#txtMobile').val(),
+                        Stage: $('#txtStage').val(),
+                        Date: $('#txtDate').val(),
+                        Activity: $('#txtActivity').val()
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+                       
+                        $("#mdlSchedule .close").click();
+                        $('.modal-backdrop').remove();
+
+
+                    },
+                    error: function (data) {
+                        $("#mdlSchedule .close").click();
+                        $('.modal-backdrop').remove();
+
+
+                    },
+                    complete: function () {                        
+                        $("#mdlSchedule .close").click();
+                        $('.modal-backdrop').remove();
+
+                    }
+
+
+        });
+        return true;
+
+    }
+         
+</script>
+
+
+
+
+

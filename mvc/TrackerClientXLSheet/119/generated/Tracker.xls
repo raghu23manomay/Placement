@@ -1,0 +1,17 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Mallikarjun</td><td>Deputy Chief Engineers /Principal Engineer - Static Equipment Job Reference No. 1012  </td><td>Executive</td><td>mallikarjunsb@gmail.com</td><td>9987950093</td><td>1Month</td><td>8Years</td><td>&nbsp;</td><td>Thyssenkrupp</td><td>Assistant Manager</td><td>11.55Lpa</td><td>20-25%Hike</td><td>Mumbai</td><td>B.Tech/B.E. (Mechanical) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Amit Nitnaware</td><td>Deputy Chief Engineers /Principal Engineer - Static Equipment Job Reference No. 1012  </td><td>Executive</td><td>amitnarayan039@yahoo.com</td><td>9552209030</td><td>1Monthj</td><td>15Years</td><td>&nbsp;</td><td>Rajpurohit Composite(Chemical Process Equipments)</td><td>Senior Design Engineer</td><td>16.5Lpa</td><td>25-30%Hike</td><td>Mumbai</td><td>B.Tech/B.E</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Shilpa Adivarekar</td><td>Deputy Chief Engineers /Principal Engineer - Static Equipment Job Reference No. 1012  </td><td>Executive</td><td>shilpa.adivarekar@gmail.com</td><td>8108259259</td><td>2 months</td><td>15 yrs</td><td>&nbsp;</td><td> Essar Projects India Limited</td><td>Manager Mechanical static</td><td>12.5 lpa</td><td>40% hike</td><td>Mumbai</td><td>B.Tech/B.E. (Mechanical)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Mohammed Iqbal Sayed</td><td>Deputy Chief Engineers /Principal Engineer - Static Equipment Job Reference No. 1012  </td><td>Executive</td><td>miqbalsayyed@gmail.com</td><td>09004329111</td><td>Immediately</td><td>15+ yrs</td><td>&nbsp;</td><td>Not working</td><td>not working</td><td>Previous package - 21.7 lpa</td><td>As per company standard</td><td>Mumbai</td><td>B.Tech/B.E. (Mechanical) 2002</td><td>Mechanical Design of Static equipment E (Mechanical Design of Static Equipment) (Part Time) 2007</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Tejas A. Shah</td><td>Deputy Chief Engineers /Principal Engineer - Static Equipment Job Reference No. 1012  </td><td>Executive</td><td>tejasshah.mech@gmail.com</td><td>06353794682</td><td>1 months</td><td>8 yrs</td><td>&nbsp;</td><td>L&amp;T Technology Services</td><td>Mechanical Engineer</td><td>7.5 lpa</td><td>12 lpa</td><td>Surat</td><td>B.Tech/B.E. (Mechanical) 2009</td><td>M.Tech (Mechanical) 2009</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

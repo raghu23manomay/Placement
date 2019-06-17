@@ -1,0 +1,23 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>p.jagadeesh kumar</td><td>Software QA Engineer JD </td><td>Staffing</td><td>jagadeeshkumar334@gmail.com</td><td>8884884682</td><td>1 month</td><td>3 years</td><td>&nbsp;</td><td>SAP Labs</td><td>QA Test Engineer</td><td>3.3 lpa</td><td>5.5 lpa</td><td>Bengaluru</td><td>M.Tech</td><td>M.Tech</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> p.jagadeesh kumar</td><td>Software QA Engineer JD </td><td>Staffing</td><td>jagadeeshkumar334@gmail.com</td><td>8884884682</td><td>1 month</td><td>3 yrs </td><td>Apr  5 2016 12:00AM</td><td>SAP Labs</td><td>QA Test Engineer</td><td>3.3 lpa</td><td>5.5 lpa</td><td>Bengaluru</td><td>B.Tech/B.E. (Computers)</td><td>M.Tech (Computers)</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Anil</td><td>Software QA Engineer JD </td><td>Staffing</td><td>venkataanil66@gmail.com</td><td>9494949791</td><td>15 Days</td><td>6 yrs</td><td>Apr  5 2014 12:00AM</td><td>Epic mind software technology</td><td>QA Engineer</td><td>6 lpa</td><td>7 lpa</td><td>Bengaluru</td><td> B.Tech/B.E. (Computers)</td><td>M.Tech (Computers</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Bristina S </td><td>Software QA Engineer JD </td><td>Staffing</td><td>bristys6@gmail.com</td><td>9482809807</td><td>2 months</td><td>4 yrs</td><td>Apr  5 2016 12:00AM</td><td>Subex </td><td>Senior Software Testing Engineer</td><td>7.2 lpa</td><td>30% hike</td><td>Bengaluru</td><td>B.Tech/B.E. (Electronics/Telecommunication)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Vineel Kumar.G</td><td>Software QA Engineer JD </td><td>Staffing</td><td>gannavaram12@gmail.com</td><td>9867197773</td><td>1 month</td><td>4.5 yrs</td><td>Aug  5 2015 12:00AM</td><td>JP Morgan Chase</td><td>Senior UAT Test Analyst Software - QA Testing </td><td>7 lpa</td><td>9 lpa</td><td>Bengaluru</td><td>B.Sc (Computers) </td><td>MCA (Computers)</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Mounika Priya Devaraju</td><td>Software QA Engineer JD </td><td>Staffing</td><td>mounika.devaraju@gmail.com</td><td>9182162515</td><td>3 months</td><td>2 yrs</td><td>Jun  5 2013 12:00AM</td><td>IBM Global Services</td><td>Test Engineer</td><td>3 lpa</td><td>4.5 lpa</td><td>Bengaluru</td><td>B.Tech/B.E. (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>AKHILESH KUMAR CHAUDHARY</td><td>Software QA Engineer JD </td><td>Staffing</td><td>akhileshgate1112@gmail.com</td><td>9560530926</td><td>1 month</td><td>4.11 yrs</td><td>&nbsp;</td><td>Wipro Technologies</td><td>Software Test Engineer</td><td>6 lpa</td><td>8.5 lpa</td><td>Bengaluru</td><td>B.Tech/B.E. (Electrical)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Vivek Bharti</td><td>Software QA Engineer JD </td><td>Staffing</td><td>bharti.vivek07@gmail.com</td><td>7871586171</td><td>2 months</td><td>4 yrs</td><td>&nbsp;</td><td>Cognizant </td><td>Quality Assurance Testing Engineer</td><td>5.1 lpa</td><td>7.5 lpa</td><td>Bengaluru</td><td>B.Tech/B.E. (Computers) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

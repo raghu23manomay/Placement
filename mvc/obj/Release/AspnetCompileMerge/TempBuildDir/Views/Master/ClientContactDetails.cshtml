@@ -1,0 +1,111 @@
+﻿
+@model IEnumerable<mvc.Models.ClientContactDetails>
+
+@{
+    ViewBag.Title = "ClientContactDetails";
+    Layout = null;
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "frmc" }))
+{
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">  Contact Details  </h3>
+        </div>
+        <div>
+            <div>
+                @if (Model.Count() != 0 && Model != null)
+                {
+
+
+                    <div class="ibox m-t-xs border-left-blue">
+
+                        <div class="row alert alert-warning">
+                            <div class="col-sm-3" style="text-align:left">
+                                Contact Name
+                            </div>
+                            <div class="col-sm-2 round">
+                                mobile
+                            </div>
+
+                            <div class="col-sm-3">
+                                email
+                            </div>
+                            <div class="col-sm-3">
+                                Designation
+                            </div>
+                            <div class="col-sm-1">
+
+                            </div>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="row alert alert-success">
+                                <div class="col-sm-3" style="text-align:left">
+                                    @item.contactPerson_Name
+                                </div>
+                                <div class="col-sm-2 round">
+                                    @item.mobile
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label>@item.emailid </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label>@item.desg_desc</label>
+                                </div>
+                                <div class="col-sm-1">
+
+                                    <div class="btn-group m-t-xs7">
+                                        <button type="button" class="btn dropdown btn-dot-dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                                        <div id="candidateActn" class="dropdown-menu is-right-aligned">
+                                            <a href="@Url.Action("FetchContactperson", "Master" , new { @clientCD_ID = item.clientCD_ID})")" data-toggle="modal" data-target="#mdlETcontactperson" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit</span></a>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="col-sm-12">
+                        <div class="alert alert-warning">
+                            No Contact Details found
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">ok</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div id="mdlETcontactperson" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlETUser" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlAddContactPerson" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlSourceCandidate" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlClientContactDetails" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlCandidateActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+
+
+
+
+

@@ -1,0 +1,405 @@
+﻿<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+@model  IEnumerable<mvc.Models.CandidateList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+<style>
+    .grid-header-title {
+        color: #908a9c;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    #pageLoader {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        background: rgba(255, 255, 255, 0.9) url(../../Content/pageloader.gif) no-repeat center center;
+    }
+
+    .myCheckbox input {
+        z-index: -9999;
+    }
+
+    .myCheckbox span {
+        width: 20px;
+        height: 20px;
+        display: block;
+        background: url("link_to_image");
+    }
+
+    .myCheckbox input:checked + span {
+        background: url("link_to_another_image");
+    }
+</style>
+
+<style>
+    #tooltip {
+        position: relative;
+        display: inline-block;
+        /*border-bottom: 1px dotted black;*/
+    }
+
+        #tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #b1a8a8;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        #tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+</style>
+
+<div id="pageLoader" style="display:none; ">
+</div>
+@{
+
+    System.Data.DataTable dt = new System.Data.DataTable();
+    dt = Session["UserPermission"] as System.Data.DataTable;
+}
+<div class="row">
+    <h1 id="ssname" class="hidden">@Session["Name"]</h1>
+
+    <div class="col-sm-2">
+        <label class="label-light">Name <i class="fa fa-fw fa-sort"></i></label>
+    </div>
+    <div class="col-sm-2">
+        <label class="label-light">Position <i class="fa fa-fw fa-sort"></i></label>
+    </div>
+    <div class="col-sm-2">
+        <label class="label-light">Email ID <i class="fa fa-fw fa-sort"></i></label>
+    </div>
+    <div class="col-sm-2">
+        <label class="label-light">Stage <i class="fa fa-fw fa-sort"></i></label>
+    </div>
+    <div class="col-sm-2">
+        <label class="label-light">Activity <i class="fa fa-fw fa-sort"></i></label>
+    </div>
+    <div class="col-sm-1">
+        <label class="label-light">LWD<i class="fa fa-fw fa-sort"></i></label>
+    </div>
+    <div class="col-sm-1">&nbsp;</div>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="ibox m-t-xs border-left-blue">
+        <div class="row">
+
+            <div class="col-sm-2 round">
+                <div class="clrboth">
+                    <div class="fl">
+
+                        @if (Convert.ToInt32(item.candID) % 2 == 0)
+                        {
+                            <span class="label label-warning label-circle m-t-n-xs">@item.Name.Substring(0, 1).ToUpper()</span>
+                        }
+                        else if (Convert.ToInt32(item.candID) % 3 == 0)
+                        {
+                            <span class="label label-danger label-circle m-t-n-xs">@item.Name.Substring(0, 1).ToUpper()</span>
+                        }
+                        else if (Convert.ToInt32(item.candID) % 4 == 0)
+                        { <span class="label label-default label-circle m-t-n-xs">@item.Name.Substring(0, 1).ToUpper()</span>
+                    }
+                    else if (Convert.ToInt32(item.candID) % 5 == 0)
+                    {
+                        <span class="label label-info label-circle m-t-n-xs">@item.Name.Substring(0, 1).ToUpper()</span>
+                    }
+                    else
+                    {
+                        <span class="label label-success label-circle m-t-n-xs">@item.Name.Substring(0, 1).ToUpper()</span>
+                    }
+                    </div>
+                    <div class="fl">
+                        <div>@item.Name</div>
+
+                        <div class="color-gray font11px">@item.address</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <label class="label-light" style="overflow:hidden;">@item.Designation</label>
+                <div class="color-gray font11px">@item.Client_Name</div>
+            </div>
+            <div id="tooltip" class="col-sm-2">
+
+                <label class="label-light" style="overflow:hidden">@item.emailid</label>
+                <span class="tooltiptext">@item.emailid</span>
+
+                <label class="label-light">@item.mobile</label>
+            </div>
+            <div class="col-sm-2">
+                <div class="text-success">
+                    <div class="clrboth" data-toggle="dropdown">
+                        @if (item.statusid == 3)
+                        {
+                            <div class="fl stage" style="color:red;">Rejected</div><i class="fl fa fa-caret-square-o-down m-l-xs" aria-hidden="true"></i>
+                        }
+                        else
+                        {
+                            <div class="fl stage">@item.StageName </div><i class="fl fa fa-caret-square-o-down m-l-xs" aria-hidden="true"></i>
+                        }
+
+                    </div>
+
+                    <div class="dropdown-menu">
+                        @if (item.StageID == 1)
+                        {
+                            <a href="@Url.Action("SourcedCandidate", "Placement", new { @CandID = item.candID })" class="dropdown-item" data-toggle="modal" data-target="#mdlSourceCandidate"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Sourced </span></a>
+                            <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 3, StageName = "Interview" })" data-toggle="modal" data-target="#mdlSourceCandidate" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Interview</span></a>
+                            <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSourceCandidate" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>
+                        }
+                        else if (item.StageID == 2)
+                        {
+                            <a href="@Url.Action("SourcedCandidate", "Placement", new { @CandID = item.candID })" class="dropdown-item" data-toggle="modal" data-target="#mdlSourceCandidate"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Sourced </span></a>
+                            <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 3, StageName = "Interview" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Interview</span></a>
+                            <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>
+                        }
+                        else if (item.StageID == 3)
+                        {
+                            @*<a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 3, StageName = "Interview" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Interview</span></a>
+                            <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
+                            <a href="@Url.Action("EditSchedule", "Placement", new { @CanID = @item.candID, @ReqID = item.ReqID })" data-toggle="modal" data-target="#mdlEditSchedule" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Interview </span></a>
+                            <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>
+                        }
+                        else if (item.StageID == 4)
+                        {
+                            if (item.statusid == 3)
+                            {
+
+                            }
+                            else
+                            {
+                                @*<a href="@Url.Action("EditSchedule", "Placement", new { @CanID = @item.candID, @ReqID = item.ReqID })" data-toggle="modal" data-target="#mdlEditSchedule" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Interview </span></a>
+                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
+                                @*<a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 5, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
+                                <a href="@Url.Action("EditSchedule", "Placement", new { @CanID = @item.candID, @ReqID = item.ReqID })" data-toggle="modal" data-target="#mdlEditSchedule" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Offer </span></a>
+                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 5, StageName = "Selected" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>selected</span></a>
+                            }
+                        }
+                        @*else if (item.StageID == 5)
+                        {
+
+                            if (item.statusid == 3)
+                            {
+
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 5, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>
+                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 6, StageName = "Selected" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>selected</span></a>
+                            }
+
+                        }*@
+
+                    </div>
+                    <div class="color-gray font11px">
+                        <i class="fa fa-info-circle m-r-xs" aria-hidden="true"></i>
+                        @item.ModeName<br />
+                        @item.InterDescription<br />
+                        @item.feedback
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-2">
+                <div class="text-success">
+                    <div class="clrboth" data-toggle="dropdown">
+                        <div class="fl stage">Activity</div><i class="fl fa fa-caret-square-o-down m-l-xs" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="dropdown-menu">
+                        @if (item.StageID == 0)
+                        {
+
+                        }
+                        else if (item.StageID == 2)
+                        {
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 1, ActivityName = "inform to candidate", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>inform to candidate</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 2, ActivityName = "inform confirmation to client", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>inform confirmation to client</span></a>
+                        }
+                       
+                        else if (item.StageID == 3)
+                        {
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 3, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Candidate Not Interested</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 4, ActivityName = "candidate not attended", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Candidate not attended</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 5, ActivityName = "candidate Not responding", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Candidate Not responding</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 6, ActivityName = "client drop this candidate", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Client drop this candidate</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 7, ActivityName = "candidate not showing interest", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Candidate not showing interest</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 8, ActivityName = "candidate phone not reachable", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Candidate phone not reachable</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 9, ActivityName = "other", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> other</span></a>
+
+                        }
+                        else if (item.StageID == 4)
+                        {
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 10, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Offer Given</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 11, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Offer Rejected</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 12, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Offer Accepted</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 13, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Recruiter Discussion</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 14, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Need to speak by senior </span></a>
+
+
+                        }
+                        else if (item.StageID == 5)
+                        {
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 15, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Offer finalise </span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 16, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Resign from Current Company </span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 17, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> medical Given</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 18, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> medical Report submit to client</span></a>
+                            <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 19, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Joining date confirmation</span></a>
+                        }
+                    </div>
+                    <div class="color-gray font11px">
+                        <a href="@Url.Action("ActivityDetails", "Placement", new { @CandID = item.candID})" data-toggle="modal" data-target="#mdlCandidateActivity" class="">
+                            <i class="fa fa-info-circle m-r-xs" aria-hidden="true"></i><span></span>
+                        </a>
+                        @item.ActivityName
+                        @item.ActivityDate
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <label class="label-light"> @item.UserName </label>
+                <label class="label-light"> @item.addeddate.ToShortDateString() </label>
+            </div>
+            <div class="col-sm-1">
+                @if (Session["UserName"].ToString() == item.UserName || Convert.ToInt16(Session["RoleID"].ToString()) == 7)
+                {
+                    <div class="btn-group m-t-xs7">
+                        <button type="button" class="btn dropdown btn-dot-dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                        <div id="candidateActn" class="dropdown-menu is-right-aligned">
+                            @{System.Data.DataRow[] HeadingFields4 = dt.Select("submenuname = 'EditCandidate' and FeatureName = 'Edit Candidate'");
+                                if (HeadingFields4.Count() != 0)
+                                {
+                                    if (HeadingFields4[0].ItemArray[6].ToString() == "1")
+                                    {
+                                        <a href="@Url.Action("EditCandidate", "Placement", new { @CandID = item.candID})" data-toggle="modal" data-target="#mdlEditCandidate" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Candidate</span></a>
+                                    }
+                                    System.Data.DataRow[] HeadingFields3 = dt.Select("submenuname = 'UploadResume' and FeatureName = 'Upload Resume'");
+                                    if (HeadingFields3[0].ItemArray[6].ToString() == "1")
+                                    {
+                                        <a href="@Url.Action("FileUploadii", "Placement", new { @CandID = item.candID, @Candname1 = item.Name})" data-toggle="modal" data-target="#mdlUploadResume" class="dropdown-item ember-view"><i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Upload Resume</span></a>
+                                    }
+                                    System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'AsForFeedBack' and FeatureName = 'Ask For Feedback'");
+                                    if (HeadingFields2[0].ItemArray[6].ToString() == "1")
+                                    {
+                                        <a id="@item.candID" class="dropdown-item ember-view askfeedback"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Ask For Feedback</span></a>
+                                    }
+                                    System.Data.DataRow[] HeadingFields1 = dt.Select("submenuname = 'Deletecandidate' and FeatureName = 'Delete Candidate'");
+                                    if (HeadingFields1[0].ItemArray[6].ToString() == "1")
+                                    {
+                                        <a href="@Url.Action("DeleteCandidate", "Placement", new { @CandID = item.candID})" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Delete Candidate</span></a>
+                                    }
+                                }
+                            }
+
+
+
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="btn-group m-t-xs7" style="pointer-events: none;opacity: 0.4;">
+                        <button type="button" class="btn dropdown btn-dot-dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                        <div id="candidateActn" class="dropdown-menu is-right-aligned">
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="pnl-pagination m-b-md1">
+                <div class="pull-right">
+
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Placement", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions() { MaximumPageNumbersToDisplay = 4, DisplayPageCountAndCurrentLocation = true }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "mgrid", OnComplete = "PagedOnComplete" }))
+                    @if (Model.Count() == 0)
+                    {
+                        <ul class="pagination pull-right"></ul>
+                    }
+                </div>
+            </div>
+        </div>
+        
+    </div>
+        <div id="mdlUploadResume" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+        <div id="mdlEditCandidate" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>       
+        <div id="mdlSourceCandidate" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+        <div id="mdlActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+        <div id="mdlEditSchedule" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+        <div id="mdlCandidateActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+        <div id="mdlSchedule" class="modal fade " data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                                                                      
+
+        if ($("#message").text() == "")
+        {
+
+        }
+        else
+        {
+            toastr.success("Candidate Deleted");
+        }
+
+    });
+
+    $('.askfeedback').click(function () {
+    if (confirm("Are you sure?"))
+        {
+
+        var idValue = $(this).attr('id');
+
+                $.ajax({
+                    url: "@Url.Action("AskForFeedback", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: 1,
+                        CandID: idValue
+
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        toastr.success("Candidate added for feedback in tracker.");
+                        location.reload();
+                    },
+                    error: function (data) {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+    }
+            });
+
+        </script>

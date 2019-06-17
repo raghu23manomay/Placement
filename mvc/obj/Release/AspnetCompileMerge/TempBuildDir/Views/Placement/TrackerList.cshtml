@@ -1,0 +1,74 @@
+﻿
+@model  IEnumerable<mvc.Models.TrackerInfo>
+@{
+    ViewBag.Title = "TrackerList";
+    Layout = null;
+
+}
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+<h2>TrackerList</h2>
+
+
+@using (Html.BeginForm("TrackerList", "Placement", FormMethod.Post))
+{
+    <div class="modal-body no-padding panel no-borders no-margins" id="pnl-leadadd">
+        <div class="panel-body bg-white">
+            <div class="row">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                @*<input type="button" name="btnExport" class="btn btn-warning btn-sm pull-left"
+                       value="Export" id="btnExport" />*@
+                @Html.ActionLink("Download", "Download",null, new { @class="btn btn-warning btn-sm pull-left" })
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped text-center" id="headerTable">
+                            <thead>
+                                <tr>
+                                   <th>Mobile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+
+                             {
+
+                            <tr> @*<td>@item.candID</td>*@
+                             <td>@item.vendor</td>
+                             @*<td>@item.ReqID</td>*@
+                             <td>@item.CandidateName</td>
+                             <td>@item.emailid</td>
+                             <td>@item.Notice_period</td>
+                             <td>@item.mobile</td>
+                             <td>@item.Total_Exp</td>
+                             <td>@item.currently_drawn_salary</td>
+                             <td>@item.expected_salary</td>
+                             <td>@item.loc_desc</td>
+                             @*<td>@item.FullPath</td>*@ </tr>
+
+                                   }                                                                                                                                                                     
+                            </tbody>
+                        </table>
+                                      
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*@section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+@*
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>*@
+@*
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>*@
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+       
+    });
+</script>

@@ -1,0 +1,52 @@
+﻿
+
+@{
+
+    Layout = null;
+}
+
+@model  IEnumerable<mvc.Models.StackedChartData>
+@using JQChart.Web.Mvc
+<!DOCTYPE html>
+<html>
+<head runat="server">
+
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/jschart/css/jquery.jqChart.css" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content/themes/le-frog/jquery-ui-1.8.20.css" />
+    <script src="~/jschart/js/jquery-1.11.1.min.js"></script>*@
+    <script src="~/jschart/js/jquery.jqChart.min.js"></script>
+</head>
+<body>
+
+    <div>
+        @(Html.JQChart()
+                                   .Chart(Model)
+                                   .ID("jqChart")
+                                   .Width(1250)
+                                   .Height(300)
+                                   .Title("Number of positions in city")
+                                   .Animation(TimeSpan.FromSeconds(1))
+                                   .Shadows(true)
+                                   .Axes(axis =>
+                                   {
+                                       axis.CategoryAxis(Location.Bottom).Categories(el => el.Label);
+                                   }
+                                   )
+                                   .Series(series =>
+                                   {
+                                       series.StackedColumn().Title("Position")
+                                                  .YValues(el => el.Value1)
+                                                  .Labels(label => label.Font("12px sans-serif"));
+
+
+                                   }
+                                   )
+                                   .Render()
+        )
+
+
+    </div>
+</body>
+</html>
+

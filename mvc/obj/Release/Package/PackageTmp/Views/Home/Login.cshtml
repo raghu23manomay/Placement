@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+@model   mvc.Models.Login
+  
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+
+    <script src="~/logincss/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="~/logincss/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/logincss/js/moment.js" type="text/javascript"></script>
+    <script src="~/logincss/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="~/logincss/js/jquery-ui.min.js" type="text/javascript"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/logincss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/logincss/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/logincss/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bgcolor-grey">
+    <div class="container-fluid m-t-md">
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4 form-container">
+                <div class="color-white fontsize40 text-center">Recruiter</div>
+                <div class="m-t-lg">
+                    <header>
+                        <h3 class="color-white">Sign in</h3>
+                    </header>
+                    @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                    <div class="form-data">
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @style = "color:Red;font-size:14px;" })
+                            
+                        </div>
+                        <div class="form-group">
+                             
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @style = "color:Red;font-size:14px;" })
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnLogin" value="Login" id="btnLogin" class="btn btn-default btn-lg btn-block">
+                            @*<button type="submit" class="btn-blue"><span>Sign in</span></button>*@
+                        </div><span style = "color:Red;font-size:14px;">@ViewBag.error</span>
+                        
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
+

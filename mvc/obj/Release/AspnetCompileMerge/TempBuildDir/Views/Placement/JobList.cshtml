@@ -1,0 +1,318 @@
+﻿
+@{
+    ViewBag.Title = "Job List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+
+    System.Data.DataTable dt = new System.Data.DataTable();
+    dt = Session["UserPermission"] as System.Data.DataTable;
+}
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="#">All</a></li>
+                <li role="presentation"><a href="#">Closed</a></li>
+                <!--  <li role="presentation"><a href="#">Drafts</a></li> -->
+            </ul>
+        </div>
+        <div class="col-sm-2">
+            <select id="Status" class="form-control text pull-right" style="width:95px;">
+                <option value="8">-Select-</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">50</option>
+                <option value="70">70</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Client Name" id="txtClient" name="txtClient">
+                <span class="input-group-addon">
+                    <i class="fa fa-search" name="btnnameSearch1" id="btnnameSearch1"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Designation" id="txtDesignation" name="txtDesignation">
+                <span class="input-group-addon">
+                    <i class="fa fa-search" name="btnnameSearch1" id="btnnameSearch1"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-dark " value="Search" id="searchall" name="searchall">Search</button>
+        </div>
+        <div class="col-sm-2">
+            @{
+                System.Data.DataRow[] HeadingFields1 = dt.Select("submenuname = 'AddPosition' and FeatureName = 'Add Position'");
+                if (HeadingFields1[0].ItemArray[6].ToString() == "1")
+                {
+                 @Html.ActionLink("Create Job Position", "AddJob", null,
+                new Dictionary<string, object>
+                {
+                      { "class", "btn btn-danger pull-right m-r-sm" },
+                      { "data-toggle" , "modal"},
+                      { "data-target", "#mdlAddJob"},
+                      { "title", "Create Job Position"}
+
+                })
+
+                }
+            }
+
+            @*<button class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle m-r-sm"></i>Create Job Position</button>*@
+        </div>
+        <input id="rowsession" type="text" value="@Session["RowCount"]" class="hidden" />
+        <div id="mdlAddJob" class="modal fade modal-pagefit-60" data-backdrop="static" data-keyboard="false" role="dialog">
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid m-t-md">
+
+    <div class="row" id="grid1">
+        @Html.Partial("_JobListGrid")
+    </div>
+
+</div>
+<div id="mdlUploadJD" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+
+<div id="mdlViewJD" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Script-custom-editor")
+
+    <script type="text/javascript">
+        var con = "";
+        function PagedOnCompleteBinds() {
+
+        }
+        function PagedOnComplete(obj) {
+            //  $('#mgrid table').unmask();
+            PagedOnCompleteBinds();
+        }
+
+        $(document).ready(function () {
+            var temp = $("#rowsession").val();
+            $("#Status option[value = '" + temp + "']").attr("selected", "selected");
+
+            var str = window.location.href;
+            var lastLetter = str[str.length], i, temp;
+
+
+            for (i = 0; i < str.length; i++) {
+                if (str[i] == '=') {
+                    myfun(i);
+                    break;
+                }
+            }
+
+            function myfun(temp) {
+
+                temp = temp + 1;
+                for (i = temp; i < [str.length]; i++) {
+
+                    con = con + str[i];
+                }
+                parseInt(con);
+
+            }
+
+            getdesignation()
+            GetClientList();
+
+            var lbht = $(window).height();
+            lbht = (lbht / 2) - 80;
+            $(".leftBlockHt").css("height", lbht + "px");
+
+            $("#candidateActn .dropdown-item").click(function (e) {
+                var _this = $(this).attr("id");
+                var str = "#" + _this + "Block";
+                $("#candidateTab a[href=" + str + "]").tab('show');
+            });
+        });
+
+
+        $('#Status').change(function () {
+
+               $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadDataForJob", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: 1,
+                        RowCount: $('#Status').val(),
+                        Cname: $('#txtClient').val(),
+                        DName: $('#txtDesignation').val()
+
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+        $('#txtClient').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadDataForJob", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: 1, Cname: $('#txtClient').val() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+        });
+
+
+        function GetClientList()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetClientList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#txtClient").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                    $("#txtSearchid").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+        }
+
+
+          $('#txtDesignation').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadDataForJob", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: 1, DName: $('#txtDesignation').val() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                    $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+         function getdesignation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetDesignationList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#txtDesignation").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#txtSearchid").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+        }
+
+
+                 $('#searchall').click(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadDataForJob", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: 1,
+                        DName: $('#txtDesignation').val(),
+                        CName: $('#txtClient').val()
+
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+    </script>
+
+}

@@ -1,0 +1,11 @@
+﻿
+@model  mvc.Models.Requirement
+
+@{
+    Layout = null;
+}
+
+    @Html.DropDownList("model.Designation", new SelectList((System.Collections.IEnumerable)ViewData["DesignationList"], "Value", "Text"), "Select Position", new { @class = "form-control input-sm", @id = "Designation", Title = "Position" })
+    @Html.HiddenFor(model => model.Designation)
+    @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+

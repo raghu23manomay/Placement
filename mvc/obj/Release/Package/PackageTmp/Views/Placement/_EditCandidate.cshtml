@@ -1,0 +1,702 @@
+﻿@model mvc.Models.FetchcandidatwForCandidate
+
+@{
+    ViewBag.Title = "Candidate";
+    Layout = null;
+}
+@*<script src="~/Scripts/jquery-1.12.4.min.js"></script>*@
+<div class="modal-dialog" id="pnl-mdlSchedule" style="width:50%">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "frmc" }))
+    {
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" onclick="refreshforclosebutton()" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title"> (@Model.Name) 's Information</h3>
+            </div>
+            <div class="m-t m-r m-l">
+                <ul id="candidateTab" class="nav nav-tabs">
+                    <li class="active"><a href="#profileBlock" data-toggle="tab">Profile</a></li>
+                    <li><a href="#mailBlock" data-toggle="tab">Message</a></li>
+                    <li><a href="#commentBlock" data-toggle="tab">Comment</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="profileBlock" class="tab-pane m-t m-r m-l fade in active">
+
+                        <fieldset>
+                            <legend style=" border-bottom-color:  #bdb8ba; font-size: 18px;">Position Details:</legend>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="position">Select position</label>
+                                        @Html.HiddenFor(model => model.candID)
+                                        @Html.HiddenFor(model => model.location_id, new { @id = "locid" })
+                                        <input type="text" class="hidden" id="locationid" value="@Model.location_id" />
+                                        @Html.HiddenFor(model => model.CurrentReqId, new { @id = "CurrentReqId" })
+
+                                        @Html.DropDownList("model.ReqID", new SelectList((System.Collections.IEnumerable)ViewData["JobList"], "Value", "Text", Model.CurrentReqId), "Select Position", new { @class = "form-control input-sm", @id = "ReqID", Title = "ReqID" })
+
+                                        <div class="text-danger" id="req_id_error_msg"></div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Job Location</label>
+                                        <div class="form-group" id="locationgrid">
+                                        </div>
+
+                                        @*@Html.TextBoxFor(a => a.Location, new { @class = "form-control ", @id = "location", placeholder = "Location" })
+                                            @Html.HiddenFor(model => model.location_id, new { @id = "location_id" })*@
+                                        @Html.ValidationMessageFor(model => model.location_id, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="Location1_error_msg"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        <fieldset>
+                            <legend style=" border-bottom-color:  #bdb8ba; font-size: 17px;">Candidate Details:</legend>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        @Html.TextBoxFor(a => a.Name, new { @class = "form-control", placeholder = "Enter name", title = "name", @id = "name" })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="name_error_msg"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Mobile No</label>
+                                        @Html.TextBoxFor(a => a.mobile, new { @class = "form-control", placeholder = "Enter Mobile No", title = "mobile", @id = "mobile" })
+                                        @Html.ValidationMessageFor(model => model.mobile, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="MobileNo_error_msg"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Second Mobile No</label>
+                                        @Html.TextBoxFor(a => a.MobileNo2, new { @class = "form-control", placeholder = "Enter second Mobile No", title = "second MobileNo", @id = "MobileNo2" })
+                                        @Html.ValidationMessageFor(model => model.MobileNo2, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="MobileNo2_error_msg"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        @Html.TextBoxFor(a => a.emailid, new { @class = "form-control", placeholder = "Enter email", title = "emailid", @id = "emailid" })
+                                        @Html.ValidationMessageFor(model => model.emailid, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="emailid_error_msg"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Skype ID</label>
+                                        @Html.TextBoxFor(a => a.SkypeID, new { @class = "form-control", placeholder = "Enter SkypeID", title = "SkypeID", @id = "SkypeID" })
+                                        @Html.ValidationMessageFor(model => model.SkypeID, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="SkypeID_error_msg"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Current Organization</label>
+                                        @Html.TextBoxFor(a => a.Current_Organization, new { @class = "form-control", placeholder = "Enter Current Organization", title = "Current_Organization", @id = "Current_Organization" })
+                                        @Html.ValidationMessageFor(model => model.Current_Organization, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="Current_Organization_error_msg"></div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="email">Current Position</label>
+                                            @Html.TextBoxFor(a => a.Current_Position, new { @class = "form-control", placeholder = "Enter Current Position", title = "Current Position", @id = "Current_Position" })
+                                            @Html.ValidationMessageFor(model => model.Current_Position, "", new { @class = "text-danger" })
+                                            @*@Html.TextBoxFor(a => a.Designation, new { @class = "form-control ", @id = "autocomplete", placeholder = "current position" })
+                                                @Html.HiddenFor(model => model.Current_Position_id, new { @id = "Current_Position_id" })*@
+                                        </div>
+                                        <div class="text-danger" id="Current_Position_error_msg">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Current Location</label>
+                                        @Html.TextBoxFor(a => a.Current_Location_id, new { @class = "form-control ", @id = "curr_location", placeholder = "select current location" })
+                                        @Html.HiddenFor(model => model.Current_Location_id, new { @id = "Current_Location_id" })
+                                        @Html.ValidationMessageFor(model => model.Current_Location_id, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="Current_Location_error_msg"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">working from Date</label>
+
+                                        @Html.TextBoxFor(model => model.working_from_Date, new { type = "date", @class = "form-control text", @id = "datepicker" })
+                                        @Html.ValidationMessageFor(model => model.working_from_Date, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="working_from_Date_error_msg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Qualification</label>
+                                        @Html.TextBoxFor(a => a.Qualification, new { @class = "form-control", placeholder = "Enter Qualification", title = "Qualification", @id = "Qualification" })
+                                        @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="Qualification_error_msg"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Qualification PG</label>
+                                        @Html.TextBoxFor(a => a.Qualification_PG, new { @class = "form-control", placeholder = "Enter Qualification PG", title = "Qualification_PG", @id = "Qualification_PG" })
+                                        @Html.ValidationMessageFor(model => model.Qualification_PG, "", new { @class = "text-danger" })
+                                        @*<div class="text-danger" id="Qualification_PG_error_msg"></div>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Total Experiance(years)</label>
+                                        @Html.TextBoxFor(a => a.Total_Exp, new { @class = "form-control", placeholder = "Enter Total Experiance", title = "Total_Exp", @id = "Total_Exp" })
+                                        @Html.ValidationMessageFor(model => model.Total_Exp, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="Total_Exp_error_msg"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">currently drawn salary</label>
+                                        @Html.TextBoxFor(a => a.currently_drawn_salary, new { @class = "form-control", placeholder = "Enter currently drawn salary", title = "currently_drawn_salary", @id = "currently_drawn_salary" })
+                                        @Html.ValidationMessageFor(model => model.currently_drawn_salary, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="currently_drawn_salary_error_msg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">expected salary</label>
+                                        @Html.TextBoxFor(a => a.expected_salary, new { @class = "form-control", placeholder = "Enter expected salary", title = "expected_salary", @id = "expected_salary" })
+                                        @Html.ValidationMessageFor(model => model.SkypeID, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="expected_salary_error_msg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">Notice period</label>
+                                        @Html.TextBoxFor(a => a.Notice_period, new { @class = "form-control", placeholder = "Enter Notice period", title = "Notice_period", @id = "Notice_period" })
+                                        @Html.ValidationMessageFor(model => model.Notice_period, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="Notice_period_error_msg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="name">Attcah Resume:-</label>
+                                            <a href="@Url.Action("FileUpload", "Placement")" data-toggle="modal" data-target="#mdlUploadResume"><span>Upload Resume</span></a>
+
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                        </fieldset>
+
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" id="btnsave">Save</button>
+                            <button type="button" class="btn btn-default" onclick="refreshforclosebutton()" data-dismiss="modal">Cancel</button>
+
+                        </div>
+                    </div>
+                    <div id="mailBlock" class="tab-pane m-t m-r m-l fade">
+                        <div id="pnl-mailTemplateData">
+                            <div id="mailTemplateData">
+
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="pull-left">
+                                @Html.DropDownList("model.EmailTemplateList", new SelectList((System.Collections.IEnumerable)ViewData["EmailTemplateList"], "Value", "Text"), "Select Template", new { @class = "form-control input-sm", @id = "msgTemplate", Title = "msgTemplate" })
+                                @Html.HiddenFor(model => model.temp_id)
+                                @*<select id="msgTemplate" class="form-control">
+
+                                        <option value="0">Select template</option>
+                                        <option value="1">Call letter</option>
+                                        <option value="2">Teliphonic Interview Schedule</option>
+                                        <option value="3">Candidate Sortlisted</option>
+                                        <option value="4">Final Round Inteview</option>
+                                        <option value="5">Offerd</option>
+                                        <option value="6">Second Roun Interview</option>
+                                        <option value="7">Candidate Rejected</option>
+                                    </select>*@
+                            </div>
+                            @*<button type="button" class="btn btn-primary" id="Editmail">Edit</button>*@
+                            @*<button type="button" class="btn btn-primary" id="Previewmail">Preview</button>*@
+                            <button type="button" class="btn btn-primary" id="sendmail">Send Mail</button>
+                            <button type="button" class="btn btn-default" onclick="refreshforclosebutton()" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                    <div id="commentBlock" class="tab-pane m-t m-r m-l fade">
+
+                        <div style='overflow-y:scroll; width:100%;height:400px;'>
+                            <p> Add comments to collaborate with your team</p>
+
+
+                            @foreach (var item in Model.Notes)
+                            {
+                                <div class="messageHistory largeAllowed visible" role="list">
+
+                                    <div class="bubble">
+                                        <div class="tileName">
+                                            <label style="font-weight:600"> Vinoad Sabbade</label>   <label>@item.addedDate</label>
+                                        </div>
+                                        <div class="arrow"></div>
+                                        <div class="content">
+                                            <p style="border: solid;border-color: whitesmoke">
+                                                @item.Description
+                                            </p>
+                                        </div>
+
+                                        <div class="timestamp">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-group">
+
+                                <textarea class="form-control" rows="5" id="Description" placeholder="Type your comment"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnAddNote">Send</button>
+                            <button type="button" class="btn btn-default" onclick="refreshforclosebutton()" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+   
+ </div>
+
+    @*<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+        <script src="~/Scripts/script-custom-editor.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">*@
+
+
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+
+
+    <script type="text/javascript">
+
+
+        var str = window.location.href;
+        var lastLetter = str[str.length], i, temp;
+        var con = "";
+
+        for (i = 0; i < str.length; i++) {
+            if (str[i] == '=') {
+                myfun(i);
+                break;
+            }
+        }
+
+        function myfun(temp) {
+
+            temp = temp + 1;
+            for (i = temp; i < [str.length]; i++) {
+
+                con = con + str[i];
+            }
+            parseInt(con);
+
+        }
+
+
+    </script>
+
+    <script>
+    $(document).ready(function () {
+
+        locationbind($("#CurrentReqId").val());
+        getcurrentLocation();
+        getdesignation();
+
+        $.ajax({
+            url: "@Url.Action("GetTemplateData", "Placement")",
+            data: {
+                "candID": $("#candID").val(),
+                "templateid": $('#msgTemplate').val(),
+
+            },
+            success: function (data) {
+
+                $('#mailTemplateData').html(data);
+
+            }
+        });
+
+        $('#btnsave').on('click', function (e) {
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "/Placement/EditCandidate",
+                data: {
+                    candID: $("#candID").val(),
+                    "Name": $("#name").val(), "ReqID": $("#ReqID").val(),
+                    emailid: $("#emailid").val(),
+                    mobile: $("#mobile").val(),
+                    MobileNo2: $("#MobileNo2").val(),
+                    SkypeID: $("#SkypeID").val(),
+                    Current_Organization: $("#Current_Organization").val(),
+                    Current_Position: $("#Current_Position").val(),
+                    Current_Location_id: $("#Current_Location_id").val(),
+                    location_id: $("#location_id").val(),
+                    working_from_Date: $("#datepicker").val(),
+                    Qualification: $("#Qualification").val(),
+                    Qualification_PG: $("#Qualification_PG").val(),
+                    Total_Exp: $("#Total_Exp").val(),
+                    currently_drawn_salary: $("#currently_drawn_salary").val(),
+                    expected_salary: $("#expected_salary").val(),
+                    Notice_period: $("#Notice_period").val(),
+                    ReqID: $("#ReqID").val(),
+                },
+                success: function (result) {
+                    toastr.success("Candidate updated successfully.");
+
+                   // $('#mdlEditCandidate').modal('hide');
+                    $("#mdlEditCandidate .close").click()
+                    refresh();
+
+                    if (result.Success) {
+
+                    }
+                },
+                error: function (errorData) {
+                }
+            });
+        });
+        toastr.options = {
+            "closeButton": true,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "0",
+            "showMethod": "fadeIn"
+        };
+        $('#sendmail').on('click', function (e) {
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "/Placement/sendmail",
+                data: {
+                    "candID": $("#candID").val(),
+                    Description: JSON.stringify($("#mailDescription").val()),
+                    msgTemplate: $("#msgTemplate").val()
+                },
+                success: function (result) {
+                    toastr.success(result);
+                    // $("#mdlEditCandidate").html(result);
+                    $("#tabs").tabs({ active: "#commentBlock" });
+
+                },
+                error: function (errorData) {
+
+                }
+            });
+        });
+
+        $('#Editmail').on('click', function (e) {
+
+            $('#content').hide();
+            $('#maildescriptionDiv').show();
+            $('#tblHistory').show();
+        });
+        $('#Previewmail').on('click', function (e) {
+
+            $('#content').show();
+            $('#maildescriptionDiv').hide();
+            $('#tblHistory').hide();
+
+        });
+        $('#msgTemplate').change(function (e) {
+            if ($('#msgTemplate').val() == 0) {
+                $('#content').hide();
+                $('#maildescriptionDiv').show();
+                // $('#tblHistory').show();
+            }
+            else {
+                $('#content').show();
+                $('#maildescriptionDiv').hide();
+                $('#tblHistory').hide();
+                $.ajax({
+                    url: "@Url.Action("GetTemplateData", "Placement")",
+                    data: {
+                        "candID": $("#candID").val(),
+                        "templateid": $('#msgTemplate').val(),
+                    },
+                    success: function (data) {
+                        $('#mailTemplateData').html(data);
+                    }
+                });
+            }
+            if ($('#msgTemplate').val() == 1) {
+                $('#content').load('Content/Html/callLetter.html');
+            }
+            else
+                if ($('#msgTemplate').val() == 2) {
+                    $('#content').load('Content/Html/Teliphone.html');
+                }
+        });
+        $('#btnAddNote').on('click', function (e) {
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "/Placement/AddNotes",
+                data: {
+                    "candID": $("#candID").val(),
+                    "Description": $("#Description").val(),
+                    "sendby": 1,
+                    "ReplyTo": 1
+                },
+                success: function (result) {
+                    toastr.success("Notes added successfully.");
+                    $("#mdlEditCandidate").html(result);
+                    $("#tabs").tabs({ active: "#commentBlock" });
+
+
+                    if (result.Success) {
+
+                    }
+                },
+                error: function (errorData) {
+
+                }
+            });
+        });
+
+    });
+
+      function getcurrentLocation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetcurrentLocationList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#curr_location").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#Current_Location_id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+
+
+    function getdesignation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetDesignationList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#autocomplete").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#Current_Position_id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+
+    function refresh() {
+
+               // $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: con, Name:null }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+                        $("#pageLoader .close").click();
+                        $('.modal-backdrop').remove();
+
+
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+
+                        $("#pageLoader .close").click();
+                        $('.modal-backdrop').remove();
+
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                        $("#pageLoader .close").click()
+                        $('.modal-backdrop').remove();
+
+
+                    }
+
+
+        });
+        return true;
+
+    }
+
+    function refreshforclosebutton() {
+
+               // $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: con, Name:null }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+                        $("#pageLoader .close").click();
+                        $("#mdlEditCandidate .close").click();
+                        $('.modal-backdrop').remove();
+
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                        $("#pageLoader .close").click();
+                        $("#mdlEditCandidate .close").click();
+                        $('.modal-backdrop').remove();
+
+
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                        $("#pageLoader .close").click();
+                        $("#mdlEditCandidate .close").click();
+                        $('.modal-backdrop').remove();
+
+                    }
+
+
+        });
+        return true;
+
+    }
+
+
+
+    $("#ReqID").change(function () {
+
+             // $('#pageLoader').show();
+        var reqid = $("#ReqID").val()
+        locationbind(reqid);
+
+
+    });
+
+
+    function locationbind(reqid)
+    {
+
+
+             $.ajax({
+                 url: "@Url.Action("filterLocationForEditCandidate", "Placement")",
+                 contentType: "application/json",
+                 data: JSON.stringify({
+                     Reqid: reqid,
+                     Locationid: $("#locationid").val()
+                 }),
+                 dataType: "text",
+                 type: "POST",
+                 async: true,
+                 success: function (data) {
+                     $('#locationgrid').html(data);
+
+                     //$("#pageLoader .close").click()
+                 },
+                 error: function (data) {
+
+
+                 },
+                 complete: function () {
+
+                 }
+
+        });
+        return true;
+    }
+
+
+    </script>
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/Script-custom-editor")
+
+    }
+
+
+
+

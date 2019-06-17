@@ -1,0 +1,28 @@
+﻿@model  mvc.Models.ClinetMasterGridList
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+<div class="actionIcons paddingTop15 ">
+
+    <i class="glyphicon glyphicon-tag"></i>
+    <a href="@Url.Action("FetchClinetBusiness", "BussinessDev", new { @client_id = Model.client_id})" data-toggle="modal" data-target="#mdlEditClient">  <i class="glyphicon glyphicon-pencil"></i></a>
+    <i class="glyphicon glyphicon-trash"></i>
+</div>
+<div id="mdlETUser" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlAddContactPerson" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditClient" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlClientContactDetails" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlCandidateActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlClientDetails" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+

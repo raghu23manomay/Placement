@@ -1,0 +1,513 @@
+﻿<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@model mvc.Models.ClinetMasterGridList
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+@{
+    /**/
+
+    ViewBag.Title = "CreateClient";
+}
+
+<!DOCTYPE html>
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate" }))
+{
+    @*<div class="row">
+
+            <div style="display: inline-grid;" class="col-md-12 ibox">
+                <h3 id="username" class="pull-left">Add Client</h3>
+            </div>
+
+        </div>*@
+    <div class="marginTop0 page-header">
+        <h2 class="marginTop0"><small>Add Client</small></h2>
+    </div>
+
+    <div class="row ">
+        <div class="col-sm-6 ">
+            <div class="form-group">
+                <label>Busyness Type <span class="text-danger">*</span></label>
+                @Html.TextBoxFor(a => a.buissType_id, new { @class = "form-control ", @id = "BusinessTypeList", placeholder = "Busyness type" })
+                @Html.HiddenFor(model => model.buissType_id, new { id = "buissType_id" })
+                <p id="business" style="color:red;">select business type</p>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Adress<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(a => a.address, new { @class = "form-control", placeholder = "Enter Adress", title = "address", @id = "address" })
+                <p id="adress" style="color:red;">Enter adress</p>
+
+            </div>
+
+            <div class="form-group">
+                <label for="name">Compatitors</label>
+                @Html.TextBoxFor(a => a.compitators, new { @class = "form-control", placeholder = "Enter Compatitors", title = "compitators", @id = "compitators" })
+
+            </div>
+            <div class="form-group">
+                <label for="name">Manifacturing</label>
+                @Html.TextBoxFor(a => a.Manifactring, new { @class = "form-control", placeholder = "Enter Manifacturing", title = "Manifactring", @id = "Manifactring" })
+
+            </div>
+            <div class="form-group">
+                <label for="name">Company Profile</label>
+                @Html.TextBoxFor(a => a.CompanyProfile, new { @class = "form-control", placeholder = "Enter Company profile", title = "CompanyProfile", @id = "CompanyProfile" })
+
+            </div>
+            <div class="form-group">
+                <label>Location <span class="text-danger">*</span></label>
+                @Html.TextBoxFor(a => a.location_id, new { @class = "form-control ", @id = "LocationList", placeholder = "Location" })
+                @Html.HiddenFor(model => model.location_id, new { @id = "location_id" })
+                <p id="location" style="color:red;">select Location</p>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-sm-6">
+
+            <div class="form-group">
+                <label for="name">Client Name<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(a => a.Client_Name, new { @class = "form-control", placeholder = "Enter Client Name", title = "Client_Name", @id = "Client_Name" })
+                <p id="clientname" style="color:red;">Enter Client Name</p>
+            </div>
+            <div class="form-group">
+                <label>Client Type <span class="text-danger">*</span></label>
+                @Html.TextBoxFor(a => a.Client_Type_id, new { @class = "form-control ", @id = "ClientTypeList", placeholder = "client type name" })
+                @Html.HiddenFor(model => model.Client_Type_id, new { id = "Client_Type_id" })
+                <p id="clientype" style="color:red;">select client type</p>
+
+
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="name">products</label>
+                @Html.TextBoxFor(a => a.products, new { @class = "form-control", placeholder = "Enter product", title = "products", @id = "products" })
+
+
+            </div>
+
+            <div class="form-group">
+                <label for="name">Fax No</label>
+                @Html.TextBoxFor(a => a.fax_no, new { @class = "form-control", placeholder = "Enter fax no", title = "fax_no", @id = "fax_no" })
+
+            </div>
+            <div class="form-group">
+                <label for="name">Enter Website</label>
+                @Html.TextBoxFor(a => a.Website, new { @class = "form-control", placeholder = "Enter Website", title = "Website", @id = "Website" })
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="name">DID No</label>
+                <div style="display:inline-flex">
+                    @Html.TextBoxFor(a => a.DID_no, new { @class = "form-control", placeholder = "Enter DID number", title = "DID_no", @id = "DID_no" })
+                    <i class="glyphicon glyphicon-plus" style="top: 8px; margin-left: 7px;" id="add"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 ">
+            <small style="color: #c1bbbb;">Please click on <b>+</b> button to add location and DID Number </small>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-group">
+                        <div class="table-wrapper-scroll-y" style="padding-right: 0px;">
+
+                            <table id="detailsTable" class="table ">
+                                <thead>
+                                    <tr>
+                                        <th>City</th>
+                                        <th>Contact</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl"></tbody>
+                            </table>
+                            <p id="vallocationtbl" style="color:red;">Please add atleast one location</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="row">
+                <div class="col-sm-12 " id="AddContactPersongrid">
+
+                </div>
+            </div>
+            @*<div class="row">
+                    <div class="row">
+
+                        <div style="display: inline-grid;" class="col-md-3 ibox">
+                            <h3 id="username" class="pull-left">Add Location</h3>
+                        </div>
+                        <div style="display: inline-grid;" class="col-md-3 ibox">
+                            <h3 id="username" class="pull-left">Location details</h3>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-3 ibox">
+                        <div class="form-group">
+                            <label>Location <span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(a => a.location_id, new { @class = "form-control ", @id = "LocationList", placeholder = "Location" })
+                            @Html.HiddenFor(model => model.location_id, new { @id = "location_id" })
+                            <p id="location" style="color:red;">select Location</p>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">DID No</label>
+                            @Html.TextBoxFor(a => a.DID_no, new { @class = "form-control", placeholder = "Enter DID number", title = "DID_no", @id = "DID_no" })
+
+                        </div>
+                        <div class="form-group">
+
+                            <a id="add" class="btn btn-primary">Add </a>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3 ibox">
+                        <div class="form-group">
+                            <div class="table-wrapper-scroll-y" style="padding-right: 0px;">
+
+                                <table id="detailsTable" class="table ">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody id="tbl"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+       
+
+            <div class="modal-footer">
+                <button type="button" id="btnsave" class="btn btn-primary">Save</button>
+                @Html.ActionLink("Cancel", "IndexForBusinessDev", "BussinessDev", null, new { @class = "btn btn-default" })
+            </div>
+
+            }
+
+
+
+            <script>
+
+    $(document).ready(function () {
+         $("#business").hide();
+        $("#location").hide();
+        $("#adress").hide();
+        $("#clientname").hide();
+        $("#clientype").hide();
+        $("#vallocationtbl").hide();
+        $("#valcontactpersontbl").hide();
+            $('#btnsave').on('click', function () {
+
+                if ($("#buissType_id").val() == "") {
+                    $("#business").show();
+                    $("#location").hide();
+                    $("#adress").hide();
+                    $("#clientname").hide();
+                    $("#clientype").hide();
+                    return false;
+                }
+             
+                else if ($("#address").val() == "") {
+                    $("#business").hide();
+                    $("#location").hide();
+                    $("#adress").show();
+                    $("#clientname").hide();
+                    $("#clientype").hide();
+                    return false;
+                }
+                else if ($("#Client_Name").val() == "") {
+                    $("#business").hide();
+                    $("#location").hide();
+                    $("#adress").hide();
+                    $("#clientname").show();
+                    $("#clientype").hide();
+                    return false;
+                }
+                else if ($("#Client_Type_id").val() == "") {
+                    $("#business").hide();
+                    $("#location").hide();
+                    $("#adress").hide();
+                    $("#clientname").hide();
+                    $("#clientype").show();
+                    return false;
+                }
+                else if ($("#tbl").html() == "") {
+                    $("#business").hide();
+                    $("#location").hide();
+                    $("#adress").hide();
+                    $("#clientname").hide();
+                    $("#clientype").hide();
+                    $("#vallocationtbl").show();
+                  return false;
+                }
+                else if ($("#tbl1").html() == "") {
+                    $("#business").hide();
+                    $("#location").hide();
+                    $("#adress").hide();
+                    $("#clientname").hide();
+                    $("#clientype").hide();
+                    $("#valcontactpersontbl").show();
+                    return false;
+                }
+                
+                else {
+
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: '/Master/add_Client',
+
+                        data:
+                            {
+                                Client_Name: $("#Client_Name").val(),
+                                Client_Type_id: $("#Client_Type_id").val(),
+                                location_id: $("#location_id").val(),
+                                address: $("#address").val(),
+                                DID_no: $("#DID_no").val(),
+                                fax_no: $("#fax_no").val(),
+                                Manifactring: $("#Manifactring").val(),
+                                products: $("#products").val(),
+                                compitators: $("#compitators").val(),
+                                buissType_id: $("#buissType_id").val(),
+                                CompanyProfile: $("#CompanyProfile").val(),
+                                Website: $("#Website").val()
+
+                            },
+                        success: function (da) {
+                            //alert("data inserted sucessfully");
+                            SaveLocation();
+                            SaveContact();
+                            toastr.success("Client Added Sucessfully.");
+                          
+                        },
+
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        }
+                    });
+                    return true;
+
+                }
+
+                return false;
+            });
+        getLocation();
+        getbusinesstrype();
+        getclienttype();
+
+    });
+
+     //================================================================autocomplete code===================================================
+
+     function getLocation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetLocationList", "Master")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#LocationList").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#location_id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+
+
+      function getbusinesstrype()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetbusinesstypeList", "Master")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#BusinessTypeList").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#buissType_id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+
+     function getclienttype()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetclienttypeList", "Master")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#ClientTypeList").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#Client_Type_id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+
+
+
+    $("#add").click(function (e) {
+        //alert('hi');
+        var count = 0;
+        e.preventDefault();
+
+        if ($.trim($("#LocationList").val()) == "" || $.trim($("#location_id").val()) == "") {
+            $("#business").hide();
+            $("#location").show();
+            $("#adress").hide();
+            $("#clientname").hide();
+            $("#clientype").hide();
+            return false;
+        }
+        
+
+        $.each($("#detailsTable tbody tr"), function () {
+
+            if ($("#location_id").val() == $(this).find('td:eq(1)').html()) {
+
+                alert("Location alrady added");
+                count++;
+                return false;
+            }
+
+        });
+
+        if (count > 0) {
+            return;
+        }
+        var location = $("#LocationList").val(),
+            location_id = $("#location_id").val(),
+            didnumber = $("#DID_no").val(),
+            detailsTableBody = $("#detailsTable tbody");
+
+        var productItem = '<tr><td>' + location + '</td><td class="hidden">' + location_id + '</td><td>' + didnumber + '</td><td><a data-itemId="0" href="#" class="deleteItem"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
+
+        detailsTableBody.append(productItem);
+        $("#vallocationtbl").hide();
+        $("#location").hide();
+        clearItem();
+    });
+
+    //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+    function clearItem() {
+        $("#location").val('');
+        $("#location_id").val('');
+        // $("#quantity").val('');
+    }
+    // After Add A New Order In The List, If You Want, You Can Remove It.
+    $(document).on('click', 'a.deleteItem', function (e) {
+        e.preventDefault();
+        var $self = $(this);
+        if ($(this).attr('data-itemId') == "0") {
+            $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                $(this).remove();
+            });
+        }
+    });
+
+    function SaveLocation() {
+
+        var locationarray = [];
+
+        $.each($("#detailsTable tbody tr"), function () {
+
+            locationarray.push({
+                LocationId: $(this).find('td:eq(1)').html(),
+                ContactNo: $(this).find('td:eq(2)').html(),
+            });
+        });
+
+
+        var data = JSON.stringify({
+            ClientLocation: locationarray
+        });
+
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Master/SaveClientLocation",
+            data: data,
+            success: function (result) {
+                $('.loader').hide();
+                toastr.success(result);
+
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+
+    }
+
+</script>
+
+
+

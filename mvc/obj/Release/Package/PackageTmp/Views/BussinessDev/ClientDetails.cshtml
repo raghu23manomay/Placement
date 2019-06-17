@@ -1,0 +1,81 @@
+﻿@model  mvc.Models.BusinessDev
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+<div class="page-header marginTop0">
+    <h2 class="marginTop0"><small>CONTACT DETAILS</small></h2>
+</div>
+<div class="row">
+    <div class="col-xs-5">
+        <i class="glyphicon glyphicon-user profilePic"></i>
+        <p></p>
+        <button class="btn btn-info " data-toggle="modal" data-target="#myModal"><i class="fa fa-envelope  m-r-sm"></i>Send mail</button>
+    </div>
+    <div id="clientdetail">
+        <div class="col-xs-7">
+            <div class="page-header marginTop0">
+                <h3 class="marginTop0">@Model.Client_Name </h3>
+                @{
+                    if (Model.BuisinessType == "Executive")
+                    {
+                        <span class="label label-success">@Model.BuisinessType</span>
+                    }
+                    else if (Model.BuisinessType == "Staffing")
+                    {
+                        <span class="label label-warning">@Model.BuisinessType</span>
+                    }
+                    else if (Model.BuisinessType == "Total Industrial Solutions")
+                    {
+                        <span class="label label-danger">@Model.BuisinessType</span>
+                    }
+                    else
+                    {
+                        <span class="label label-primary">@Model.BuisinessType</span>
+                    }
+                }
+
+            </div>
+            <div class="row">
+                <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-home"></i> Address</div>-->
+                <div class="col-xs-10">@Model.address</div>
+            </div>
+
+
+            <div class="row">
+                <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-map-marker"></i> Zip code</div>-->
+                <div class="col-xs-8">
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    @*@Html.Partial("ClientDetails")*@
+</div>
+<div class="detailsBlock">
+    <div class="page-header marginTop20">
+        <h3 class="marginTop0 marginBottom0"><small>Contacts</small></h3>
+    </div>
+    <div id="grid2">
+
+    </div>
+</div>
+<div class="detailsBlock">
+    <div class="page-header marginTop20">
+        <h3 class="marginTop0 marginBottom0"><small>Locations</small></h3>
+    </div>
+    <div id="clinetlocationdetails">
+
+    </div>
+</div>
+
+
+
+
+
+
+
+

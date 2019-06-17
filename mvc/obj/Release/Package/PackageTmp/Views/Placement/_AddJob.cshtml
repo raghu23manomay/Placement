@@ -1,0 +1,671 @@
+﻿
+
+@model  mvc.Models.Requirement
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<style>
+    .table-wrapper-scroll-y {
+        display: block;
+        max-height: 100px;
+        overflow-y: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+</style>
+
+}
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<script>
+            $(document).ready(function () {
+                getLocation();
+                getdesignation();
+                GetClientDetailsList();
+                GetContactList();
+                $('#btnsave').on('click', function (e) {
+                    e.preventDefault();
+                   // debugger;
+                    var error = 0;
+                    if ($('#Designation').val() == '') {
+                        error = 1;
+                        $('#Designation_error_msg').html("The Position field is required.");
+                        $('#Designation_error_msg').show();
+                    }
+                    else {
+                        $('#Designation_error_msg').hide();
+                    }
+                    if ($('#SectorId').val() == '') {
+                        error = 1;
+                        $('#SectorName_error_msg').html("Please select position sector.");
+                        $('#SectorName_error_msg').show();
+                    }
+                    else {
+                        $('#SectorName_error_msg').hide();
+                    }
+                    if ($('#Client_id').val() == 0) {
+                        error = 1;
+                        $('#ClientName_error_msg').html(" please Select Client Name.");
+                        $('#ClientName_error_msg').show();
+                    }
+                    else {
+                        $('#ClientName_error_msg').hide();
+                    } 
+
+                    if ($('#RoleResp').val() == 0) {
+                        error = 1;
+                        $('#Role_Resp_error_msg').html(" please Enter role and resposbilities.");
+                        $('#Role_Resp_error_msg').show();
+                    }
+                    else {
+                        $('#Role_Resp_error_msg').hide();
+                    } 
+
+                    if ($('#KnowledgeSkill').val() == 0) {
+                        error = 1;
+                        $('#Knowledge_Skill_error_msg').html(" please Enter knowdge and skills.");
+                        $('#Knowledge_Skill_error_msg').show();
+                    }
+                    else {
+                        $('#Knowledge_Skill_error_msg').hide();
+                    } 
+
+                    if ($('#ReqTitle').val() == '') {
+                        error = 1;
+                        $('#ReqTitle_error_msg').html("Please Enter Requirment Title.");
+                        $('#ReqTitle_error_msg').show();
+                    }
+                    else {
+                        $('#ReqTitle_error_msg').hide();
+                    }
+
+                    if ($('#Description').val() == '') {
+                        error = 1;
+                        $('#Description_error_msg').html("Please Enter Description.");
+                        $('#Description_error_msg').show();
+                    }
+                    else {
+                        $('#Description_error_msg').hide();
+                    }
+
+                    if ($('#ExpMax').val() == 0) {
+                        error = 1;
+                        $('#ExpMax_error_msg').html("The Maximum Experienece field is required.");
+                        $('#ExpMax_error_msg').show();
+                    }
+                    else {
+                        $('#ExpMax_error_msg').hide();
+                    }
+
+                    if ($('#ExpMin').val() == 0) {
+                        error = 1;
+                        $('#ExpMin_error_msg').html("The Minimum Experienece field is required.");
+                        $('#ExpMin_error_msg').show();
+                    }
+                    else {
+                        $('#ExpMin_error_msg').hide();
+                    }
+
+                    if ($('#SalMax').val() == 0) {
+                        error = 1;
+                        $('#SalMax_error_msg').html("The Maximum Salary field is required.");
+                        $('#SalMax_error_msg').show();
+                    }
+                    else {
+                        $('#SalMax_error_msg').hide();
+                    }
+
+                    if ($('#SalMin').val() == 0) {
+                        error = 1;
+                        $('#SalMin_error_msg').html("The Minimum Salary field is required.");
+                        $('#SalMin_error_msg').show();
+                    }
+                    else {
+                        $('#SalMin_error_msg').hide();
+                    }
+
+                    if ($('#tbl').html() == "") {
+                      
+                        error = 1;
+                        $('#locationtable_error_msg').html("please select location and click on add button.");
+                        $('#locationtable_error_msg').show();
+                    }
+                    else {
+                       $('#locationtable_error_msg').hide();
+                    }
+
+                   if ($('#ContactPerson').val() == 0) {
+                        error = 1;
+                        $('#ContactPerson_error_msg').html("please select Contact Person.");
+                        $('#ContactPerson_error_msg').show();
+                    }
+                    else {
+                        $('#ContactPerson_error_msg').hide();
+                    }
+
+                    if (error) {
+                        return false;
+                    } else
+                    {
+
+                        $.ajax({
+                            type: "POST",
+                            cache: false,
+                            url: "/Placement/AddJOb",
+                            data: {
+                                "ReqTitle": $("#ReqTitle").val(), "Position": 1, "desig_id": $("#Designation").val(), Description: $("#Description").val(),
+                                "ExpMax": $("#ExpMax").val(), "ExpMin": $("#ExpMin").val(), SalMin: $("#SalMin").val(), SalMax: $("#SalMax").val(), Client_ID: $("#Client_id").val(), ContactPerson: $("#ContactPerson").val(),
+                                PositionLevel: $("#PositionLevel").val(),
+                                 location_id: $("#location_id").val(),
+                                  MinimumQulification: $("#MinimumQulification").val(),
+                                   RoleResp: $("#RoleResp").val(),
+                                    KnowledgeSkill: $("#KnowledgeSkill").val(),
+                                     Age: $("#Age").val(),
+                                NoticePeriod: $("#NoticePeriod").val(),
+                                SectorId: $("#SectorId").val()
+                            },
+                            success: function (result) {
+                                toastr.success("Requirement Added successfully.");
+
+                                $("#mdlAddJob .close").click()
+                                if (result.Success) {
+                                }
+                            },
+                            error: function (errorData) {
+                            }
+                        });
+
+                        bindlocation();
+                    }
+                    return true;
+                });
+
+
+                toastr.options = {
+                    "closeButton": true,
+                    "positionClass": "toast-top-right",
+                    "onclick": null,
+                    "showDuration": "0",
+                    "hideDuration": "0",
+                    "timeOut": "0",
+                    "showMethod": "fadeIn"
+                };
+
+            });
+
+            function getLocation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetLocationList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#location").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#location_id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+            }
+
+        
+            function GetClientDetailsList()
+            {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetClientList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#ClientName").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#Client_id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+            }
+
+             function GetContactList()
+            {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetContactPersonsList", "placement")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#contactPerson_Name").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#ContactPerson").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+    
+    //============================================================== Multipal Location Code =============================================================
+
+    $("#add").click(function (e) {
+        //alert('hi');
+        var count = 0;
+        e.preventDefault();
+
+        if ($.trim($("#location").val()) == "" || $.trim($("#location_id").val()) == "") return false;
+
+        $.each($("#detailsTable tbody tr"), function () {
+           
+            if ($("#location_id").val() == $(this).find('td:eq(1)').html())
+            {
+                
+                alert("Location alrady added");
+                count++;
+                return false;
+               
+            }
+                           
+        });
+
+        if (count > 0)
+        {
+            return;
+        }
+        var location = $("#location").val(),
+            location_id = $("#location_id").val(),
+            detailsTableBody = $("#detailsTable tbody");
+
+        var productItem = '<tr><td>' + location + '</td><td class="hidden">' + location_id + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+      
+        detailsTableBody.append(productItem);
+        clearItem();
+    });
+    //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+    function clearItem() {
+        $("#location").val('');
+        $("#location_id").val('');
+        // $("#quantity").val('');
+    }
+    // After Add A New Order In The List, If You Want, You Can Remove It.
+    $(document).on('click', 'a.deleteItem', function (e) {
+        e.preventDefault();
+        var $self = $(this);
+        if ($(this).attr('data-itemId') == "0") {
+            $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                $(this).remove();
+            });
+        }
+    });
+
+   //  ==========================================save multipal location function ==========================================
+
+    function saveOrder(data) {
+
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Placement/add_MultipalLocation",
+            data: data,
+            success: function (result) {
+               // toastr.success("Location Added successfully.");;
+                // location.reload();
+                $("#mdlAddDesignationForManual .close").click()
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+    }
+
+
+    function bindlocation()
+    {
+
+        //   e.preventDefault();
+            var orderArr = [];
+            orderArr.length = 0;
+
+            $.each($("#detailsTable tbody tr"), function () {
+                orderArr.push({
+                    location: $(this).find('td:eq(0)').html(),
+                    location_id: $(this).find('td:eq(1)').html(),
+                    
+
+                });
+            });
+
+            var data = JSON.stringify({
+                Requirement: orderArr
+            });
+
+            $.when(saveOrder(data)).then(function (response) {
+                console.log(response);
+            }).fail(function (err) {
+                console.log(err);
+            });
+
+    }
+
+    $("#Design_GroupID").change(function () {
+
+             // $('#pageLoader').show();
+
+             $.ajax({
+                 url: "@Url.Action("FllterDesignation", "Placement")",
+                 contentType: "application/json",
+                 data: JSON.stringify({ GroupId: $("#Design_GroupID").val() }),
+                 dataType: "text",
+                 type: "POST",
+                 async: true,
+                 success: function (data) {
+                     $('#Designation').html(data);
+                     $("#pageLoader .close").click()
+                     
+                 },
+                 error: function (data) {
+                     
+
+                 },
+                 complete: function () {
+                    
+                 }
+
+
+             });
+             return true;
+
+         });
+
+
+</script>
+
+
+<div class="modal-dialog" id="pnl-mdlAddJob">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate" }))
+    {
+        <div class="modal-content">
+            <div class="modal-header dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create New Position</h4>
+            </div>
+
+            <div class="modal-body no-pad">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="modal-left">
+                            <div class="form-group">
+                                
+                                @Html.TextBoxFor(a => a.ReqID, new { @class = "form-control hidden", placeholder = "ReqID", title = "ReqID", @id = "ReqID" })
+                            </div>
+                            <fieldset>
+                                <legend style=" border-bottom-color:  #bdb8ba; font-size: 18px;">Client Details:</legend>
+                                <div class="row">
+                                    <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                        <div class="form-group">
+                                            <label>Reuirement Title <span class="text-danger">*</span></label>
+                                            @Html.TextBoxFor(a => a.ReqTitle, new { @class = "form-control", placeholder = "Enter Title", title = "Title", @id = "ReqTitle" })
+                                            @Html.ValidationMessageFor(model => model.ReqTitle, "", new { @class = "text-danger" })
+                                            <div class="text-danger" id="ReqTitle_error_msg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="padding-right: 0px;">
+                                        <label>Select Sector <span class="text-danger">*</span></label>
+                                        @Html.DropDownList("model.SectorId", new SelectList((System.Collections.IEnumerable)ViewData["PositionSectorList"], "Value", "Text"), "Select Sector", new { @class = "form-control input-sm", @id = "SectorId", Title = "SectorId" })
+                                        @Html.HiddenFor(model => model.SectorId)
+                                        @Html.ValidationMessageFor(model => model.SectorId, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="SectorName_error_msg"></div>
+
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                            <div class="form-group">
+                                                <label>Client Name <span class="text-danger">*</span></label>
+                                                @Html.TextBoxFor(a => a.ClientName, new { @class = "form-control ", @id = "ClientName", placeholder = "Client Name" })
+                                                @Html.HiddenFor(model => model.Client_id, new { @id = "Client_id" })
+                                                @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
+                                                <div class="text-danger" id="ClientName_error_msg"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4" style="padding-right: 0px;">
+                                            <div class="form-group">
+                                                <label for="name">Location</label>
+                                                @*<a href="@Url.Action("AddMultipalLocation", "Placement")" data-toggle="modal" data-target="#mdlAddDesignationForManual" id="addToList" class="btn btn-primary">Add Location</a>*@
+                                                @Html.TextBoxFor(a => a.Location, new { @class = "form-control ", @id = "location", placeholder = "location" })
+                                                @Html.HiddenFor(a => a.location_id, new { @id = "location_id", @name = "location_id" })
+                                                <div class="text-danger" id="locationtable_error_msg"></div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2" style="padding-right: 0px;">
+                                            <br />
+
+                                            <a id="add" class="btn btn-primary">Add </a>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                            <div class="form-group">
+                                                <label>Position/Level <span class="text-danger">*</span></label>
+                                                @Html.TextBoxFor(a => a.PositionLevel, new { @class = "form-control", placeholder = "Enter Position_Level", title = "Position Level", @id = "PositionLevel" })
+                                                @Html.ValidationMessageFor(model => model.PositionLevel, "", new { @class = "text-danger" })
+                                                <div class="text-danger" id="Position_Level_error_msg"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6 table-wrapper-scroll-y" style="padding-right: 0px;">
+
+                                            <table id="detailsTable" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        @*<th style="width:30%">location</th>
+                                                         <th style="width:20%">Id</th>
+                                                         <th style="width:20%"></th>*@
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbl"></tbody>
+                                            </table>
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                            <label>Select Position Group <span class="text-danger">*</span></label>
+                                            @Html.DropDownList("model.Design_GroupID", new SelectList((System.Collections.IEnumerable)ViewData["DesignationGroupList"], "Value", "Text"), "Select Designation Group", new { @class = "form-control input-sm", @id = "Design_GroupID", Title = "Design_GroupID" })
+                                            @Html.HiddenFor(model => model.Design_GroupID)
+                                            @Html.ValidationMessageFor(model => model.Design_GroupID, "", new { @class = "text-danger" })
+
+                                        </div>
+
+                                        <div class="col-sm-6" style="padding-right: 0px;">
+
+                                            <div class="form-group">
+                                                <label>Position Name <span class="text-danger">*</span></label>
+                                                @*@Html.TextBoxFor(a => a.Designation, new { @class = "form-control ", @id = "autocomplete", placeholder = "current position" })
+                                                @Html.HiddenFor(model => model.desig_id, new { @id = "desig_idval" })*@
+                                                @Html.Partial("_designationbinddropdown")
+
+                                                <div class="text-danger" id="Designation_error_msg"></div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                            <div class="form-group">
+                                                <label>Contact person <span class="text-danger">*</span></label>
+                                                @Html.TextBoxFor(a => a.contactPerson_Name, new { @class = "form-control ", @id = "contactPerson_Name", placeholder = " select contactPerson Name" })
+                                                @Html.HiddenFor(model => model.ContactPerson, new { @id = "ContactPerson" })
+                                                @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
+                                                <div class="text-danger" id="ContactPerson_error_msg"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6" style="padding-right: 0px;">
+
+                                            <div class="form-group">
+                                                <label>Notice Period<span class="text-danger"></span></label>
+                                                @Html.TextBoxFor(a => a.NoticePeriod, new { @class = "form-control", placeholder = "Enter Notice Period", title = "Notice Period", @id = "NoticePeriod" })
+                                                @Html.ValidationMessageFor(model => model.NoticePeriod, "", new { @class = "text-danger" })
+                                                <div class="text-danger" id="Notice_Period_error_msg"></div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </fieldset>
+                            <fieldset>
+                                <legend style=" border-bottom-color:  #bdb8ba; font-size: 18px;">Position Details:</legend>
+
+                                <div class="form-group">
+                                    <label>Role And Resposbilities<span class="text-danger"></span></label>
+                                    @Html.TextBoxFor(a => a.RoleResp, new { @class = "form-control", placeholder = "Enter Role and Resposbilities", title = "Enter Role and Resposbilities", @id = "RoleResp" })
+                                    @Html.ValidationMessageFor(model => model.RoleResp, "", new { @class = "text-danger" })
+                                    <div class="text-danger" id="Role_Resp_error_msg"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Knowledge And Skills<span class="text-danger"></span></label>
+                                    @Html.TextBoxFor(a => a.KnowledgeSkill, new { @class = "form-control", placeholder = "Enter Knowledge and Skill", title = "Knowledge and Skill", @id = "KnowledgeSkill" })
+                                    @Html.ValidationMessageFor(model => model.KnowledgeSkill, "", new { @class = "text-danger" })
+                                    <div class="text-danger" id="Knowledge_Skill_error_msg"></div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                        <div class="form-group">
+                                            <label> Age<span class="text-danger"></span></label>
+                                            @Html.TextBoxFor(a => a.Age, new { @class = "form-control", placeholder = "Enter Age", title = "Age", @id = "Age" })
+                                            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                                            <div class="text-danger" id="Age_error_msg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="padding-right: 0px;">
+                                        <div class="form-group">
+                                            <label>Minimum qulification <span class="text-danger">*</span></label>
+                                            @Html.TextBoxFor(a => a.MinimumQulification, new { @class = "form-control", placeholder = "Enter Minimum_Qulification", title = "Minimum_Qulification", @id = "MinimumQulification" })
+                                            @Html.ValidationMessageFor(model => model.MinimumQulification, "", new { @class = "text-danger" })
+                                            <div class="text-danger" id="Minimum_Qulification_error_msg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Description <span class="text-danger">*</span></label>
+                                    @Html.TextAreaFor(a => a.Description, new { @class = "form-control", placeholder = "Enter Description", title = "Description", @id = "Description" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    <div class="text-danger" id="Description_error_msg"></div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                        <label>Experience (Min) </label>
+                                        @Html.TextBoxFor(a => a.ExpMin, new { @class = "form-control", placeholder = "Exp Min", title = "Exp Max", @id = "ExpMin" })
+                                        @Html.ValidationMessageFor(model => model.ExpMin, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="ExpMin_error_msg"></div>
+
+                                    </div>
+                                    <div class="col-sm-6" style="padding-right: 0px;">
+                                        <label>Experience (Max)  <span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(a => a.ExpMax, new { @class = "form-control", placeholder = "Exp Max", title = "Exp Max", @id = "ExpMax" })
+                                        @Html.ValidationMessageFor(model => model.ExpMax, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="ExpMax_error_msg"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                        <label>Salary Range(Min) </label>
+                                        @Html.TextBoxFor(a => a.SalMin, new { @class = "form-control", placeholder = "Salary Min", title = "Salary Min", @id = "SalMin" })
+                                        @Html.ValidationMessageFor(model => model.SalMin, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="SalMin_error_msg"></div>
+
+                                    </div>
+                                    <div class="col-sm-6" style="padding-right: 0px;">
+                                        <label>Salary Range (Max)<span class="text-danger">*</span></label>
+                                        @Html.TextBoxFor(a => a.SalMax, new { @class = "form-control", placeholder = "Salary Max", title = "Salary Max", @id = "SalMax" })
+                                        @Html.ValidationMessageFor(model => model.SalMax, "", new { @class = "text-danger" })
+                                        <div class="text-danger" id="SalMax_error_msg"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12" style="padding-right: 0px;padding-left: 0px;">
+                                        <label>Employment Type <span class="text-danger">*</span></label>
+                                        <select class="form-control" placeholder="">
+                                            <option value="volvo">Full Time</option>
+                                            <option value="saab">Part Tile</option>
+                                            <option value="mercedes">Contract</option>
+                                            <option value="audi">Temparory</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark   " id="btnsave">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    }
+</div>
+@*<div id="mdlAddDesignationForManual" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+    </div>*@
+<div id="mdlAddDesignationForManual" class="modal fade" style="margin-left:20%; margin-top:72px; width: 65%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="pageLoader" style="display:none; ">
+</div>

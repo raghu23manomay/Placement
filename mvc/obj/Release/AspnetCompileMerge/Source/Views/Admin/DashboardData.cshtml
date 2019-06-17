@@ -1,0 +1,88 @@
+﻿
+@{
+     Layout = null;
+}
+@model IEnumerable<mvc.Models.DashbardData>
+
+<script src="~/webui-popover/jquery.webui-popover.min.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+<div class="table-responsive">
+
+
+    @if (Model.Count() != 0)
+    {
+        foreach (var item in Model)
+        {
+            @*<input type="text" class="" id="reqid" value="@item.req_id" />*@
+    <div class="borderBottom" style="border-bottom: 1px solid #ccc;padding: 12px;">
+        <span style="    font-size: 11px;color: #bbb6b6;">@item.Date</span>
+        <h5 class="panel-title" style="font-size:13px;">  @item.Client_Name |  @item.req_title | <i class="icon-pin-alt" style="font-size: smaller;"></i>@item.Location_details<a class="pull-right asignuser" name="@item.req_id" data-placement="bottom" data-toggle="popover" data-title="Share with user" data-container="body" data-html="true" id="login"><i style="font-size: 17px;" class="fa fa-share-alt"></i></a></h5>
+        
+        <div>
+            <ul class="list-data1" style="display: inline;font-size: 11px;  padding: 0;">
+                <li style="display: inline;font-size: 11px;    padding: 0;">Applied :  @item.Applied</li> |
+                <li style="display: inline;font-size: 11px;    padding: 0;">Rejected : @item.Rejected</li> |
+                <li style="display: inline;font-size: 11px;    padding: 0;">Interview : @item.Interview</li> |
+                <li style="display: inline;font-size: 11px;    padding: 0;">Offer : @item.Offer</li>|
+                <li style="display: inline;font-size: 11px;    padding: 0;">Selected : @item.Selected</li>|
+                <li style="display: inline;font-size: 11px;    padding: 0;">Attended : @item.Attended</li>|
+                <li style="display: inline;font-size: 11px;    padding: 0;">NotAttended : @item.NotAttended</li>|
+                <li style="display: inline;font-size: 11px;    padding: 0;">Pending :  @item.Pending</li>|
+                <li style="display: inline;font-size: 11px;    padding: 0;">InDescision :  @item.InDescision</li>
+            </ul>
+        </div>
+    </div>
+
+        }
+    }
+
+</div>
+    
+        @*<li><a data-placement="bottom" data-toggle="popover" data-title="Login" data-container="body" type="button" data-html="true" href="#" id="login">Login</a></li>*@
+        <div id="popover-content" class="hide" style="overflow:auto;max-height:400px">
+          
+        </div>
+    
+
+<div id="mdlassignuser" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+
+
+<script>
+    $(document).ready(function () { 
+        
+
+        $('[data-toggle="popover"]').popover({
+                trigger: 'manual',
+                placement: 'bottom',
+                html: true
+            }).click(function (e) {
+                e.preventDefault();
+                 $(this).popover('show');
+                $('.popover').css('left', '1069px');
+            });
+
+        $('.asignuser').click(function () {
+
+            var reqid = $(this).attr('name');
+
+            $.ajax({
+                url: "@Url.Action("SharePosition", "Admin")",
+                data: { Req_id: reqid },
+                dataType: "text",
+                //  type: "POST",
+                async: false,
+                success: function (data) {
+                   $('.popover-content').html(data);
+                   }
+            });
+                     
+        });
+       
+
+    });
+       
+    
+</script>
+

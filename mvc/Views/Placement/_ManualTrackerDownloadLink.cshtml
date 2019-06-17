@@ -1,0 +1,33 @@
+﻿@model IEnumerable<mvc.Models.TrackerFileUpload>
+
+@foreach (var item in Model)
+{
+    <div>
+        Manualy Uploaded Tracker <a href="~/TrackerClientXLSheet/@item.Req_id/manual/@item.FileName@item.ext" target="_blank"> Download </a>
+    </div>
+}
+
+
+@*<script>
+    $(document).ready(function () {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Placement/ManualTrackerPath",
+            data: $("#reqid").val(),
+
+            success: function (data) {
+                toastr.success("new tracker attched sucessfully.");
+
+            },
+            error: function (errorData) {
+                toastr.success("error");
+                // alert('mail error');
+
+            }
+
+        });
+
+    });
+</script>*@

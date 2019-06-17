@@ -1,0 +1,148 @@
+﻿
+
+@model  IEnumerable<mvc.Models.ClinetMasterGridList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+<body>
+
+    <div class="wrapper1 wrapper-content1">
+
+        <div class="gray-bg">
+
+            <div class="">
+
+                <div class="row">
+                    <div class="container">
+
+                        <div class="col-md-3">
+
+                            <div class="timeline-row post-even" style="overflow-y: scroll;height: 755px;">
+
+                                <div class="ibox ">
+                                    <div class="ibox-title" style="border-bottom: 1px solid #ccc;padding: 4px;font-size: 15px;font-weight: 600;">
+
+                                        <h2 class="text-success no-margin headingsize18"> Client List</h2>
+                                    </div>
+                                    <div class="flot-chart-content" id="flot-dashboard-chart">
+                                        @Html.Partial("ClientList")
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div style="display: inline-grid;" class="col-md-11">
+                                            <h5 id="username" class="pull-left"></h5>
+                                            <span id="rolename" class="pull-left" style=" font-size: 11px;color: #bbb6b6;"></span>
+                                        </div>
+
+                                        <div class="col-md-1">
+
+                                            <button type="button" id="addclient" style="margin-left: -19px;" class="btn btn-danger pull-right m-r-sm pull-left"><i class="fa fa-pulse"></i>Add client</button>
+
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-row post-even" id="userpermissiongrid">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    @*<div class="loader"></div>*@
+      <hr />
+
+</body>
+
+@section Scripts{
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>*@
+    @Scripts.Render("~/bundles/Script-custom-editor")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+          
+            $('#txtName').keyup(function () {
+                              
+                $.ajax({
+                    url: "@Url.Action("LoadDataForClient", "Master")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: 1, Name: $('#txtName').val() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+
+           $('#addclient').on('click', function () {
+
+            $.ajax({
+            url: "@Url.Action("CreateClient", "Master")",
+            data: {
+
+                   },
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 $('#userpermissiongrid').html(data);
+
+                }
+
+            });
+
+
+        });
+
+        });
+
+       
+    </script>
+
+}
+
+
+
+
+
+
+
+
+

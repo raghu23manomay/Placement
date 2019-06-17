@@ -1,0 +1,529 @@
+<table border='2px'><tr bgcolor='#87AFC6'>
+                                    <th>ReqID</th>
+                                    <th>vendor</th>
+                                    <th>CandidateName</th>
+                                    <th>emailid</th>
+                                    <th>mobile</th>
+                                    <th>Notice_period</th>
+                                    <th>Total_Exp</th>
+                                    <th>currently_drawn_salary</th>
+                                    <th>expected_salary</th>
+                                    <th>loc_desc</th>
+                                    <th>candID</th>
+                            </tr>
+                                        <td>11</td>
+                                        <td>Thermax Ltd B &amp; H-Savli</td>
+                                        <td>9178464455</td>
+                                        <td>r@gmail.com</td>
+                                        <td>9178464455</td>
+                                        <td>1 month</td>
+                                        <td>2</td>
+                                        <td>10000</td>
+                                        <td></td>
+                                        <td>Navi Mumbai</td>
+                                        <td>20</td>
+                                </tr>
+                                        <td>19</td>
+                                        <td>GMS Group </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>1234</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Sangli</td>
+                                        <td>44</td>
+                                </tr>
+                                        <td>3</td>
+                                        <td>Mahindra Navistar Automotives Limited </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>9766462995</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Sangli</td>
+                                        <td>45</td>
+                                </tr>
+                                        <td>3</td>
+                                        <td>Mahindra Navistar Automotives Limited </td>
+                                        <td>dsad</td>
+                                        <td>sdad</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Sangli</td>
+                                        <td>49</td>
+                                </tr>
+                                        <td>12</td>
+                                        <td>Waaree Instruments Ltd </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>chandan@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Solapur</td>
+                                        <td>52</td>
+                                </tr>
+                                        <td>12</td>
+                                        <td>Waaree Instruments Ltd </td>
+                                        <td>swapnil vibhute</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>15000</td>
+                                        <td>150000</td>
+                                        <td>Nashik</td>
+                                        <td>53</td>
+                                </tr>
+                                        <td>19</td>
+                                        <td>GMS Group </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Solapur</td>
+                                        <td>54</td>
+                                </tr>
+                                        <td>20</td>
+                                        <td> SRUJANN FENCO FOOD ENGINEERING PVT LTD</td>
+                                        <td>gdfgg</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>1234</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Sangli</td>
+                                        <td>55</td>
+                                </tr>
+                                        <td>19</td>
+                                        <td>GMS Group </td>
+                                        <td>swapnil vibhute</td>
+                                        <td>chandan@gmail.com</td>
+                                        <td>1234</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>15000</td>
+                                        <td>150000</td>
+                                        <td>Sangli</td>
+                                        <td>56</td>
+                                </tr>
+                                        <td>12</td>
+                                        <td>Waaree Instruments Ltd </td>
+                                        <td>rohit rasure</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Solapur</td>
+                                        <td>59</td>
+                                </tr>
+                                        <td>12</td>
+                                        <td>Waaree Instruments Ltd </td>
+                                        <td>Ankita Chaturvedi                                                                         </td>
+                                        <td>ankitachaturvedi08@gmail.com</td>
+                                        <td>7758810320</td>
+                                        <td>2</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>9</td>
+                                        <td>Solapur</td>
+                                        <td>61</td>
+                                </tr>
+                                        <td>23</td>
+                                        <td>infosys</td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Solapur</td>
+                                        <td>63</td>
+                                </tr>
+                                        <td>11</td>
+                                        <td>Thermax Ltd B &amp; H-Savli</td>
+                                        <td>swapnil vibhute</td>
+                                        <td>chandan@gmail.com</td>
+                                        <td>1234</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>10000</td>
+                                        <td>150000</td>
+                                        <td>Solapur</td>
+                                        <td>64</td>
+                                </tr>
+                                        <td>24</td>
+                                        <td>Orix Auto Infrastrue Ltd </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>15000</td>
+                                        <td>150000</td>
+                                        <td>Sangli</td>
+                                        <td>65</td>
+                                </tr>
+                                        <td>20</td>
+                                        <td> SRUJANN FENCO FOOD ENGINEERING PVT LTD</td>
+                                        <td>Jayasmita Tripathy </td>
+                                        <td>bjayasmita3@gmail.com   </td>
+                                        <td>8698504019</td>
+                                        <td>1</td>
+                                        <td>3</td>
+                                        <td>5</td>
+                                        <td>7</td>
+                                        <td>Solapur</td>
+                                        <td>66</td>
+                                </tr>
+                                        <td>15</td>
+                                        <td>Thermax Ltd Enviro / Air polutions </td>
+                                        <td>Ketan Anil Chiplunkar</td>
+                                        <td>ketanchiplunkar@gmail.com</td>
+                                        <td>8888908226</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>Pune</td>
+                                        <td>68</td>
+                                </tr>
+                                        <td>34</td>
+                                        <td>Elixir Web Solutions </td>
+                                        <td>chandan badaganchi</td>
+                                        <td>chandan@gmail.com</td>
+                                        <td>9766462995</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>1.5 ctc</td>
+                                        <td>2.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>69</td>
+                                </tr>
+                                        <td>35</td>
+                                        <td> Creative Components Pvt Ltd </td>
+                                        <td>hhhhhh</td>
+                                        <td>ss@gmail.com</td>
+                                        <td></td>
+                                        <td>2</td>
+                                        <td>dd</td>
+                                        <td>0</td>
+                                        <td>2333</td>
+                                        <td>Mandsaur</td>
+                                        <td>70</td>
+                                </tr>
+                                        <td>37</td>
+                                        <td>Toolteh Global Engineering Pvt. Ltd </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>ss@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1 month</td>
+                                        <td>1.5</td>
+                                        <td>2.5 ctc</td>
+                                        <td>2</td>
+                                        <td>Pune</td>
+                                        <td>72</td>
+                                </tr>
+                                        <td>12</td>
+                                        <td>Waaree Instruments Ltd </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>sdsadasdasd@gmail.com</td>
+                                        <td>1234</td>
+                                        <td>1 month</td>
+                                        <td>2</td>
+                                        <td>1.5 ctc</td>
+                                        <td>2ctc</td>
+                                        <td>Solapur</td>
+                                        <td>67</td>
+                                </tr>
+                                        <td>37</td>
+                                        <td>Toolteh Global Engineering Pvt. Ltd </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>rmudgal23@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1.5</td>
+                                        <td>7.5</td>
+                                        <td>2.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>74</td>
+                                </tr>
+                                        <td>3</td>
+                                        <td>Mahindra Navistar Automotives Limited </td>
+                                        <td>hhhhhh</td>
+                                        <td>ss@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1.5</td>
+                                        <td>7.5</td>
+                                        <td>2.5 ctc</td>
+                                        <td>Nashik</td>
+                                        <td>75</td>
+                                </tr>
+                                        <td>43</td>
+                                        <td>SKF India Limited </td>
+                                        <td>Christie</td>
+                                        <td>christie.epjobs@gmail.com</td>
+                                        <td>9764602459</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>Pune</td>
+                                        <td>78</td>
+                                </tr>
+                                        <td>43</td>
+                                        <td>SKF India Limited </td>
+                                        <td>chris</td>
+                                        <td>Ehiring2@gamil.com</td>
+                                        <td>09822027644</td>
+                                        <td>2</td>
+                                        <td>5.5 ctc</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5</td>
+                                        <td>Pune</td>
+                                        <td>79</td>
+                                </tr>
+                                        <td>19</td>
+                                        <td>GMS Group </td>
+                                        <td>raghvendra</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>9766462995</td>
+                                        <td>1 month</td>
+                                        <td>1 year</td>
+                                        <td>1.5 ctc</td>
+                                        <td>20000</td>
+                                        <td>Solapur</td>
+                                        <td>80</td>
+                                </tr>
+                                        <td>11</td>
+                                        <td>Thermax Ltd B &amp; H-Savli</td>
+                                        <td>asas</td>
+                                        <td>manoj@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>3 months</td>
+                                        <td>32</td>
+                                        <td>3 ctc</td>
+                                        <td>32</td>
+                                        <td>delhi</td>
+                                        <td>81</td>
+                                </tr>
+                                        <td>20</td>
+                                        <td> SRUJANN FENCO FOOD ENGINEERING PVT LTD</td>
+                                        <td>rohit rasure</td>
+                                        <td>rmudgal23@gmail.com</td>
+                                        <td>9860848275</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>82</td>
+                                </tr>
+                                        <td>44</td>
+                                        <td>cyntel</td>
+                                        <td>Mahesh Kantikar</td>
+                                        <td>rmudgal23@gmail.com</td>
+                                        <td>8087801790</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Jalna</td>
+                                        <td>83</td>
+                                </tr>
+                                        <td>46</td>
+                                        <td>Danfoss</td>
+                                        <td>Ankita Chaturvedi                                                                         </td>
+                                        <td>hr@ehiring.in</td>
+                                        <td>9860848275</td>
+                                        <td>4</td>
+                                        <td>6.3</td>
+                                        <td>7.5</td>
+                                        <td>8.5</td>
+                                        <td>Pune</td>
+                                        <td>84</td>
+                                </tr>
+                                        <td>48</td>
+                                        <td>Akzo Nobel Chemicals I Ltd </td>
+                                        <td>09822027644</td>
+                                        <td>Ehiring2@gamil.com</td>
+                                        <td>09822027644</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>3.2</td>
+                                        <td>5</td>
+                                        <td>Pune</td>
+                                        <td>85</td>
+                                </tr>
+                                        <td>48</td>
+                                        <td>Akzo Nobel Chemicals I Ltd </td>
+                                        <td>Christie </td>
+                                        <td>christie.epjobs@gmail.com</td>
+                                        <td>9175534865</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>3.2</td>
+                                        <td>5</td>
+                                        <td>Pune</td>
+                                        <td>86</td>
+                                </tr>
+                                        <td>48</td>
+                                        <td>Akzo Nobel Chemicals I Ltd </td>
+                                        <td>Sujaan</td>
+                                        <td>christie.epjobs@gmail.com</td>
+                                        <td>9175534865</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>2</td>
+                                        <td>5.5</td>
+                                        <td>Pune</td>
+                                        <td>87</td>
+                                </tr>
+                                        <td>48</td>
+                                        <td>Akzo Nobel Chemicals I Ltd </td>
+                                        <td>Mahesh Kantikar</td>
+                                        <td>rmudgal23@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>88</td>
+                                </tr>
+                                        <td>48</td>
+                                        <td>Akzo Nobel Chemicals I Ltd </td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>89</td>
+                                </tr>
+                                        <td>48</td>
+                                        <td>Akzo Nobel Chemicals I Ltd </td>
+                                        <td>rohit rasure</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>90</td>
+                                </tr>
+                                        <td>46</td>
+                                        <td>Danfoss</td>
+                                        <td>manoj domnal</td>
+                                        <td>ssdsad</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Sangli</td>
+                                        <td>91</td>
+                                </tr>
+                                        <td>39</td>
+                                        <td>Thermax Ltd B &amp; H-Savli</td>
+                                        <td>Mahesh Kantikar</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Pune</td>
+                                        <td>93</td>
+                                </tr>
+                                        <td>49</td>
+                                        <td>infosys</td>
+                                        <td>sumit kontam</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>1.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>94</td>
+                                </tr>
+                                        <td>49</td>
+                                        <td>infosys</td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>1.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>95</td>
+                                </tr>
+                                        <td>49</td>
+                                        <td>infosys</td>
+                                        <td>rohit rasure</td>
+                                        <td>rmudgal23@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>96</td>
+                                </tr>
+                                        <td>43</td>
+                                        <td>SKF India Limited </td>
+                                        <td>Raghu</td>
+                                        <td>christie.epjobs@gmail.com</td>
+                                        <td>09822027644</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>Nagpur</td>
+                                        <td>97</td>
+                                </tr>
+                                        <td>50</td>
+                                        <td> Kodak India Ltd </td>
+                                        <td>bahubali</td>
+                                        <td>bahu@gmail.com</td>
+                                        <td>9890044316</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Punalur</td>
+                                        <td>98</td>
+                                </tr>
+                                        <td>48</td>
+                                        <td>Akzo Nobel Chemicals I Ltd </td>
+                                        <td>swapnil vibhute</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Pune</td>
+                                        <td>92</td>
+                                </tr></table>

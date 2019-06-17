@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Aglave shailendra ganpatrao</td><td>Sr CAD Engineer</td><td>Executive</td><td>aglave.shailendra.shailendra@gmail.com</td><td>7722044268</td><td>2 months</td><td>5.5 years</td><td>&nbsp;</td><td>Larsen And Toubro Technology Services</td><td>Senior Design Engineer </td><td>7 LPA</td><td>30% hike</td><td>Pune</td><td>PG Diploma</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

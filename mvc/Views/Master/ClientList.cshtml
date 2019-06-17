@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "ClinetMaster";
+}
+
+@model  IEnumerable<mvc.Models.ClinetMasterGridList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+@{
+    System.Data.DataTable dt = new System.Data.DataTable();
+    dt = Session["UserPermission"] as System.Data.DataTable;
+}
+<style>
+    .grid-header-title {
+        color: #908a9c;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .dropdown-item1 {
+        width: 100%;
+        /*padding: 3px 20px;*/
+        clear: both;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #a1a0b2;
+        text-align: inherit;
+        white-space: nowrap;
+        background: none;
+        border: 0;
+    }
+</style>
+
+<div class="table-responsive">
+    <table class="table scroll-x">
+
+        <tbody>
+            @foreach (var item in Model)
+
+            {
+                <tr>
+                    <td class="user" id="@item.client_id" name="@item.Client_Name" >
+                        @item.Client_Name<br>
+                        <span style=" font-size: 11px;color: #bbb6b6;">@item.BuisinessType</span>
+                    </td>
+                    <td>
+                       
+                     <i class="fa fa-pencil-square-o m-r-sm Edituser" id="@item.client_id" aria-hidden="true"></i>
+                       
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="pnl-pagination m-b-md1">
+        <div class="pull-right">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("IndexForClient", "Master", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions() { MaximumPageNumbersToDisplay = 2, DisplayPageCountAndCurrentLocation = true }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "mgrid", OnComplete = "PagedOnComplete" }))
+            @if (Model.Count() == 0)
+            {
+                <ul class="pagination pull-right"></ul>
+            }
+        </div>
+    </div>
+</div>
+<div id="mdlETUser" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlAddContactPerson" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditClient" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlClientContactDetails" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlCandidateActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlUploadClientDocument" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+
+
+
+
+

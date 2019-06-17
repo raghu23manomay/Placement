@@ -1,0 +1,29 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>SHINGADE SOMNATH ANANDRAO</td><td>Electrical Design Engineer  </td><td>Executive</td><td> ss181290@gmail.com    </td><td>8669376483  </td><td>1 Month</td><td>4 Years</td><td>&nbsp;</td><td> Protech automation &amp; Controls</td><td>Electrical Project and Design Engineer </td><td>4.2 LPA</td><td>5 LPA</td><td>Pune</td><td>B.Tech/B.E. (Electrical) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Akshay Bhaurao Zade  </td><td>Electrical Design Engineer  </td><td>Executive</td><td>akshaybzade@gmail.com  </td><td>9730196326</td><td>15 Days</td><td>6.5 Years</td><td>&nbsp;</td><td>PVG Technology</td><td>Design Engineer</td><td>2.7 LPA</td><td>4.5 LPA</td><td>Pune</td><td>Integrated PG (electrical power system) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Parveen Azad Mulani</td><td>Electrical Design Engineer  </td><td>Executive</td><td> parveen.mulani93@gmail.com</td><td>9527255919</td><td>1 Month</td><td>4 Years</td><td>&nbsp;</td><td> Tech Mahindra</td><td>Engineer</td><td>4 LPA</td><td>Negotiable</td><td>Pune</td><td>B.Tech/B.E. (Electrical) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>DNYANESHWAR RAMNATH PATOLE</td><td>Electrical Design Engineer  </td><td>Executive</td><td>dnyneshwar612@gmail.com</td><td>9403219858</td><td>15 Days</td><td>2 Years</td><td>&nbsp;</td><td>Control Effect Pune Pvt Ltd Pune</td><td>Electrical Design Engineer </td><td>2.75 LPA</td><td>3.4-3.5 LPA</td><td>Nashik</td><td>B.Tech/B.E. (Electrical) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Yogesh Baburao Tarmale</td><td>Electrical Design Engineer  </td><td>Executive</td><td>yogeshtarmale123@gmail.com</td><td>9767050123</td><td>1 Month</td><td>3.8 Years</td><td>&nbsp;</td><td>BSA corporation limited</td><td>Junior Design Engineer</td><td>2.5 LPA</td><td>3.4 LPA</td><td>Pune</td><td>B.Tech/B.E. (Electrical) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Velpula Anudeep Srinivas</td><td>Electrical Design Engineer  </td><td>Executive</td><td>sav.ee004@gmail.com </td><td>9290978377</td><td>2 Months</td><td>2.5 Years</td><td>&nbsp;</td><td>Cee Dee Vacuum Equipment pvt ltd</td><td>design engineer</td><td>2.8 LPA</td><td>4.4 LPA</td><td>Pune</td><td>M.Tech (Electrical) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Rahul Sharma</td><td>Electrical Design Engineer  </td><td>Executive</td><td>rasharma@outlook.in</td><td>9415157474</td><td>Immediate joining </td><td>2.5 Years</td><td>&nbsp;</td><td>Larsen and Toubro Defence</td><td>OET</td><td>3 LPA</td><td>Negotiable</td><td>Pune</td><td>Diploma (Electrical)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>JAGTAP SHIVAJI DEEPAK</td><td>Electrical Design Engineer  </td><td>Executive</td><td>shivajidjagtap@gmail.com</td><td>9922991821</td><td>3 month (Negotiable)</td><td>3.5 yrs</td><td>&nbsp;</td><td>Atlas Copco (I) .Ltd</td><td>Electrical Engineer</td><td>7 lpa (Increment due)</td><td>35% hike</td><td>Pune</td><td>Bachelor of Engineering in Electrical </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>RAHUL YUVRAJ PATIL </td><td>Electrical Design Engineer  </td><td>Executive</td><td>rahulacem5@gmail.com</td><td>8888933556</td><td>2 months</td><td>2.2 yrs</td><td>&nbsp;</td><td>BVG Tech, Pune</td><td>Electrical design Engineer</td><td>2.45 lpa</td><td>30% hike</td><td>Pune</td><td>B.E. (Electrical</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Pavan Maddala</td><td>Electrical Design Engineer  </td><td>Executive</td><td>ramapavan266@gmail.com</td><td>7447399889, </td><td>2 months</td><td>3.5 yrs</td><td>&nbsp;</td><td>HP-TRONIC PUNE PVT LTD, CHAKAN</td><td>ELECTRICAL DESIGN  ENGINEER    </td><td>3.4 lpa</td><td>4.2 lpa</td><td>Pune</td><td>Bachelor of Engineering (Electrical</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>ARJUN PRAKASH NANAWARE                             </td><td>Electrical Design Engineer  </td><td>Executive</td><td>nanaware.arjun@gmail.com</td><td>9970574495</td><td>1 month</td><td>5.6 yrs</td><td>&nbsp;</td><td>MODELCAM ENGINEERING</td><td>ELECTRICAL DESIGN ENGINEER</td><td>4.2 lpa</td><td>6.2 lpa</td><td>Pune</td><td>BE (electrical)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

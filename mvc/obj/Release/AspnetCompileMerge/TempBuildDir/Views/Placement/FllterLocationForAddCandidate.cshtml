@@ -1,0 +1,11 @@
+﻿
+@model  mvc.Models.Candidate
+
+@{
+    Layout = null;
+}
+
+@Html.DropDownList("model.location_id", new SelectList((System.Collections.IEnumerable)ViewData["CandidateLocationList"], "Value", "Text"), "Select Location", new { @class = "form-control input-sm", @id = "location_id", Title = "location_id" })
+@Html.HiddenFor(model => model.location_id)
+
+

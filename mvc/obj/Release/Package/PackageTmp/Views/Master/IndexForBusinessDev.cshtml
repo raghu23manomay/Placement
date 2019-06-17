@@ -1,0 +1,275 @@
+﻿@model  IEnumerable<mvc.Models.ClinetMasterGridList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+@{
+    ViewBag.Title = "IndexForBusinessDev";
+    Layout = "~/Views/Shared/_BusinessLayout.cshtml";
+}
+
+
+
+<html>
+<head>
+    <title>Business Development</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/BusnessAssets/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/BusnessAssets/assets/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/BusnessAssets/assets/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          
+            <div class="col-xs-4">
+                <div class="bg-white paddingTBLR15">
+                    <div class="input-group add-on">
+                        <input class="form-control" placeholder="Search" name="txtName" autocomplete="off" id="txtName" type="text">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" name="btnnameSearch" id="btnnameSearch"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="actionIcons paddingTop15 ">
+                        <!--div class="displayInlineBlock checkbox marginTop0 marginBottom0">
+            <label class="paddingLeft0">
+                <input type="checkbox" value="">
+                <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+            </label>
+        </div-->
+                        <i class="glyphicon glyphicon-tag"></i>
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </div>
+                    <div id="grid1">
+                        @Html.Partial("BusinessDevList")
+                    </div>
+
+                </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bg-white paddingTBLR15">
+                                <div class="page-header marginTop0">
+                                    <h2 class="marginTop0"><small>CONTACT DETAILS</small></h2>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-5"><i class="glyphicon glyphicon-user profilePic"></i></div>
+                                    <div class="col-xs-7">
+                                        <div id="grid2">
+                                            @Html.Partial("ClientDetails")
+                                        </div>
+                                        @*<div class="page-header marginTop0">
+            <h3 class="marginTop0"> </h3>
+        </div>
+        <div class="row">
+            <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-home"></i> Address</div>-->
+            <div class="col-xs-8">Hinjewadi</div>
+        </div>
+        <div class="row">
+            <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-record"></i> City</div>-->
+            <div class="col-xs-8">Pune</div>
+        </div>
+        <div class="row">
+            <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-globe"></i> State</div>-->
+            <div class="col-xs-8">Maharashtra</div>
+        </div>
+        <div class="row">
+            <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-map-marker"></i> Zip code</div>-->
+            <div class="col-xs-8">411 038</div>
+        </div>*@
+                                    </div>
+                                </div>
+                                <div class="detailsBlock">
+                                    <div class="page-header marginTop20">
+                                        <h3 class="marginTop0 marginBottom0"><small>Contacts</small></h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-user"></i> Sachin Nimbalkar </div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                        <div class="col-xs-6"><small>sachin.nimbalkar@gmail.com</small></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-user"></i> Sharad hosure</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                        <div class="col-xs-6"><small>sachin.nimbalkar@gmail.com</small></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-user"></i> Alok Sahu</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                        <div class="col-xs-6"><small>sachin.nimbalkar@gmail.com</small></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-user"></i> Ganapat Patil</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                        <div class="col-xs-6"><small>sachin.nimbalkar@gmail.com</small></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> Sunil Sherkar</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                        <div class="col-xs-4"><small>sachin.nimbalkar@gmail.com</small></div>
+                                    </div>
+                                </div>
+                                <div class="detailsBlock">
+                                    <div class="page-header marginTop20">
+                                        <h3 class="marginTop0 marginBottom0"><small>Locations</small></h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Mumbai</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Pune</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Bangalore</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Hyderabad</div>
+                                        <div class="col-xs-6">+91 123 456 7890</div>
+                                    </div>
+                                </div>
+                                <div class="detailsBlock">
+                                    <div class="page-header marginTop20">
+                                        <h3 class="marginTop0 marginBottom0"><small>Address</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bg-white paddingTBLR15">
+                                <div class="page-header marginTop0">
+                                    <h2 class="marginTop0"><small>ACTIVITY FEED</small></h2>
+                                </div>
+                                <div class="input-group add-on">
+                                    <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+<script src="~/BusnessAssets/assets/js/jquery.js"></script>
+<script src="~/BusnessAssets/assets/js/bootstrap.min.js"></script>
+
+@section Scripts{
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>*@
+    @Scripts.Render("~/bundles/Script-custom-editor")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            fnReloadCandidate();
+
+            $('#txtName').keyup(function () {
+
+                $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadDataForBusinessDev", "Master")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: 1, Name: $('#txtName').val() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
+        });
+
+        function PagedOnCompleteBinds() {
+            $(document).ready(function () {
+
+                $('.grid-header-title a').on('click', function (e) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    var sturl = "@Url.Action("IndexForBusinessDev", "Master")" + $(this).attr('href');
+                    $('form#CustomFilter').attr('action', sturl).submit();
+                });
+
+                $('#mgrid .pagination li a').on('click', function (e) {
+
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    var sturl = $('#mgrid .sorted.grid-header-title a').attr('href');
+                    if (typeof sturl != 'undefined') {
+                        var gdir = url("?grid-dir", sturl);
+                        sturl = sturl.replace(/grid-dir=\d+/i, 'grid-dir=' + (parseInt(gdir) == 0 ? 1 : 0));
+                        sturl = sturl.replace('?', '&');
+                    }
+
+                    var sturl2 = $(this).attr('href');
+                    if (sturl2 == undefined) {
+                        sturl2 = "@Url.Action("IndexForBusinessDev", "Master")?page=" + parseInt($(this).html());
+                    }
+                    sturl = sturl2 + sturl.replace(/page=\d+/i, "");
+                    $('form#CustomFilter').attr('action', sturl).submit();
+                });
+
+            });
+        }
+
+        function PagedOnComplete(obj) {
+            //  $('#mgrid table').unmask();
+            PagedOnCompleteBinds();
+        }
+
+        $(document).ready(function () {
+            PagedOnCompleteBinds();
+            var lbht = $(window).height();
+            lbht = (lbht / 2) - 80;
+            $(".leftBlockHt").css("height", lbht + "px");
+
+            $("#candidateActn .dropdown-item").click(function (e) {
+                var _this = $(this).attr("id");
+                var str = "#" + _this + "Block";
+                $("#candidateTab a[href=" + str + "]").tab('show');
+            });
+        });
+
+        function fnReloadCandidate() {
+            $.ajax({
+                url: "@Url.Action("CreateUser", "Master")",// + @ViewBag.MoveID,
+                success: function (data) {
+                    $('#pnl-AddCandidate').html(data);
+                }
+            });
+        }
+    </script>
+
+}
+
+
+
+
+
+

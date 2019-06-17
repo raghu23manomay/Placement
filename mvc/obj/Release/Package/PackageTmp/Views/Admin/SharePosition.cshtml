@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "AdminIndex";
+    Layout = null;
+}
+@model IEnumerable<mvc.Models.Userdetailsforpositionshare>
+
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+
+<div class="py-4" id="popover-content" style="overflow:auto;max-height:300px;">
+
+    <table id="DataTable" class="table ">
+
+        <tbody>
+            @if (Model.Count() != 0)
+            {
+                foreach (var item in Model)
+                {
+            <tr>
+
+                @*<td><input class="mycheck" type="checkbox" id="@item.User_id" name="@Session["reqid"]" value="@item.IsAssined"/></td>*@
+                @if (item.IsAssined == 0)
+        {
+            <td><input class="mycheck" type="checkbox" id="@item.User_id" name="@Session["reqid"]" value="@item.AssignId"/></td>
+        }
+        else
+        {
+            <td><input class="mycheck" type="checkbox" id="@item.User_id" name="@Session["reqid"]" value="@item.AssignId" checked/></td>
+        }
+                <td>@item.fullname</td>
+            </tr>
+
+                }
+        }
+
+        </tbody>
+
+    </table>
+</div>
+<hr style="margin-bottom: 3px;margin-top: 8px;">
+<div class="footer">
+    <button type="button" id="mysave" onclick="share()" class="btn btn-info" style="width: 202px;">Share</button>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //this code is for hide popover on click event over the body 
+        $('body').on('click', function (e) {
+            $('[data-toggle="popover"]').each(function () {
+                
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    $(this).popover('hide');
+                }
+            });
+        });
+
+
+        $('.mycheck').on("click", function () {
+            var idValue = $(this).attr('value');
+            if (idValue != 0)
+            {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '/Placement/DeleteAssignedUser',
+
+                    data:
+                    {
+                        Assignid: idValue
+
+                    },
+                    success: function (da) {
+                        // alert(da);
+                    },
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+            
+        });
+       
+    });
+
+    function closepopover()
+    {
+        $('[data-toggle="popover"]').popover('hide');
+    }
+
+    function share() {
+               
+        var prices = [];
+       
+        $('.mycheck').each(function () {
+            if ($(this).is(":checked")) {
+                //alert($(this).attr("id") + ' ' + $(this).attr("name"));
+                prices.push({
+                    UserId: $(this).attr("id"),
+                    ReqId: $(this).attr("name"),
+                });
+            }
+                
+        });
+        var data = JSON.stringify({
+            AssignUsertoJobPosition: prices
+        });
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Placement/AssignMultipalUserToPosition",
+            data: data,
+            success: function (result) {
+               
+                toastr.success('Position shared');
+                closepopover();
+                
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+                    
+    }
+       
+       
+
+</script>

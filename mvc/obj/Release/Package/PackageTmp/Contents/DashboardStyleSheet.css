@@ -1,0 +1,99 @@
+﻿.sm-gutter .row > [class^=col-], .sm-gutter .row > [class*=col-] {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.hidden-xlg {
+    display: block;
+}
+
+.hidden-xlg {
+    display: block;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+@media (max-width: 1400px) body, p {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+body {
+    color: #626262;
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,roboto,oxygen,ubuntu,cantarell,fira sans,droid sans,helvetica neue,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .01em;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "kern" 1;
+    -moz-font-feature-settings: "kern" 1;
+}
+
+/*body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+    direction: ltr;
+    -moz-osx-font-smoothing: grayscale;
+}*/
+
+.table.table-condensed thead tr th, .table.table-condensed tbody tr td, .table.table-condensed tbody tr td *:not(.dropdown-default) {
+    white-space: nowrap;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table.table-condensed tbody tr td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.table tbody tr td {
+    background: #fff;
+    border-bottom: 1px solid rgba(230,230,230,.7);
+    border-top: 0;
+    padding: 10px;
+    font-size: 13.5px;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th {
+    line-height: 1.42857143;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.font-montserrat {
+    font-family: montserrat !important;
+}
+
+.fs-12 {
+    font-size: 12px !important;
+}
+
+.all-caps {
+    text-transform: uppercase;
+}
+.no-margin {
+    margin: 0 !important;
+}
+
+.text-success {
+    color: #10cfbd !important;
+}
+
+.headingsize18 {
+    font-size: 18px;
+}
+
+.tableheadingfontt11 {
+    font-size: 11px;
+}

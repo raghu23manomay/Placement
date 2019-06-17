@@ -1,0 +1,188 @@
+﻿
+@model mvc.Models.MailTemplate
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutForMailTemplate.cshtml";
+    //Layout = null;
+}
+
+<div class="modal-dialog" id="pnl-mdlActivity" style="width:100%">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "frmc" }))
+    {
+        <div class="modal-content">
+            <div class="modal-header">
+                @Html.ActionLink("x", "IndexFotMailTemplateMaster", "Master", null, new { @class = "close" })
+                <h4 class="modal-title">Add Mail Template </h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group tab-pane m-t m-r m-l">
+                    <label for="stagenotify">Template Title</label>
+                    @Html.TextBoxFor(model => model.temp_title, new { @class = "form-control text", placeholder = "Template Title", title = "Template", @id = "Template_Title" })
+                    <p style="color:darkred;" id="temp_title_val">Please enter template title</p>
+                </div>
+                <div class="form-group tab-pane m-t m-r m-l">
+                    <label for="stagenotify">Mail Subject</label>
+                    @Html.TextBoxFor(model => model.email_subject, new { @class = "form-control text", placeholder = "Mail Subject", title = "Template", @id = "Mail_Subject" })
+                    <p style="color:darkred;" id="email_subject_val">Please enter mail subject</p>
+                </div>
+
+                <div class="form-group">
+                    <div id="mailBlock" class="tab-pane m-t m-r m-l" style="display:none;">
+                        <div id="pnl-mailTemplateData">
+                            <div id="mailTemplateData">
+                                @Html.TextAreaFor(m => m.emailBody, new { rows = "20", style = "resize:none;width:400px;", placeholder = Html.DisplayNameFor(m => m.emailBody), @class = "form-control input-lg textarea-editor", @id = "emailBody" })
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="save">Save</button>
+                        @Html.ActionLink("Cancel", "IndexFotMailTemplateMaster", "Master", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    
+    var str = window.location.href;
+    var lastLetter = str[str.length], i, temp;
+    var con = "";
+
+    for (i = 0; i < str.length; i++) {
+        if (str[i] == '=') {
+            myfun(i);
+            break;
+        }
+    }
+
+    function myfun(temp) {
+
+        temp = temp + 1;
+        for (i = temp; i < [str.length]; i++) {
+
+            con = con + str[i];
+        }
+        parseInt(con);
+
+    }
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+      //  $('#footer1').hide();
+        $('#mailBlock').show();
+        $('#temp_title_val').hide();
+        $('#email_subject_val').hide();
+
+        $('#save').on('click', function (e) {
+
+              if ($('#Template_Title').val() == "")
+                {
+
+                    $('#temp_title_val').show();
+                    $('#email_subject_val').hide();
+                    return false;
+                }
+                else if ($('#Mail_Subject').val() == "")
+                {
+                    $('#email_subject_val').show();
+                    $('#temp_title_val').hide();
+                    return false;
+                }
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "/Master/add_MailTemplates",
+                data: {
+                    temp_title: $("#Template_Title").val(),
+                    email_subject: $("#Mail_Subject").val(),
+                    emailBody: $("#emailBody").val(),
+                    lastupdatedBy: 1,
+                    addedBy: 1,
+                    //"Description": JSON.stringify($("#mailDescription").val())
+                },
+                success: function (result) {
+                    toastr.success("Template Updated successfully.");
+                    $("#mdlAddMailTemplateMaster .close").click()
+                    refresh();
+
+                    if (result.Success) {
+                    }
+                },
+                error: function (errorData) {
+                }
+            });
+        });
+
+
+    });
+
+
+     function refresh() {
+
+                      $.ajax({
+                        url: "@Url.Action("LoadDataForMailTemplateLst", "Master")",
+                        contentType: "application/json",
+                        data: JSON.stringify({ page: con, Name:null }),
+                        dataType: "text",
+                        type: "POST",
+                        async: true,
+                        success: function (data) {
+                        $('#grid1').html(data);
+                            $("#mdlAddMailTemplateMaster .close").click();
+                        $('.modal-backdrop').remove();
+
+
+                        },
+                        error: function (data) {
+                        $('#pageLoader').hide();
+                        $("#mdlAddMailTemplateMaster .close").click();
+                        $('.modal-backdrop').remove();
+
+                        },
+                        complete: function () {
+                        $('#pageLoader').hide();
+                        $("#mdlAddMailTemplateMaster .close").click();
+                        $('.modal-backdrop').remove();
+
+
+                        }
+
+                        });
+                        return true;
+
+                        }
+
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Script-custom-editor")
+
+}
+
+
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+<script src="~/Scripts/script-custom-editor.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+
+
+
+

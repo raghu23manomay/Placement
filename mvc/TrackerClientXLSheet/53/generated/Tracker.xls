@@ -1,0 +1,17 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td> kapil borse</td><td>Sr. Planning &amp; Logistics Executive (Import &amp;Export)</td><td>Executive</td><td>kapil.borse283@gmail.com</td><td>9823453597</td><td>1 months</td><td>5.8 years </td><td>&nbsp;</td><td>DHL Express India Pvt </td><td>Logistics Executive (Implant) </td><td>2.60 lpa</td><td>3.4 lpa</td><td>Pune</td><td>Diploma</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>UMESH NAGNATHAPPA SWAMI</td><td>Sr. Planning &amp; Logistics Executive (Import &amp;Export)</td><td>Executive</td><td>umeshswami18@gmail.com</td><td>9960425200</td><td>Immediate</td><td>6 years  </td><td>&nbsp;</td><td>Eaton Fluid Power </td><td>Logistics Officer    </td><td>3 lpa</td><td>3.5 lpa</td><td>Pune</td><td>MBA/PGDM</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Mahesh Patil</td><td>Sr. Planning &amp; Logistics Executive (Import &amp;Export)</td><td>Executive</td><td>maheshpatil393@gmail.com</td><td>9970986054</td><td>2 month nego 1 </td><td>3.2  years </td><td>&nbsp;</td><td>Star Engineers India </td><td>Logistics and Dispatch Executive </td><td>2.7 lpa</td><td>3.2 lpa</td><td>Pune</td><td>B.Sc</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Shivaranjani Ravindra Diwate</td><td>Sr. Planning &amp; Logistics Executive (Import &amp;Export)</td><td>Executive</td><td>diwateshivaranjani10@gmail.com</td><td>7385904935</td><td>1 month</td><td>3.2 years </td><td>&nbsp;</td><td>Balaji Enterprises Bhosari Pune</td><td>Production Planning Control Engineer </td><td>3 lpa</td><td>4 lpa</td><td>Pune</td><td>B.Tech/B.E</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Shaikh Faisal Zakir</td><td>Sr. Planning &amp; Logistics Executive (Import &amp;Export)</td><td>Executive</td><td>faisal5171@gmail.com</td><td>8149867963</td><td>1 month</td><td>4.5 years</td><td>&nbsp;</td><td> Shini Plastics Technologies India </td><td>Production Planning Control Engineer</td><td>2.9 lpa</td><td>3.5 lpa</td><td>Pune</td><td>MBA/PGDM</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

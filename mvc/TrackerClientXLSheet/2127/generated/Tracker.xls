@@ -1,0 +1,19 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Pradeep Parse</td><td>Siemens Plc Programmer</td><td>Executive</td><td>pradeep.parse08@gmail.com</td><td>9764196948</td><td>45 days</td><td>7 years</td><td>Jun  2 1987 12:00AM</td><td>Prochem Turnkey Projects Pvt. Ltd. PUNE</td><td>Control Manager</td><td>5.4 Lpa</td><td>30% hike</td><td>Pune</td><td>B.Tech in Electronics</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Ratnesh Patil</td><td>Siemens Plc Programmer</td><td>Executive</td><td>ratneshapatil@gmail.com</td><td>9021907130</td><td>2 months</td><td>7.5 years</td><td>Jun  2 1986 12:00AM</td><td>JENDAMARK TECHCELLENCY AUTOMATION INDIA PVT LTD</td><td>Plc Programmer</td><td>6.5+</td><td>30% hike</td><td>Pune</td><td>B.Tech in Electronics</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Vikram</td><td>Siemens Plc Programmer</td><td>Executive</td><td>vikram_kokate@yahoo.co.in</td><td>09970869404</td><td>1 month</td><td>8years</td><td>Feb 28 1984 12:00AM</td><td> kalyani carpenter special steel ltd</td><td>Assistant Manager</td><td>8.5Lpa</td><td>9Lpa</td><td>Pune</td><td>B.tech</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Nakul Sudhirrao Dange</td><td>Siemens Plc Programmer</td><td>Executive</td><td>nsdnakul@gmail.com</td><td> 9130017535,</td><td>2 months</td><td>7 years</td><td>May  1 1988 12:00AM</td><td>Precision Automation and Robotics Indua Ltd</td><td>Control Software</td><td>6.4 Lpa</td><td>10 Lpa (negotiable)</td><td>Pune</td><td>B.tech in Electronics</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Prashant Bhadade</td><td>Siemens Plc Programmer</td><td>Executive</td><td>bhadade29@gmail.com</td><td>9096133001</td><td>2 months(Negotiable)</td><td>7.5 years</td><td>&nbsp;</td><td> Sudarshan Chemical Industries Ltd</td><td>Executive Instrumentation</td><td>7.5 Lpa</td><td>8 Lpa</td><td>Pune</td><td>B.Tech in Electronics</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Anant DASHRATH GUDUR     </td><td>Siemens Plc Programmer</td><td>Executive</td><td>anantdgudur@gmail.com</td><td>8055480635</td><td>3 months</td><td>9 years</td><td>Apr 27 1986 12:00AM</td><td>Bharat Forge</td><td>Assistant Manager</td><td>5.7 Lpa</td><td>8 Lpa</td><td>Pune</td><td>B.Tech in Electronics</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

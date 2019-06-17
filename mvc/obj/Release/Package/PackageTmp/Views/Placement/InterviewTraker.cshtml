@@ -1,0 +1,423 @@
+﻿@model IEnumerable<mvc.Models.ModelViewJD>
+@{
+    ViewBag.Title = "TrackerMail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<script src="~/Scripts/jquery.validate.min.js"></script>*@
+
+<div class="container" id="pnl-mailTemplateData">
+    <div id="mailTemplateData">
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="pull-left">
+        <select id="msgTemplate" class="form-control hidden">
+            <option value="0">Select template</option>
+            <option value="1">Call letter</option>
+            <option value="2">Teliphonic Interview Schedule</option>
+        </select>
+    </div>
+    <p id="client">@Session["clientid"]</p>
+
+    @if (Model.Count() != 0)
+    {
+        @Html.Hidden("RecID", Model.First().RecID.ToString(), new { id = "RecID" })
+
+        foreach (var item in Model)
+        {
+            <div class="ibox m-t-xs border-left-blue">
+                <div class="row">
+
+                    <div class="col-sm-6 ">
+                        <div class="fl">
+                            <div>
+                                @item.FileName <a href="@item.DPath" target="_blank">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="col-sm-6">
+                            <label>@item.req_title</label>
+                            <label>Exp:(@item.exp_Min - @item.exp_Max) </label>
+                        </div>*@
+                </div>
+            </div>
+        }
+    }
+
+    <div class="ibox m-t-xs border-left-blue">
+        <div class="row">
+
+            <div class="col-sm-6 ">
+                <div class="fl">
+
+                    <div>
+                        Tracker_excel <a href="~/TrackerClientXLSheet/Tracker.xls" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-4">
+            <br />
+            <label class="pull-left">Select Concern Person For Mail CC <span class="text-danger">*</span></label>
+            <div id="grid1"></div>
+            <p id="validation" style="color:red;" class="pull-left">PLEASE SELECT ATLEAST ONE CONCERN PERSON</p>
+
+        </div>
+
+
+        <div class="col-sm-1 pull-left">
+            <br />
+            <br />
+
+            <a id="add" class="btn btn-primary pull-left">Add </a>
+
+        </div>
+
+        <div class="col-sm-4 ">
+            <br />
+            <label class="pull-left">Select Concern Person To Mail <span class="text-danger">*</span></label>
+            <div id="grid2"></div>
+            <p id="validation1" style="color:red;" class="pull-left">PLEASE SELECT ATLEAST ONE CONCERN PERSON</p>
+        </div>
+        <div class="col-sm-3 pull-left">
+            <br />
+            <label class="pull-left">Select From Mail <span class="text-danger">*</span></label>
+            <div id="grid3"></div>
+            <p id="validation2" style="color:red;" class="pull-left">PLEASE SELECT FROM EMAIL</p>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <table id="detailsTable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        @*<th style="width:30%">location</th>
+                            <th style="width:20%">Id</th>
+                            <th style="width:20%"></th>*@
+                    </tr>
+                </thead>
+                <tbody id="tbl"></tbody>
+            </table>
+
+        </div>
+        <div class="col-sm-6">
+
+
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn btn-primary" id="sendmail">Send Mail</button>
+    <a href="@Url.Action("JobList", "Placement")" target="_blank" class="btn btn-default">Cancel</a>
+
+</div>
+<div id="mdlmailtracker" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+@*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>*@
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+
+
+<script>
+
+
+    $(document).ready(function () {
+
+      //  alert$("#detailsTable").val());
+
+        $("#add").click(function (e) {
+            //alert('hi');
+            e.preventDefault();
+
+
+            var contactPerson_Name = $("#contactPerson_NameList option:selected").text(),
+                clientCD_ID = $("#contactPerson_NameList").val(),
+                detailsTableBody = $("#detailsTable tbody");
+
+            var productItem = '<tr><td>' + contactPerson_Name + '</td><td class="hidden">' + clientCD_ID + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            detailsTableBody.append(productItem);
+
+        });
+
+        // After Add A New Order In The List, If You Want, You Can Remove It.
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+
+
+
+        $.ajax({
+                    url: "@Url.Action("BindConcernForMail", "Placement")",
+                    contentType: "application/json",
+            data: JSON.stringify({ ClientId: $("#client").html() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+        });
+
+
+         $.ajax({
+                    url: "@Url.Action("BindConcernForMail1", "Placement")",
+                    contentType: "application/json",
+            data: JSON.stringify({ ClientId: $("#client").html() }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+             success: function (data) {
+
+                        $('#grid2').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+        });
+
+
+
+         $.ajax({
+                    url: "@Url.Action("BindEmailList", "Placement")",
+                    contentType: "application/json",
+            data: JSON.stringify({ }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid3').html(data);
+                        
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+
+        @*$.ajax({
+            url: "@Url.Action("GetTemplateData", "Placement")",
+            data: {
+                "candID":1,
+                "templateid": 8,
+
+            },
+            success: function (data) {
+
+                $('#mailTemplateData').html(data);
+
+            }
+        });*@
+
+
+        function savedata(data) {
+            alert(data);
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Placement/SendmailTracker",
+                data: data,
+
+                success: function (da) {
+                    toastr.success("mail sent successfully.");
+                    // alert('mail send sucessfully');
+
+                },
+                error: function (errorData) {
+                    toastr.success("mail error");
+                    // alert('mail error');
+
+                }
+
+
+            });
+        }
+
+
+
+
+        function bindlocation() {
+
+            //   e.preventDefault();
+            var orderArr = [];
+            orderArr.length = 0;
+
+            $.each($("#detailsTable tbody tr"), function () {
+                orderArr.push({
+                    contactPerson_Name: $(this).find('td:eq(0)').html(),
+                    clientCD_ID: $(this).find('td:eq(1)').html(),
+                    "ReqID": $('#RecID').val(),
+                    Emailid1: $('#EmailList').val(),
+                    ClientConcernId: $('#contactPersonList').val(),
+                    Description: JSON.stringify($("#mailDescription").val(), )
+
+                });
+            });
+
+            var data = JSON.stringify({
+                ConcernPerForTracker: orderArr
+            });
+
+            // alert(data);
+            //  return data;
+            $.when(savedata(data)).then(function (response) {
+                //    console.log(response);
+            }).fail(function (err) {
+                console.log(err);
+            });
+
+        }
+
+
+
+        $("#validation").hide();
+
+        $('#sendmail').on('click', function (e) {
+
+           // alert($("#tbl").html());
+
+            if ($("#tbl").html() == "") {
+
+                $("#validation").show();
+                $("#validation1").hide();
+                // alert("show");
+            }
+            else if ($("#contactPersonList").val() == 0) {
+                // alert("hide");
+                $("#validation").hide();
+                $("#validation1").show();
+
+            }
+            else if ($("#EmailList").val() == 0)
+            {
+                $("#validation").hide();
+                $("#validation1").hide();
+                $("#validation2").show();
+            }
+            else
+            {
+                $("#validation1").hide();
+                $("#validation").hide();
+                $("#validation2").hide();
+                bindlocation();
+            }
+
+
+
+        $('#Editmail').on('click', function (e) {
+
+            $('#content').hide();
+            $('#maildescriptionDiv').show();
+            $('#tblHistory').show();
+        });
+        $('#Previewmail').on('click', function (e) {
+
+            $('#content').show();
+            $('#maildescriptionDiv').hide();
+            $('#tblHistory').hide();
+
+        });
+        $('#msgTemplate').change(function (e) {
+            if ($('#msgTemplate').val() == 0) {
+                $('#content').hide();
+                $('#maildescriptionDiv').show();
+                // $('#tblHistory').show();
+            }
+            else {
+                $('#content').show();
+                $('#maildescriptionDiv').hide();
+                $('#tblHistory').hide();
+                $.ajax({
+                    url: "@Url.Action("GetTemplateData", "Placement")",
+                    data: {
+                        "candID": $("#candID").val(),
+                        "templateid": $('#msgTemplate').val(),
+                    },
+                    success: function (data) {
+                        $('#mailTemplateData').html(data);
+                    }
+                });
+            }
+            if ($('#msgTemplate').val() == 1) {
+                $('#content').load('Content/Html/callLetter.html');
+            }
+            else
+                if ($('#msgTemplate').val() == 2) {
+                    $('#content').load('Content/Html/Teliphone.html');
+                }
+        });
+
+        $('#btnAddNote').on('click', function (e) {
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "/Placement/AddNotes",
+                data: {
+                    "candID": $("#candID").val(),
+                    "Description": $("#mailTemplateData").val(),
+                    "sendby": 1,
+                    "ReplyTo": 1
+                },
+                success: function (result) {
+                    toastr.success("Notes added successfully.");
+                    $("#mdlEditCandidate").html(result);
+                    $("#tabs").tabs({ active: "#commentBlock" });
+
+                    if (result.Success) {
+
+                    }
+                },
+                error: function (errorData) {
+
+                }
+            });
+        });
+
+        });
+    });
+
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Script-custom-editor")
+
+}

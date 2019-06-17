@@ -1,0 +1,284 @@
+﻿@model IEnumerable<mvc.Models.SourceCandidate>
+
+@{
+    ViewBag.Title = "Candidate";
+    Layout = null;
+}
+@*<script src="~/Scripts/jquery-1.12.4.min.js"></script>*@
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "frmc" }))
+{
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" onclick="refreshforclosebutton()" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">  Eligible Recruitment</h3>
+        </div>
+        <div>
+            <div>
+                @if (Model.Count() != 0)
+                {
+                    @Html.Hidden("candID", Model.First().candID.ToString(), new { id = "CandID" })
+                    @Html.Hidden("AppliedReqId", Model.First().AppliedReqId.ToString(), new { id = "AppliedReqId" })
+                    foreach (var item in Model)
+                    {
+                        <div class="ibox m-t-xs border-left-blue">
+                            <div class="row">
+                                <div>
+                                    <div class="fl" style="transform: scale(1.5); vertical-align: middle;">
+
+                                        @if (item.AppliedReqId > 0)
+                                        {
+                                            @Html.RadioButton("chkSelect", item.req_id, new { @checked = true })
+                                        }
+                                        else
+                                        {
+                                            @Html.RadioButton("chkSelect", item.req_id, new { @checked = false })
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-sm-1" style="text-align:left">
+
+                                    <div class="clrboth">
+                                        <div class="fl">
+
+                                            @if (Convert.ToInt32(item.client_id) % 2 == 0)
+                                            {
+                                                <span class="label label-success label-circle m-t-n-xs">@item.Client_Name.Substring(0, 1).ToUpper()</span>
+                                            }
+                                            else if (Convert.ToInt32(item.client_id) % 3 == 0)
+                                            {
+                                                <span class="label label-danger label-circle m-t-n-xs">@item.Client_Name.Substring(0, 1).ToUpper()</span>
+                                            }
+                                            else if (Convert.ToInt32(item.client_id) % 4 == 0)
+                                            {
+                                                <span class="label label-default label-circle m-t-n-xs">@item.Client_Name.Substring(0, 1).ToUpper()</span>
+                                            }
+                                            else if (Convert.ToInt32(item.client_id) % 5 == 0)
+                                            {
+                                                <span class="label label-info label-circle m-t-n-xs">@item.Client_Name.Substring(0, 1).ToUpper()</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-success label-circle m-t-n-xs">@item.Client_Name.Substring(0, 1).ToUpper()</span>
+                                            }
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 round">
+                                    <div class="fl">
+                                        <div>
+                                            @item.Client_Name
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-5">
+                                    <label>@item.req_title</label>
+                                    <label>Exp:(@item.exp_Min - @item.exp_Max) </label>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-sm-12">
+                        <div class="alert alert-warning">
+                            No eligible position found
+                         </div>
+                    </div>
+                }
+
+            </div>
+            <div class="modal-footer">
+                <div class="text-danger" id="error_msg"></div>
+                <button type="button" class="btn btn-primary" id="btnsave">Apply</button>
+                <button type="button" class="btn btn-default" onclick="refreshforclosebutton()" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+
+<script type="text/javascript">
+
+    // document.getElementById("demo").innerHTML = "Page location is " + window.location.href;
+    //  document.getElementById("demo").innerHTML =   "Page location is " + lastLetter;
+
+    var str = window.location.href;
+    var lastLetter = str[str.length], i, temp;
+    var con = "";
+
+    for (i = 0; i < str.length; i++) {
+        if (str[i] == '=') {
+            myfun(i);
+            break;
+        }
+    }
+
+    function myfun(temp) {
+
+        temp = temp + 1;
+        for (i = temp; i < [str.length]; i++) {
+
+            con = con + str[i];
+        }
+        parseInt(con);
+
+    }
+    // alert(con);
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#btnsave').on('click', function (e) {
+            e.preventDefault();
+             
+            var selectedRadio = 0;
+            if (document.querySelector('input[name="chkSelect"]:checked') == null) {
+                error = 1;
+                $('#error_msg').html("Please select position to apply.");
+            }
+            else {
+                error = 0;
+                selectedRadio = document.querySelector('input[name="chkSelect"]:checked').value;
+                $('#error_msg').hide();
+            }
+     
+            if (error) {
+                return false;
+            } else {
+
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "/Placement/SourceCandidate",
+                    data: { 
+                        
+                        "StageID": 2,
+                        "ModeID": 1, 
+                        "Remark": "Apply for position",
+                        "ReqID": selectedRadio,
+                        "CandID": $("#CandID").val(),
+                        "StatusID": 1 
+
+                    },
+                    success: function (result) {
+                        
+                        $('#mdlSourceCandidate .close').click()
+                        //$("#pnl-mdlSourceCandidate").html(result);
+                        toastr.success("Candidate Applied successfully.");
+                        refresh();
+                      
+                        if (result.Success) {
+
+                        }
+                    },
+                    error: function (errorData) {
+                    }
+                });
+
+
+            }
+            return true;
+        });
+        toastr.options = {
+            "closeButton": true,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "0",
+            "showMethod": "fadeIn"
+        };
+
+    });
+
+
+    function refresh() {
+
+               // $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: con, Name:null }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+                        $("#pageLoader .close").click()
+                      
+                 
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                       
+                        $("#pageLoader .close").click()
+                                           
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                       
+                        $("#pageLoader .close").click()
+                        
+                       
+                    }
+                    
+                    
+        });
+        return true;
+   
+    }
+    
+    function refreshforclosebutton() {
+
+               // $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadData", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ page: con, Name:null }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+                        $("#pageLoader .close").click()
+                        $("#mdlSourceCandidate .close").click()
+                 
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                        $("#pageLoader .close").click()
+                        $("#mdlSourceCandidate .close").click()
+
+                     
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                        $("#pageLoader .close").click()
+                        $("#mdlSourceCandidate .close").click()
+                       
+                    }
+                    
+                    
+        });
+        return true;
+   
+  }
+
+</script>
+
+
+
+
+

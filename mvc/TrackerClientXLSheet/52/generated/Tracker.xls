@@ -1,0 +1,23 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Devashish Kureel</td><td>DevOps Engineer</td><td>Executive</td><td>devops.kureel@gmail.com</td><td>9923326745</td><td>2 month (Negotiable)</td><td>6+ yrs</td><td>&nbsp;</td><td>Siemens Industry Software India Pvt. Ltd.</td><td>Devops Engineer </td><td>13.20 lpa</td><td>18 lpa</td><td>Pune</td><td>B.Tech/B.E</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Sumit Bhankhede</td><td>DevOps Engineer</td><td>Executive</td><td>s.bhankhede@gmail.com</td><td>9975691302</td><td>2 months</td><td>4.5 yrs</td><td>&nbsp;</td><td>Oberthur Technologies</td><td>Senior Integration Engineer</td><td>6.5 lpa</td><td>10 lpa</td><td>Pune</td><td>PG Diploma (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Sudheer Kumar</td><td>DevOps Engineer</td><td>Executive</td><td>vennusudheer@gmail.com</td><td>8624990931</td><td>Currently serving NP (ELWD : 21st July)</td><td>4.5 yrs</td><td>&nbsp;</td><td>IDEMIA</td><td>Senior Integration Engineer Devops</td><td>8 lpa (offer  in hand 11.5 lpa)</td><td>12.5 lpa</td><td>Pune</td><td>B.Tech/B.E.</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Aditya raj</td><td>DevOps Engineer</td><td>Executive</td><td>aditya.raj987@gmail.com</td><td>9130099976</td><td>Currently serving NP (ELWD : 21st june)</td><td>4.5 yrs</td><td>&nbsp;</td><td>Idemia</td><td>Devops Engineer</td><td>6.5 lpa (offer in hand 10.5 lpa)</td><td>12.5 lpa</td><td>Pune</td><td>B.Tech/B.E. (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Chaitanya Chavan</td><td>DevOps Engineer</td><td>Executive</td><td>chaitanyachavan12@gmail.com</td><td>9763380811</td><td>3 month (Negotiable)</td><td>2.6 yrs</td><td>&nbsp;</td><td>Tata Consultancy Services</td><td>Devops Engineer</td><td>2.15 lpa</td><td>4 lpa</td><td>Pune</td><td>BCA (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Prateek Rastogi</td><td>DevOps Engineer</td><td>Executive</td><td>rpratik92@yahoo.com</td><td>7409641263</td><td>1 months</td><td>3.6 yrs</td><td>&nbsp;</td><td>Addteq Software India Pvt. Ltd.</td><td>DevOps Engineer - AWS</td><td>8.50 lpa</td><td>10 lpa</td><td>Pune</td><td>B.Tech/B.E</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Rahul Mishrilal Shivalkar</td><td>DevOps Engineer</td><td>Executive</td><td>rahulshivalkar@rediffmail.com</td><td>8484081234</td><td>2 months</td><td>3.6 yrs</td><td>&nbsp;</td><td>ContentServ</td><td>Senior DevOps Engineer</td><td>7.4 lpa (offer in hand 10 lpa)</td><td>11 lpa</td><td>Pune</td><td>B.Tech/B.E. (Computers) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Yogesh N Bejgamwar</td><td>DevOps Engineer</td><td>Executive</td><td>y.bejgamwar@gmail.com</td><td>8412083909</td><td>Currently serving NP (ELWD : 21st June)</td><td>6 yrs</td><td>&nbsp;</td><td>L&amp;T Infotech</td><td>Sr Devops Engineer</td><td>10.05 lpa (offer in hand 12.5 lpa)</td><td>14 lpa</td><td>Pune</td><td>MCA (Computers)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

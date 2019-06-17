@@ -1,0 +1,315 @@
+﻿<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@model mvc.Models.AddContactPerson
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+@{
+    /**/
+
+    ViewBag.Title = "Add Contact Person Name";
+}
+
+
+<!DOCTYPE html>
+
+<div class="page-header marginTop0">
+    <h2 class="marginTop0"><small>Contact Details</small></h2>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate" }))
+{
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="name">Contact Person Name<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(a => a.client_id, new { @class = "form-control hidden", placeholder = "client_id", title = "client_id", @id = "client_id" })
+
+                @Html.TextBoxFor(a => a.contactPerson_Name, new { @class = "form-control", placeholder = "Enter contact person name", title = "contactPerson_Name", @id = "contactPerson_Name" })
+                <p id="contactname" style="color:red;">Enter Person Name</p>
+            </div>
+            <div class="form-group">
+                <label>Designation <span class="text-danger">*</span></label>
+                @Html.TextBoxFor(a => a.desg_desc, new { @class = "form-control ", @id = "desg_des1c", placeholder = "designation" })
+                @Html.HiddenFor(model => model.cp_desig_Id, new { id = "cp_desig_Id" })
+                <p id="designation" style="color:red;">Select Designation</p>
+
+            </div>
+
+            <div class="form-group">
+                <label for="name">Phone 1</label>
+                @Html.TextBoxFor(a => a.phone1, new { @class = "form-control", placeholder = "Enter phone 1", title = "phone1", @id = "phone1" })
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="name">Phone 2</label>
+                @Html.TextBoxFor(a => a.phone2, new { @class = "form-control", placeholder = "Enter phone 2", title = "phone2", @id = "phone2" })
+
+            </div>
+
+            <div class="form-group">
+                <label for="name">Mobile no</label>
+                @Html.TextBoxFor(a => a.mobile, new { @class = "form-control", placeholder = "Enter mobile no", title = "mobile", @id = "mobile" })
+                <p id="valmobile" style="color:red;">Enter Mobile Number</p>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Email ID</label>
+                @Html.TextBoxFor(a => a.emailid, new { @class = "form-control", placeholder = "Enter Email ID", title = "emailid", @id = "emailid" })
+                <p id="valemailid" style="color:red;">Enter Email Id</p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="name">Description</label>
+                <div style="display:inline-flex;">
+                    @Html.TextBoxFor(a => a.description, new { @class = "form-control", placeholder = "Enter description", title = "description", @id = "description" })
+                    <i class="glyphicon glyphicon-plus" style="top: 8px; margin-left: 7px;" id="addcontactperosn"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 ">
+            <small style="color: #c1bbbb;">Please click on <b>+</b> button to add Contact person </small>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group" style="overflow:auto;">
+                <div class="table-wrapper-scroll-y" style="padding-right: 0px;">
+
+                    <table id="contactdetailsTable" class="table ">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl1"></tbody>
+                    </table>
+                    <p id="valcontactpersontbl" style="color:red;">Please add atleast one location</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @*<div class="modal-footer">
+            <button type="submit" id="btnsave" class="btn btn-primary">Save</button>
+            @Html.ActionLink("Cancel", "IndexForClient", "Master", null, new { @class = "btn btn-default" })
+        </div>*@
+
+}
+
+
+<script>
+
+    $(document).ready(function () {
+        getdesignation();
+        $("#contactname").hide();
+        $("#designation").hide();
+        $("#valmobile").hide();
+        $("#valemailid").hide();
+        $("#valcontactpersontbl").hide();        
+    });
+
+     function getdesignation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetdesignationList", "Master")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#desg_des1c").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#cp_desig_Id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+
+ 
+       
+    //=============================== ADD MULTIPAL CONTACT PERSONS ===============================
+
+
+    $("#addcontactperosn").click(function (e) {
+        //alert('hi');
+        var count = 0;
+        e.preventDefault();
+
+        //if ($.trim($("#contactPerson_Name").val()) == "") return false;
+
+        if ($("#contactPerson_Name").val() == "") {
+            $("#contactname").show();
+            $("#designation").hide();
+            $("#valmobile").hide();
+            $("#valemailid").hide();
+            return false;
+        }
+
+        else if ($("#desg_des1c").val() == "") {
+            $("#contactname").hide();
+            $("#valmobile").hide();
+            $("#valemailid").hide();
+            $("#designation").show();
+            return false;
+
+        }
+        else if ($("#mobile").val() == "") {
+            $("#contactname").hide();
+            $("#valmobile").show();
+            $("#valemailid").hide();
+            $("#designation").hide();
+            return false;
+        }
+
+        else if ($("#emailid").val() == "") {
+            $("#contactname").hide();
+            $("#valmobile").hide();
+            $("#valemailid").show();
+            $("#designation").hide();
+            return false;
+        }
+        else
+        {
+            $("#contactname").hide();
+            $("#valmobile").hide();
+            $("#valemailid").hide();
+            $("#designation").hide();
+        }
+
+        $.each($("#contactdetailsTable tbody tr"), function () {
+
+            if ($("#contactPerson_Name").val() == $(this).find('td:eq(0)').html()) {
+
+                alert("Conact Person is already added");
+                count++;
+                return false;
+            }
+
+        });
+
+        if (count > 0) {
+            return;
+        }
+        var contactPerson_Name = $("#contactPerson_Name").val(),
+            mobile = $("#mobile").val(),
+            emailid = $("#emailid").val(),
+            description = $("#description").val(),
+            cp_desig_Id = $("#cp_desig_Id").val(),
+            phone1 = $("#phone1").val(),
+            phone2 = $("#phone2").val(),
+            contactdetailsTable = $("#contactdetailsTable tbody");
+
+        var productItem = '<tr><td>' + contactPerson_Name + '</td><td>' + mobile + '</td><td>' + emailid + '</td><td class="hidden">' + description + '</td><td class="hidden">' + cp_desig_Id + '</td><td class="hidden">' + phone1 + '</td><td class="hidden">' + phone2 + '</td><td><a data-itemId="0" href="#" class="deleteItem"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
+
+        contactdetailsTable.append(productItem);
+        $("#valcontactpersontbl").hide();
+        $("#contactname").hide();
+        $("#designation").hide();
+        $("#valmobile").hide();
+        $("#valemailid").hide();
+        clearItem();
+    });
+
+    function clearItem() {
+       // $("#contactPerson_Name").val('');
+       // $("#desg_des1c").val('');
+       // $("#cp_desig_Id").val('');
+       // $("#mobile").val('');
+       // $("#emailid").val('');
+       // $("#description").val('');
+       //$("#phone1").val('');
+       // $("#phone2").val('');
+       // $("#quantity").val('');
+    }
+    // After Add A New Order In The List, If You Want, You Can Remove It.
+    $(document).on('click', 'a.deleteItem', function (e) {
+        e.preventDefault();
+        var $self = $(this);
+        if ($(this).attr('data-itemId') == "0") {
+            $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                $(this).remove();
+            });
+        }
+    });
+
+    function SaveContact() {
+
+        var valarray = [];
+
+            $.each($("#contactdetailsTable tbody tr"), function () {
+
+                valarray.push({
+                    contactPerson_Name: $(this).find('td:eq(0)').html(),
+                    mobile: $(this).find('td:eq(1)').html(),
+                    emailid: $(this).find('td:eq(2)').html(),
+                    description: $(this).find('td:eq(3)').html(),
+                    cp_desig_Id: $(this).find('td:eq(4)').html(),
+                    phone1: $(this).find('td:eq(5)').html(),
+                    phone2: $(this).find('td:eq(6)').html(),
+                });
+            });
+
+
+            var data = JSON.stringify({
+                AddContactPerson: valarray
+            });
+
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Master/add_ContactPerson",
+                data: data,
+                success: function (result) {
+                    $('.loader').hide();
+                    toastr.success(result);
+
+                },
+                error: function () {
+                    alert("Error!")
+                }
+            });
+
+    }
+
+</script>
+
+
+
+
+

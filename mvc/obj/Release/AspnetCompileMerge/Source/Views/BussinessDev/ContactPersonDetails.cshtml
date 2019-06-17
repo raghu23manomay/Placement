@@ -1,0 +1,30 @@
+﻿@model  IEnumerable<mvc.Models.ClientContactDetails>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+
+@foreach (var item in Model)
+{
+    if (item.clientCD_ID == 0)
+    {
+      
+    }
+    else
+    {
+<div class="row">
+    <div class="col-xs-6 labelHead"><i class="glyphicon glyphicon-user"></i> @item.contactPerson_Name </div>
+    @if (item.mobile == "NA")
+    {
+        <div class="col-xs-6">@item.mobile</div>
+    }
+    else
+    {
+        <div class="col-xs-6">+91 @item.mobile</div>
+    }
+
+    <div class="col-xs-6" style="word-wrap: break-word;"><small>@item.emailid</small></div>
+</div>
+    }
+
+}

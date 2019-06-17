@@ -1,0 +1,35 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">VendorName</th><th scope="col">igaTsa</th><th scope="col">tup 1 ik.</th><th scope="col">tup 200</th><th scope="col">tup 500</th><th scope="col">ओव्हाळ</th><th scope="col">कात्रज</th><th scope="col">गोकुळ गाय</th><th scope="col">गोकुळ म्हैस</th><th scope="col">चितळे गाय</th><th scope="col">चितळे म्हैस</th><th scope="col">प्रतिभा</th><th scope="col">पाटील</th><th scope="col">amount</th><th scope="col">paidamount</th><th scope="col">previousbalance</th><th scope="col">balancedue</th>
+		</tr><tr>
+			<td>आडव</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>ओव्हाळ मिल्क</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>चितळे डेअरी</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>1560.00</td><td>780.00</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>धुमाळ</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>प्रतिबा डेअरी</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>पाटील डेअरी</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>580.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>फ्रिज स्टोक</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>44.50</td><td>13.00</td><td>36.00</td><td>40.50</td><td>88.50</td><td>0.00</td><td>45.50</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>बांनी</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>बाळू  कवडे</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>मोहिते</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>30.00</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>लिकेज रिप्लेसमेंट</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>सायली मिल्क</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>130.00</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>साळूके</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr><tr>
+			<td>हरिप्रिया सप्लायर</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>90.00</td><td>550.00</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+		</tr>
+	</table>
+</div>

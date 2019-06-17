@@ -1,0 +1,61 @@
+﻿
+@using System.Data
+@model System.Data.DataTable
+@{
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+
+        
+</head>
+<body>
+
+    <div class="table-responsive">
+        <table class="table scroll-x">
+
+            <thead>
+               
+                <tr>
+                    @foreach (System.Data.DataColumn col in Model.Columns)
+                    {
+                        if (@col.Caption != "location_id")
+                        {
+                            <th class="tableheadingfontt11">@col.Caption</th>
+                        }
+
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Rows)
+                {
+                    <tr>
+
+                        @foreach (System.Data.DataColumn col in Model.Columns)
+                        {
+
+                            if (@col.Caption != "location_id")
+                            {
+                                <td>
+
+                                   <label id="@row["location_id"]" name="@col.Caption" class="lblcount">@row[col.ColumnName]</label>
+                                </td>
+                            }
+
+                        }
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+  
+</body>
+</html>
+
+

@@ -1,0 +1,201 @@
+﻿<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@model mvc.Models.ClientContactDetailsEdit
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+@{
+    /**/
+
+    ViewBag.Title = "Add Contact Person Name";
+}
+
+<!DOCTYPE html>
+
+
+
+<div class="modal-dialog" id="pnl-mdlCandidate">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate" }))
+    {
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 class="modal-title">Edit Contact Person</h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Contact Person Name<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(a => a.client_id, new { @class = "form-control hidden", placeholder = "client_id", title = "client_id", @id = "client_id" })
+                            @Html.TextBoxFor(a => a.clientCD_ID, new { @class = "form-control hidden", placeholder = "clientCD_ID", title = "clientCD_ID", @id = "clientCD_ID" })
+
+                            @Html.TextBoxFor(a => a.contactPerson_Name, new { @class = "form-control", placeholder = "Enter contact person name", title = "contactPerson_Name", @id = "contactPerson_Name" })
+                            <p id="contactname" style="color:red;">Enter Person Name</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Designation <span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(a => a.desg_desc, new { @class = "form-control ", @id = "desg_desc", placeholder = "designation" })
+                            @Html.HiddenFor(model => model.cp_desig_Id, new { id = "cp_desig_Id" })
+                            <p id="designation" style="color:red;">Select Designation</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Phone 1</label>
+                            @Html.TextBoxFor(a => a.phone1, new { @class = "form-control", placeholder = "Enter phone 1", title = "phone1", @id = "phone1" })
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Phone 2</label>
+                            @Html.TextBoxFor(a => a.phone2, new { @class = "form-control", placeholder = "Enter phone 2", title = "phone2", @id = "phone2" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Mobile no</label>
+                            @Html.TextBoxFor(a => a.mobile, new { @class = "form-control", placeholder = "Enter mobile no", title = "mobile", @id = "mobile" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Email ID</label>
+                            @Html.TextBoxFor(a => a.emailid, new { @class = "form-control", placeholder = "Enter Email ID", title = "emailid", @id = "emailid" })
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Description</label>
+                            @Html.TextBoxFor(a => a.description, new { @class = "form-control", placeholder = "Enter description", title = "description", @id = "description" })
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" id="btnedit" class="btn btn-primary">Update</button>
+                @Html.ActionLink("Cancel", "IndexForClient", "Master", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#contactname").hide();
+        $("#designation").hide();
+        $('#btnedit').on('click', function () {
+
+            fnvalidationforupdate();
+            //alert($("#Mobile").val().length)
+            return false;
+        });
+
+         getdesignation();
+    });
+
+    function getdesignation()
+    {
+             var returnResult = [];
+                          $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("GetdesignationList", "Master")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        success: function (result) {
+                            var data = $.map(result, function (obj) {
+                                obj.value = obj.Text; // desired field
+                                obj.data = obj.Value; // desired field
+                                returnResult.push(obj);
+                                $("#desg_desc").autocomplete({
+                                    lookup: returnResult,
+                                    onSelect: function (suggestion) {
+                                        $("#cp_desig_Id").val(suggestion.data);
+
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function () { }
+                  });
+    }
+
+    //================================================================validation function for update ===================================================
+
+    function fnvalidationforupdate() {
+
+
+        if ($("#contactPerson_Name").val() == "") {
+            $("#contactname").show();
+            $("#designation").hide();
+            return false;
+        }
+
+        else if ($("#cp_desig_Id").val() == "") {
+            $("#contactname").hide();
+            $("#designation").show();
+        }
+        else {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Master/UpdateContactPerson',
+
+                data:
+                    {
+                        clientCD_ID: $("#clientCD_ID").val(),
+                        client_id: $("#client_id").val(),
+                        contactPerson_Name: $("#contactPerson_Name").val(),
+                        cp_desig_Id: $("#cp_desig_Id").val(),
+                        phone1: $("#phone1").val(),
+                        phone2: $("#phone2").val(),
+                        mobile: $("#mobile").val(),
+                        emailid: $("#emailid").val(),
+                        description: $("#description").val(),
+
+                    },
+                success: function (da) {
+                    //alert("data inserted sucessfully");
+                    toastr.success("Person UPdated Sucessfully.");
+                    $("#mdlETcontactperson .close").click()
+
+                },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+            return true;
+        }
+
+
+
+
+
+    }
+
+</script>
+
+
+
+

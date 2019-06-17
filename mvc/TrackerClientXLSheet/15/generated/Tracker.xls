@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>M Srinivas yadav</td><td>Java Developer</td><td>Executive</td><td>msrinivasyadav55@gmail.com</td><td>919000301867</td><td>3</td><td>3 Years</td><td>Oct 20 2015 12:00AM</td><td>Wipro</td><td>Software Develope</td><td>3.6 Lakhs</td><td>6.5 Lakhs</td><td>Chennai</td><td>B.E. (Computers) </td><td>NA</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

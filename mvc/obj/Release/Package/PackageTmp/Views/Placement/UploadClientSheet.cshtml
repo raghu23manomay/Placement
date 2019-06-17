@@ -1,0 +1,75 @@
+﻿@model  mvc.Models.ModelUploadClientSheet
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+
+<div class="modal-dialog" id="pnl-mdlAddJob">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate", enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.ClientId)
+        <div class="modal-content">
+            <div class="modal-header dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Upload Client tracker Sheet</h4>
+            </div>
+            <div class="modal-body no-pad">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="modal-left">
+                            <div class="form-group row">
+                                <div class="col-sm-12" style="padding-right: 0px;padding-left: 0px;">
+                                    <input type="file" id="FileUpload" name="file" required data-val="true" data-val-required="please select a file" />
+                                    <p id="validation" style="color:red;">Select File</p>
+                                </div>
+                                <div class="text-danger" id="error_msg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @*<input type="submit" id="Submit" class="btn btn-dark" value="UploadFile" title="Click to upload file" onclick="return CheckFileName();" />*@
+                <input type="submit" id="Submit" class="btn btn-dark" value="UploadFile" title="Click to upload file" />
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#validation").hide();
+
+        $('#Submit').on('click', function () {
+            var a;
+            a = $("#FileUpload").val();
+            if (a == "") {
+                $("#validation").show();
+                toastr.success("Select File");
+                return false;
+            }
+            else {
+
+                toastr.success("File Uploaded successfully.");
+
+
+            }
+
+        });
+
+    });
+
+
+</script>

@@ -1,0 +1,17 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Shubhada Kedar Agashe</td><td>Mechanical Design Engineer  </td><td>Executive</td><td>shubhada.bhalerao31@gmail.com</td><td>9096161504</td><td>1 month</td><td>7years</td><td>&nbsp;</td><td>Synergy Tooltach </td><td>Design Engineer</td><td>5.5lpa</td><td>30%hike</td><td>Pune</td><td>B.Tech/B.E. (Mechanical)</td><td>M.Tech (Mechanical) </td><td>&nbsp;</td>
+		</tr><tr>
+			<td>AKSHAY NANDKUMAR GADE</td><td>Mechanical Design Engineer  </td><td>Executive</td><td>akshayngade@gmail.com</td><td>+91954551988</td><td>1month</td><td>4years</td><td>&nbsp;</td><td> n-GEn Control System</td><td>Design Engineer</td><td>3.5lpa</td><td>5lpa</td><td>Pune</td><td>B.Tech/B.E. (Mechanical</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Kotkar Yogesh Yashvant</td><td>Mechanical Design Engineer  </td><td>Executive</td><td>yogesh04kotkar@gmail.com</td><td>9011178069</td><td>1month</td><td>4years</td><td>&nbsp;</td><td>Jaya Hind Sciaky Ltd.</td><td>Design Engineer</td><td>2.5lpa</td><td>3lpa</td><td>Pune</td><td>B.Tech/B.E. (Mechanical)</td><td>B.Tech/B.E. (Mechanical)</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>BHOSALE VINOD DATTATRAY </td><td>Mechanical Design Engineer  </td><td>Executive</td><td>bhosale.vinod777@gmail.com</td><td>9823734222</td><td>1 month</td><td>3.4 yrs</td><td>&nbsp;</td><td>Dran Engineering Pvt. Ltd., Pune</td><td>Design Engineer</td><td>3.2 lpa</td><td>4.5 lpa</td><td>Pune</td><td>B.E.   (Mechanical)</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>JYOTSNA CHANDRAKANT PATIL</td><td>Mechanical Design Engineer  </td><td>Executive</td><td>jyotsnapatil20192@gmail.com</td><td>08888411729</td><td>15 days</td><td>2+ yrs</td><td>&nbsp;</td><td>Delight Process Design &amp; Automation </td><td>Design  Engineer  </td><td>2.5 lpa</td><td>As per company standard</td><td>Pune</td><td>B.E (Mechanical engineering) </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

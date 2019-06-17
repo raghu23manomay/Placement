@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{ 
+
+        System.Data.DataTable dt = new System.Data.DataTable();
+        dt = Session["UserPermission"] as System.Data.DataTable;
+    }
+
+    <title>Candidates</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/css/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/assets/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/assets/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/assets/css/style.css" rel="stylesheet" type="text/css" />
+    
+</head>
+<body style="padding:0px;">
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid" id="myheader">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Recruiter</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul id="nav" class="nav navbar-nav">
+                        @if (Session["RoleID"] == null)
+                        {
+
+                            Response.Redirect("~/Home/Login");
+
+                        }
+                        else
+                        {
+                            System.Data.DataRow[] HeadingFields4 = dt.Select("submenuname = 'Dashboard' and FeatureName = 'Display'");
+                            if (HeadingFields4.Count() != 0)
+                            {
+                                if (HeadingFields4[0].ItemArray[6].ToString() == "1")
+                                {
+                                    <li id="UrlJobList"><a href="@Url.Action("AdminIndex", "Admin")"><i class="fa fa-pie-chart m-r-xs"></i> Dashboard <span class="sr-only">(current)</span></a></li>
+                                }
+                            }
+
+                            <li id="UrlJobList"><a href="@Url.Action("JobList", "Placement")"><i class="fa fa-briefcase m-r-xs"></i> Jobs <span class="sr-only">(current)</span></a></li>
+                            <li id="UrlPlacement"><a href="@Url.Action("index", "Placement")"><i class="fa fa-users m-r-xs"></i> Candidates</a></li>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Master</span> <span class="caret"></span></a>
+                                    <ul class="dropdown-menu profile-right-aligned">
+                                        @{
+                                            System.Data.DataRow[] HeadingFields = dt.Select("submenuname = 'ClientMaster' and FeatureName = 'Display'");
+                                            if (HeadingFields[0].ItemArray[6].ToString() == "1")
+                                            {
+                                                <li><a href="../BussinessDev/IndexForBusinessDev">Client Master</a></li>
+                                            }
+                                            System.Data.DataRow[] HeadingFields1 = dt.Select("submenuname = 'DesignationMaster' and FeatureName = 'Display'");
+                                            if (HeadingFields1[0].ItemArray[6].ToString() == "1")
+                                            {
+                                                <li><a href="../Master/IndexForDesignation">Designation Master</a></li>
+                                            }
+
+                                            @*System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'UserMaster' and FeatureName = 'Display'");
+
+                                            if (HeadingFields2[0].ItemArray[6].ToString() == "1")
+                                            {
+                                                <li><a href="../Master/IndexForUser">User Master</a></li>
+                                            }*@
+                                            System.Data.DataRow[] HeadingFields3 = dt.Select("submenuname = 'TemplateMaster' and FeatureName = 'Display'");
+                                            if (HeadingFields3[0].ItemArray[6].ToString() == "1")
+                                            {
+                                                <li><a href="../Master/IndexFotMailTemplateMaster">Mail Template Master</a></li>
+                                            }
+                                            System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'UserMaster' and FeatureName = 'Display'");
+                                            if (HeadingFields2[0].ItemArray[6].ToString() == "1")
+                                            {
+                                                <li><a href="../Master/UserPermissions">User & Permissions</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            //}
+                        }
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="label label-danger" style="font-size: inherit; background-color:#999aad75;">@Session["UserName"]</span> <span class="caret"></span></a>
+                            <ul class="dropdown-menu profile-right-aligned">
+                                <li><a href="../CRecruiter/Index">My Profile</a></li>
+                                <li><a href="../Placement/Logout">Sign Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul id="nav" class="nav navbar-nav navbar-right">
+                        @*<li><a class="border-right" href="#">@Session["UserName"]</a></li>*@
+                        <li><a class="border-right" href="#">@Session["RoleName"]</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer></footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", required: false)
+    @*<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/Content/css/jquery.dataTables.min.js"></script>*@
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+       
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                $('#UrlJobList').click(function () {
+                    $('#UrlPlacement').removeClass("active");
+                    $('#UrlJobList').addClass("active");
+                });
+                $('#UrlPlacement').click(function () {
+                    $('#UrlJobList').removeClass("active");
+                    $('#UrlPlacement').addClass("active");
+                });
+            });
+        })
+    </script>
+
+</body>
+
+</html>

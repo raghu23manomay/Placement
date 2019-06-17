@@ -1,0 +1,13 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Jagadeesh</td><td>UI Developer</td><td>Executive</td><td>jagadeeshmohan2013@gmail.com</td><td>8946005592</td><td>2 month (nego. upto 45 Days)</td><td>5.3 YRS</td><td>&nbsp;</td><td>Aspire Systems</td><td>Senior Software Engineer </td><td>7 LPA</td><td>11 lpa</td><td>Chennai</td><td>MCA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Rajkumar</td><td>UI Developer</td><td>Executive</td><td>rajsrmmca@gmail.com</td><td>9944771003</td><td>2 MONTH</td><td>7 YRS</td><td>&nbsp;</td><td>Cognizant Technologies Solutions</td><td>Associate </td><td>9.3 LPA</td><td>14 LPA</td><td>Chennai</td><td>MCA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Karthick</td><td>UI Developer</td><td>Executive</td><td>karthickrajamurugan29@gmail.com</td><td>9894639433</td><td>3 month(nego. upto 2 month)</td><td>7.8 yrs</td><td>&nbsp;</td><td>HCL</td><td>Consultant</td><td>10.7 lpa</td><td>40% hike</td><td>Chennai</td><td>B.Tech/B.E.&#160;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

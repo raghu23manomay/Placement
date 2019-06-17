@@ -1,0 +1,53 @@
+<table border='2px'><tr bgcolor='#87AFC6'>
+                                    <th>ReqID</th>
+                                    <th>vendor</th>
+                                    <th>CandidateName</th>
+                                    <th>emailid</th>
+                                    <th>mobile</th>
+                                    <th>Notice_period</th>
+                                    <th>Total_Exp</th>
+                                    <th>currently_drawn_salary</th>
+                                    <th>expected_salary</th>
+                                    <th>loc_desc</th>
+                                    <th>candID</th>
+                                    <th>FullPath</th>
+                            </tr>
+                                        <td>49</td>
+                                        <td>infosys</td>
+                                        <td>raghvendra mudgal</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>1.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>95</td>
+                                        <td>UploadResume/Documents/95/J95_20180910_034113.xls</td>
+                                </tr>
+                                        <td>49</td>
+                                        <td>infosys</td>
+                                        <td>rohit rasure</td>
+                                        <td>rmudgal23@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>2.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>96</td>
+                                        <td>UploadResume/Documents/96/J96_20180910_034056.xls</td>
+                                </tr>
+                                        <td>49</td>
+                                        <td>infosys</td>
+                                        <td>sumit kontam</td>
+                                        <td>rohit@gmail.com</td>
+                                        <td>8237175481</td>
+                                        <td>1</td>
+                                        <td>1 year</td>
+                                        <td>1.5 ctc</td>
+                                        <td>5.5 ctc</td>
+                                        <td>Solapur</td>
+                                        <td>94</td>
+                                        <td>UploadResume/Documents/94/J94_20180910_034133.xlsx</td>
+                                </tr></table>

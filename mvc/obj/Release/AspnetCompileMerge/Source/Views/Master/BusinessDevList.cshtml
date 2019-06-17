@@ -1,0 +1,134 @@
+﻿<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+
+
+
+@model  IEnumerable<mvc.Models.ClinetMasterGridList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+<style>
+    .grid-header-title {
+        color: #908a9c;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .dropdown-item1 {
+        width: 100%;
+        /*padding: 3px 20px;*/
+        clear: both;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #a1a0b2;
+        text-align: inherit;
+        white-space: nowrap;
+        background: none;
+        border: 0;
+    }
+</style>
+<div class="bg-white paddingTBLR15">
+        <div >
+            <div class="row">
+                
+
+                <table class="table table-hover">
+                    @foreach (var item in Model)
+                    {
+                        @*<a href="@Url.Action("ClientDetails", "Master", new { @client_id = item.client_id})">*@
+                        <tr id="clintdetails" onclick="Fun()">
+                            <td>
+                                <div class="checkbox marginTop0 marginBottom0">
+                                    <label class="paddingLeft0">
+                                        <input type="checkbox" value="">
+                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td width="80%">
+                                @item.Client_Name
+                            </td>
+                            <!--<td><i class="glyphicon glyphicon-envelope"></i> Email id</td>-->
+                            <td><span class="label label-success">@item.BuisinessType</span></td>
+                        </tr>
+
+                    }
+                </table>
+
+
+
+
+
+                @*<div class="col-sm-1 border-right-light">
+            <div class="btn-group m-t-xs7 pull-right">
+                <button type="button" class="btn dropdown btn-dot-dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                <div id="candidateActn" class="dropdown-menu is-right-aligned">
+                    <a href="@Url.Action("FetchClinetBusiness", "Master", new { @client_id = item.client_id})" data-toggle="modal" data-target="#mdlEditClient" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Client</span></a>
+                    <a href="@Url.Action("AddContactPersonBus", "Master", new { @client_id = item.client_id})" data-toggle="modal" data-target="#mdlAddContactPerson" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Add Person</span></a>
+                    <a href="@Url.Action("ClientContactDetailsBus", "Master", new { @client_id = item.client_id})" data-toggle="modal" data-target="#mdlClientContactDetails" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Show Contacts</span></a>
+                </div>
+            </div>
+
+        </div>*@
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="pnl-pagination m-b-md1">
+            <div class="pull-left">
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("IndexForBusinessDev", "Master", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions() { MaximumPageNumbersToDisplay = 2, DisplayPageCountAndCurrentLocation = true }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "mgrid", OnComplete = "PagedOnComplete" }))
+                @if (Model.Count() == 0)
+                {
+                    <ul class="pagination pull-right"></ul>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mdlETUser" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlAddContactPerson" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditClient" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlClientContactDetails" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditSchedule" class="modal fade" style="margin-left:10%;padding-top:50px;width: 80%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlCandidateActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlClientDetails" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+
+
+
+<script>
+    function Fun()
+    {
+
+        $(document).ready(function () {
+                    $.ajax({
+                        contentType: "application/json; charset=utf-8",
+                         url: "@Url.Action("ClientDetails", "Master")",
+                        method: 'GET',
+                        async: 'false',
+                        dataType: 'json',
+                        data: {
+                            client_id: $("#client_id").val(),
+                        }
+                   
+                       
+                  });
+            });
+            
+    }
+</script>

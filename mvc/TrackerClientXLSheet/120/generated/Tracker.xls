@@ -1,0 +1,29 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td>Umesh Kumar Khandelwal</td><td>Account Head</td><td>Executive</td><td>ukk4khandelwal@gmail.com</td><td>09422079001</td><td>3 month (Negotiable 1 month)</td><td>14 yrs</td><td>&nbsp;</td><td>BILT GRAPHICS PAPER PRODUCTS LTD</td><td>Manager (Accounts)</td><td>14 lpa</td><td>17 lpa</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>PRAMOD KUMAR JAIN</td><td>Account Head</td><td>Executive</td><td>pramodjain1981@gmail.com</td><td>9028025122</td><td>2 month (negotiable)</td><td>10 yrs</td><td>&nbsp;</td><td>Aurangabad Electricals Ltd</td><td>Senior Manager Accounts</td><td>20 lpa</td><td>30% hike</td><td>Aurangabad</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>SURESH SHARMA</td><td>Account Head</td><td>Executive</td><td>casureshsharma@gmail.com</td><td>09922448838</td><td>1 month</td><td> 13 yrs</td><td>&nbsp;</td><td>B.G.Shirke Construction TechnologyPvt.Ltd</td><td>Manager-Accounts &amp; Finance</td><td>18 lpa</td><td>30% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>TARAL KANSARA</td><td>Account Head</td><td>Executive</td><td>kansarataral@gmail.com </td><td>7264851312</td><td>3 month (Negotiable)</td><td>11 yrs</td><td>&nbsp;</td><td>FIAT INDIA AUTOMOBILES LIMITED</td><td>Manager - Corporate Finance </td><td>18 lpa</td><td>30% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Sumit Bhojwani</td><td>Account Head</td><td>Executive</td><td>sumit1.bhojwani@gmail.com</td><td>95525-88582</td><td>3 month (negotiable)</td><td>7.5 yrs</td><td>&nbsp;</td><td>Bosch Chassis Systems Private Limited</td><td>Financial Controller </td><td>19 lpa</td><td>25 lpa</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>BHARGAV J. RUGHANI</td><td>Account Head</td><td>Executive</td><td>bhargavjr@gmail.com</td><td>78753 83083</td><td>2 month</td><td>7 yrs</td><td>&nbsp;</td><td>Suzlon Group</td><td>Assistant Manager in F &amp; A </td><td>17 lpa</td><td>30% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>SACHIN DEKATE</td><td>Account Head</td><td>Executive</td><td>sachinydin@gmail.com</td><td>9820110323</td><td>3 months (Negotiable)</td><td>16 yrs</td><td>&nbsp;</td><td>Bilcare Limited</td><td>Deputy General Manager – Taxation</td><td>18 lpa</td><td>30% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Vinayak Ahuja</td><td>Account Head</td><td>Executive</td><td>vinayak.ahuja85@gmail.com</td><td>9689799927</td><td>3 month (Negotiable upto 2 months)</td><td>8 yrs</td><td>&nbsp;</td><td>Deepak Fertilizers&amp; Petrochemicals Corp LTD (DFPCL)</td><td>Assistant General Manager in Finance &amp; Accounts </td><td>19 lpa (increment due)</td><td>30% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>VISHAL B. SHELKE</td><td>Account Head</td><td>Executive</td><td>vishalshelkeca@gmail.com</td><td>8412021100</td><td>2 months</td><td>8 yrs</td><td>&nbsp;</td><td>Amcor Flexibles India Private Limited </td><td>Manager – Finance &amp; Accounts</td><td>16.35 lpa</td><td>20% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Hanumandas Ramprasad Modani</td><td>Account Head</td><td>Executive</td><td>sunnymodani@yahoo.com</td><td>94235 20110</td><td>2 month</td><td>10 yrs</td><td>&nbsp;</td><td>Eaton Technologies Private Limited</td><td>Team Lead (Manager – Audit</td><td>16.62 lpa</td><td>30% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Ashwin R Shanbhag</td><td>Account Head</td><td>Executive</td><td>ashwinshanbhag7@gmail.com</td><td>9096648888</td><td>3 months (Negotiable)</td><td>12 yrs</td><td>&nbsp;</td><td>KF Bioplants Pvt Ltd</td><td>Senior Manager Finance </td><td>17 lpa</td><td>20% hike</td><td>Pune</td><td>CA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

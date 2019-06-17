@@ -1,0 +1,12 @@
+﻿
+@model  mvc.Models.FetchcandidatwForCandidate
+
+@{
+    Layout = null;
+}
+
+@Html.DropDownList("model.location_id", new SelectList((System.Collections.IEnumerable)ViewData["CandidateLocationList"], "Value", "Text",Model.location_id), "Select Location", new { @class = "form-control input-sm", @id = "location_id", Title = "location_id" })
+@*@Html.HiddenFor(model => model.location_id)*@
+
+
+

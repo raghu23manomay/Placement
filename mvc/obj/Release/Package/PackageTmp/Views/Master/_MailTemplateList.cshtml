@@ -1,0 +1,111 @@
+﻿
+
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Mail Template List";
+}
+
+@model  IEnumerable<mvc.Models.MailTemplate>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+@{
+
+    System.Data.DataTable dt = new System.Data.DataTable();
+    dt = Session["UserPermission"] as System.Data.DataTable;
+}
+<style>
+
+    .grid-header-title {
+        color: #908a9c;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .dropdown-item1 {
+        width: 100%;
+        /*padding: 3px 20px;*/
+        clear: both;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #a1a0b2;
+        text-align: inherit;
+        white-space: nowrap;
+        background: none;
+        border: 0;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-3" style="text-align:center;">
+        <label class="fl">Template Title<i class="fa fa-fw fa-sort"></i></label>
+    </div>
+    <div class="col-sm-3">
+        <label class="fl">Mail Subject <i class="fa fa-fw fa-sort"></i></label>
+    </div>
+</div>
+
+
+@foreach (var item in Model)
+{
+
+    <div class="ibox m-t-xs border-left-blue">
+        <div class="row">
+
+            <div class="col-sm-3 border-right-light">
+
+                <div>@item.temp_title </div>
+
+            </div>
+            <div class="col-sm-3 border-right-light">
+
+                <div>@item.email_subject </div>
+
+            </div>
+
+            <div class="col-sm-1 border-right-light">
+                @*<a href="@Url.Action("edit", "Master",new { @desig_id=@item.desig_id})" data-toggle="modal" data-target="#mdlAddDesignation" class="dropdown-item1 ember-view"> <i class="fa fa-pencil-square-o m-r-sm" style="font-size:20px;color:orange" aria-hidden="true"></i><span></span></a>*@
+                <div class="btn-group m-t-xs7 pull-right">
+                    <button type="button" class="btn dropdown btn-dot-dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                    <div id="MailAcn" class="dropdown-menu is-right-aligned">
+                        @{
+                            System.Data.DataRow[] HeadingFields8 = dt.Select("submenuname = 'TemplateMaster' and FeatureName = 'Update'");
+                            if (HeadingFields8[0].ItemArray[6].ToString() == "1")
+                            {
+                                <a href="@Url.Action("FetchMailTemplateForUpdate", "Master", new { @temp_id = item.temp_id})" data-toggle="modal" data-target="#mdlEditMailTemplateMaster" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Template</span></a>
+                            }
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="pnl-pagination m-b-md1">
+        <div class="pull-right">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("IndexFotMailTemplateMaster", "Master", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions() { MaximumPageNumbersToDisplay = 4, DisplayPageCountAndCurrentLocation = true }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "mgrid", OnComplete = "PagedOnComplete" }))
+            @if (Model.Count() == 0)
+            {
+                <ul class="pagination pull-right"></ul>
+            }
+        </div>
+    </div>
+</div>
+
+
+<div id="mdlEditMailTemplateMaster" class="modal fade " style="margin-left: 20%;padding-top: 50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+
+
+
+
+
+

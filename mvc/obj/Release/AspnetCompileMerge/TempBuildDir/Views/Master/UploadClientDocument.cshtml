@@ -1,0 +1,169 @@
+﻿@model  IEnumerable<mvc.Models.ModelUploadClientDocument>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>*@
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
+<script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+
+<div class="modal-dialog" id="pnl-mdlAddJob">
+    @using (Html.BeginForm("UploadClientDocument", "Master", FormMethod.Post, new { @class = "", @id = "frmCandidate", enctype = "multipart/form-data" }))
+    {
+        @*@Html.HiddenFor(model => model.ClientID)*@
+       
+        <div class="modal-content">
+            <div class="modal-header dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Upload Client Document</h4>
+            </div>
+            <div class="modal-body no-pad">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="modal-left">
+                            <div class="form-group row">
+                                <div class="col-sm-12" style="padding-right: 0px;padding-left: 0px;">
+                                    <input type="file" id="FileUpload" name="file" required data-val="true" data-val-required="please select a file" />
+                                    <p id="validation" style="color:red;">Select File</p>
+                                </div>
+                                <div class="text-danger" id="error_msg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+                @if (Model.Count() != 0)
+                {
+                    @Html.Hidden("ClientId",Convert.ToInt16(Model.First().ClientID.ToString()), new { id = "ClientID" })
+                    foreach (var item in Model)
+                    {
+                        <div class="ibox m-t-xs border-left-blue">
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="fl">
+
+                                        <div>
+                                            <h4>Current Document :</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6" style="margin-left:-130px">
+                                    <div class="fl">
+
+                                        <div>
+                                            @item.FileName <a href="@item.FolderPath" target="_blank">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*<div class="col-sm-6">
+                                        <label>@item.req_title</label>
+                                        <label>Exp:(@item.exp_Min - @item.exp_Max) </label>
+                                    </div>*@
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-sm-12">
+                        <div class="alert alert-warning">
+                            No Client Document found
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="modal-footer">
+                @*<input type="submit" id="Submit" class="btn btn-dark" value="UploadFile" title="Click to upload file" onclick="return CheckFileName();" />*@
+                <input type="submit" id="Submit" class="btn btn-dark" value="UploadFile" title="Click to upload file" />
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    }
+
+
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#BtnUpload').click(function () {
+
+            // Checking whether FormData is available in browser
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#FileUpload").get(0);
+                var files = fileUpload.files;
+                var ext = $('#FileUpload').val().split('.').pop().toLowerCase();
+
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+
+                // Adding one more key to FormData object
+
+                var RecID = $("#RecID").val();
+                fileData.append('RecID', RecID);
+                $.ajax({
+                    url: '/Master/UploadClientDocument',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result) {
+                        alert('file Uploaded sucesssfully');
+                        
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                });
+            }
+            else {
+                alert("FormData is not supported.");
+            }
+        });
+
+
+
+        $("#validation").hide();
+
+        $('#Submit').on('click', function () {
+            var a;
+            a = $("#FileUpload").val();
+            if (a == "") {
+                $("#validation").show();
+                toastr.success("Select File");
+                return false;
+            }
+            else {
+
+                toastr.success("File Uploaded successfully.");
+
+
+            }
+
+        });
+
+    });
+
+
+</script>

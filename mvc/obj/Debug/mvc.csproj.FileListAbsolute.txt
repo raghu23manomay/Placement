@@ -1,0 +1,582 @@
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\csc.exe
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\vbc.exe
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\source\repos\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\source\repos\mvc\mvc\bin\mvc.dll.config
+C:\Users\Admin\source\repos\mvc\mvc\bin\mvc.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\mvc.pdb
+C:\Users\Admin\source\repos\mvc\mvc\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\Owin.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Net.Http.Formatting.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Helpers.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Http.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Http.WebHost.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Mvc.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Optimization.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Razor.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.WebPages.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\source\repos\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\PagedList.Mvc.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Net.Http.Formatting.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Http.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Helpers.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Mvc.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Optimization.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.Razor.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.WebPages.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\source\repos\mvc\mvc\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+C:\Users\Admin\source\repos\mvc\mvc\obj\Debug\mvc.dll
+C:\Users\Admin\source\repos\mvc\mvc\obj\Debug\mvc.pdb
+D:\New folder (2)\mvc\mvc\bin\roslyn\csc.exe
+D:\New folder (2)\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\New folder (2)\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\New folder (2)\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\New folder (2)\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\New folder (2)\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\New folder (2)\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\New folder (2)\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+D:\New folder (2)\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+D:\New folder (2)\mvc\mvc\bin\roslyn\vbc.exe
+D:\New folder (2)\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+D:\New folder (2)\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+D:\New folder (2)\mvc\mvc\bin\mvc.dll.config
+D:\New folder (2)\mvc\mvc\bin\mvc.dll
+D:\New folder (2)\mvc\mvc\bin\mvc.pdb
+D:\New folder (2)\mvc\mvc\bin\EntityFramework.SqlServer.dll
+D:\New folder (2)\mvc\mvc\bin\Owin.dll
+D:\New folder (2)\mvc\mvc\bin\System.Net.Http.Formatting.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.Helpers.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.Http.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.Http.WebHost.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.Mvc.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.Optimization.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.Razor.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.WebPages.dll
+D:\New folder (2)\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+D:\New folder (2)\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\New folder (2)\mvc\mvc\bin\PagedList.Mvc.xml
+D:\New folder (2)\mvc\mvc\bin\System.Net.Http.Formatting.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.Http.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.Http.WebHost.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.Helpers.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.Mvc.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.Optimization.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.Razor.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.WebPages.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+D:\New folder (2)\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+D:\New folder (2)\mvc\mvc\bin\EntityFramework.SqlServer.xml
+D:\New folder (2)\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+D:\New folder (2)\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+D:\New folder (2)\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+D:\New folder (2)\mvc\mvc\obj\Debug\mvc.dll
+D:\New folder (2)\mvc\mvc\obj\Debug\mvc.pdb
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\csc.exe
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\vbc.exe
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\mvc.dll.config
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\mvc.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\mvc.pdb
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\Owin.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Helpers.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Mvc.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Optimization.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Razor.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\PagedList.Mvc.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Helpers.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Mvc.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Optimization.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.Razor.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.dll
+C:\Users\admin\source\repos\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.pdb
+D:\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+D:\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+D:\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.dll
+D:\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.pdb
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\csc.exe
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\vbc.exe
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+D:\MVC_19_9_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+D:\MVC_19_9_2018\mvc\mvc\bin\mvc.dll.config
+D:\MVC_19_9_2018\mvc\mvc\bin\mvc.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\mvc.pdb
+D:\MVC_19_9_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\Owin.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Helpers.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Mvc.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Optimization.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Razor.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+D:\MVC_19_9_2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\PagedList.Mvc.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Helpers.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Mvc.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Optimization.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.Razor.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+D:\MVC_19_9_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+D:\MVC_19_9_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\csc.exe
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\vbc.exe
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\mvc.dll.config
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\mvc.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\mvc.pdb
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\Owin.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Helpers.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Http.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Mvc.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Optimization.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Razor.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.WebPages.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\PagedList.Mvc.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Http.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Helpers.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Mvc.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Optimization.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.Razor.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.WebPages.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\obj\Debug\mvc.dll
+C:\Users\admin\source\repos\mvc date 22-9-2018\mvc\mvc\obj\Debug\mvc.pdb
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\csc.exe
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\vbc.exe
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\mvc.dll.config
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\mvc.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\mvc.pdb
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\Owin.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Helpers.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Http.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Mvc.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Optimization.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Razor.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.WebPages.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\PagedList.Mvc.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Http.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Helpers.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Mvc.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Optimization.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.Razor.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.WebPages.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+D:\placement code\MVC23-9-2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+D:\placement code\MVC23-9-2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+D:\placement code\MVC23-9-2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+D:\placement code\MVC23-9-2018\mvc\mvc\obj\Debug\mvc.dll
+D:\placement code\MVC23-9-2018\mvc\mvc\obj\Debug\mvc.pdb
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\csc.exe
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\vbc.exe
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\mvc.dll.config
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\mvc.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\mvc.pdb
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\Owin.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\PagedList.Mvc.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.dll
+C:\Users\admin\source\repos\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.pdb
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\csc.exe
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\vbc.exe
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll.config
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\mvc.pdb
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\Owin.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\PagedList.Mvc.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+D:\placement code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+D:\placement code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+D:\placement code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+D:\placement code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.dll
+D:\placement code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.pdb
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\csc.exe
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\vbc.exe
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll.config
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\mvc.pdb
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\Owin.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\PagedList.Mvc.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.dll
+M:\Raghu Backup\Placement Executive code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.pdb
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\csc.exe
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\vbc.exe
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll.config
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.pdb
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\Owin.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\PagedList.Mvc.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+M:\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+M:\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+M:\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+M:\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.dll
+M:\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.pdb
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\csc.exe
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\vbc.exe
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll.config
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.pdb
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\Owin.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.dll
+M:\Raghu Folder\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.pdb
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\csc.exe
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Collections.Immutable.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\System.Reflection.Metadata.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\vbc.exe
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\roslyn\VBCSCompiler.exe.config
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll.config
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\mvc.pdb
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\JQChart.Web.Mvc.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\Owin.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\JQChart.Web.Mvc.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Net.Http.Formatting.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Http.WebHost.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Helpers.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Mvc.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Optimization.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.Razor.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Deployment.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\System.Web.WebPages.Razor.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\bin\EntityFramework.SqlServer.xml
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csproj.CopyComplete
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.dll
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.pdb
+E:\Manomay Data\placement live code\MVC 1_10_2018\mvc\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\csc.exe
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\System.Collections.Immutable.dll
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\System.Reflection.Metadata.dll
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\vbc.exe
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\VBCSCompiler.exe
+E:\Manomay Data\PlacementGit\mvc\bin\roslyn\VBCSCompiler.exe.config
+E:\Manomay Data\PlacementGit\mvc\bin\mvc.dll.config
+E:\Manomay Data\PlacementGit\mvc\bin\mvc.dll
+E:\Manomay Data\PlacementGit\mvc\bin\mvc.pdb
+E:\Manomay Data\PlacementGit\mvc\bin\EntityFramework.SqlServer.dll
+E:\Manomay Data\PlacementGit\mvc\bin\JQChart.Web.Mvc.dll
+E:\Manomay Data\PlacementGit\mvc\bin\Owin.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Net.Http.Formatting.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Helpers.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Http.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Http.WebHost.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Mvc.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Optimization.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Razor.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.WebPages.Deployment.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.WebPages.dll
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.WebPages.Razor.dll
+E:\Manomay Data\PlacementGit\mvc\bin\JQChart.Web.Mvc.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Net.Http.Formatting.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Http.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Http.WebHost.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Helpers.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Mvc.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Optimization.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.Razor.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.WebPages.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.WebPages.Deployment.xml
+E:\Manomay Data\PlacementGit\mvc\bin\System.Web.WebPages.Razor.xml
+E:\Manomay Data\PlacementGit\mvc\bin\EntityFramework.SqlServer.xml
+E:\Manomay Data\PlacementGit\mvc\obj\Debug\mvc.csprojAssemblyReference.cache
+E:\Manomay Data\PlacementGit\mvc\obj\Debug\mvc.csproj.CoreCompileInputs.cache
+E:\Manomay Data\PlacementGit\mvc\obj\Debug\mvc.csproj.CopyComplete
+E:\Manomay Data\PlacementGit\mvc\obj\Debug\mvc.dll
+E:\Manomay Data\PlacementGit\mvc\obj\Debug\mvc.pdb

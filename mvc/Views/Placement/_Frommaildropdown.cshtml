@@ -1,0 +1,19 @@
+﻿@model mvc.Models.FromMail
+<br />
+<div class="form-group">
+
+    @Html.DropDownList("model.Emailid", new SelectList((System.Collections.IEnumerable)ViewData["EmailList"], "Value", "Text"), "Select Email", new { @class = "form-control input-sm", @id = "EmailList", Title = "EmailList" })
+    @Html.HiddenFor(model => model.Emailid)
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#validation2").hide();
+    });
+
+</script>
+
+

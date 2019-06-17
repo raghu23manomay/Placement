@@ -1,0 +1,27 @@
+﻿@model  IEnumerable<mvc.Models.ClinetMasterGridList>
+@using PagedList;
+@using PagedList.Mvc;
+@using GridMvc.Html
+
+@foreach (var item in Model)
+{
+    <div class="page-header marginTop0">
+        <h3 class="marginTop0"> </h3>
+    </div>
+    <div class="row">
+        <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-home"></i> Address</div>-->
+        <div class="col-xs-8">@item.loc_desc</div>
+    </div>
+    <div class="row">
+        <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-record"></i> City</div>-->
+        <div class="col-xs-8">@item.address</div>
+    </div>
+    <div class="row">
+        <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-globe"></i> State</div>-->
+        <div class="col-xs-8">Maharashtra</div>
+    </div>
+    <div class="row">
+        <!--<div class="col-xs-4 labelHead"><i class="glyphicon glyphicon-map-marker"></i> Zip code</div>-->
+        <div class="col-xs-8">411 038</div>
+    </div>
+}

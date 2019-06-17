@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+    @*<h2 style="background-color: antiquewhite;font-weight: initial;text-align: center;">Dashboard</h2>*@
+</div>
+@*<link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />*@
+<link href="~/Contents/DashboardStyleSheet.css" rel="stylesheet" />
+
+<body>
+
+    <div class="wrapper1 wrapper-content1">
+
+        <div class="gray-bg">
+
+            <div class="">
+               
+
+                <div class="row">
+                    <div class="container">
+
+                        <div class="col-md-5">
+
+                            <div class="timeline-row post-even">
+
+                                <div class="ibox ">
+                                    <div class="ibox-title" style="padding: 4px;font-size: 15px;font-weight: 600;">
+                                       
+                                        <h2 class="text-success no-margin headingsize18"> Position Analysis</h2>
+                                    </div>
+                                    <div class="flot-chart-content" id="flot-dashboard-chart">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /messages -->
+
+                        </div>
+                        <div class="col-md-7">
+                            <div class="timeline-row post-even">
+
+                                <div class="col-md-12" style="max-height:550px;overflow:auto;">
+                                    <div class="ibox">
+                                        <div class="ibox-title" style="border-bottom: 1px solid #ccc;padding: 4px;font-size: 15px;font-weight: 600;">
+                                            <h2 class=" text-success no-margin headingsize18">Position Analysis details</h2>                                         
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row" id="DashboardData">
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                                                                          
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+<script>
+
+    $(document).ready(function () {
+
+         @*$.ajax({
+            url: "@Url.Action("ColumnChart", "Admin")",
+             data: {},
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 //data3 = data;
+                 $('#chart').html(data);
+
+            }
+        });*@
+
+
+         $.ajax({
+            url: "@Url.Action("DashboardCityData", "Admin")",
+             data: {},
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 //data3 = data;
+                 $('#flot-dashboard-chart').html(data);
+
+            }
+        });
+
+        $('.lblcount').click(function () {
+            var locationid = $(this).attr('id');
+            var sectorname = $(this).attr('name');
+
+        $.ajax({
+            url: "@Url.Action("DashboardData", "Admin")",
+            data: {
+                Locationid: locationid,
+                sectorname: sectorname,
+            },
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 //data3 = data;
+                 $('#DashboardData').html(data);
+
+            }
+            });
+        });
+
+
+    });
+
+
+</script>

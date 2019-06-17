@@ -1,0 +1,66 @@
+﻿
+@model  IEnumerable<mvc.Models.InterviewTrackList>
+@{
+    ViewBag.Title = "InterviewTrackerList";
+    Layout = null;
+
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+   
+
+                <div id="export" class="table-responsive">
+
+
+                    <p><span style="font-family:Arial;font-size:10pt">Dear Sir,</span></p>
+
+                    <p>
+                        <span style="font-family:Arial;font-size:10pt">
+                            Below candidates are confirm for the interview.
+                            Please confirm.
+                        </span>
+                    </p>
+                    <table class="table table-striped text-left " id="headerTable" border="1">
+                        <thead>
+                            <tr>
+                                <th>Mode Of Interview</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Mobile</th>
+                                <th>date</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodydata">
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ModeName</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.req_title</td>
+                                    <td>@item.mobile</td>
+                                    <td>@item.ActivityDate</td>
+                                    <td>@item.ActivityTIME</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <p> <span style="font-family:Arial;font-size:10pt"><b> Executive Placement India </b></span> </p>
+                    <p> <span style="font-family:Arial;font-size:10pt">  Cell:  77190 14477  </span> </p>
+                    <p> <span style="font-family:Arial;font-size:10pt"> Phone:  020 46760112  </span> </p>
+                    <p> <span style="font-family:Arial;font-size:10pt"> Email:  hr@ehiring.in</span> </p>
+
+                </div>
+       
+}
+
+@*<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />*@
+
+
