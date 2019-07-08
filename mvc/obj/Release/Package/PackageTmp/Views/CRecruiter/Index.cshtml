@@ -5,36 +5,20 @@
 <!DOCTYPE html>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-6" id="profiledetails">
+        <div class="col-sm-12" id="profiledetails">
 
         </div>
-        <div class="col-sm-6" id="addrecruiter">
-
-        </div>
+        
     </div>
-
-</div>
+    <br />
+  </div>
            
        
 
 
 <script>
-    $(document).ready(function() {
-          $.ajax({
-            url: "@Url.Action("AddRecruiterProfile", "CRecruiter")",
-            data: {
+    $(document).ready(function () {
                
-            },
-             dataType: "text",
-           //  type: "POST",
-             async: false,
-             success: function (data) {
-
-                 //data3 = data;
-                 $('#addrecruiter').html(data);
-
-            }
-        });
 
          $.ajax({
             url: "@Url.Action("DisplayRecruiterProfile", "CRecruiter")",

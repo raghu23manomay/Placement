@@ -280,6 +280,8 @@
     <Content Include="Contents\bootstrap-datepicker3.standalone.css" />
     <Content Include="Contents\bootstrap-datepicker3.standalone.min.css" />
     <Content Include="Contents\DashboardStyleSheet.css" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.min.css" />
     <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\jquery.dataTables.min.js" />
     <Content Include="Content\css\styles.css" />
@@ -747,6 +749,7 @@
     <Content Include="Content\css\fonts\icomoone627.eot" />
     <Content Include="Content\css\fonts\icomoone627.ttf" />
     <Content Include="Content\css\fonts\icomoone627.woff" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.js.txt" />
     <Content Include="webui-popover\jquery.webui-popover.css" />
@@ -1155,11 +1158,9 @@
     <Content Include="Views\Placement\WorkFlowDetail.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Placement\_Schedule.cshtml" />
-    <Content Include="Views\Placement\Test.cshtml" />
     <Content Include="Views\Placement\_EditSchedule.cshtml" />
     <Content Include="Views\Placement\_EditCandidate.cshtml" />
     <Content Include="Views\Shared\_Layout3.cshtml" />
-    <Content Include="Views\Placement\test2.cshtml" />
     <Content Include="Views\Placement\mailTemplatedata.cshtml" />
     <Content Include="Views\Placement\_SourceCandidate.cshtml" />
     <Content Include="Views\Placement\_ScheduleActivity.cshtml" />
@@ -1234,6 +1235,11 @@
     <Content Include="Views\CRecruiter\AddRecruiterProfile.cshtml" />
     <Content Include="Views\CRecruiter\Index.cshtml" />
     <Content Include="Views\CRecruiter\DisplayRecruiterProfile.cshtml" />
+    <Content Include="Views\CRecruiter\FetchRecruiterProfile.cshtml" />
+    <Content Include="Views\Master\_tableforEditClient.cshtml" />
+    <Content Include="Views\Master\_tableforEditClientContactPerson.cshtml" />
+    <Content Include="Views\Master\_UserPermissionList.cshtml" />
+    <Content Include="Views\Placement\_dropdowncontacperson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

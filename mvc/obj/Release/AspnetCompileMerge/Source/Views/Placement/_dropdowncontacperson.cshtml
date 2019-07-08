@@ -1,0 +1,9 @@
+﻿@model  mvc.Models.Requirement
+@{
+    Layout = null;
+}
+
+@Html.DropDownList("model.ContactPerson", new SelectList((System.Collections.IEnumerable)ViewData["ContactPersonList"], "Value", "Text"), "Select Contact Person", new { @class = "form-control input-sm", @id = "ContactPerson", Title = "ContactPerson" })
+@Html.HiddenFor(model => model.ContactPerson,new { @id = "contactid"})
+@Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
+

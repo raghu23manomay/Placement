@@ -1,0 +1,32 @@
+﻿@model IEnumerable<mvc.Models.ClientContactDetailsEdit>
+@{
+    Layout = null;
+}
+<table id="contactdetailsTable" class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbl">
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td class="tblrow" cid="@item.clientCD_ID">@item.contactPerson_Name</td>
+            <td class="tblrow" cid="@item.clientCD_ID">@item.mobile</td>
+            <td class="tblrow" cid="@item.clientCD_ID">@item.emailid</td>
+            <td class="hidden">@item.description</td>
+            <td class="hidden">@item.cp_desig_Id</td>
+            <td class="hidden">@item.phone1</td>
+            <td class="hidden">@item.phone2</td>
+            <td><a data-itemId="0" href="#" class="deleteItem"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="hidden">@item.clientCD_ID</td>
+            <td class="hidden">@item.client_id</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<p id="valcontactpersontbl" style="color:red;">Please add atleast one location</p>

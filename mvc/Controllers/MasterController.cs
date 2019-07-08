@@ -645,9 +645,8 @@ namespace mvc.Controllers
                     @ClientId,@LocationId,@ContactNo,@Addedby",
                     new SqlParameter("@ClientId", (object)DBNull.Value),
                     new SqlParameter("@LocationId", O.LocationId),
-                    new SqlParameter("@ContactNo", O.ContactNo ),
+                    new SqlParameter("@ContactNo", O.ContactNo == null ? (object)DBNull.Value : O.ContactNo),
                     new SqlParameter("@Addedby",Convert.ToInt16(Session["User_id"]) == 0 ? (object)DBNull.Value : Convert.ToInt16(Session["User_id"])));
-
                 }
 
                 return Json("Location Added Sucessfully");
@@ -662,6 +661,42 @@ namespace mvc.Controllers
             
         }
 
+        [HttpPost]
+        public ActionResult UpdateClientLocation(ClientLocation[] ClientLocation)
+        {
+
+            try
+            {
+
+                jobDbContext _db = new jobDbContext();
+                foreach (var item in ClientLocation)
+                {
+
+                    ClientLocation O = new ClientLocation();
+
+                    O.ClientId = item.ClientId;
+                    O.LocationId = item.LocationId;
+                    O.ContactNo = item.ContactNo;
+
+                    var result = _db.Database.ExecuteSqlCommand(@"exec USP_UpdateClientLocation 
+                    @ClientId,@LocationId,@ContactNo,@Addedby",
+                    new SqlParameter("@ClientId", O.ClientId),
+                    new SqlParameter("@LocationId", O.LocationId),
+                    new SqlParameter("@ContactNo", O.ContactNo == null ? (object)DBNull.Value : O.ContactNo),
+                    new SqlParameter("@Addedby", Convert.ToInt16(Session["User_id"]) == 0 ? (object)DBNull.Value : Convert.ToInt16(Session["User_id"])));
+                }
+
+                return Json("Location Added Sucessfully");
+
+            }
+
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(message);
+            }
+
+        }
         //[HttpPost]
         //public ActionResult add_ContactPerson(AddContactPerson rs)
         //{
@@ -765,43 +800,42 @@ namespace mvc.Controllers
         //================================== Client Contact For Update Code ===========================================
 
         [HttpPost]
-        public ActionResult UpdateContactPerson(ClientContactDetailsEdit rs)
+        public ActionResult UpdateContactPerson(ClientContactDetailsEdit[] ClientContactDetailsEdit)
         {
 
             try
             {
+
                 jobDbContext _db = new jobDbContext();
+                foreach (var item in ClientContactDetailsEdit)
+                {
+
                 var result = _db.Database.ExecuteSqlCommand(@"exec USP_UpdateClientContactPerson 
-                @clientCD_ID,@client_id,@contactPerson_Name,@cp_desig_Id,@phone1,@phone2,@mobile,@description,@user_id,@update_date,@addedBy,@emailid", 
-                new SqlParameter("@clientCD_ID", rs.clientCD_ID),
-                new SqlParameter("@client_id", rs.client_id),
-                new SqlParameter("@contactPerson_Name", rs.contactPerson_Name),
-                new SqlParameter("@cp_desig_Id", rs.cp_desig_Id),
-                new SqlParameter("@phone1", rs.phone1 == null ? (object)DBNull.Value : rs.phone1),
-                new SqlParameter("@phone2", rs.phone2 == null ? (object)DBNull.Value : rs.phone2),
-                new SqlParameter("@mobile", rs.mobile),
-                new SqlParameter("@description", rs.description == null ? (object)DBNull.Value : rs.description),
+                @clientCD_ID,@client_id,@contactPerson_Name,@cp_desig_Id,@phone1,@phone2,@mobile,@description,@user_id,@update_date,@addedBy,@emailid",
+                new SqlParameter("@clientCD_ID", item.clientCD_ID),
+                new SqlParameter("@client_id", item.client_id),
+                new SqlParameter("@contactPerson_Name", item.contactPerson_Name),
+                new SqlParameter("@cp_desig_Id", item.cp_desig_Id),
+                new SqlParameter("@phone1", item.phone1 == null ? (object)DBNull.Value : item.phone1),
+                new SqlParameter("@phone2", item.phone2 == null ? (object)DBNull.Value : item.phone2),
+                new SqlParameter("@mobile", item.mobile),
+                new SqlParameter("@description", item.description == null ? (object)DBNull.Value : item.description),
                 new SqlParameter("@user_id", 1),
                 new SqlParameter("@update_date", DateTime.Now),
                 new SqlParameter("@addedBy", 1),
-                new SqlParameter("@emailid", rs.emailid == null ? (object)DBNull.Value : rs.emailid)
+                new SqlParameter("@emailid", item.emailid == null ? (object)DBNull.Value : item.emailid)
                  );
+                }
 
-                return Json("IndexForclient");
-               
+                return Json("Person Updated Sucessfully");
 
             }
+
             catch (Exception ex)
             {
-
-                string message = string.Format("<b>Message:</b> {0}<br /><br />", ex.Message);
-                return View("IndexForclient", message);
-
-            }
-            finally
-            {
-
-            }
+                string message = ex.Message;
+                return Json(message);
+            }          
 
         }
 
@@ -838,6 +872,7 @@ namespace mvc.Controllers
                 ViewData["BusinessTypeList"] = binddropdown("BusinessTypeList", 0);
                 ViewData["LocationList"] = binddropdown("LocationList", 0);
                 ViewData["ClientTypeList"] = binddropdown("ClientTypeList", 0);
+                ViewBag.clientid = client_id;
                 return Request.IsAjaxRequest()
                        ? (ActionResult)PartialView("_EditClient", data)
                        : View("_EditClient", data);
@@ -1174,14 +1209,24 @@ namespace mvc.Controllers
             return Request.IsAjaxRequest()
                     ? (ActionResult)PartialView("IndexForclient", itemsAsIPagedList)
                     : View("IndexForclient", itemsAsIPagedList);
-
-
         }
         
-        public ActionResult UserPermissions()
+        public ActionResult LoadUserPermissions(string username = "")
         {
             jobDbContext _db = new jobDbContext();
-            var result = _db.UserPermission.SqlQuery(@"exec [GetUSerList]").ToList<UserPermission>();
+            var result = _db.UserPermission.SqlQuery(@"exec GetUSerList @username",
+                new SqlParameter("@username", username)).ToList<UserPermission>();
+            IEnumerable<UserPermission> data = result;
+            return Request.IsAjaxRequest()
+                ? (ActionResult)PartialView("_UserPermissionList", data)
+                : View("_UserPermissionList", data);
+        }
+
+        public ActionResult UserPermissions(string username = "")
+        {
+            jobDbContext _db = new jobDbContext();
+            var result = _db.UserPermission.SqlQuery(@"exec GetUSerList @username",
+                new SqlParameter("@username",username)).ToList<UserPermission>();
             IEnumerable<UserPermission> data = result;
             return Request.IsAjaxRequest()
                 ? (ActionResult)PartialView("UserPermissions", data)
@@ -1295,5 +1340,59 @@ namespace mvc.Controllers
             }
 
         }
+
+
+
+
+        public ActionResult _tableforEditClient(int? clientid)
+        {
+
+            try
+            {
+                clientlocationdetail data = new clientlocationdetail();
+
+                jobDbContext _db = new jobDbContext();
+                var result = _db.clientlocationdetail.SqlQuery(@"exec GetClientLocationDetails 
+                @ClientId",
+                 new SqlParameter("@ClientId", clientid)).ToList<clientlocationdetail>();
+                IEnumerable<clientlocationdetail> data1 = result;
+                
+                return Request.IsAjaxRequest()
+                ? (ActionResult)PartialView("_tableforEditClient", data1)
+                : View("_tableforEditClient", data1);
+            }
+            catch (Exception ex)
+            {
+                return View("_tableforEditClient",ex.Message);
+
+            }
+            
+        }
+
+        public ActionResult _tableforEditClientContactPerson(int? clientid)
+        {
+
+            try
+            {
+                ClientContactDetailsEdit data = new ClientContactDetailsEdit();
+
+                jobDbContext _db = new jobDbContext();
+                var result = _db.CEList.SqlQuery(@"exec usp_ClientWiseContactPerson 
+                @ClientId",
+                 new SqlParameter("@ClientId", clientid)).ToList<ClientContactDetailsEdit>();
+                IEnumerable<ClientContactDetailsEdit> data1 = result;
+
+                return Request.IsAjaxRequest()
+                ? (ActionResult)PartialView("_tableforEditClientContactPerson", data1)
+                : View("_tableforEditClientContactPerson", data1);
+            }
+            catch (Exception ex)
+            {
+                return View("_tableforEditClientContactPerson", ex.Message);
+
+            }
+
+        }
+
     }
 }

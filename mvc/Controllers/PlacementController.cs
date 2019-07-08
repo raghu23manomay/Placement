@@ -68,11 +68,11 @@ namespace mvc.Controllers
             }
         }
 
-        public StaticPagedList<CandidateList> GridList(int? page, int? PageRowNumber,String Name, String DName, String CName, String Eid, String Mob, String Stage,string Activity, DateTime? Date,int? userid,int? reqid = 0)
+        public StaticPagedList<CandidateList> GridList(int? page, int? PageRowNumber, String Name, String DName, String CName, String Eid, String Mob, String Stage, string Activity, DateTime? Date, int? userid, int? reqid = 0)
         {
             jobDbContext _db = new jobDbContext();
             var pageIndex = (page ?? 1);
-            int pageSize = (PageRowNumber ?? 8); 
+            int pageSize = (PageRowNumber ?? 8);
             int totalCount = (PageRowNumber ?? 8);
             CandidateList clist = new CandidateList();
             if (Name == null) Name = "";
@@ -83,6 +83,16 @@ namespace mvc.Controllers
             if (Stage == null) Stage = "";
             if (Activity == null) Activity = "";
             if (Date.ToString() == "01/01/1991 0:00:00") Date = null;
+
+            if(Convert.ToInt16(Session["RoleID"].ToString()) == 7)
+            {
+
+            }
+            else if (userid == 0)
+            {
+                userid = Convert.ToInt16(Session["User_id"].ToString());
+            }
+            
 
             IEnumerable<CandidateList> result = _db.CList.SqlQuery(@"exec usp_CandidateList
               @pPageIndex, @pPageSize,@pName,@count,@dName,@cName,@ename,@mob,@stage,@activity,@date,@userid,@reqid",
@@ -142,7 +152,7 @@ namespace mvc.Controllers
             if (Session["userid"] != null) { userid = Convert.ToInt16(Session["userid"].ToString()); } else { userid = 0; }
             StaticPagedList<CandidateList> itemsAsIPagedList;
             itemsAsIPagedList = GridList(page,PageRowNumber,Name, DName, CName, Eid, Mob, Stage, Activity, Date, userid, reqid);
-
+            ViewData["UserList"] = binddropdown("UserList", 0);
             return Request.IsAjaxRequest()
                     ? (ActionResult)PartialView("index", itemsAsIPagedList)
                     : View("index", itemsAsIPagedList);
@@ -156,15 +166,16 @@ namespace mvc.Controllers
             return RedirectToAction("Login", "Home");
         }
 
-        public List<SelectListItem> binddropdown(string action, int val = 0,int GrouId = 0,int userid = 0)
+        public List<SelectListItem> binddropdown(string action, int val = 0,int GrouId = 0,int userid = 0,int clientid = 0)
         {
             jobDbContext _db = new jobDbContext();
 
-            var res = _db.Database.SqlQuery<SelectListItem>("exec USP_BindDropDown @action , @val , @GrouId, @userid",
+            var res = _db.Database.SqlQuery<SelectListItem>("exec USP_BindDropDown @action , @val , @GrouId, @userid,@clientid",
                     new SqlParameter("@action", action),
                     new SqlParameter("@val", val),
                     new SqlParameter("@GrouId", GrouId == 0 ? (object)DBNull.Value : GrouId),
-                    new SqlParameter("@userid", userid)
+                    new SqlParameter("@userid", userid),
+                    new SqlParameter("@clientid", clientid)
                    )
                    .ToList()
                    .AsEnumerable()
@@ -249,8 +260,17 @@ namespace mvc.Controllers
         public ActionResult AddCandidate()
         {
             Candidate data = new Candidate();
+            //int userid;
+            //userid = Convert.ToUInt16(Session["User_id"].ToString());
             int userid;
-            userid = Convert.ToUInt16(Session["User_id"].ToString());
+            if (Convert.ToInt16(Session["RoleID"].ToString()) == 7)
+            {
+                userid = 0;
+            }
+            else
+            {
+                userid = Convert.ToUInt16(Session["User_id"].ToString());
+            }
             data.candID = 0;
             ViewData["JobList"] = binddropdown("Jobs", 0,0,userid);
             ViewData["DesignationList"] = binddropdown("Designation", 0);
@@ -285,8 +305,9 @@ namespace mvc.Controllers
                    : View("_Schedule", data);
         }
 
+
         [HttpPost]
-        public ActionResult AddCandidate(String Name, int req_id, string emailid, String MobileNo, String MobileNo2, String SkypeID, string DomainName, int location_id, string Current_Organization, string Current_Position, int? Current_Location_id, DateTime? working_from_Date, string Qualification, string Qualification_PG, string Total_Exp, string currently_drawn_salary, string expected_salary, string Notice_period)
+        public ActionResult AddCandidate(String Name, int req_id, string emailid, String MobileNo, String MobileNo2, String SkypeID, string DomainName, int location_id, string Current_Organization, string Current_Position, int? Current_Location_id, DateTime? working_from_Date, string Qualification, string Qualification_PG, string Total_Exp, string currently_drawn_salary, string expected_salary, string Notice_period, string ModeOfHire, string Skills, string AcadmicDetails, decimal? CostPerMonth, int? PreferedLocation, DateTime? DOB, string AgencyName)
         {
             ViewData["JobList"] = binddropdown("Jobs", 0);
             // ViewData["DesignationList"] = binddropdown("Designation", desig_id);
@@ -312,6 +333,13 @@ namespace mvc.Controllers
             data.expected_salary = expected_salary;
             data.Notice_period = Notice_period;
             data.addedby = Convert.ToInt32(Session["User_id"].ToString());
+            data.ModeOfHire = ModeOfHire;
+            data.Skills = Skills;
+            data.AcadmicDetails = AcadmicDetails;
+            data.CostPerMonth = CostPerMonth;
+            data.PreferedLocation = PreferedLocation;
+            data.DOB = DOB;
+            data.AgencyName = AgencyName;
             var result = _db.Database.ExecuteSqlCommand(@"exec USP_AddCandidate 
                 @Name,
                 @req_id,
@@ -330,7 +358,14 @@ namespace mvc.Controllers
 		        @Total_Exp,	
 		        @currently_drawn_salary	,
 		        @expected_salary	,
-		        @Notice_period",
+		        @Notice_period,
+                @ModeOfHire,
+                @Skills,
+                @Acadmicdetails,
+                @CostPerMonth,
+                @PerferedLocation,
+                @DOB,
+                @AgencyName",
                 new SqlParameter("@Name", data.Name),
                 new SqlParameter("@req_id", data.req_id),
                 new SqlParameter("@emailid", data.EmailID),
@@ -348,15 +383,23 @@ namespace mvc.Controllers
                 new SqlParameter("@Total_Exp", data.Total_Exp),
                 new SqlParameter("@currently_drawn_salary", data.currently_drawn_salary == null ? (object)DBNull.Value : data.currently_drawn_salary),
                 new SqlParameter("@expected_salary", data.expected_salary == null ? (object)DBNull.Value : data.expected_salary),
-                new SqlParameter("@Notice_period", data.Notice_period == null ? (object)DBNull.Value : data.Notice_period)
+                new SqlParameter("@Notice_period", data.Notice_period == null ? (object)DBNull.Value : data.Notice_period),
+                new SqlParameter("@ModeOfHire", data.ModeOfHire == null ? (object)DBNull.Value : data.ModeOfHire),
+                new SqlParameter("@Skills", data.Skills == null ? (object)DBNull.Value : data.Skills),
+                new SqlParameter("@Acadmicdetails", data.AcadmicDetails == null ? (object)DBNull.Value : data.AcadmicDetails),
+                new SqlParameter("@CostPerMonth", data.CostPerMonth == null ? (object)DBNull.Value : data.CostPerMonth),
+                new SqlParameter("@PerferedLocation", data.PreferedLocation == null ? (object)DBNull.Value : data.PreferedLocation),
+                new SqlParameter("@DOB", data.DOB == null ? (object)DBNull.Value : data.DOB),
+                new SqlParameter("@AgencyName", data.AgencyName == null ? (object)DBNull.Value : data.AgencyName)
 
                );
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+
         [HttpPost]
-        public ActionResult LoadDataForJob(int? page, int? RowCount, String Name, String CName, String DName, int? userid)
+        public ActionResult LoadDataForJob(int? page, int? RowCount, String Name , String CName, String DName, int? userid, DateTime? Activitydate)
         {
             if (Session["UserName"] == null)
             {
@@ -374,8 +417,9 @@ namespace mvc.Controllers
             if (RowCount != null) { Session["RowCount"] = RowCount; } else { Session["RowCount"] = 7; }
 
             StaticPagedList<WorkFLowList> itemsAsIPagedList;
-            itemsAsIPagedList = GridJobList(page,Convert.ToInt16(Session["RowCount"].ToString()), Name, CName, DName, userid);
+            itemsAsIPagedList = GridJobList(page,Convert.ToInt16(Session["RowCount"].ToString()), Name, CName, DName, userid,Activitydate);
 
+            ViewBag.Adate = Activitydate;
             return Request.IsAjaxRequest()
                    ? (ActionResult)PartialView("_JoblistGrid", itemsAsIPagedList)
                    : View(itemsAsIPagedList);
@@ -402,7 +446,7 @@ namespace mvc.Controllers
             if (Session["RowCount"] != null) { RowCount = Convert.ToInt16(Session["RowCount"].ToString()); } else { RowCount = null; }
 
             StaticPagedList<WorkFLowList> itemsAsIPagedList;
-            itemsAsIPagedList = GridJobList(page, RowCount, Name, CName, DName, userid);
+            itemsAsIPagedList = GridJobList(page, RowCount, Name, CName, DName, userid,null);
 
             //this code is for validating param value when mail tracker returning 0 row count
             if(param == "zeroval")
@@ -417,7 +461,7 @@ namespace mvc.Controllers
         }
 
 
-        public StaticPagedList<WorkFLowList> GridJobList(int? page, int? RowCount, String Name, String CName, String DName, int? userid)
+        public StaticPagedList<WorkFLowList> GridJobList(int? page, int? RowCount, String Name, String CName, String DName, int? userid,DateTime? Activitydate)
         {
             jobDbContext _db = new jobDbContext();
             var pageIndex = (page ?? 1);
@@ -429,13 +473,14 @@ namespace mvc.Controllers
             WorkFLowList clist = new WorkFLowList();
 
             IEnumerable<WorkFLowList> result = _db.WFList.SqlQuery(@"exec USP_GetWorkFlowStatisstics
-              @pPageIndex, @pPageSize,@cName,@dName,@UserId",
+              @pPageIndex, @pPageSize,@cName,@dName,@UserId,@Adate",
                new SqlParameter("@pPageIndex", pageIndex),
                new SqlParameter("@pPageSize", pageSize),
                new SqlParameter("@cName", CName == null ? (object)DBNull.Value : CName),
                new SqlParameter("@dName", DName == null ? (object)DBNull.Value : DName),
-               new SqlParameter("@UserId", userid == null ? (object)DBNull.Value : userid)
-                ).ToList<WorkFLowList>();
+               new SqlParameter("@UserId", userid == null ? (object)DBNull.Value : userid),
+               new SqlParameter("@Adate", Activitydate == null ? (object)DBNull.Value : Activitydate)
+               ).ToList<WorkFLowList>();
 
             totalCount = 0;
             if (result.Count() > 0)
@@ -454,9 +499,11 @@ namespace mvc.Controllers
             Requirement req = new Requirement();
             req.ReqID = 1;
             ViewData["DesignationGroupList"] = binddropdown("DesignationGroupList", 0);
+            ViewData["ContactPersonList"] = binddropdown("ContactPersons", 0);
             ViewData["DesignationList"] = binddropdownForDegFilter("FilteredDesignation", 0);
             ViewData["ClientList"] = binddropdown("Client", 0);
             ViewData["PositionSectorList"] = binddropdown("PositionSector", 0);
+            ViewData["LocationList"] = binddropdown("LocationList", 0);            
             return Request.IsAjaxRequest()
                     ? (ActionResult)PartialView("_AddJob", req)
                     : View("_AddJob", req);
@@ -478,6 +525,19 @@ namespace mvc.Controllers
                    : View();
         }
 
+        [HttpPost]
+        public ActionResult filtercontactperson(int clientid = 0)
+        {
+           if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            ViewData["ContactPersonList"] = binddropdown("ContactPersons", 0,0,0, clientid);
+
+            return Request.IsAjaxRequest()
+                   ? (ActionResult)PartialView("_dropdowncontacperson")
+                   : View();
+        }
 
         [HttpPost]
         public ActionResult AddJob(String ReqTitle, int Position, int desig_id, string Description, String ExpMax, String ExpMin, String SalMin, String SalMax, int Client_ID, int? ContactPerson, string PositionLevel, int? location_id, string MinimumQulification, string RoleResp, string KnowledgeSkill, int? Age, string NoticePeriod,int? SectorId)
@@ -559,7 +619,7 @@ namespace mvc.Controllers
             //        : View("_AddJob", req);
         }
 
-        public ActionResult WorkFlowDetail(int id = 0, string status = "")
+        public ActionResult WorkFlowDetail(DateTime? Adate,int id = 0, string status = "",int clinetid =0,int reqid = 0)
         {
             if (Session["UserName"] == null)
             {
@@ -567,27 +627,17 @@ namespace mvc.Controllers
             }
             jobDbContext _db = new jobDbContext();
             WFCountList wf = new WFCountList();
-            IEnumerable<WFCountList> result = _db.WFCountList.SqlQuery(@"exec usp_GetWorkflow @ReqID, @stageName", 
+            IEnumerable<WFCountList> result = _db.WFCountList.SqlQuery(@"exec usp_GetWorkflow @ReqID, @stageName,@Adate", 
                 new SqlParameter("@ReqID", id),
-                new SqlParameter("@stageName", status)).ToList<WFCountList>();
-           
+                new SqlParameter("@stageName", status),
+                new SqlParameter("@Adate", Adate == null ? (object)DBNull.Value : Adate)).ToList<WFCountList>();
+            Session["clientid"] = clinetid;//client id for interview tracker from feebdbackmail for client consern drop down list
+            Session["reqid"] = reqid;//Reqid id for interview tracker from feebdbackmail for client consern drop down list
             return Request.IsAjaxRequest()
                     ? (ActionResult)PartialView("WorkFlowDetail", result)
                     : View("WorkFlowDetail", result);
         }
 
-
-     public ActionResult Test()
-        {
-            if (Session["UserName"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-
-            return Request.IsAjaxRequest()
-                    ? (ActionResult)PartialView("Test")
-                    : View("Test");
-        }
         [HttpPost]
         public ActionResult Schedule(int StageID, int ModeID, string Remark, int ReqID, int CandID, int? StatusID, String ActivityDate = null, DateTime? ActivityTime = null)
         {
@@ -762,7 +812,15 @@ namespace mvc.Controllers
         {
             ViewData["EmailTemplateList"] = binddropdown("EmailTemplateList", 0);
             int userid;
-            userid = Convert.ToUInt16(Session["User_id"].ToString());
+            if (Convert.ToInt16(Session["RoleID"].ToString()) == 7)
+            {
+                userid = 0;
+            }
+            else
+            {
+                userid = Convert.ToUInt16(Session["User_id"].ToString());
+            }
+                
             ViewData["JobList"] = binddropdown("Jobs", 0, 0, userid);
             ViewData["DesignationList"] = binddropdown("Designation", 0);
             ViewData["ClientList"] = binddropdown("Client", 0);
@@ -1031,13 +1089,6 @@ namespace mvc.Controllers
             return body;
         }
 
-        public ActionResult test2()
-        {
-
-            return Request.IsAjaxRequest()
-                ? (ActionResult)PartialView("test2")
-                : View("test2");
-        }
         public ActionResult GetTemplateData(int candID, int? templateid = 0, String ActivityDate = "", String ActivityTime = "", int ModeOfInterview = 0)
         {
             mail m = new mail();
@@ -1309,10 +1360,18 @@ namespace mvc.Controllers
             {
 
             }
-
-            int? userid = 0, RowCount = 7;
+            int? userid, RowCount = 7;
+            if (Convert.ToInt16(Session["RoleID"].ToString()) == 7)
+            {
+                userid = 0;              
+            }
+            else
+            {
+                userid = Convert.ToInt16(Session["User_id"].ToString());
+            }
+           
             StaticPagedList<WorkFLowList> itemsAsIPagedList;
-            itemsAsIPagedList = GridJobList(page, RowCount, Name, CName, DName, userid);
+            itemsAsIPagedList = GridJobList(page, RowCount, Name, CName, DName, userid,null);
 
             return Request.IsAjaxRequest()
                     ? (ActionResult)PartialView("Joblist", itemsAsIPagedList)
@@ -1340,11 +1399,11 @@ namespace mvc.Controllers
             req.ReqID = 1;
             ViewData["DesignationList"] = binddropdown("Designation", 0);
             ViewData["ClientList"] = binddropdown("Client", 0);
+            ViewData["LocationList"] = binddropdown("LocationList", 0);
             return Request.IsAjaxRequest()
                     ? (ActionResult)PartialView("_EditJob", req)
                     : View("_EditJob", req);
         }
-
 
         //  ================================== Fetch Job Position For Update Code ===========================================
 
@@ -1361,9 +1420,13 @@ namespace mvc.Controllers
                  new SqlParameter("@req_id", ReqID)).ToList<RequirementDetails>();
 
                 std = result.FirstOrDefault();
-
-                ViewData["DesignationList"] = binddropdown("Designation", 0);
+                ViewData["DesignationGroupList"] = binddropdown("DesignationGroupList", 0);
+                ViewData["ContactPersonList"] = binddropdown("ContactPersons", 0);
+                ViewData["DesignationList"] = binddropdownForDegFilter("FilteredDesignation", 0);
                 ViewData["ClientList"] = binddropdown("Client", 0);
+                ViewData["PositionSectorList"] = binddropdown("PositionSector", 0);
+                ViewData["LocationList"] = binddropdown("LocationList", 0);
+                ViewBag.multilocation = std.Location_details;
                 return Request.IsAjaxRequest()
                         ? (ActionResult)PartialView("_EditJob", std)
                         : View("_EditJob", std);
@@ -1384,7 +1447,6 @@ namespace mvc.Controllers
         
         //================================== Update job posion Code ===========================================
 
-
         [HttpPost]
         public ActionResult UpdateJobPostion(RequirementDetails rs)
         {
@@ -1392,7 +1454,7 @@ namespace mvc.Controllers
             {
                 jobDbContext _db = new jobDbContext();
                 var result = _db.Database.ExecuteSqlCommand(@"exec USP_UpdateRequirement 
-                @req_id,@ReqTitle, @position,@desig_id,@Description, @expMax,@expMin,@salMin,@salMax,@Client_id,@ContactPerson,@PositionLevel,@location_id,@MinimumQulification,@RoleResp,@KnowledgeSkill,@Age,@NoticePeriod ",
+                @req_id,@ReqTitle, @position,@desig_id,@Description, @expMax,@expMin,@salMin,@salMax,@Client_id,@ContactPerson,@PositionLevel,@location_id,@MinimumQulification,@RoleResp,@KnowledgeSkill,@Age,@NoticePeriod,@SectorId ",
                 new SqlParameter("@req_id", rs.req_id),
                 new SqlParameter("@ReqTitle", rs.req_title),
                 new SqlParameter("@position", rs.position),
@@ -1406,11 +1468,12 @@ namespace mvc.Controllers
                 new SqlParameter("@ContactPerson", rs.contactPerson),
                 new SqlParameter("@PositionLevel", rs.PositionLevel == null ? (object)DBNull.Value : rs.PositionLevel),
                 new SqlParameter("@location_id", rs.location_id),
-                new SqlParameter("@MinimumQulification", rs.MinimumQulification),
+                new SqlParameter("@MinimumQulification", rs.MinimumQulification == null ? (object)DBNull.Value : rs.MinimumQulification),
                 new SqlParameter("@RoleResp", rs.RoleResp),
                 new SqlParameter("@KnowledgeSkill", rs.KnowledgeSkill),
                 new SqlParameter("@Age", rs.Age == null ? (object)DBNull.Value : rs.Age),
-                new SqlParameter("@NoticePeriod", rs.NoticePeriod == null ? (object)DBNull.Value : rs.NoticePeriod)
+                new SqlParameter("@NoticePeriod", rs.NoticePeriod == null ? (object)DBNull.Value : rs.NoticePeriod),
+                new SqlParameter("@SectorId", rs.SectorId == null ? (object)DBNull.Value : rs.SectorId)
 
                  );
 
@@ -1472,10 +1535,10 @@ namespace mvc.Controllers
             return Json(lstItem, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetContactPersonsList()
+        public JsonResult GetContactPersonsList(int clientid = 0)
         {
             jobDbContext _db = new jobDbContext();
-            var lstItem = binddropdown("ContactPersons", 0).Select(i => new { i.Value, i.Text }).ToList();
+            var lstItem = binddropdown("ContactPersons",0,0,0,clientid).Select(i => new { i.Value, i.Text }).ToList();
             //_spService.BindDropdown("PricingUser", "", "").Select(i => new { i.Value, i.Text }).ToList();
             return Json(lstItem, JsonRequestBehavior.AllowGet);
         }
@@ -1534,6 +1597,61 @@ namespace mvc.Controllers
             }
 
 
+        }
+
+        //================================== Update Multipal Location ===========================================
+
+        [HttpPost]
+        public ActionResult Update_MultipalLocation(Requirement[] Requirement)
+        {
+
+            try
+            {
+                var result = 0;
+                jobDbContext _db = new jobDbContext();
+                foreach (var item in Requirement)
+                {
+
+                    Requirement O = new Requirement();
+
+                    O.location_id = item.location_id;
+                    O.ReqID = item.ReqID;
+
+                    result = _db.Database.ExecuteSqlCommand(@"exec USP_UpdateMultipalLocation @req_id, @location_id",
+                    new SqlParameter("@req_id", O.ReqID),
+                    new SqlParameter("@location_id", O.location_id));
+
+                }
+
+
+
+                return Json(result, JsonRequestBehavior.AllowGet);
+
+
+            }
+
+            catch (Exception ex)
+            {
+                string message = string.Format("<b>Message:</b> {0}<br /><br />", ex.Message);
+                return View("IndexForDesignation");
+                //return PartialView(rs);
+            }
+
+
+        }
+
+        //================================== delete Multipal Location ===========================================
+
+        [HandleError]
+        [HttpPost]
+        public ActionResult DeleteMultipalLocation(int? Reqid,int? location_id)
+        {
+
+            jobDbContext _db = new jobDbContext();
+            var result = _db.Database.ExecuteSqlCommand(@"exec USP_DeleteLocationForPosition @req_id,@location_id",
+                 new SqlParameter("@req_id",Reqid),
+                new SqlParameter("@location_id",location_id));
+            return Json("Deleted sucessfully");
         }
 
         //=============================================== File Upload Code ==================================================
@@ -1610,7 +1728,7 @@ namespace mvc.Controllers
             StaticPagedList<CandidateList> itemsAsIPagedList;
             int? PageRowNumber = 8;
             itemsAsIPagedList = GridList(page,PageRowNumber, Name, DName, CName, Eid, Mob, Stage, Activity,Date,null);
-
+            ViewData["UserList"] = binddropdown("UserList", 0);
             return Request.IsAjaxRequest()
                     ? (ActionResult)PartialView("index", itemsAsIPagedList)
                     : View("index", itemsAsIPagedList);
@@ -1926,14 +2044,12 @@ namespace mvc.Controllers
                     smtp.Send(mailMessage);
                 }
 
-                jobDbContext _db12 = new jobDbContext();
-                var result12 = _db12.Database.ExecuteSqlCommand(@"exec usp_Removefromtracker 
+            jobDbContext _db12 = new jobDbContext();
+            var result12 = _db12.Database.ExecuteSqlCommand(@"exec usp_Removefromtracker 
                 @req_ID",
-                 new SqlParameter("@req_ID", ReqID)
-                 );
-            
-          
-            
+             new SqlParameter("@req_ID", ReqID)
+             );
+                       
         }
 
         
@@ -2293,7 +2409,7 @@ namespace mvc.Controllers
                 int? PageRowNumber = 8;
                 StaticPagedList<CandidateList> itemsAsIPagedList;
                 itemsAsIPagedList = GridList(page, PageRowNumber, Name, DName, CName, Eid, Mob, Stage,Activity, Date, userid);
-
+                ViewData["UserList"] = binddropdown("UserList", 0);
                 return Request.IsAjaxRequest()
                         ? (ActionResult)PartialView("index", itemsAsIPagedList)
                         : View("index", itemsAsIPagedList);
@@ -2349,6 +2465,7 @@ namespace mvc.Controllers
                 itemsAsIPagedList = GridList(page, PageRowNumber, Name, DName, CName, Eid, Mob, Stage,Activity, Date, userid);
 
                 ViewBag.error = "Cadidate Deleted";
+                ViewData["UserList"] = binddropdown("UserList", 0);
                 return Request.IsAjaxRequest()
                         ? (ActionResult)PartialView("index", itemsAsIPagedList)
                         : View("index", itemsAsIPagedList);
@@ -2394,7 +2511,7 @@ namespace mvc.Controllers
                 }
                 
                 StaticPagedList<WorkFLowList> itemsAsIPagedList;
-                itemsAsIPagedList = GridJobList(page,RowCount,Name, CName, DName, userid);
+                itemsAsIPagedList = GridJobList(page,RowCount,Name, CName, DName, userid,null);
 
                 ViewBag.error = "Position Deleted";
                 return Request.IsAjaxRequest()
@@ -2539,6 +2656,20 @@ namespace mvc.Controllers
                    ? (ActionResult)PartialView("filterLocationForEditCandidate",data)
                    : View(data);
         }
+
+
+        public ActionResult FeedbackmailTracker(int? ReqID)
+        {
+            StaticPagedList<InterviewTrackList> itemsAsIPagedList;
+            itemsAsIPagedList = InterviewTrackerListDetails(ReqID);
+            TempData["Data"] = itemsAsIPagedList;
+            Session["reqid"] = ReqID;
+            return Request.IsAjaxRequest()
+                    ? (ActionResult)PartialView("InterviewTrackerMail", itemsAsIPagedList)
+                    : View("InterviewTrackerMail", itemsAsIPagedList);
+
+        }
+
     }
   
 }    

@@ -16,7 +16,6 @@ namespace mvc.Models
     public partial class RecruiterList
     {
         [Key]
-        public int ProfileID { get; set; }
         public int UserId { get; set; }
         public string Name { get; set; }
         public string Summery { get; set; }
@@ -37,6 +36,17 @@ namespace mvc.Models
         public string Achivement { get; set; }
         public string LanguagesKnow { get; set; }
         public string ProflieImg { get; set; }
+        public String User_Name { get; set; }
+        public String F_Name { get; set; }
+        public String M_Name { get; set; }
+        public String L_Name { get; set; }
+        public String phone { get; set; }
+        public String Mobile { get; set; }
+        public String Password { get; set; }
+        public String emailId { get; set; }
+        public int? location_id { get; set; }  
+        public string VerticalId { get; set; }
+        public List<RecruiterList> listboz { get; set; }
 
     }
 }

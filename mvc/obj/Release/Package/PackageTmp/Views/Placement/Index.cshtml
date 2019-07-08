@@ -22,37 +22,62 @@
 </div>
 <div class="container">
     <div class="row">
-
-        <div class="col-sm-11">
-            @{System.Data.DataRow[] HeadingFields4 = dt.Select("submenuname = 'AddCandidate' and FeatureName = 'Add Candidate'");
-                if (HeadingFields4.Count() != 0)
-                {
-                    if (HeadingFields4[0].ItemArray[6].ToString() == "1")
+        @if (Convert.ToInt16(Session["RoleID"].ToString()) == 7 || Convert.ToInt16(Session["RoleID"].ToString()) == 2)
+        {
+            <div class="col-sm-11">
+                @{System.Data.DataRow[] HeadingFields4 = dt.Select("submenuname = 'AddCandidate' and FeatureName = 'Add Candidate'");
+                    if (HeadingFields4.Count() != 0)
                     {
-                        @Html.ActionLink("Add Candidate", "AddCandidate", null,
-                         new Dictionary<string, object>
-                         {
-                             { "class", "btn btn-danger pull-right m-r-sm" },
-                             { "data-toggle" , "modal"},
-                             { "data-target", "#mdlAddCandidate"},
-                             { "title", "New Candidate"}
-                         })
+                        if (HeadingFields4[0].ItemArray[6].ToString() == "1")
+                        {
+                            @Html.ActionLink("Add Candidate", "AddCandidate", null,
+                             new Dictionary<string, object>
+                             {
+                                 { "class", "btn btn-danger pull-right m-r-sm" },
+                                 { "data-toggle" , "modal"},
+                                 { "data-target", "#mdlAddCandidate"},
+                                 { "title", "New Candidate"}
+                             })
+                        }
                     }
                 }
-            }
+            </div>
+            <div class="col-sm-1">
+                <select id="Status" class="form-control text pull-right" style="width:95px;">
+                    <option value="8">-Select-</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">50</option>
+                    <option value="70">70</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-12">
+                @{System.Data.DataRow[] HeadingFields4 = dt.Select("submenuname = 'AddCandidate' and FeatureName = 'Add Candidate'");
+                    if (HeadingFields4.Count() != 0)
+                    {
+                        if (HeadingFields4[0].ItemArray[6].ToString() == "1")
+                        {
+                            @Html.ActionLink("Add Candidate", "AddCandidate", null,
+                             new Dictionary<string, object>
+                             {
+                                 { "class", "btn btn-danger pull-right m-r-sm" },
+                                 { "data-toggle" , "modal"},
+                                 { "data-target", "#mdlAddCandidate"},
+                                 { "title", "New Candidate"}
+                             })
+                        }
+                    }
+                }
 
-        </div>
-        <div class="col-sm-1">
-            <select id="Status" class="form-control text pull-right" style="width:95px;">
-                <option value="8">-Select-</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">50</option>
-                <option value="70">70</option>
-                <option value="100">100</option>
-            </select>
-         </div>
-        </div>
+            </div>
+
+        }
+
+    </div>
     </div>
 
 <div class="container m-t-md">
@@ -98,8 +123,23 @@
                     </label>
                 </div>
                 <div class="col-sm-2">
+                    @if (Convert.ToInt16(Session["RoleID"].ToString()) == 7 || Convert.ToInt16(Session["RoleID"].ToString()) == 2)
+                    {
+                        @Html.DropDownList("model.userid", new SelectList((System.Collections.IEnumerable)ViewData["UserList"], "Value", "Text"), "Select USer", new { @class = "form-control input-sm", @id = "userid", Title = "ModeName", @style = "height: auto;" })
 
-                    @Html.DropDownList("model.userid", new SelectList((System.Collections.IEnumerable)ViewData["UserList"], "Value", "Text"), "Select USer", new { @class = "form-control input-sm", @id = "userid", Title = "ModeName",@style= "height: auto;" })
+                    }
+                    else
+                    {
+                       <select id="Status" class="form-control text pull-right">
+                                <option value="8">-Select-</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">50</option>
+                                <option value="70">70</option>
+                                <option value="100">100</option>
+                            </select>
+                       
+                    }
 
                 </div>
 

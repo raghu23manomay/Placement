@@ -1,0 +1,45 @@
+
+
+-- exec usp_ClientDetailsBus 174
+CREATE PROCEDURE [dbo].[usp_ClientDetailsBus] 
+ 
+@client_id INT   
+ 
+AS
+BEGIN
+
+--SELECT        dbo.tblClient.client_id, dbo.tblClient.Client_Name, COALESCE (dbo.tblClient.Client_Type_id, 0) AS Client_Type_id, COALESCE (dbo.tblClient.location_id, 0) 
+--                         AS location_id, dbo.tblClient.client_profile, dbo.tblClient.address, dbo.tblClient.DID_no, dbo.tblClient.fax_no, dbo.tblClient.Manifactring, dbo.tblClient.Prod_processes, 
+--                         dbo.tblClient.products, dbo.tblClient.compitators, dbo.tblClient.specification, dbo.tblClient.user_id, COALESCE (dbo.tblClient.update_date, ' ') AS update_date, 
+--                         COALESCE (dbo.tblClient.Ref_Inquiry_id, 0) AS Ref_Inquiry_id, COALESCE (dbo.tblClient.Client_Followup, ' ') AS Client_Followup, 
+--                         COALESCE (dbo.tblClient.Meeting_Followup, ' ') AS Meeting_Followup, dbo.tblClient.Added_By, COALESCE (dbo.tblClient.last_Tel_Follw_Date, ' ') 
+--                         AS last_Tel_Follw_Date, COALESCE (dbo.tblClient.next_Tel_Follw_Date, ' ') AS next_Tel_Follw_Date, COALESCE (dbo.tblClient.last_meet_Follw_Date, ' ') 
+--                         AS last_meet_Follw_Date, COALESCE (dbo.tblClient.next_meet_Follw_Date, ' ') AS next_meet_Follw_Date, COALESCE (dbo.tblClient.assigned_C_Support_userid, 0) 
+--                         AS assigned_C_Support_userid, COALESCE (dbo.tblClient.assigned_B_Office_userid, 0) AS assigned_B_Office_userid, dbo.tblClient.assignedBy, 
+--                         COALESCE (dbo.tblClient.buissType_id, 0) AS buissType_id, dbo.tblBuisinessType.BuisinessType, dbo.tblUser_Location.loc_desc, 
+--                         dbo.tblClient_Type.ct_description,tblClientContactPerson.emailid
+--FROM            dbo.tblClient LEFT OUTER JOIN
+--                         dbo.tblClient_Type ON dbo.tblClient.Client_Type_id = dbo.tblClient_Type.Client_Type_id LEFT OUTER JOIN
+--                         dbo.tblBuisinessType ON dbo.tblClient.buissType_id = dbo.tblBuisinessType.buissType_id LEFT OUTER JOIN
+--                         dbo.tblUser_Location ON dbo.tblClient.location_id = dbo.tblUser_Location.location_id left Join
+--						 tblClientContactPerson on tblClientContactPerson.client_id =tblClient.client_id
+
+--  where  dbo.tblClient.client_id = @client_id  
+
+                         SELECT C.client_id ,Client_Name ,C.Client_Type_id ,C.location_id,client_profile ,address,
+						 DID_no,  fax_no,  Manifactring,  Prod_processes, 
+                         products,  compitators, specification, C.user_id,  C.update_date e, 
+                         C.Ref_Inquiry_id ,C.Client_Followup , 
+                         C.Meeting_Followup , C.Added_By, C.last_Tel_Follw_Date  ,
+                         C.next_Tel_Follw_Date , C.last_meet_Follw_Date ,
+                         C.next_meet_Follw_Date , C.assigned_C_Support_userid ,
+                         C.assigned_B_Office_userid , C.assignedBy, 
+                         C.buissType_id, B.BuisinessType,L.loc_desc, 
+                         CT.ct_description,CP.emailid
+                         FROM            dbo.tblClient  C 
+                         LEFT JOIN dbo.tblClient_Type CT ON C.Client_Type_id = CT.Client_Type_id 
+						 LEFT  JOIN tblBuisinessType B ON C.buissType_id = B.buissType_id 
+						 LEFT   JOIN   dbo.tblUser_Location L ON C.location_id = L.location_id 
+						 left Join tblClientContactPerson CP on CP.client_id =C.client_id
+						 where  C.client_id =  @client_id    
+END

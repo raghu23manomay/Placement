@@ -61,8 +61,7 @@ namespace mvc.Controllers
 
         public void setPermissionData(int userid)
         {
-
-           
+            
             using (jobDbContext context = new jobDbContext())
             {
                 DataTable dt = new DataTable();

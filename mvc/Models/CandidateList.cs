@@ -9,6 +9,8 @@ using System.Web.Mvc;
 
 namespace mvc.Models
 {
+    
+
     public partial class CandidateList
     {
         [Key]
@@ -68,6 +70,7 @@ namespace mvc.Models
         public int? PositionStatusId { get; set; }
 
     }
+
     public partial class Candidate
     {
         [Key]
@@ -99,6 +102,13 @@ namespace mvc.Models
         public string Notice_period { get; set; }
         public string req_title { get; set; }
         public int? addedby { get; set; }
+        public string ModeOfHire { get; set; }
+        public string Skills { get; set; }
+        public string AcadmicDetails { get; set; }
+        public decimal? CostPerMonth { get; set; }
+        public int? PreferedLocation { get; set; }
+        public DateTime? DOB { get; set; }
+        public string AgencyName { get; set; }
 
         [Key]
         public int Document_id { get; set; }
@@ -207,7 +217,6 @@ namespace mvc.Models
         public int? ContactPerson { get; set; }
         public string contactPerson_Name { get; set; }
         public int Design_GroupID { get; set; }
-
         public string PositionLevel { get; set; }
         public string Location { get; set; }
         public int? location_id { get; set; }
@@ -218,11 +227,12 @@ namespace mvc.Models
         public string NoticePeriod { get; set; }
         public int? price { get; set; }
         public int? SectorId { get; set; }
-
-
+        public string Location_details { get; set; }
 
     }
-    public partial class RequirementDetails
+     
+
+        public partial class RequirementDetails
     {
         [Key]
         public int req_id { get; set; }
@@ -240,7 +250,6 @@ namespace mvc.Models
         public String exp_Min { get; set; }
         public int? contactPerson { get; set; }
         IEnumerable<RequirementDetails> Reqlist { get; set; }
-
         public string contactPerson_Name { get; set; }
         public string PositionLevel { get; set; }
         public string Location { get; set; }
@@ -250,6 +259,10 @@ namespace mvc.Models
         public string KnowledgeSkill { get; set; }
         public int? Age { get; set; }
         public string NoticePeriod { get; set; }
+        public int? SectorId { get; set; }
+        public string Location_details { get; set; }
+        public int? Design_GroupID { get; set; }
+        
 
     }
     public partial class WFCountList
@@ -264,6 +277,7 @@ namespace mvc.Models
         public string emailid { get; set; }
         public string FeedbackRemark  { get; set; }
         public string InterDescription { get; set; }
+        public string UserInformation { get; set; }
 
     }
     public partial class Schedule
@@ -470,25 +484,27 @@ namespace mvc.Models
         [Key]
         public string Candidate_Name { get; set; }
         public string Applied_Position { get; set; }
-        //  public int candID { get; set; }
+        public DateTime Date_Of_Submission { get; set; }
+        public string Agency_Name { get; set; }
+        public string ModeOfHire { get; set; }
         public string vendor { get; set; }
-        //  public int ReqID { get; set; }
         public string emailid { get; set; }
         public string mobile { get; set; }
-        public string Notice_Period { get; set; }
+        public string Skills { get; set; }
+        public string Qualification { get; set; }
+        public string Qualification_PG { get; set; }        
+        public string SkypeID { get; set; }
         public string Total_Exp { get; set; }
         public string working_from_Date { get; set; }
         public string current_Company { get; set; }
         public string Current_Position { get; set; }
         public string currently_Drawn_Salary { get; set; }
         public string Expected_Salary { get; set; }
-        public string Location { get; set; }
-
-        public string Qualification { get; set; }
-        public string Qualification_PG { get; set; }
-
-        public string SkypeID { get; set; }
-        //  public string FullPath { get; set; }
+        public decimal Cost_Per_Month { get; set; }
+        public string Notice_Period { get; set; }
+        public string Current_Location { get; set; }
+        public string PreferedLocation { get; set; }                 
+        public DateTime? DOB { get; set; }      
 
         IEnumerable<TrackerexpotedInfo> clist { get; set; }
     }

@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<mvc.Models.ModelViewJD>
 @{
+    /**/
+
     ViewBag.Title = "TrackerMail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -221,7 +223,7 @@
                     async: true,
                     success: function (data) {
                         $('#grid3').html(data);
-                        
+
                     },
                     error: function (data) {
                         $('#pageLoader').hide();

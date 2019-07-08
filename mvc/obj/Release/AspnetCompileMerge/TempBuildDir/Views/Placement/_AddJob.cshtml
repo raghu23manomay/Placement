@@ -21,9 +21,7 @@
 <script>
             $(document).ready(function () {
                 getLocation();
-                getdesignation();
-                GetClientDetailsList();
-                GetContactList();
+                getdesignation();                
                 $('#btnsave').on('click', function (e) {
                     e.preventDefault();
                    // debugger;
@@ -221,63 +219,38 @@
                         error: function () { }
                   });
             }
-
         
-            function GetClientDetailsList()
-            {
-             var returnResult = [];
-                          $.ajax({
-                        contentType: "application/json; charset=utf-8",
-                         url: "@Url.Action("GetClientList", "placement")",
-                        method: 'GET',
-                        async: 'false',
-                        dataType: 'json',
-                        success: function (result) {
-                            var data = $.map(result, function (obj) {
-                                obj.value = obj.Text; // desired field
-                                obj.data = obj.Value; // desired field
-                                returnResult.push(obj);
-                                $("#ClientName").autocomplete({
-                                    lookup: returnResult,
-                                    onSelect: function (suggestion) {
-                                        $("#Client_id").val(suggestion.data);
+        
 
-                                    }
-                                });
+    $('#Client_id').change(function ()
+    {
+        
+            $.ajax({
+            url: "@Url.Action("filtercontactperson", "Placement")",
+            contentType: "application/json",
+            data: JSON.stringify( {
+            clientid: $('#Client_id').val(),
+            }),
+            dataType: "text",
+            type: "POST",
+            async: true,
+            success: function (data) {
+                $('#ContactPerson').html(data);
+                                          
+            },
+            error: function (data) {
+                     
 
-                            });
-                        },
-                        error: function () { }
-                  });
+            },
+            complete: function () {
+                    
             }
 
-             function GetContactList()
-            {
-             var returnResult = [];
-                          $.ajax({
-                        contentType: "application/json; charset=utf-8",
-                         url: "@Url.Action("GetContactPersonsList", "placement")",
-                        method: 'GET',
-                        async: 'false',
-                        dataType: 'json',
-                        success: function (result) {
-                            var data = $.map(result, function (obj) {
-                                obj.value = obj.Text; // desired field
-                                obj.data = obj.Value; // desired field
-                                returnResult.push(obj);
-                                $("#contactPerson_Name").autocomplete({
-                                    lookup: returnResult,
-                                    onSelect: function (suggestion) {
-                                        $("#ContactPerson").val(suggestion.data);
+            });
+            return true;
 
-                                    }
-                                });
-
-                            });
-                        },
-                        error: function () { }
-                  });
-    }
+        
+    });
     
     //============================================================== Multipal Location Code =============================================================
 
@@ -457,9 +430,9 @@
                                         <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
                                             <div class="form-group">
                                                 <label>Client Name <span class="text-danger">*</span></label>
-                                                @Html.TextBoxFor(a => a.ClientName, new { @class = "form-control ", @id = "ClientName", placeholder = "Client Name" })
-                                                @Html.HiddenFor(model => model.Client_id, new { @id = "Client_id" })
-                                                @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
+                                                @Html.DropDownList("model.Client_id", new SelectList((System.Collections.IEnumerable)ViewData["ClientList"], "Value", "Text"), "Select Client", new { @class = "form-control input-sm", @id = "Client_id", Title = "Client_id" })
+                                                @Html.HiddenFor(model => model.Client_id)
+                                                @Html.ValidationMessageFor(model => model.Design_GroupID, "", new { @class = "text-danger" })
                                                 <div class="text-danger" id="ClientName_error_msg"></div>
                                             </div>
                                         </div>
@@ -526,7 +499,6 @@
                                                 @*@Html.TextBoxFor(a => a.Designation, new { @class = "form-control ", @id = "autocomplete", placeholder = "current position" })
                                                 @Html.HiddenFor(model => model.desig_id, new { @id = "desig_idval" })*@
                                                 @Html.Partial("_designationbinddropdown")
-
                                                 <div class="text-danger" id="Designation_error_msg"></div>
                                             </div>
 
@@ -539,9 +511,7 @@
                                         <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
                                             <div class="form-group">
                                                 <label>Contact person <span class="text-danger">*</span></label>
-                                                @Html.TextBoxFor(a => a.contactPerson_Name, new { @class = "form-control ", @id = "contactPerson_Name", placeholder = " select contactPerson Name" })
-                                                @Html.HiddenFor(model => model.ContactPerson, new { @id = "ContactPerson" })
-                                                @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
+                                                @Html.Partial("_dropdowncontacperson")
                                                 <div class="text-danger" id="ContactPerson_error_msg"></div>
                                             </div>
 

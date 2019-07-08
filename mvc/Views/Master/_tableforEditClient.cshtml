@@ -1,0 +1,21 @@
+﻿@model IEnumerable<mvc.Models.clientlocationdetail>
+@{ 
+    Layout = null;
+}
+<table id="detailsTable" class="table">
+    <thead>
+        <tr>
+            <th>City</th>
+            <th>Contact</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbl">
+        @foreach (var item in Model)
+        {
+            <tr><td>@item.Location</td><td class="hidden">@item.LocationId</td><td>@item.ContactNo</td><td><a data-itemId="0" href="#" class="deleteItem"><i class="glyphicon glyphicon-trash"></i></a></td></tr>
+            
+        }
+    </tbody>
+</table>
+<p id="vallocationtbl" style="color:red;">Please add atleast one location</p>

@@ -1,0 +1,27 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_Period</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Location</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th>
+		</tr><tr>
+			<td> Prasad upare</td><td>Safety </td><td>Executive</td><td>prasadupare01@gmail.comC</td><td>9921980572</td><td>1 month nego 15 days </td><td>4.4 years</td><td>&nbsp;</td><td> Shaporji Pallonji</td><td>EHS Officer </td><td>3.24 lpa</td><td>4 lpa</td><td>Pune</td><td>PG Diploma</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>sandip nanaji more</td><td>Safety </td><td>Executive</td><td>sandipmore1692@gmail.com</td><td>&nbsp;</td><td>1 week </td><td>4 years</td><td>&nbsp;</td><td> Litura electricals technology </td><td>Safety Officer </td><td>3.36 lpa</td><td>10% hike</td><td>Pune</td><td>DIPLOMA</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> nitin</td><td>Safety </td><td>Executive</td><td>nitin456_khedkar@rediffmail.com</td><td>9960551494</td><td>3 month nego </td><td>6 years</td><td>&nbsp;</td><td>TVS Logistics Services Ltd.</td><td>Safety Officer</td><td>3.5 lpa</td><td>4.2 lpa</td><td>Pune</td><td>PG Diploma </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Rahul Madhukar Nand</td><td>Safety </td><td>Executive</td><td>rahulnand444@gmail.com</td><td>9960574449</td><td>1 month </td><td>4 years </td><td>&nbsp;</td><td>Shapoorji Pallonji</td><td>Fire Safety Officer</td><td>3.6 lpa</td><td>4.8 lpa </td><td>Pune</td><td>advance diploma </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Sourabh Avinash Pawar</td><td>Safety </td><td>Executive</td><td>sourabh.pawar14@gmail.com</td><td>9545454200</td><td>1 month nego </td><td>7.5 years</td><td>&nbsp;</td><td> L G Electronics India Pvt. Ltd.</td><td>Safety Coordinator </td><td>4.3 lpa</td><td>30% hike </td><td>Pune</td><td>Post Graduation </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Pramod tatyarao deshmukh</td><td>Safety </td><td>Executive</td><td>deshmukh.pramod2@gmail.com</td><td>8446707417</td><td>1 month </td><td>6 years</td><td>&nbsp;</td><td>Voltas limited A TATA Enterprise</td><td>Safety officer</td><td>3 lpa</td><td>25% hike</td><td>Pune</td><td>B.Sc </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> SAMIR SATTAR SHAIKH</td><td>Safety </td><td>Executive</td><td>sameershaikh548@gmail.com</td><td>7841987016</td><td>1 month </td><td>6 years</td><td>&nbsp;</td><td>Suzlon Energy</td><td>EHS Sr. Executive </td><td>4.7 lpa</td><td>30% hike </td><td>Pune</td><td>PG Diploma </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>shrihari bajirao ingale</td><td>Safety </td><td>Executive</td><td>shrihari.ingale64@gmail.com</td><td>9420202660</td><td>1 month </td><td>4.5 years</td><td>&nbsp;</td><td>Tata International DLT Pvt. Ltd.</td><td>Safety Officer</td><td>3.97 lpa</td><td>30% hike </td><td>Pune</td><td>Advance Diploma</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Shubhangi NangarePatil</td><td>Safety </td><td>Executive</td><td>shubhanginangare2013@rediffmail.com</td><td>7304962084</td><td>1 month</td><td>4 years  </td><td>&nbsp;</td><td>Cummins Technical Centre India</td><td>EHS Officer </td><td>4.5 lpa</td><td>30% hike </td><td>Pune</td><td>Post graduation</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> sandip thopate</td><td>Safety </td><td>Executive</td><td>sandip.thopate7@gmail.com</td><td>9730524529</td><td>1 month </td><td>4 years  </td><td>&nbsp;</td><td>Rieter IndiaPrivate Limited</td><td>pune </td><td>3.5 lpa</td><td>4.5 lpa</td><td>Pune</td><td>PG Diploma </td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

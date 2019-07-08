@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">CandidateName</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Notice_period</th><th scope="col">Total_Exp</th><th scope="col">currently_drawn_salary</th><th scope="col">expected_salary</th><th scope="col">loc_desc</th>
+		</tr><tr>
+			<td>raghvendra</td><td>GMS Group </td><td>rohit@gmail.com</td><td>8087021878</td><td>1</td><td>1 year</td><td>1.5 ctc</td><td>5.5 ctc</td><td>Sangli</td>
+		</tr>
+	</table>
+</div>

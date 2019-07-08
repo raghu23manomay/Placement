@@ -1,0 +1,23 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">Date_Of_Submission</th><th scope="col">Agency_Name</th><th scope="col">ModeOfHire</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Skills</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Cost_Per_Month</th><th scope="col">Notice_Period</th><th scope="col">Current_Location</th><th scope="col">PreferedLocation</th><th scope="col">DOB</th>
+		</tr><tr>
+			<td> priyadarshini swain</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>&nbsp;</td><td>&nbsp;</td><td>Executive</td><td>priyadarshiniswain1994@gmail.com</td><td>9439517805</td><td>&nbsp;</td><td>B.Tech/B.E.</td><td>&nbsp;</td><td>&nbsp;</td><td>3 yrs</td><td>&nbsp;</td><td> Infosys</td><td>Senior System Engineer</td><td>5.2 lpa</td><td>9 lpa</td><td>0</td><td>3 months</td><td>Pune</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Ashish Nandkumar Barde</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>&nbsp;</td><td>&nbsp;</td><td>Executive</td><td>aashishbbarde@gmail.com</td><td>8149791722</td><td>&nbsp;</td><td>MCA</td><td>&nbsp;</td><td>&nbsp;</td><td>4.6</td><td>&nbsp;</td><td>Rule14 India Pvt Ltd</td><td>Software Engineer </td><td>7 lpa</td><td>12 lpa</td><td>0</td><td>45 days</td><td>Pune</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> madhavi upadhyay</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>&nbsp;</td><td>&nbsp;</td><td>Executive</td><td>madhvi30up@gmail.com</td><td>8411985166</td><td>&nbsp;</td><td>B.Tech/B.E. </td><td>&nbsp;</td><td>&nbsp;</td><td>4.5</td><td>&nbsp;</td><td> IBM India</td><td>Senior System Engineer</td><td>8 lpa</td><td>12 lpa</td><td>0</td><td>1 month</td><td>Pune</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Snehal Prakash Bhole</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>&nbsp;</td><td>&nbsp;</td><td>Executive</td><td>snehalbhole18@gmail.com</td><td>9421762681</td><td>&nbsp;</td><td>PG Diploma</td><td>&nbsp;</td><td>&nbsp;</td><td>2.3</td><td>&nbsp;</td><td>Neosoft Technologies</td><td>Software Developer </td><td>2.89 lpa</td><td>6 lpa</td><td>0</td><td>2 months</td><td>Pune</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> DARAWADE BHARAT BALASO.</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>&nbsp;</td><td>&nbsp;</td><td>Executive</td><td>bharatdarawade1134@gmail.com</td><td>9657466768</td><td>&nbsp;</td><td>PG Diploma</td><td>&nbsp;</td><td>&nbsp;</td><td>4 </td><td>&nbsp;</td><td>Cognizant Technologies Solutions</td><td>Project Associate</td><td>6.5 lpa</td><td>10 lpa</td><td>0</td><td>2 months</td><td>Pune</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Varsha</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>&nbsp;</td><td>&nbsp;</td><td>Executive</td><td>9373422681</td><td>9373422681</td><td>&nbsp;</td><td>MCA</td><td>&nbsp;</td><td>&nbsp;</td><td>5.7</td><td>&nbsp;</td><td> Saksoft</td><td>Senior Consultant</td><td>9.65 lpa</td><td>12 lpa</td><td>0</td><td>1 month</td><td>Pune</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td> Tushar Nangare</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>&nbsp;</td><td>&nbsp;</td><td>Executive</td><td>tusharn184@gmail.com</td><td>8983401249</td><td>&nbsp;</td><td>MCA </td><td>&nbsp;</td><td>&nbsp;</td><td>4 </td><td>&nbsp;</td><td> Aloha Technology</td><td>Big Data Developer</td><td>6 lpa</td><td>10 lpa</td><td>0</td><td>2 months</td><td>Pune</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>testcandidate</td><td>java developer</td><td>06/21/2019 12:00:00 AM</td><td>placement executive</td><td>staffing</td><td>Executive</td><td>rmudgal23@gmail.com</td><td>8237175481</td><td>kjhjkjjlkj</td><td>dasd</td><td>adasd</td><td> </td><td>2</td><td>Jun 22 2019 12:00AM</td><td>kjkjh</td><td>dsad</td><td>120000</td><td>500000</td><td>500</td><td>1 month</td><td>Pune</td><td>Mumbai</td><td>06/14/2019 12:00:00 AM</td>
+		</tr>
+	</table>
+</div>

@@ -9,8 +9,6 @@
 <link href="~/assets/css/plugins/toastr/toastr.css" rel="stylesheet" />
 <script src="~/assets/css/plugins/toastr/toastr.min.js"></script>
 
-
-
 <div class="gridSystem paddingTop15">
     <table class="table table-hover" id="clientlist">
         @foreach (var item in Model)
@@ -65,12 +63,10 @@
                 }
             </div>
         </div>
-    </div>
-  
+    </div>  
 </div>
 
 <script>
-
 
     $("#deleteclinet").on("click", function () {
         if (confirm("Press a button!"))
@@ -96,32 +92,30 @@
 
                         }
                     });
-                }
-                
-            });
-                              
-        }
-            
+                }                
+            });                              
+        }           
                       
-    });
-       
+    });       
 
-        $(".cleintlist").on("click", function () {
+
+    $(".cleintlist").on("click", function () {
         var clientid = $(this).attr("id");
         $.ajax({
             url: "@Url.Action("ClientDetails", "BussinessDev")",
-            data: { client_id: clientid,},
-             dataType: "text",
-           //  type: "POST",
+            data: { client_id: clientid, },
+            dataType: "text",
+            //  type: "POST",
 
-             async: false,
-             success: function (data) {
+            async: false,
+            success: function (data) {
 
-                 //data3 = data;
-                 $('#addclientgrid').html(data);
-
+                //data3 = data;
+                $('#addclientgrid').html(data);
             }
         });
+    
+      
 
           $.ajax({
             url: "@Url.Action("ContactPersonDetails", "BussinessDev")",
@@ -140,8 +134,6 @@
             complete: function () {
 
             }
-
-
         });
 
         $.ajax({
@@ -161,8 +153,6 @@
             complete: function () {
 
             }
-
-
         });
     })
 </script>

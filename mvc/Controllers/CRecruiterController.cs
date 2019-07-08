@@ -40,11 +40,14 @@ namespace mvc.Controllers
             return res;
         }
 
-        public ActionResult AddRecruiterProfile()
+        public ActionResult AddRecruiterProfile(int? userid)
         {
             ViewData["LocationList"] = binddropdown("LocationList", 0);
-            RecruiterList data = new RecruiterList();
-            return View("AddRecruiterProfile", data);
+            jobDbContext db = new jobDbContext();
+            var result = db.editlist.SqlQuery(@"exec disp @Id", new SqlParameter("@Id", 39)).ToList<RecruiterList>();
+            RecruiterList ed = new RecruiterList();
+            ed = result.FirstOrDefault();
+            return View("AddRecruiterProfile", ed);
         }
         //upload//DataFromView
         [HttpPost]
@@ -152,56 +155,158 @@ namespace mvc.Controllers
             return Json("Data Inserted Successfully");
         }
         //EditRecruiterProfile
-        public ActionResult FetchRecruiterProfile(int? profileId)
+        public ActionResult FetchRecruiterProfile(int? userid)
         {
-
+            ViewData["LocationList"] = binddropdown("LocationList", 0);
+            ViewData["PositionSectorList"] = binddropdown("PositionSector", 0);            
             jobDbContext db = new jobDbContext();
-            var result = db.editlist.SqlQuery(@"exec DisplayData @Id", new SqlParameter("@Id", 10)).ToList<RecruiterList>();
+            var result = db.editlist.SqlQuery(@"exec disp @Id", new SqlParameter("@Id", userid)).ToList<RecruiterList>();
 
             RecruiterList ed = new RecruiterList();
             ed = result.FirstOrDefault();
+            ViewBag.Verticaldata = result.FirstOrDefault().VerticalId;
             return View("FetchRecruiterProfile", ed);
 
         }
         [HttpPost]
         public ActionResult UpdateRecruiterProfile(RecruiterList rm)
         {
+            var DbPath="";
+            if (Request.Files.Count > 0)
+            {
+                var name = rm.F_Name;
+                HttpFileCollectionBase files = Request.Files;
+                for (int i = 0; i < files.Count; i++)
+                {
 
+                    HttpPostedFileBase file = files[i];
+                    string fname;
+
+                    if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
+                    {
+                        string[] testfiles = file.FileName.Split(new char[] { '\\' });
+                        fname = testfiles[testfiles.Length - 1];
+                    }
+                    else
+                    {
+                        fname = file.FileName;
+
+                    }
+
+                    string filePath = Server.MapPath("~/ProfileImage/");
+
+                    bool isExists = System.IO.Directory.Exists(filePath);
+                    if (!isExists) { System.IO.Directory.CreateDirectory(filePath); }
+
+
+                    string extension = Path.GetExtension(file.FileName);
+                    string fileName = name + extension;
+
+                    // Get the complete folder path and store the file inside it.  
+                    fname = Path.Combine(filePath, fileName);
+                    var imgpath = filePath + name + extension;
+                     DbPath = "~/ProfileImage/" + name + extension;
+                    file.SaveAs(fname);
+                }
+            }
+            else
+            {
+                DbPath = rm.ProflieImg;
+            }
+           
             jobDbContext db = new jobDbContext();
-            var res = db.Database.ExecuteSqlCommand(@"exec SpUpdatedata  @userid,@name,@summery,@totalYearsOfExp,@location,@graduation,@PG,@currentlyWorkingWith,@cPosition,@cDetailProfile,@lastWorkingWith,@lPosition,@lDetailProfile,@KeyArea,@industrySpecialisation,@verticalSpecalization,@expertise,@achivement,@LanguagesKnow,@profileImg",
-                               new SqlParameter("@userid", 7),
-                               new SqlParameter("@name", rm.Name),
-                               new SqlParameter("@summery", rm.Summery),
-                               new SqlParameter("@totalYearsOfExp", rm.TotalYearsOfExp),
-                               new SqlParameter("@location", "pune"),
-                               new SqlParameter("@graduation", rm.Graduation),
-                               new SqlParameter("@pg", rm.PG),
-                               new SqlParameter("@CurrentlyWorkingWith", rm.CurrentlyWorkingWith),
-                               new SqlParameter("@cPosition", rm.CurrentPosition),
-                               new SqlParameter("@cDetailProfile", rm.CurrentDetailProfile),
-                               new SqlParameter("@lastWorkingWith", rm.LastWorkingWith),
-                               new SqlParameter("@lPosition", rm.LastPosition),
-                               new SqlParameter("@lDetailProfile", rm.LastDetailProfile),
-                               new SqlParameter("@KeyArea", rm.KeyArea),
-                               new SqlParameter("@industrySpecialisation", rm.IndustrySpecialisation),
-                               new SqlParameter("@verticalSpecalization", rm.VerticalSpecalization),
-                               new SqlParameter("@expertise", rm.Expertise),
-                               new SqlParameter("@achivement", rm.Achivement),
-                               new SqlParameter("@LanguagesKnow", rm.LanguagesKnow),
-                               new SqlParameter("@profileImg", rm.ProflieImg));
+                    var res = db.Database.ExecuteSqlCommand(@"exec SpUpdatedata @userid,@F_Name,@M_Name,@L_Name,@phone,@Mobile,@Password,@emailId,@summery,@totalYearsOfExp,@location,
+                     @graduation,@pG,@currentlyWorkingWith,@cPosition,@cDetailProfile,@lastWorkingWith,@lPosition,@lDetailProfile,@KeyArea,
+                     @industrySpecialisation,@verticalSpecalization,@expertise,@achivement,@languagesKnow,@profileImg",
+                                       new SqlParameter("@userid", rm.UserId),
+                                       new SqlParameter("@F_Name", rm.F_Name),
+                                       new SqlParameter("@M_Name", rm.M_Name == null ? (object)DBNull.Value : rm.M_Name),
+                                       new SqlParameter("@L_Name", rm.L_Name),
+                                       new SqlParameter("@phone", rm.phone == null ? (object)DBNull.Value : rm.phone),
+                                       new SqlParameter("@Mobile", rm.Mobile),
+                                       new SqlParameter("@Password", rm.Password),
+                                       new SqlParameter("@emailId", rm.emailId == null ? (object)DBNull.Value : rm.emailId),
+                                       new SqlParameter("@summery", rm.Summery == null ? (object)DBNull.Value : rm.Summery),
+                                       new SqlParameter("@totalYearsOfExp", rm.TotalYearsOfExp == null ? (object)DBNull.Value : rm.TotalYearsOfExp),
+                                       new SqlParameter("@location", rm.Location == null ? (object)DBNull.Value : rm.Location),
+                                       new SqlParameter("@graduation", rm.Graduation == null ? (object)DBNull.Value : rm.Graduation),
+                                       new SqlParameter("@pg", rm.PG == null ? (object)DBNull.Value : rm.PG),
+                                       new SqlParameter("@CurrentlyWorkingWith", rm.CurrentlyWorkingWith == null ? (object)DBNull.Value : rm.CurrentlyWorkingWith),
+                                       new SqlParameter("@cPosition", rm.CurrentPosition == null ? (object)DBNull.Value : rm.CurrentPosition),
+                                       new SqlParameter("@cDetailProfile", rm.CurrentDetailProfile == null ? (object)DBNull.Value : rm.CurrentDetailProfile),
+                                       new SqlParameter("@lastWorkingWith", rm.LastWorkingWith == null ? (object)DBNull.Value : rm.LastWorkingWith),
+                                       new SqlParameter("@lPosition", rm.LastPosition == null ? (object)DBNull.Value : rm.LastPosition),
+                                       new SqlParameter("@lDetailProfile", rm.LastDetailProfile == null ? (object)DBNull.Value : rm.LastDetailProfile),
+                                       new SqlParameter("@KeyArea", rm.KeyArea == null ? (object)DBNull.Value : rm.KeyArea),
+                                       new SqlParameter("@industrySpecialisation", rm.IndustrySpecialisation == null ? (object)DBNull.Value : rm.IndustrySpecialisation),
+                                       new SqlParameter("@verticalSpecalization", rm.VerticalSpecalization == null ? (object)DBNull.Value : rm.VerticalSpecalization),
+                                       new SqlParameter("@expertise", rm.Expertise == null ? (object)DBNull.Value : rm.Expertise),
+                                       new SqlParameter("@achivement", rm.Achivement == null ? (object)DBNull.Value : rm.Achivement),
+                                       new SqlParameter("@LanguagesKnow", rm.LanguagesKnow == null ? (object)DBNull.Value : rm.LanguagesKnow),
+                                       new SqlParameter("@profileImg", DbPath));
 
+                
+            
             return Json("Data Updated Sucessfully");
         }
-        //show
-        public ActionResult DisplayRecruiterProfile(int? profileId)
+
+        
+        public ActionResult DisplayRecruiterProfile(int? userid)
         {
             jobDbContext db = new jobDbContext();
-            var result = db.editlist.SqlQuery(@"exec disp @Id", new SqlParameter("@Id", 13)).ToList<RecruiterList>();
+            var result = db.editlist.SqlQuery(@"exec disp @Id", new SqlParameter("@Id",Convert.ToInt16(Session["User_id"].ToString()))).ToList<RecruiterList>();
 
             RecruiterList ed = new RecruiterList();
             ed = result.FirstOrDefault();
             return View("DisplayRecruiterProfile", ed);
 
+        }
+
+
+        //================================== Insert Multipal Location ===========================================
+
+        [HttpPost]
+        public ActionResult add_MultipalVertical(Requirement[] Requirement)
+        {
+
+            try
+            {
+                var result = 0;
+                jobDbContext _db = new jobDbContext();
+                foreach (var item in Requirement)
+                {
+                    Requirement O = new Requirement();
+                    O.SectorId = item.SectorId;
+                    result = _db.Database.ExecuteSqlCommand(@"exec USP_AddUserVerticals 
+                    @UserId,@VerticalID",
+                    new SqlParameter("@UserId",Convert.ToInt16(Session["User_id"].ToString())),
+                    new SqlParameter("@VerticalID", O.SectorId));
+
+                }
+
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+
+            catch (Exception ex)
+            {
+                string message = string.Format("<b>Message:</b> {0}<br /><br />", ex.Message);
+                return View("IndexForDesignation");
+                //return PartialView(rs);
+            }
+
+
+        }
+        
+        [HandleError]
+        [HttpPost]
+        public ActionResult DeleteVehical(int vehicalid)
+        {
+
+            jobDbContext _db = new jobDbContext();
+            var result = _db.Database.ExecuteSqlCommand(@"exec USP_DeleteUserVerticals @UserId,@VerticalID",
+                 new SqlParameter("@UserId", Convert.ToInt16(Session["User_id"].ToString())),
+                new SqlParameter("@VerticalID", vehicalid));
+            return Json("Deleted sucessfully");
         }
     }
 }

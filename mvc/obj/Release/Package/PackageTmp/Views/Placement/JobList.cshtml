@@ -14,14 +14,14 @@
 <link href="~/assets/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <ul class="nav nav-pills">
                 <li role="presentation" class="active"><a href="#">All</a></li>
                 <li role="presentation"><a href="#">Closed</a></li>
                 <!--  <li role="presentation"><a href="#">Drafts</a></li> -->
             </ul>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-1">
             <select id="Status" class="form-control text pull-right" style="width:95px;">
                 <option value="8">-Select-</option>
                 <option value="10">10</option>
@@ -30,6 +30,9 @@
                 <option value="70">70</option>
                 <option value="100">100</option>
             </select>
+        </div>
+        <div class="col-sm-2">
+            <input type="date" id="Adate" class="form-control"/>
         </div>
         <div class="col-sm-2">
             <div class="input-group">
@@ -196,12 +199,11 @@
                         $('#pageLoader').hide();
                     }
                 });
-
         });
 
 
         function GetClientList()
-    {
+        {
              var returnResult = [];
                           $.ajax({
                         contentType: "application/json; charset=utf-8",
@@ -311,7 +313,58 @@
                     }
                 });
 
+        });
+
+        @*$('#Adate').on('change', function ()
+        {
+             $.ajax({
+            url: "@Url.Action("LoadDataForJob", "Placement")",
+                 data: JSON.stringify({ 
+                      Activitydate : $('#Adate').val()
+                  }),
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 $('#grid1').html(data);
+                
+                }
             });
+        })*@
+
+        $('#Adate').change(function () {
+
+               $('#pageLoader').show();
+
+                $.ajax({
+                    url: "@Url.Action("LoadDataForJob", "Placement")",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        page: 1,
+                        RowCount: $('#Status').val(),
+                        Cname: $('#txtClient').val(),
+                        DName: $('#txtDesignation').val(),
+                        Activitydate: $('#Adate').val()
+
+                    }),
+                    dataType: "text",
+                    type: "POST",
+                    async: true,
+                    success: function (data) {
+                        $('#grid1').html(data);
+
+                    },
+                    error: function (data) {
+                        $('#pageLoader').hide();
+                    },
+                    complete: function () {
+                        $('#pageLoader').hide();
+                    }
+                });
+
+            });
+
 
     </script>
 

@@ -21,9 +21,9 @@
 </head>
 <body style="padding:0px;">
 
-    <header >
+    <header>
         <nav class="navbar navbar-default">
-            <div class="container-fluid"  id="myheader">
+            <div class="container-fluid" id="myheader">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -53,56 +53,57 @@
                                 }
                             }
                         }
-                            <li id="UrlJobList"><a href="@Url.Action("JobList","Placement")"><i class="fa fa-briefcase m-r-xs"></i> Jobs <span class="sr-only">(current)</span></a></li>
-                            <li id="UrlPlacement"><a href="@Url.Action("index","Placement")"><i class="fa fa-users m-r-xs"></i> Candidates</a></li>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Master</span> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu profile-right-aligned">
-                                        @{
-                                            System.Data.DataRow[] HeadingFields = dt.Select("submenuname = 'ClientMaster' and FeatureName = 'Display'");
-                                            if (HeadingFields[0].ItemArray[6].ToString() == "1")
-                                            {
-                                                 <li><a href="../BussinessDev/IndexForBusinessDev">Client Master</a></li>
-                                            }
-                                            System.Data.DataRow[] HeadingFields1 = dt.Select("submenuname = 'DesignationMaster' and FeatureName = 'Display'");
-                                            if (HeadingFields1[0].ItemArray[6].ToString() == "1")
-                                            {
-                                                <li><a href="../Master/IndexForDesignation">Designation Master</a></li>
-                                            }
+                        <li id="UrlJobList"><a href="@Url.Action("JobList","Placement")"><i class="fa fa-briefcase m-r-xs"></i> Jobs <span class="sr-only">(current)</span></a></li>
+                        <li id="UrlPlacement"><a href="@Url.Action("index","Placement")"><i class="fa fa-users m-r-xs"></i> Candidates</a></li>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Master</span> <span class="caret"></span></a>
+                                <ul class="dropdown-menu profile-right-aligned">
+                                    @{
+                                        System.Data.DataRow[] HeadingFields = dt.Select("submenuname = 'ClientMaster' and FeatureName = 'Display'");
+                                        if (HeadingFields[0].ItemArray[6].ToString() == "1")
+                                        {
+                                            <li><a href="../BussinessDev/IndexForBusinessDev">Client Master</a></li>
+                                        }
+                                        System.Data.DataRow[] HeadingFields1 = dt.Select("submenuname = 'DesignationMaster' and FeatureName = 'Display'");
+                                        if (HeadingFields1[0].ItemArray[6].ToString() == "1")
+                                        {
+                                            <li><a href="../Master/IndexForDesignation">Designation Master</a></li>
+                                        }
 
-                                            @*System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'UserMaster' and FeatureName = 'Display'");
+                                        @*System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'UserMaster' and FeatureName = 'Display'");
 
                                             if (HeadingFields2[0].ItemArray[6].ToString() == "1")
                                             {
                                                 <li><a href="../Master/IndexForUser">User Master</a></li>
                                             }*@
-                                            System.Data.DataRow[] HeadingFields3 = dt.Select("submenuname = 'TemplateMaster' and FeatureName = 'Display'");
-                                            if (HeadingFields3[0].ItemArray[6].ToString() == "1")
-                                            {
-                                                <li><a href="../Master/IndexFotMailTemplateMaster">Mail Template Master</a></li>
-                                            }
-                                            System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'UserMaster' and FeatureName = 'Display'");
-                                            if (HeadingFields2[0].ItemArray[6].ToString() == "1")
-                                            {
-                                                <li><a href="../Master/UserPermissions">User & Permissions</a></li>
-                                            }
+                                        System.Data.DataRow[] HeadingFields3 = dt.Select("submenuname = 'TemplateMaster' and FeatureName = 'Display'");
+                                        if (HeadingFields3[0].ItemArray[6].ToString() == "1")
+                                        {
+                                            <li><a href="../Master/IndexFotMailTemplateMaster">Mail Template Master</a></li>
                                         }
-                                    </ul>
-                                </li>
-                            </ul>
+                                        System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'userPermission' and FeatureName = 'Display'");
+                                        if (HeadingFields2[0].ItemArray[6].ToString() == "1")
+                                        {
+                                            <li><a href="../Master/UserPermissions">User & Permissions</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
                         </ul>
+                    </ul>
 
                     <ul class="nav navbar-nav navbar-right">
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="label label-danger" style="font-size: inherit; background-color:#999aad75;">@Session["UserName"]</span> <span class="caret"></span></a>
                             <ul class="dropdown-menu profile-right-aligned">
+                                <li><a href="../CRecruiter/Index">My Profile</a></li>
                                 <li><a href="../Placement/Logout">Sign Out</a></li>
                             </ul>
                         </li>
                     </ul>
-                
+
                     <ul id="nav" class="nav navbar-nav navbar-right">
                         @*<li><a class="border-right" href="#">@Session["UserName"]</a></li>*@
                         <li><a class="border-right" href="#">@Session["RoleName"]</a></li>
@@ -121,8 +122,8 @@
     @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)
 
-  
-  
+
+
     <script>
         $(function () {
             $(document).ready(function () {

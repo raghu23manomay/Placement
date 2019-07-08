@@ -1,0 +1,583 @@
+﻿@model  mvc.Models.RecruiterList
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/chosen.jquery.min.js"></script>
+<link href="~/Content/chosen.min.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+<style>
+
+    .img {
+        max-width: 180px;
+        border-width: thick;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+    }
+
+    .input[type=file] {
+        padding: 10px;
+        background: #2d2d2d;
+    }
+
+    .b-r {
+        border-right: 1px solid #e7eaec;
+    }
+
+    .big-icon {
+        font-size: 160px !important;
+        color: #e5e6e7;
+    }
+</style>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { @class = "", @id = "frmCandidate", enctype = "multipart/form-data" }))
+{
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-content">
+                    <div class="row">
+                        <div>
+                            <h4>My Profile</h4>
+                            <p></p>
+                            @if (Model.ProflieImg.ToString() == "~/img/")
+                            {
+                                <p class="text-center">
+                                    <input type="file" class="hidden" name="file" id="profileUpload">
+                                    <img src="~/ProfileImage/Avatar.jpg" id="profile-img-tag" class="img-responsive" style="height:248px;" />
+
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="text-center">
+                                    <input id="imgpath" value="@Url.Content(Model.ProflieImg)" class="hidden" />
+                                    <input type="file" class="hidden" name="file" id="profileUpload">
+                                    <img src="@Url.Content(Model.ProflieImg)" id="profile-img-tag" class="img-responsive" style="height:248px;" />
+
+                                </p>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-6 b-r">
+
+                            <form role="form">
+
+                                <div class="form-group">
+
+
+                                    <label>First Name</label>
+                                    @Html.TextBoxFor(a => a.UserId, new { @class = "form-control hidden", placeholder = "Enter First Name", title = "UserId", @id = "UserId" })
+                                    @Html.TextBoxFor(a => a.F_Name, new { @class = "form-control", placeholder = "Enter First Name", title = "F_Name", @id = "F_Name" })
+                                    <p id="Firstname" style="color:red;">Enter First Name</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">Middle Name</label>
+                                    @Html.TextBoxFor(a => a.M_Name, new { @class = "form-control", placeholder = "Enter Middle Name", title = "M_Name", @id = "M_Name" })
+                                    <p id="middlename" style="color:red;">Enter Middle Name</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Last Name</label>
+                                    @Html.TextBoxFor(a => a.L_Name, new { @class = "form-control", placeholder = "Enter Last Name", title = "L_Name", @id = "L_Name" })
+                                    <p id="lastname" style="color:red;">Enter Last Name</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">Phone No</label>
+                                    @Html.TextBoxFor(a => a.phone, new { @class = "form-control", placeholder = "Enter phone number", title = "phone", @id = "phone" })
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name">Mobile No</label>
+                                @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control", placeholder = "Enter mobile number", title = "Mobile", @id = "Mobile" })
+                                <p id="Mobilenum" style="color:red;">Enter Mobile Number</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Password</label>
+                                @Html.TextBoxFor(a => a.Password, new { @class = "form-control", placeholder = "Enter password", title = "Password", @id = "Password" })
+                                <p id="pass" style="color:red;">Enter Password</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Email Id</label>
+                                @Html.TextBoxFor(a => a.emailId, new { @class = "form-control", placeholder = "Enter emailid", title = "emailId", @id = "emailId" })
+                                <p id="eml" style="color:red;">Enter Email ID</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">User Name</label>
+                                @Html.TextBoxFor(a => a.User_Name, new { @class = "form-control", placeholder = "Enter user Name", title = "User_Name", @id = "User_Name", disabled = "disabled" })
+                                <p id="validation" style="color:red;">Enter user Name</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="ibox float-e-margins">
+
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-4 b-r">
+
+                        <div class="form-group">
+                            <label for="position">Summary</label>
+                            @Html.TextAreaFor(a => a.Summery, new { @class = "form-control", placeholder = "Enter Summary", title = "Area", @id = "summery" })
+                            <div class="text-danger" id="summery_error_msg"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="position">Location</label>
+                            @Html.DropDownList("modal.Location", new SelectList((System.Collections.IEnumerable)ViewData["LocationList"], "Value", "Text", Model.location_id), "Select Location", new { @class = "form-control", @id = "locId" })
+                            <div class="text-danger" id="locId_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Graduation</label>
+                            @Html.TextBoxFor(a => a.Graduation, new { @class = "form-control", placeholder = "Enter Graduation", title = "Area", @id = "graduation" })
+                            <div class="text-danger" id="graduation_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Post Graduation</label>
+                            @Html.TextBoxFor(a => a.PG, new { @class = "form-control", placeholder = "Enter Post Graduation", title = "Area", @id = "pg" })
+
+                        </div>
+                        @*<div class="form-group">
+                            <label for="position">Vertical Specalization</label>
+                            @Html.TextBoxFor(a => a.VerticalSpecalization, new { @class = "form-control", placeholder = "Enter Vertical Specalization", title = "Area", @id = "verticalSpecalization" })
+                            </div>*@
+                        <div class="form-group">
+                            @*<select data-placeholder="Your Favorite Types of Bear" multiple id="test" tabindex="8" >
+                                    <option value=""></option>
+                                    <option>American Black Bear</option>
+                                    <option>Asiatic Black Bear</option>
+                                    <option>Brown Bear</option>
+                                    <option value="7" selected ="selected">Giant Panda</option>
+                                    <option value="4" >Sloth Bear</option>
+                                    <option disabled>Sun Bear</option>
+                                    <option value="5" selected ="selected">Polar Bear</option>
+                                    <option disabled>Spectacled Bear</option>
+                                </select>*@
+
+                            <label for="position">Vertical Specalization</label>
+                            @Html.DropDownList("modal.VerticalSpecalization", new SelectList((System.Collections.IEnumerable)ViewData["PositionSectorList"], "Value", "Text"), "Select Location", new { @class = "form-control chosen-select", @id = "VerticalSpecalization", @multiple = "multiple" })
+                            <div class="text-danger" id="sector_error_msg"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="position">Total Years Of Experiance</label>
+                            @Html.TextBoxFor(a => a.TotalYearsOfExp, new { @class = "form-control", placeholder = "Enter Total Years Of Experiance", title = "Area", @id = "totalyrexp" })
+                            <div class="text-danger" id="exp_error_msg"></div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-4 b-r">
+                        <div class="form-group">
+                            <label for="position">Currently Working With</label>
+                            @Html.TextBoxFor(a => a.CurrentlyWorkingWith, new { @class = "form-control", placeholder = "Enter Currently Working With", title = "Area", @id = "CurrentlyWorkingWith" })
+                            <div class="text-danger" id="CurrentlyWorkingWith_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Current Position</label>
+                            @Html.TextBoxFor(a => a.CurrentPosition, new { @class = "form-control", placeholder = "Enter Currently Detail Profile", title = "Area", @id = "cposition" })
+                            <div class="text-danger" id="CPosition_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Current Detail Profile</label>
+                            @Html.TextAreaFor(a => a.CurrentDetailProfile, new { @class = "form-control", placeholder = "Enter Currently Detail Profile", title = "Area", @id = "cDetailProfile" })
+                            <div class="text-danger" id="CDetailProfile_error_msg"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="position">Expertise</label>
+                            @Html.TextBoxFor(a => a.Expertise, new { @class = "form-control", placeholder = "Enter Expertise", title = "Area", @id = "expertise" })
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Languages Known</label>
+                            @Html.TextBoxFor(a => a.LanguagesKnow, new { @class = "form-control", placeholder = "Enter Languages Know", title = "Area", @id = "languagesKnow" })
+                            <div class="text-danger" id="languagesKnow_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Achivement</label>
+                            @Html.TextBoxFor(a => a.Achivement, new { @class = "form-control", placeholder = "Enter Achivement", title = "Area", @id = "achivement" })
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="position">Last Working With</label>
+                            @Html.TextBoxFor(a => a.LastWorkingWith, new { @class = "form-control", placeholder = "Enter Last Working With", title = "Area", @id = "LastWorkingWith" })
+                            <div class="text-danger" id="LastWorkingWith_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Last Position</label>
+                            @Html.TextBoxFor(a => a.LastPosition, new { @class = "form-control", placeholder = "Enter Last Position", title = "Area", @id = "lPosition" })
+                            <div class="text-danger" id="lPosition_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Last Detail Profile</label>
+                            @Html.TextAreaFor(a => a.LastDetailProfile, new { @class = "form-control", placeholder = "Enter Last DetailProfile", title = "Area", @id = "lDetailProfile" })
+                            <div class="text-danger" id="lDetailProfile_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Key Area</label>
+                            @Html.TextBoxFor(a => a.KeyArea, new { @class = "form-control", placeholder = "Enter Key Area", title = "Area", @id = "KeyArea" })
+                            <div class="text-danger" id="keyArea_error_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Industry Specialisation</label>
+                            @Html.TextBoxFor(a => a.IndustrySpecialisation, new { @class = "form-control", placeholder = "Enter Industry Specialisation", title = "Area", @id = "industrySpecialisation" })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="btnsave" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        @*<a href="@Url.Action("edit", "Placement", new { @id = 1 })">Edit</a>*@
+    </div>
+
+
+
+}
+
+
+
+<script type="text/javascript">
+    $("#profile-img-tag").click(function (e) {
+        $("#profileUpload").click();
+    });
+
+    //img view
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#profileUpload").change(function () {
+        readURL(this);
+    });
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#VerticalSpecalization').chosen({
+            disable_search: true
+        });
+
+
+        var my_val = "@ViewBag.Verticaldata";
+        var str_array = my_val.split(',');
+        $("#VerticalSpecalization").val(str_array).trigger("chosen:updated");
+
+
+        $('.search-choice-close').on("click", function () {            
+            var vehicalid = $(this).attr("data-option-array-index");
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "/CRecruiter/DeleteVehical",
+                data: {
+                    vehicalid: vehicalid,
+                },
+                success: function (result) {
+
+                },
+                error: function (errorData) {
+                }
+            });
+        });
+
+    });
+
+
+
+    //validation
+    $("#validation").hide();
+    $("#Firstname").hide();
+    $("#middlename").hide();
+    $("#lastname").hide();
+    $("#Mobilenum").hide();
+    $("#pass").hide();
+    $("#eml").hide();
+
+    $('#btnsave').on('click', function (e) {
+
+        var error = 0;
+        if ($('#name').val() == '') {
+            error = 1;
+            $('#name_id_error_msg').html("please select Name.");
+            $('#name_id_error_msg').show();
+
+        }
+        else {
+            $('#name_id_error_msg').hide();
+        }
+        if ($('#totalyrexp').val() == '') {
+            error = 1;
+            $('#exp_error_msg').html("please select Total Experiance.");
+            $('#exp_error_msg').show();
+
+        }
+        else {
+            $('#exp_error_msg').hide();
+        }
+
+        if ($('#summery').val() == '') {
+            error = 1;
+            $('#summery_error_msg').html("Enter Summary.");
+            $('#summery_error_msg').show();
+        }
+        else {
+            $('#summery_error_msg').hide();
+        }
+        if ($('#locId').val() == '') {
+            error = 1;
+            $('#locId_error_msg').html("Select Location.");
+            $('#locId_error_msg').show();
+        }
+        else {
+            $('#locId_error_msg').hide();
+        }
+        if ($('#graduation').val() == '') {
+            error = 1;
+            $('#graduation_error_msg').html("Select graduation.");
+            $('#graduation_error_msg').show();
+        }
+        else {
+            $('#graduation_error_msg').hide();
+        }
+
+
+        if ($('#CurrentlyWorkingWith').val() == '') {
+            error = 1;
+            $('#CurrentlyWorkingWith_error_msg').html("Enter Currently Working With.");
+            $('#CurrentlyWorkingWith_error_msg').show();
+        }
+        else {
+            $('#CurrentlyWorkingWith_error_msg').hide();
+        }
+        if ($('#cposition').val() == '') {
+            error = 1;
+            $('#CPosition_error_msg').html("The Postion field is required.");
+            $('#CPosition_error_msg').show();
+        }
+        else {
+            $('#CPosition_error_msg').hide();
+        }
+        if ($('#lDetailProfile').val() == '') {
+            error = 1;
+            $('#lDetailProfile_error_msg').html("Enter Last Detail Profile  .");
+            $('#lDetailProfile_error_msg').show();
+        }
+        else {
+            $('#lDetailProfile_error_msg').hide();
+        }
+        if ($('#Current_Organization').val() == '') {
+            error = 1;
+            $('#CDetailProfile_error_msg').html("The current Detail Profile required.");
+            $('#CDetailProfile_error_msg').show();
+        }
+        else {
+            $('#CDetailProfile_error_msg').hide();
+        }
+
+        if ($('#LastWorkingWith').val() == '') {
+            error = 1;
+            $('#LastWorkingWith_error_msg').html("Last Working With required.");
+            $('#LastWorkingWith_error_msg').show();
+        }
+        else {
+            $('#LastWorkingWith_error_msg').hide();
+        }
+
+        if ($('#lPosition').val() == '') {
+            error = 1;
+            $('#lPosition_error_msg').html("The Last Position field is required.");
+            $('#lPosition_error_msg').show();
+        }
+        else {
+            $('#lPosition_error_msg').hide();
+        }
+        if ($('#keyArea').val() == '') {
+            error = 1;
+            $('#keyArea_error_msg').html("Enter Area Key.");
+            $('#keyArea_error_msg').show();
+        }
+        else {
+            $('#keyArea_error_msg').hide();
+        }
+        if ($('#languagesKnow').val() == '') {
+            error = 1;
+            $('#languagesKnow_error_msg').html("Enter languages.");
+            $('#languagesKnow_error_msg').show();
+        }
+        else {
+            $('#languagesKnow_error_msg').hide();
+        }
+        if ($('#cDetailProfile').val() == '') {
+            error = 1;
+            $('#CDetailProfile_error_msg').html("Enter Current Detail Profile.");
+            $('#CDetailProfile_error_msg').show();
+        }
+        else {
+            $('#CDetailProfile_error_msg').hide();
+        }
+
+        if (error) {
+            return false;
+        }
+        else {
+            upload();
+        }
+
+        //uplaod
+
+        function upload() {
+
+            // Checking whether FormData is available in browser
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#profileUpload").get(0);
+                var files = profileUpload.files;
+                var ext = $('#profileUpload').val().split('.').pop().toLowerCase();
+
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+
+                // Adding one more key to FormData object
+                //insertData
+                fileData.append('UserId', $("#UserId").val());
+                fileData.append('F_Name', $("#F_Name").val())
+                fileData.append('M_Name', $("#M_Name").val())
+                fileData.append('L_Name', $("#L_Name").val())
+                fileData.append('Mobile', $("#Mobile").val())
+                fileData.append('phone', $("#phone").val())
+                fileData.append('Password', $("#Password").val())
+                fileData.append('emailId', $("#emailId").val())
+                //fileData.append('name', $("#name").val());
+                fileData.append('summery', $("#summery").val());
+                fileData.append('TotalYearsOfExp', $("#totalyrexp").val());
+                fileData.append('Location', $("#locId").val());
+                fileData.append('graduation', $("#graduation").val());
+                fileData.append('pg', $("#pg").val());
+                fileData.append('CurrentlyWorkingWith', $("#CurrentlyWorkingWith").val());
+                fileData.append('CurrentPosition', $("#cposition").val());
+                fileData.append('CurrentDetailProfile', $("#cDetailProfile").val());
+                fileData.append('LastWorkingWith', $("#LastWorkingWith").val());
+                fileData.append('LastPosition', $("#lPosition").val());
+                fileData.append('LastDetailProfile', $("#lDetailProfile").val());
+                fileData.append('KeyArea', $("#KeyArea").val());
+                fileData.append('industrySpecialisation', $("#industrySpecialisation").val());
+                fileData.append('verticalSpecalization', $("#verticalSpecalization").val());
+                fileData.append('expertise', $("#expertise").val());
+                fileData.append('achivement', $("#achivement").val());
+                fileData.append('languagesKnow', $("#languagesKnow").val());
+                fileData.append('ProflieImg', $("#imgpath").val());
+
+
+                $.ajax({
+                    url: '/CRecruiter/UpdateRecruiterProfile',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+
+                    success: function (result) {
+                        AddUserVertical();
+                        alert('Profile Updated..!');
+                        location.href = "/CRecruiter/Index"
+
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+
+                    }
+
+                });
+            }
+            else {
+                alert("FormData is not supported.");
+            }
+        }
+    });
+
+   // =========================== Add Multipal Vehical ============================
+
+    function AddUserVertical() {
+        var orderArr = [];
+        $('.search-choice-close').each(function () {
+            var id = $(this).attr("data-option-array-index");
+            orderArr.push({
+                SectorId: id,
+            });
+        });
+        var data = JSON.stringify({
+            Requirement: orderArr
+        });
+
+        //alert(data);
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/CRecruiter/add_MultipalVertical",
+            data: data,
+            success: function (result) {
+                //alert('vertical added sucessfully')
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+
+    }
+
+ 
+</script>
+
+
+
+

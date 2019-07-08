@@ -71,13 +71,12 @@
                     <div class="actionIcons paddingTop15 ">
                         <i class="glyphicon glyphicon-plus" id="addclient" style="border: 1px solid #ccc;border-radius: 1px; padding: 7px;  margin-right: 5px;"></i>
                         @*<i class="glyphicon glyphicon-tag"></i>*@
-                        <i class="glyphicon glyphicon-pencil"></i>
+                        <i class="glyphicon glyphicon-pencil" id="editclient"></i>
                         <i class="glyphicon glyphicon-trash" id="deleteclinet"></i>
                     </div>
                     <div id="grid1">
                         @Html.Partial("BusinessDevList")
                     </div>
-
 
                 </div>
              </div>          
@@ -149,7 +148,10 @@
  
     $('#clientlist').on('click', '.clickable-row', function (event) {
         $(this).addClass('active').siblings().removeClass('active');
+        $(this).prop("checked", true);
     });
+
+     //=========================================== add client master =================================================
 
     $('#addclient').on('click', function ()
     {
@@ -166,8 +168,7 @@
              async: false,
              success: function (data) {
 
-                 $('#addclientgrid').html(data);
-                 
+                 $('#addclientgrid').html(data);                 
 
                 }
 
@@ -189,12 +190,55 @@
 
             });
         $('.loader').hide();
+    });
+
+    //=========================================== edit client master =================================================
+
+    $('#editclient').on('click', function () {
+
+           $('.loader').show();  
+
+
+        $('.clientcheck').each(function () {
+            var clientid = $(this).attr("value");
+            if ($(this).is(":checked")) {
+               $.ajax({
+            url: "@Url.Action("FetchClinetDetails", "Master")",
+            data: {
+                 client_id: clientid,
+                  },
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+
+                 $('#addclientgrid').html(data);
+             }
+
+                });                      
+            }
         });
 
+         $.ajax({
+            url: "@Url.Action("FetchContactperson", "Master")",
+            data: {
+                clientCD_ID: 0,
+                  },
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
 
-      
+                 $('#AddContactPersongrid').html(data);
+                
+                }
 
-    </script>
+            });
+        $('.loader').hide();            
+
+    });
+
+</script>
 
 
 

@@ -11,7 +11,7 @@
 <div class="container" id="pnl-mailTemplateData">
     <div class="form-group">
         <label for="stagecomment">Select Status</label>
-        <select id="Status" class="form-control text">
+        @*<select id="Status" class="form-control text">
             <option value="0">Select Status</option>
             <option value="1">Shortlisted</option>
             <option value="2">Schedule confirmed by Candidate</option>
@@ -19,6 +19,17 @@
             <option value="4">On Hold</option>
             <option value="5">Not Attended</option>
             <option value="6">Reshedule</option>
+        </select>*@
+        <select id="candStatus" class="form-control text">
+            <option value="0">Select Status</option>
+            <option value="1">Shortlisted</option>
+            <option value="2">Schedule confirmed by Candidate</option>
+            <option value="3">Rejected</option>
+            <option value="4">Pending</option>
+            @*<option value="5">Not Attended</option>*@
+            <option value="6">Reshedule</option>
+            <option value="7">Attended</option>
+            <option value="8">In Descision</option>
         </select>
     </div>
     <div id="mailTemplateData">
@@ -166,7 +177,7 @@
 
     //=================================== Status Wise table Filter ================================ 
 
-    $('#Status').on('change', function () {
+    $('#candStatus').on('change', function () {
 
         $.ajax({
             type: "POST",
@@ -175,7 +186,7 @@
             data: {
                 ReqID: $('#req').text(),
                 ClientID: $('#client').text(),
-                statusID: $('#Status').val()
+                statusID: $('#candStatus').val()
             },
             success: function (result) {
                 $('#export').html(result);
@@ -218,7 +229,6 @@
     }
 
     $(document).ready(function () {
-
 
        BindTableData();
 

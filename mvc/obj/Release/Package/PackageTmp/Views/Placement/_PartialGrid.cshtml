@@ -171,7 +171,7 @@
                         else if (item.StageID == 3)
                         {
                             @*<a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 3, StageName = "Interview" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Interview</span></a>
-                            <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
+                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
                             <a href="@Url.Action("EditSchedule", "Placement", new { @CanID = @item.candID, @ReqID = item.ReqID })" data-toggle="modal" data-target="#mdlEditSchedule" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Interview </span></a>
                             <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>
                         }
@@ -184,26 +184,13 @@
                             else
                             {
                                 @*<a href="@Url.Action("EditSchedule", "Placement", new { @CanID = @item.candID, @ReqID = item.ReqID })" data-toggle="modal" data-target="#mdlEditSchedule" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Interview </span></a>
-                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
+                                    <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 4, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
                                 @*<a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 5, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>*@
                                 <a href="@Url.Action("EditSchedule", "Placement", new { @CanID = @item.candID, @ReqID = item.ReqID })" data-toggle="modal" data-target="#mdlEditSchedule" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Offer </span></a>
                                 <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 5, StageName = "Selected" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>selected</span></a>
                             }
                         }
-                        @*else if (item.StageID == 5)
-                        {
 
-                            if (item.statusid == 3)
-                            {
-
-                            }
-                            else
-                            {
-                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 5, StageName = "Offer" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>Offer</span></a>
-                                <a href="@Url.Action("Schedule", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, candName = item.Name, StageID = item.StageID, NextStageID = 6, StageName = "Selected" })" data-toggle="modal" data-target="#mdlSchedule" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>selected</span></a>
-                            }
-
-                        }*@
 
                     </div>
                     <div class="color-gray font11px">
@@ -231,7 +218,7 @@
                             <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 1, ActivityName = "inform to candidate", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>inform to candidate</span></a>
                             <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 2, ActivityName = "inform confirmation to client", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span>inform confirmation to client</span></a>
                         }
-                       
+
                         else if (item.StageID == 3)
                         {
                             <a href="@Url.Action("ScheduleActivity", "Placement", new { @reqid = item.ReqID, @CandID = item.candID, StageID = item.StageID, ActivityID = 3, ActivityName = "candidate Not Interested", CandidateName = item.Name })" data-toggle="modal" data-target="#mdlActivity" class="dropdown-item"><i class="fa fa-circle m-r-sm color-red" aria-hidden="true"></i><span> Candidate Not Interested</span></a>
@@ -286,7 +273,8 @@
                                 {
                                     if (HeadingFields4[0].ItemArray[6].ToString() == "1")
                                     {
-                                        <a href="@Url.Action("EditCandidate", "Placement", new { @CandID = item.candID})" data-toggle="modal" data-target="#mdlEditCandidate" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Candidate</span></a>
+                                        @*<a href="@Url.Action("EditCandidate", "Placement", new { @CandID = item.candID})" data-toggle="modal" data-target="#mdlEditCandidate" class="dropdown-item ember-view"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Candidate</span></a>*@
+                                        <a href="#" id="@item.candID" class="dropdown-item ember-view EditCandidate"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Candidate</span></a>
                                     }
                                     System.Data.DataRow[] HeadingFields3 = dt.Select("submenuname = 'UploadResume' and FeatureName = 'Upload Resume'");
                                     if (HeadingFields3[0].ItemArray[6].ToString() == "1")
@@ -326,39 +314,39 @@
     </div>
 
 }
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="pnl-pagination m-b-md1">
-                <div class="pull-right">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pnl-pagination m-b-md1">
+            <div class="pull-right">
 
-                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Placement", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions() { MaximumPageNumbersToDisplay = 4, DisplayPageCountAndCurrentLocation = true }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "mgrid", OnComplete = "PagedOnComplete" }))
-                    @if (Model.Count() == 0)
-                    {
-                        <ul class="pagination pull-right"></ul>
-                    }
-                </div>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Placement", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions() { MaximumPageNumbersToDisplay = 4, DisplayPageCountAndCurrentLocation = true }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "mgrid", OnComplete = "PagedOnComplete" }))
+                @if (Model.Count() == 0)
+                {
+                    <ul class="pagination pull-right"></ul>
+                }
             </div>
         </div>
-        
     </div>
-        <div id="mdlUploadResume" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
-        </div>
-        <div id="mdlEditCandidate" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
-        </div>       
-        <div id="mdlSourceCandidate" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
-        </div>
-        <div id="mdlActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
-        </div>
-        <div id="mdlEditSchedule" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
-        </div>
-        <div id="mdlCandidateActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
-        </div>
-        <div id="mdlSchedule" class="modal fade " data-backdrop="static" data-keyboard="false" role="dialog">
-        </div>
 
-        <script>
-            $(document).ready(function () {
-                                                                      
+</div>
+<span id="openmodal" class="popupTrigger" data-toggle="modal" data-target="#mdlEditCandidate"></span>
+<div id="mdlUploadResume" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditCandidate" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlSourceCandidate" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlEditSchedule" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlCandidateActivity" class="modal fade" style="margin-left:20%;padding-top:50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+<div id="mdlSchedule" class="modal fade " data-backdrop="static" data-keyboard="false" role="dialog">
+</div>
+
+<script>
+        $(document).ready(function () {
 
         if ($("#message").text() == "")
         {
@@ -368,6 +356,20 @@
         {
             toastr.success("Candidate Deleted");
         }
+
+            $('.EditCandidate').on('click', function () {
+             var CandID = $(this).attr('id');
+             $.ajax({
+            url: "@Url.Action("EditCandidate", "Placement")",
+                 data: { "CandID": CandID},
+                 success: function (data) {
+
+                $('#mdlEditCandidate').html(data);
+                $(".popupTrigger").click();
+            }
+
+        });
+      });
 
     });
 
@@ -402,4 +404,4 @@
     }
             });
 
-        </script>
+</script>

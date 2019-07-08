@@ -31,7 +31,17 @@ namespace mvc.Models
         public String desg_desc { get; set; }
     }
 
+    public class clientlocationdetail
+    {
+        [Key]
+        public int ClientLocationId {get;set;}
+        public int ClientId {get;set;}
+        public int LocationId {get;set;}
+        public string ContactNo {get;set;}
+        public string Location { get;set;}
+    }
    
+
     public class UserMasterGridList
     {
         [Key]
@@ -167,6 +177,7 @@ namespace mvc.Models
         public int client_id { get; set; }
         public String Client_Name { get; set; }
         public int? Client_Type_id { get; set; }
+        public string ClientType { get; set; }
         public int? location_id { get; set; }
         //public String client_profile { get; set; }
         public String address { get; set; }
@@ -255,7 +266,7 @@ namespace mvc.Models
         public int addedBy { get; set; }
         public string emailid { get; set; }
         public string desg_desc { get; set; }
-
+               
     }
 
     public class GetRoleUser

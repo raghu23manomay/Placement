@@ -85,7 +85,7 @@
                                             {
                                                 <li><a href="../Master/IndexFotMailTemplateMaster">Mail Template Master</a></li>
                                             }
-                                            System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'UserMaster' and FeatureName = 'Display'");
+                                            System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'userPermission' and FeatureName = 'Display'");
                                             if (HeadingFields2[0].ItemArray[6].ToString() == "1")
                                             {
                                                 <li><a href="../Master/UserPermissions">User & Permissions</a></li>
@@ -104,7 +104,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="label label-danger" style="font-size: inherit; background-color:#999aad75;">@Session["UserName"]</span> <span class="caret"></span></a>
                             <ul class="dropdown-menu profile-right-aligned">
-                                @*<li><a href="../CRecruiter/Index">My Profile</a></li>*@
+                                <li><a href="../CRecruiter/Index">My Profile</a></li>
                                 <li><a href="../Placement/Logout">Sign Out</a></li>
                             </ul>
                         </li>

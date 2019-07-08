@@ -42,9 +42,11 @@
                 <div class="col-sm-6">
 
                     <div class="form-group">
-                        <label for="position">Name</label>
-                        @Html.TextBoxFor(a => a.Name, new { @class = "form-control", placeholder = "Enter Name", title = "Area", @id = "name" })
-                        <div class="text-danger" id="name_id_error_msg"></div>
+                        <label for="name">Enter User Name</label>
+                        @Html.TextBoxFor(a => a.UserId, new { @class = "form-control hidden", placeholder = "user id", title = "User_id", @id = "User_id" })
+
+                        @Html.TextBoxFor(a => a.User_Name, new { @class = "form-control", placeholder = "Enter user Name", title = "User_Name", @id = "User_Name" })
+                        <p id="validation" style="color:red;">Enter user Name</p>
                     </div>
 
                     <div class="form-group">
@@ -53,6 +55,61 @@
                         <div class="text-danger" id="exp_error_msg"></div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="name">First Name</label>
+                            @Html.TextBoxFor(a => a.F_Name, new { @class = "form-control", placeholder = "Enter First Name", title = "F_Name", @id = "F_Name" })
+                            <p id="Firstname" style="color:red;">Enter First Name</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="name">Middle Name</label>
+                            @Html.TextBoxFor(a => a.M_Name, new { @class = "form-control", placeholder = "Enter Middle Name", title = "M_Name", @id = "M_Name" })
+                            <p id="middlename" style="color:red;">Enter Middle Name</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="name">Last Name</label>
+                            @Html.TextBoxFor(a => a.L_Name, new { @class = "form-control", placeholder = "Enter Last Name", title = "L_Name", @id = "L_Name" })
+                            <p id="lastname" style="color:red;">Enter Last Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Phone No</label>
+                            @Html.TextBoxFor(a => a.phone, new { @class = "form-control", placeholder = "Enter phone number", title = "phone", @id = "phone" })
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Mobile No</label>
+                            @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control", placeholder = "Enter mobile number", title = "Mobile", @id = "Mobile" })
+                            <p id="Mobilenum" style="color:red;">Enter Mobile Number</p>
+                        </div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Password</label>
+                            @Html.TextBoxFor(a => a.Password, new { @class = "form-control", placeholder = "Enter password", title = "Password", @id = "Password" })
+                            <p id="pass" style="color:red;">Enter Password</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Email Id</label>
+                            @Html.TextBoxFor(a => a.emailId, new { @class = "form-control", placeholder = "Enter emailid", title = "emailId", @id = "emailId" })
+                            <p id="eml" style="color:red;">Enter Email ID</p>
+                        </div>
+                    </div>
+                </div>         
+                
             </div>
             <div class="row">
                 <div class="col-sm-6">
@@ -198,7 +255,6 @@
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 $('#profile-img-tag').attr('src', e.target.result);
             }
@@ -214,6 +270,13 @@
 <script>
 
     //validation
+    $("#validation").hide();
+    $("#Firstname").hide();
+    $("#middlename").hide();
+    $("#lastname").hide();
+    $("#Mobilenum").hide();
+    $("#pass").hide();
+    $("#eml").hide();
 
     $('#btnsave').on('click', function (e) {
        

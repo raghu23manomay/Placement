@@ -285,104 +285,13 @@
              }
 
 </script>
-<script type="text/javascript">
 
-     //document.getElementById("demo").innerHTML = "Page location is " + window.location.href;
-     // document.getElementById("demo").innerHTML =   "Page location is " + lastLetter;
-
-    var str = window.location.href;
-    var lastLetter = str[str.length], i, temp;
-    var con = "";
-
-    for (i = 0; i < str.length; i++) {
-        if (str[i] == '=') {
-            myfun(i);
-            break;
-        }
-    }
-
-    function myfun(temp) {
-
-        temp = temp + 1;
-        for (i = temp; i < [str.length]; i++) {
-
-            con = con + str[i];
-        }
-        parseInt(con);
-
-    }
-
-           function refreshforclosebutton() {
-       // refreshjs();
-               // $('#pageLoader').show();
-
-               $('#pageLoader').show();
-
-                $.ajax({
-                    url: "@Url.Action("LoadDataForJob", "Placement")",
-                    contentType: "application/json",
-                    data: JSON.stringify({ page: 1, Name: null }),
-                    dataType: "text",
-                    type: "POST",
-                    async: true,
-                    success: function (data) {
-                        $('#grid1').html(data);
-                        $("#mdlViewJD .close").click()
-
-                    },
-                    error: function (data) {
-                        $('#pageLoader .close').click();
-                        $("#mdlViewJD .close").click()
-                    },
-                    complete: function () {
-                        $('#pageLoader .close').click();
-                        $("#mdlViewJD .close").click()
-                    }
-                });
-
-                @*$.ajax({
-                    url: "@Url.Action("LoadDataForJob", "Placement")",
-                    contentType: "application/json",
-                    data: JSON.stringify({ page: con, Name:null }),
-                    dataType: "text",
-                    type: "POST",
-                    async: true,
-                    success: function (data) {
-
-                        $('#grid').html(data);
-                        $("#pageLoader .close").click()
-                        $("#mdlViewJD .close").click()
-
-
-                    },
-                    error: function (data) {
-                        $('#pageLoader').hide();
-                        $("#pageLoader .close").click()
-                        $("#mdlViewJD .close").click()
-
-
-                    },
-                    complete: function () {
-                        $('#pageLoader').hide();
-                        $("#pageLoader .close").click()
-                        $("#mdlViewJD .close").click()
-
-                    }
-
-
-        });*@
-        return true;
-
-    }
-
-
-</script>
 <div class="modal-dialog" id="pnl-mdlAddJob">
     @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate" }))
     {
         <div class="modal-content">
             <div class="modal-header dark">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="refreshforclosebutton()"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Position</h4>
             </div>
 

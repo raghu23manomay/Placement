@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-sm-3 border-right-light">
                     <div class="clearfix">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID, status ="" })" class="pull-left">@item.req_title </a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID, status ="", Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID })" class="pull-left">@item.req_title </a>
                     </div>
                     <p class="text-muted m-n">@item.designation</p>
                     <p class="text-muted m-n">@item.Client_Name , @item.Location_details ,India</p>
@@ -136,29 +136,29 @@
                             <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID  })">@item.Sourced</a>
                             <p><small>SOURCED</small></p>
                         </div>
-                    </div>*@
+                  </div>*@
                 <div class="col-sm-1 border-right-light">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID,status ="Applied" })">@item.Applied</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID,status ="Applied" ,Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID})">@item.Applied</a>
                         <p><small>APPLIED</small></p>
                     </div>
                 </div>
                 <div class="col-sm-1 border-right-light">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="Rejected" })">@item.Rejected</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="Rejected" ,Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID })">@item.Rejected</a>
                         <p><small>REJECTED</small></p>
                     </div>
                 </div>
 
                 <div class="col-sm-1 border-right-light">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="INTERVIEW" })">@item.Interview</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="INTERVIEW",Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID })">@item.Interview</a>
                         <p><small>INTERVIEW</small></p>
                     </div>
                 </div>
                 <div class="col-sm-1 border-right-light">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="Attended" })">@item.Attended</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="Attended" ,Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID})">@item.Attended</a>
                         <p><small>ATTENDED</small></p>
                     </div>
                 </div>
@@ -170,26 +170,26 @@
                     </div>*@
                 <div class="col-sm-1 border-right-light">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="Pending" })">@item.Pending</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="Pending",Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID })">@item.Pending</a>
                         <p><small>PENDING</small></p>
                     </div>
                 </div>
 
                 <div class="col-sm-1 border-right-light">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID, status ="Offer" })">@item.Offer</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID, status ="Offer",Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID })">@item.Offer</a>
                         <p><small>OFFER</small></p>
                     </div>
                 </div>
                 <div class="col-sm-1 border-right-light">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="InDiscussion" })">@item.InDescision</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="InDiscussion" ,Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID})">@item.InDescision</a>
                         <p><small>IN DESCISION</small></p>
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="screening-list-item">
-                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="SELECTED" })">@item.Selected</a>
+                        <a href="@Url.Action("WorkFlowDetail", "Placement", new { id =@item.ReqID ,status ="SELECTED" ,Adate = ViewBag.Adate, clinetid = @item.Client_ID,reqid = @item.ReqID})">@item.Selected</a>
                         <p><small>JOINED</small></p>
 
                     </div>
@@ -207,40 +207,41 @@
                                 System.Data.DataRow[] HeadingFields = dt.Select("submenuname = 'AssignUser' and FeatureName = 'Assign User'");
                                 if (HeadingFields[0].ItemArray[6].ToString() == "1")
                                 {
-                                <li> <a href="@Url.Action("AssignPossitionToUser", "Placement", new { Req_Id = @item.ReqID })" data-toggle="modal" data-target="#mdlassignuser"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Assign User </span></a></li>
+                                    <li> <a href="@Url.Action("AssignPossitionToUser", "Placement", new { Req_Id = @item.ReqID })" data-toggle="modal" data-target="#mdlassignuser"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Assign User </span></a></li>
                                 }
                                 System.Data.DataRow[] HeadingFields1 = dt.Select("submenuname = 'EditPosition' and FeatureName = 'Edit Position'");
                                 if (HeadingFields1[0].ItemArray[6].ToString() == "1")
                                 {
-                                <li> <a href="@Url.Action("FetchJobPosition", "Placement", new { ReqID = @item.ReqID })" data-toggle="modal" data-target="#mdlAddJob"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Position</span></a></li>
+                                    @*<li> <a href="@Url.Action("FetchJobPosition", "Placement", new { ReqID = @item.ReqID })" data-toggle="modal" data-target="#mdlAddJob"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Position</span></a></li>*@
+                                    <li> <a href="#" id="@item.ReqID" class="Editjob"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Edit Position</span></a></li>
                                 }
                                 System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'DeletePosition' and FeatureName = 'Delete Position'");
                                 if (HeadingFields2[0].ItemArray[6].ToString() == "1")
                                 {
-                                <li> <a href="@Url.Action("DeletePosition", "Placement", new { req_id = @item.ReqID })"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Delete Position</span></a></li>
+                                    <li> <a href="@Url.Action("DeletePosition", "Placement", new { req_id = @item.ReqID })"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Delete Position</span></a></li>
                                 }
                                 System.Data.DataRow[] HeadingFields3 = dt.Select("submenuname = 'UploadJd' and FeatureName = 'Upload JD'");
                                 if (HeadingFields3[0].ItemArray[6].ToString() == "1")
                                 {
-                                <li> <a href="@Url.Action("UploadJD", "Placement", new { ReqID = @item.ReqID })" data-toggle="modal" data-target="#mdlUploadJD"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Upload JD</span></a></li>
+                                    <li> <a href="@Url.Action("UploadJD", "Placement", new { ReqID = @item.ReqID })" data-toggle="modal" data-target="#mdlUploadJD"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Upload JD</span></a></li>
                                 }
                                 System.Data.DataRow[] HeadingFields4 = dt.Select("submenuname = 'ViewJd' and FeatureName = 'View JD'");
                                 if (HeadingFields4[0].ItemArray[6].ToString() == "1")
                                 {
-                                <li> <a href="@Url.Action("ViewJD", "Placement", new { ReqID = @item.ReqID })" data-toggle="modal" data-target="#mdlViewJD"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>View JD</span></a></li>
+                                    <li> <a href="@Url.Action("ViewJD", "Placement", new { ReqID = @item.ReqID })" data-toggle="modal" data-target="#mdlViewJD"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>View JD</span></a></li>
                                 }
                                 System.Data.DataRow[] HeadingFields5 = dt.Select("submenuname = 'MailTracker' and FeatureName = 'Mail Tracker'");
                                 if (HeadingFields5[0].ItemArray[6].ToString() == "1")
                                 {
-                                <li> <a href="@Url.Action("TrackerMail", "Placement", new { ReqID = @item.ReqID, ClientID = @item.Client_ID })"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Mail Tracker</span></a></li>
+                                    <li> <a href="@Url.Action("TrackerMail", "Placement", new { ReqID = @item.ReqID, ClientID = @item.Client_ID })"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Mail Tracker</span></a></li>
                                 }
                                 System.Data.DataRow[] HeadingFields6 = dt.Select("submenuname = 'InterviewTracker' and FeatureName = 'Interview Tracker'");
                                 if (HeadingFields6[0].ItemArray[6].ToString() == "1")
                                 {
-                                <li> <a href="@Url.Action("InterviewTrackerMail", "Placement", new { ReqID = @item.ReqID, ClientID = @item.Client_ID })"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Interview Tracker</span></a></li>
-                                 }
-
+                                    <li> <a href="@Url.Action("InterviewTrackerMail", "Placement", new { ReqID = @item.ReqID, ClientID = @item.Client_ID })"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Interview Tracker</span></a></li>
                                 }
+
+                            }
 
                         </ul>
                     </div>
@@ -250,6 +251,7 @@
 
     }
     <p id="message" class="hidden">@ViewBag.error<i class="fa fa-fw fa-sort"></i></p>
+    <span id="openmodal" class="popupTrigger" data-toggle="modal" data-target="#mdlAddJob"></span>
 </div>
 
 <div class="pnl-pagination m-b-md1">
@@ -276,10 +278,26 @@
             toastr.success("Position Deleted");
         }
 
+           $('.Editjob').on('click', function () {
+            var Reqid = $(this).attr('id');
+         
+             $.ajax({
+            url: "@Url.Action("FetchJobPosition", "Placement")",
+                 data: { "ReqID": Reqid},
+                 success: function (data) {
+              
+                $('#mdlAddJob').html(data);
+                $(".popupTrigger").click();
+            }
+
+        });
+      });
+
     });
 
     $('.statusclass').click(function () {
-        if (confirm("Are you sure?")) {
+        if (confirm("Are you sure?"))
+        {
             var idValue = $(this).attr('id');
             var nameValue = $(this).attr('name');
             var ReqeValue = $(this).attr('value');

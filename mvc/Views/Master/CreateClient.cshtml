@@ -12,24 +12,15 @@
 @using GridMvc.Html
 
 @{
-    /**/
 
     ViewBag.Title = "CreateClient";
 }
 
 <!DOCTYPE html>
 
-
-
 @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate" }))
 {
-    @*<div class="row">
-
-            <div style="display: inline-grid;" class="col-md-12 ibox">
-                <h3 id="username" class="pull-left">Add Client</h3>
-            </div>
-
-        </div>*@
+   
     <div class="marginTop0 page-header">
         <h2 class="marginTop0"><small>Add Client</small></h2>
     </div>
@@ -72,8 +63,6 @@
                 <p id="location" style="color:red;">select Location</p>
 
             </div>
-
-
         </div>
 
         <div class="col-sm-6">
@@ -89,10 +78,7 @@
                 @Html.HiddenFor(model => model.Client_Type_id, new { id = "Client_Type_id" })
                 <p id="clientype" style="color:red;">select client type</p>
 
-
-
             </div>
-
 
             <div class="form-group">
                 <label for="name">products</label>
@@ -111,7 +97,6 @@
                 @Html.TextBoxFor(a => a.Website, new { @class = "form-control", placeholder = "Enter Website", title = "Website", @id = "Website" })
 
             </div>
-
 
             <div class="form-group">
                 <label for="name">DID No</label>
@@ -155,54 +140,7 @@
                 <div class="col-sm-12 " id="AddContactPersongrid">
 
                 </div>
-            </div>
-            @*<div class="row">
-                    <div class="row">
-
-                        <div style="display: inline-grid;" class="col-md-3 ibox">
-                            <h3 id="username" class="pull-left">Add Location</h3>
-                        </div>
-                        <div style="display: inline-grid;" class="col-md-3 ibox">
-                            <h3 id="username" class="pull-left">Location details</h3>
-                        </div>
-
-
-                    </div>
-                    <div class="col-sm-3 ibox">
-                        <div class="form-group">
-                            <label>Location <span class="text-danger">*</span></label>
-                            @Html.TextBoxFor(a => a.location_id, new { @class = "form-control ", @id = "LocationList", placeholder = "Location" })
-                            @Html.HiddenFor(model => model.location_id, new { @id = "location_id" })
-                            <p id="location" style="color:red;">select Location</p>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="name">DID No</label>
-                            @Html.TextBoxFor(a => a.DID_no, new { @class = "form-control", placeholder = "Enter DID number", title = "DID_no", @id = "DID_no" })
-
-                        </div>
-                        <div class="form-group">
-
-                            <a id="add" class="btn btn-primary">Add </a>
-
-                        </div>
-
-                    </div>
-                    <div class="col-sm-3 ibox">
-                        <div class="form-group">
-                            <div class="table-wrapper-scroll-y" style="padding-right: 0px;">
-
-                                <table id="detailsTable" class="table ">
-                                    <thead>
-                                        <tr></tr>
-                                    </thead>
-                                    <tbody id="tbl"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
-       
+            </div>                 
 
             <div class="modal-footer">
                 <button type="button" id="btnsave" class="btn btn-primary">Save</button>
@@ -211,9 +149,7 @@
 
             }
 
-
-
-            <script>
+<script>
 
     $(document).ready(function () {
          $("#business").hide();
