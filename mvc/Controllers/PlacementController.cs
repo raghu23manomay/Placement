@@ -31,17 +31,7 @@ namespace mvc.Controllers
             if (Session["UserName"] == null)
             {
                 return RedirectToAction("Login", "Home");
-            }
-
-            //if (Convert.ToInt32(Session["RoleID"].ToString()) != 6)
-            //{
-            //    userid = null;
-            //}
-            //else
-            //{
-
-            //    userid = Convert.ToInt32(Session["User_id"].ToString());
-            //}
+            }          
 
             // =====  Session  passed to index view for filter  =====
            // DName.Replace("\t", "");

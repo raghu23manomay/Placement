@@ -818,7 +818,7 @@ namespace mvc.Controllers
                 new SqlParameter("@cp_desig_Id", item.cp_desig_Id),
                 new SqlParameter("@phone1", item.phone1 == null ? (object)DBNull.Value : item.phone1),
                 new SqlParameter("@phone2", item.phone2 == null ? (object)DBNull.Value : item.phone2),
-                new SqlParameter("@mobile", item.mobile),
+                new SqlParameter("@mobile", item.mobile == null ? (object)DBNull.Value : item.mobile),
                 new SqlParameter("@description", item.description == null ? (object)DBNull.Value : item.description),
                 new SqlParameter("@user_id", 1),
                 new SqlParameter("@update_date", DateTime.Now),
