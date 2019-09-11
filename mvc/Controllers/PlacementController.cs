@@ -26,7 +26,6 @@ namespace mvc.Controllers
        {
             try
             {
-
             
             if (Session["UserName"] == null)
             {
@@ -153,6 +152,14 @@ namespace mvc.Controllers
         public ActionResult Logout()
         {
             Session["UserName"] = null;
+            jobDbContext _db = new jobDbContext();
+            var result = _db.Database.ExecuteSqlCommand(@"exec UpdateUSerOnlineStatus 
+                @UserId,@status",
+                new SqlParameter("@UserId",Convert.ToInt16(Session["User_id"].ToString())),
+                new SqlParameter("@status",2));
+
+            Session["OnlineStatus"] = 0;
+            
             return RedirectToAction("Login", "Home");
         }
 
@@ -1186,8 +1193,6 @@ namespace mvc.Controllers
                     body = body.Replace("$$description$$", Cdata.description);
                 }
                
-
-
             }
             m.mailDescription = body;
             return Request.IsAjaxRequest()
@@ -1980,7 +1985,11 @@ namespace mvc.Controllers
                     }
                     else if (data1.SMTP_Type == "rediff")
                     {
-                        smtp.Host = " smtp.rediffmailpro.com";
+                        smtp.Host = "smtp.rediffmailpro.com";
+                    }
+                    else if (data1.SMTP_Type == "ceo")
+                    {
+                        smtp.Host = "smtp.ceosearch.in";
                     }
                     smtp.EnableSsl = true;
                     System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
@@ -2043,23 +2052,69 @@ namespace mvc.Controllers
         }
 
         
-        public ActionResult AssignPossitionToUser(int? Req_Id = 0)
+        public ActionResult AssignPossitionToUser(int? Req_Id = 0,string Name = "")
         {
-            ViewData["UserList"] = binddropdown("AssignUserToPosition", 0);
             
-
-            jobDbContext _db = new jobDbContext();
-
-            IEnumerable<AssignMultipalUsertoJobPosition> result = _db.AssignMultipalUsertoJobPosition.SqlQuery(@"exec USP_GetAssignedUserToPosition @Req_Id",
-            new SqlParameter("@Req_Id", Req_Id)).ToList<AssignMultipalUsertoJobPosition>();
-
             ViewBag.reqid = Req_Id;
                 return Request.IsAjaxRequest()
-                     ? (ActionResult)PartialView("AssignPossitionToUser", result)
-                     : View("AssignPossitionToUser", result);
+                     ? (ActionResult)PartialView("AssignPossitionToUser")
+                     : View("AssignPossitionToUser");
             
             
         }
+
+        public ActionResult LoadAssignUSerList(int? Req_Id = 0, string Name = "",int CityId = 0,string Verticals = "")
+        {
+            ViewData["UserList"] = binddropdown("AssignUserToPosition", 0);
+
+
+            jobDbContext _db = new jobDbContext();
+
+            IEnumerable<AssignMultipalUsertoJobPosition> result = _db.AssignMultipalUsertoJobPosition.SqlQuery(@"exec USP_GetAssignedUserToPosition @Req_Id,@Name,@LocationId,@Verticals",
+            new SqlParameter("@Req_Id", Req_Id),
+            new SqlParameter("@Name", Name == null ? (object)DBNull.Value : Name),
+            new SqlParameter("@LocationId", CityId),
+            new SqlParameter("@Verticals", Verticals == null ? (object)DBNull.Value : Verticals)).ToList<AssignMultipalUsertoJobPosition>();
+
+            ViewBag.reqid = Req_Id;
+            return Request.IsAjaxRequest()
+                 ? (ActionResult)PartialView("_UserListForAssignPosition", result)
+                 : View("_UserListForAssignPosition", result);
+
+
+        }
+
+        public ActionResult GetVerticalDetailsForAssignUser(string Name = "")
+        {
+           
+            jobDbContext _db = new jobDbContext();
+
+            IEnumerable<VerticalDetails> result = _db.VerticalDetails.SqlQuery(@"exec GetVerticals @Name",
+                new SqlParameter("@Name", Name == null ? (object)DBNull.Value : Name)).ToList<VerticalDetails>();
+           
+            return Request.IsAjaxRequest()
+                 ? (ActionResult)PartialView("_VerticalListForAssignPosition", result)
+                 : View("_VerticalListForAssignPosition", result);
+
+
+        }
+
+        public ActionResult GetLocationDetailsForAssignUser(string Name = "")
+        {
+
+            jobDbContext _db = new jobDbContext();
+
+            IEnumerable<CityDetails> result = _db.CityDetails.SqlQuery(@"exec GetCity @Name",
+                new SqlParameter("@Name", Name == null ? (object)DBNull.Value : Name)).ToList<CityDetails>();
+
+            return Request.IsAjaxRequest()
+                 ? (ActionResult)PartialView("_CityListForAssignPosition", result)
+                 : View("_CityListForAssignPosition", result);
+
+
+        }
+
+
 
         //================================== Assign Possition to user Code ===========================================
         //[HttpPost]
@@ -2472,7 +2527,7 @@ namespace mvc.Controllers
 
         //================================== Delete Position  ===========================================
 
-        public ActionResult DeletePosition(int? @req_id)
+        public ActionResult DeletePosition(int? req_id)
         {
             
             try
@@ -2503,17 +2558,18 @@ namespace mvc.Controllers
                 StaticPagedList<WorkFLowList> itemsAsIPagedList;
                 itemsAsIPagedList = GridJobList(page,RowCount,Name, CName, DName, userid,null);
 
-                ViewBag.error = "Position Deleted";
-                return Request.IsAjaxRequest()
-                    ? (ActionResult)PartialView("Joblist", itemsAsIPagedList)
-                    : View("Joblist", itemsAsIPagedList);
+                //ViewBag.error = "Position Deleted";
+                //return Request.IsAjaxRequest()
+                //    ? (ActionResult)PartialView("Joblist", itemsAsIPagedList)
+                //    : View("Joblist", itemsAsIPagedList);
+                return Json("Position Deleted");
 
             }
             catch (Exception ex)
             {
                 string message = string.Format("<b>Message:</b> {0}<br /><br />", ex.Message);
-                return Json(JsonRequestBehavior.AllowGet);
-                //return PartialView(rs);
+                return Json(message);
+                
             }
         }
 
@@ -2593,7 +2649,13 @@ namespace mvc.Controllers
                     result = _db.Database.ExecuteSqlCommand(@"exec USP_AddAsignUserForPosition 
                     @UserId,@Req_id",
                     new SqlParameter("@UserId", O.UserId),
-                    new SqlParameter("@Req_id", O.ReqId));                
+                    new SqlParameter("@Req_id", O.ReqId));
+
+                    if(item.IsAssign == 0)
+                    {
+                        AutomatedMailForSharePosition(item.UserId);
+                    }
+                    
 
                  }
 
@@ -2614,8 +2676,8 @@ namespace mvc.Controllers
         {
             jobDbContext _db = new jobDbContext();
             var result = _db.Database.ExecuteSqlCommand(@"exec USP_DeleteAssignedUser 
-                @@Assignid",
-                new SqlParameter("@@Assignid", Assignid));
+                @Assignid",
+                new SqlParameter("@Assignid", Assignid));
             return Json("");
         }
 
@@ -2658,6 +2720,77 @@ namespace mvc.Controllers
                     ? (ActionResult)PartialView("InterviewTrackerMail", itemsAsIPagedList)
                     : View("InterviewTrackerMail", itemsAsIPagedList);
 
+        }
+
+
+        public ActionResult GetUserDetailsForAssignUser(int? userid)
+        {
+            
+            jobDbContext db = new jobDbContext();
+            var result = db.editlist.SqlQuery(@"exec disp @Id", new SqlParameter("@Id", userid)).ToList<RecruiterList>();
+
+            RecruiterList ed = new RecruiterList();
+            ed = result.FirstOrDefault();
+            ViewBag.Verticaldata = result.FirstOrDefault().VerticalId;
+            return View("_UserProfileForAssignUser", ed);
+
+        }
+
+        public ActionResult DeleteAssignedUserInJobPosition(int? UserId,int? ReqId)
+        {
+            jobDbContext _db = new jobDbContext();
+            var result = _db.Database.ExecuteSqlCommand(@"exec USP_DeleteAssignedUserInJobPosition 
+                @UserId,@ReqId",
+                new SqlParameter("@UserId", UserId),
+                new SqlParameter("@ReqId", ReqId));
+            return Json("");
+        }
+
+        public void AutomatedMailForSharePosition(int? userid)
+        {
+            //getting user email id
+
+            jobDbContext _db2 = new jobDbContext();
+            var result2 = _db2.GetUserEmail.SqlQuery(@"exec GetUserEmailId
+                     @userid",
+             new SqlParameter("@userid", userid)).ToList<GetUserEmail>();
+            GetUserEmail data2 = new GetUserEmail();
+            data2 = result2.FirstOrDefault();
+
+            string recepientEmail = data2.Email;
+
+            //Sending mail to user
+            MailTemplateForUpdate data1 = new MailTemplateForUpdate();
+
+            jobDbContext _db1 = new jobDbContext();
+            var result = _db1.MailTemplateForUpdate.SqlQuery(@"exec usp_MailTemplateDetailsForUpdate
+                          @temp_id",
+             new SqlParameter("@temp_id", 16)).ToList<MailTemplateForUpdate>();
+
+            data1 = result.FirstOrDefault();
+
+            string Subject = data1.email_subject;
+            string body = data1.emailBody;
+
+            using (MailMessage mailMessage = new MailMessage())
+            {
+                mailMessage.From = new MailAddress("hr@staffingservices.in");
+                mailMessage.Subject = Subject;
+                mailMessage.Body = body;
+                mailMessage.IsBodyHtml = true;
+                mailMessage.To.Add(new MailAddress(recepientEmail));
+                SmtpClient smtp = new SmtpClient();
+                // smtp.Host = ConfigurationManager.AppSettings["Host"];
+                smtp.Host = "smtp.rediffmailpro.com";
+                smtp.EnableSsl = true;
+                System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
+                NetworkCred.UserName = "hr@staffingservices.in";
+                NetworkCred.Password = "harishmn";
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;
+                smtp.Send(mailMessage);
+            }
         }
 
     }

@@ -307,6 +307,14 @@ namespace mvc.Models
       
     }
 
+    public class GetUserEmail
+    {
+        [Key]
+        public int Userid { get; set; }
+        public string Email { get; set; }
+        
+    }
+
     public class ClientLocation
     {
         [Key]

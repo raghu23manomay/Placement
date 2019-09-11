@@ -1,0 +1,58 @@
+﻿@model IEnumerable<mvc.Models.CityDetails>
+
+@{
+    /**/
+
+
+    Layout = null;
+
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+@foreach (var item in Model)
+{
+
+    <div style="padding: 3px;">
+        <label class="container">
+            @item.loc_desc
+            <input class="CityFilter radio" type="checkbox" value="1" name="fooby[2][]"  id="@item.location_id">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+
+
+}
+
+<script>
+
+    $('.CityFilter').on('click', function () {
+        var cityid = $(this).attr("id");
+        var username = $('#searchUser').val();
+      
+        if ($(this).prop("checked") == true) {
+            LoadUserList(username, cityid);
+        }
+        else if ($(this).prop("checked") == false) {
+            LoadUserList(username,0);
+        }
+
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+       
+    });
+
+
+
+    </script>

@@ -5,8 +5,14 @@
 @{
     Layout = null;
 }
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/chosen.jquery.min.js"></script>
+<link href="~/Content/chosen.min.css" rel="stylesheet" />
 <!DOCTYPE html>
 <style>
+    .chosen-container {
+        width: 322px!important;
+    }
     .table-wrapper-scroll-y {
         display: block;
         max-height: 100px;
@@ -14,378 +20,8 @@
         -ms-overflow-style: -ms-autohiding-scrollbar;
     }
 </style>
-
-}
-<script src="~/Scripts/toastr.js"></script>
-<script src="~/Scripts/toastr.min.js"></script>
-<script>
-            $(document).ready(function () {
-                getLocation();
-                getdesignation();                
-                $('#btnsave').on('click', function (e) {
-                    e.preventDefault();
-                   // debugger;
-                    var error = 0;
-                    if ($('#Designation').val() == '') {
-                        error = 1;
-                        $('#Designation_error_msg').html("The Position field is required.");
-                        $('#Designation_error_msg').show();
-                    }
-                    else {
-                        $('#Designation_error_msg').hide();
-                    }
-                    if ($('#SectorId').val() == '') {
-                        error = 1;
-                        $('#SectorName_error_msg').html("Please select position sector.");
-                        $('#SectorName_error_msg').show();
-                    }
-                    else {
-                        $('#SectorName_error_msg').hide();
-                    }
-                    if ($('#Client_id').val() == 0) {
-                        error = 1;
-                        $('#ClientName_error_msg').html(" please Select Client Name.");
-                        $('#ClientName_error_msg').show();
-                    }
-                    else {
-                        $('#ClientName_error_msg').hide();
-                    } 
-
-                    if ($('#RoleResp').val() == 0) {
-                        error = 1;
-                        $('#Role_Resp_error_msg').html(" please Enter role and resposbilities.");
-                        $('#Role_Resp_error_msg').show();
-                    }
-                    else {
-                        $('#Role_Resp_error_msg').hide();
-                    } 
-
-                    if ($('#KnowledgeSkill').val() == 0) {
-                        error = 1;
-                        $('#Knowledge_Skill_error_msg').html(" please Enter knowdge and skills.");
-                        $('#Knowledge_Skill_error_msg').show();
-                    }
-                    else {
-                        $('#Knowledge_Skill_error_msg').hide();
-                    } 
-
-                    if ($('#ReqTitle').val() == '') {
-                        error = 1;
-                        $('#ReqTitle_error_msg').html("Please Enter Requirment Title.");
-                        $('#ReqTitle_error_msg').show();
-                    }
-                    else {
-                        $('#ReqTitle_error_msg').hide();
-                    }
-
-                    if ($('#Description').val() == '') {
-                        error = 1;
-                        $('#Description_error_msg').html("Please Enter Description.");
-                        $('#Description_error_msg').show();
-                    }
-                    else {
-                        $('#Description_error_msg').hide();
-                    }
-
-                    if ($('#ExpMax').val() == 0) {
-                        error = 1;
-                        $('#ExpMax_error_msg').html("The Maximum Experienece field is required.");
-                        $('#ExpMax_error_msg').show();
-                    }
-                    else {
-                        $('#ExpMax_error_msg').hide();
-                    }
-
-                    if ($('#ExpMin').val() == 0) {
-                        error = 1;
-                        $('#ExpMin_error_msg').html("The Minimum Experienece field is required.");
-                        $('#ExpMin_error_msg').show();
-                    }
-                    else {
-                        $('#ExpMin_error_msg').hide();
-                    }
-
-                    if ($('#SalMax').val() == 0) {
-                        error = 1;
-                        $('#SalMax_error_msg').html("The Maximum Salary field is required.");
-                        $('#SalMax_error_msg').show();
-                    }
-                    else {
-                        $('#SalMax_error_msg').hide();
-                    }
-
-                    if ($('#SalMin').val() == 0) {
-                        error = 1;
-                        $('#SalMin_error_msg').html("The Minimum Salary field is required.");
-                        $('#SalMin_error_msg').show();
-                    }
-                    else {
-                        $('#SalMin_error_msg').hide();
-                    }
-
-                    if ($('#tbl').html() == "") {
-                      
-                        error = 1;
-                        $('#locationtable_error_msg').html("please select location and click on add button.");
-                        $('#locationtable_error_msg').show();
-                    }
-                    else {
-                       $('#locationtable_error_msg').hide();
-                    }
-
-                   if ($('#ContactPerson').val() == 0) {
-                        error = 1;
-                        $('#ContactPerson_error_msg').html("please select Contact Person.");
-                        $('#ContactPerson_error_msg').show();
-                    }
-                    else {
-                        $('#ContactPerson_error_msg').hide();
-                    }
-
-                    if (error) {
-                        return false;
-                    } else
-                    {
-
-                        $.ajax({
-                            type: "POST",
-                            cache: false,
-                            url: "/Placement/AddJOb",
-                            data: {
-                                "ReqTitle": $("#ReqTitle").val(), "Position": 1, "desig_id": $("#Designation").val(), Description: $("#Description").val(),
-                                "ExpMax": $("#ExpMax").val(), "ExpMin": $("#ExpMin").val(), SalMin: $("#SalMin").val(), SalMax: $("#SalMax").val(), Client_ID: $("#Client_id").val(), ContactPerson: $("#ContactPerson").val(),
-                                PositionLevel: $("#PositionLevel").val(),
-                                 location_id: $("#location_id").val(),
-                                  MinimumQulification: $("#MinimumQulification").val(),
-                                   RoleResp: $("#RoleResp").val(),
-                                    KnowledgeSkill: $("#KnowledgeSkill").val(),
-                                     Age: $("#Age").val(),
-                                NoticePeriod: $("#NoticePeriod").val(),
-                                SectorId: $("#SectorId").val()
-                            },
-                            success: function (result) {
-                                toastr.success("Requirement Added successfully.");
-
-                                $("#mdlAddJob .close").click()
-                                if (result.Success) {
-                                }
-                            },
-                            error: function (errorData) {
-                            }
-                        });
-
-                        bindlocation();
-                    }
-                    return true;
-                });
-
-
-                toastr.options = {
-                    "closeButton": true,
-                    "positionClass": "toast-top-right",
-                    "onclick": null,
-                    "showDuration": "0",
-                    "hideDuration": "0",
-                    "timeOut": "0",
-                    "showMethod": "fadeIn"
-                };
-
-            });
-
-            function getLocation()
-    {
-             var returnResult = [];
-                          $.ajax({
-                        contentType: "application/json; charset=utf-8",
-                         url: "@Url.Action("GetLocationList", "placement")",
-                        method: 'GET',
-                        async: 'false',
-                        dataType: 'json',
-                        success: function (result) {
-                            var data = $.map(result, function (obj) {
-                                obj.value = obj.Text; // desired field
-                                obj.data = obj.Value; // desired field
-                                returnResult.push(obj);
-                                $("#location").autocomplete({
-                                    lookup: returnResult,
-                                    onSelect: function (suggestion) {
-                                        $("#location_id").val(suggestion.data);
-
-                                    }
-                                });
-
-                            });
-                        },
-                        error: function () { }
-                  });
-            }
-        
-        
-
-    $('#Client_id').change(function ()
-    {
-        
-            $.ajax({
-            url: "@Url.Action("filtercontactperson", "Placement")",
-            contentType: "application/json",
-            data: JSON.stringify( {
-            clientid: $('#Client_id').val(),
-            }),
-            dataType: "text",
-            type: "POST",
-            async: true,
-            success: function (data) {
-                $('#ContactPerson').html(data);
-                                          
-            },
-            error: function (data) {
-                     
-
-            },
-            complete: function () {
-                    
-            }
-
-            });
-            return true;
-
-        
-    });
-    
-    //============================================================== Multipal Location Code =============================================================
-
-    $("#add").click(function (e) {
-        //alert('hi');
-        var count = 0;
-        e.preventDefault();
-
-        if ($.trim($("#location").val()) == "" || $.trim($("#location_id").val()) == "") return false;
-
-        $.each($("#detailsTable tbody tr"), function () {
-           
-            if ($("#location_id").val() == $(this).find('td:eq(1)').html())
-            {
-                
-                alert("Location alrady added");
-                count++;
-                return false;
-               
-            }
-                           
-        });
-
-        if (count > 0)
-        {
-            return;
-        }
-        var location = $("#location").val(),
-            location_id = $("#location_id").val(),
-            detailsTableBody = $("#detailsTable tbody");
-
-        var productItem = '<tr><td>' + location + '</td><td class="hidden">' + location_id + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
-      
-        detailsTableBody.append(productItem);
-        clearItem();
-    });
-    //After Add A New Order In The List, Clear Clean The Form For Add More Order.
-    function clearItem() {
-        $("#location").val('');
-        $("#location_id").val('');
-        // $("#quantity").val('');
-    }
-    // After Add A New Order In The List, If You Want, You Can Remove It.
-    $(document).on('click', 'a.deleteItem', function (e) {
-        e.preventDefault();
-        var $self = $(this);
-        if ($(this).attr('data-itemId') == "0") {
-            $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
-                $(this).remove();
-            });
-        }
-    });
-
-   //  ==========================================save multipal location function ==========================================
-
-    function saveOrder(data) {
-
-        return $.ajax({
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            type: 'POST',
-            url: "/Placement/add_MultipalLocation",
-            data: data,
-            success: function (result) {
-               // toastr.success("Location Added successfully.");;
-                // location.reload();
-                $("#mdlAddDesignationForManual .close").click()
-            },
-            error: function () {
-                alert("Error!")
-            }
-        });
-    }
-
-
-    function bindlocation()
-    {
-
-        //   e.preventDefault();
-            var orderArr = [];
-            orderArr.length = 0;
-
-            $.each($("#detailsTable tbody tr"), function () {
-                orderArr.push({
-                    location: $(this).find('td:eq(0)').html(),
-                    location_id: $(this).find('td:eq(1)').html(),
-                    
-
-                });
-            });
-
-            var data = JSON.stringify({
-                Requirement: orderArr
-            });
-
-            $.when(saveOrder(data)).then(function (response) {
-                console.log(response);
-            }).fail(function (err) {
-                console.log(err);
-            });
-
-    }
-
-    $("#Design_GroupID").change(function () {
-
-             // $('#pageLoader').show();
-
-             $.ajax({
-                 url: "@Url.Action("FllterDesignation", "Placement")",
-                 contentType: "application/json",
-                 data: JSON.stringify({ GroupId: $("#Design_GroupID").val() }),
-                 dataType: "text",
-                 type: "POST",
-                 async: true,
-                 success: function (data) {
-                     $('#Designation').html(data);
-                     $("#pageLoader .close").click()
-                     
-                 },
-                 error: function (data) {
-                     
-
-                 },
-                 complete: function () {
-                    
-                 }
-
-
-             });
-             return true;
-
-         });
-
-
-</script>
+@*<script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>*@
 
 
 <div class="modal-dialog" id="pnl-mdlAddJob">
@@ -403,7 +39,7 @@
                     <div class="col-sm-12">
                         <div class="modal-left">
                             <div class="form-group">
-                                
+
                                 @Html.TextBoxFor(a => a.ReqID, new { @class = "form-control hidden", placeholder = "ReqID", title = "ReqID", @id = "ReqID" })
                             </div>
                             <fieldset>
@@ -425,112 +61,93 @@
                                         <div class="text-danger" id="SectorName_error_msg"></div>
 
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                        <div class="form-group">
+                                            <label>Client Name <span class="text-danger">*</span></label>
+                                            @Html.DropDownList("model.Client_id", new SelectList((System.Collections.IEnumerable)ViewData["ClientList"], "Value", "Text"), "Select Client", new { @class = "form-control input-sm", @id = "Client_id", Title = "Client_id" })
+                                            @Html.HiddenFor(model => model.Client_id)
+                                            @Html.ValidationMessageFor(model => model.Design_GroupID, "", new { @class = "text-danger" })
+                                            <div class="text-danger" id="ClientName_error_msg"></div>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
-                                            <div class="form-group">
-                                                <label>Client Name <span class="text-danger">*</span></label>
-                                                @Html.DropDownList("model.Client_id", new SelectList((System.Collections.IEnumerable)ViewData["ClientList"], "Value", "Text"), "Select Client", new { @class = "form-control input-sm", @id = "Client_id", Title = "Client_id" })
-                                                @Html.HiddenFor(model => model.Client_id)
-                                                @Html.ValidationMessageFor(model => model.Design_GroupID, "", new { @class = "text-danger" })
-                                                <div class="text-danger" id="ClientName_error_msg"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4" style="padding-right: 0px;">
-                                            <div class="form-group">
-                                                <label for="name">Location</label>
-                                                @*<a href="@Url.Action("AddMultipalLocation", "Placement")" data-toggle="modal" data-target="#mdlAddDesignationForManual" id="addToList" class="btn btn-primary">Add Location</a>*@
-                                                @Html.TextBoxFor(a => a.Location, new { @class = "form-control ", @id = "location", placeholder = "location" })
-                                                @Html.HiddenFor(a => a.location_id, new { @id = "location_id", @name = "location_id" })
-                                                <div class="text-danger" id="locationtable_error_msg"></div>
+                                    <div class="col-sm-6" style="padding-right: 0px;">
+                                        <div class="form-group">
+                                            <label for="name">Location</label>
+                                            @Html.DropDownList("model.Location", new SelectList((System.Collections.IEnumerable)ViewData["LocationList"], "Value", "Text"), "Select Location", new { @class = "form-control chosen-select", @id = "location_id", Title = "location_id", @multiple = "multiple" })
+                                            @Html.HiddenFor(model => model.location_id)
+                                            <div class="text-danger" id="locationtable_error_msg"></div>
 
-                                            </div>
                                         </div>
-                                        <div class="col-sm-2" style="padding-right: 0px;">
+                                    </div>
+                                    @*<div class="col-sm-2" style="padding-right: 0px;">
                                             <br />
 
                                             <a id="add" class="btn btn-primary">Add </a>
+                                        </div>*@
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12" style="padding-right: 0px;padding-left: 0px;">
+                                        <div class="form-group">
+                                            <label>Position/Level <span class="text-danger">*</span></label>
+                                            @Html.TextBoxFor(a => a.PositionLevel, new { @class = "form-control", placeholder = "Enter Position_Level", title = "Position Level", @id = "PositionLevel" })
+                                            @Html.ValidationMessageFor(model => model.PositionLevel, "", new { @class = "text-danger" })
+                                            <div class="text-danger" id="Position_Level_error_msg"></div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                        <label>Select Position Group <span class="text-danger">*</span></label>
+                                        @Html.DropDownList("model.Design_GroupID", new SelectList((System.Collections.IEnumerable)ViewData["DesignationGroupList"], "Value", "Text"), "Select Designation Group", new { @class = "form-control input-sm", @id = "Design_GroupID", Title = "Design_GroupID" })
+                                        @Html.HiddenFor(model => model.Design_GroupID)
+                                        @Html.ValidationMessageFor(model => model.Design_GroupID, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="col-sm-6" style="padding-right: 0px;">
+
+                                        <div class="form-group">
+                                            <label>Position Name <span class="text-danger">*</span></label>
+                                            @Html.Partial("_designationbinddropdown")
+                                            <div class="text-danger" id="Designation_error_msg"></div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
+                                        <div class="form-group">
+                                            <label>Contact person <span class="text-danger">*</span></label>
+                                            @Html.Partial("_dropdowncontacperson")
+                                            <div class="text-danger" id="ContactPerson_error_msg"></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6" style="padding-right: 0px;">
+
+                                        <div class="form-group">
+                                            <label>Notice Period<span class="text-danger"></span></label>
+                                            @Html.TextBoxFor(a => a.NoticePeriod, new { @class = "form-control", placeholder = "Enter Notice Period", title = "Notice Period", @id = "NoticePeriod" })
+                                            @Html.ValidationMessageFor(model => model.NoticePeriod, "", new { @class = "text-danger" })
+                                            <div class="text-danger" id="Notice_Period_error_msg"></div>
                                         </div>
 
 
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
-                                            <div class="form-group">
-                                                <label>Position/Level <span class="text-danger">*</span></label>
-                                                @Html.TextBoxFor(a => a.PositionLevel, new { @class = "form-control", placeholder = "Enter Position_Level", title = "Position Level", @id = "PositionLevel" })
-                                                @Html.ValidationMessageFor(model => model.PositionLevel, "", new { @class = "text-danger" })
-                                                <div class="text-danger" id="Position_Level_error_msg"></div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6 table-wrapper-scroll-y" style="padding-right: 0px;">
-
-                                            <table id="detailsTable" class="table table-bordered table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        @*<th style="width:30%">location</th>
-                                                         <th style="width:20%">Id</th>
-                                                         <th style="width:20%"></th>*@
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="tbl"></tbody>
-                                            </table>
+                                </div>
 
 
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
-                                            <label>Select Position Group <span class="text-danger">*</span></label>
-                                            @Html.DropDownList("model.Design_GroupID", new SelectList((System.Collections.IEnumerable)ViewData["DesignationGroupList"], "Value", "Text"), "Select Designation Group", new { @class = "form-control input-sm", @id = "Design_GroupID", Title = "Design_GroupID" })
-                                            @Html.HiddenFor(model => model.Design_GroupID)
-                                            @Html.ValidationMessageFor(model => model.Design_GroupID, "", new { @class = "text-danger" })
-
-                                        </div>
-
-                                        <div class="col-sm-6" style="padding-right: 0px;">
-
-                                            <div class="form-group">
-                                                <label>Position Name <span class="text-danger">*</span></label>
-                                                @*@Html.TextBoxFor(a => a.Designation, new { @class = "form-control ", @id = "autocomplete", placeholder = "current position" })
-                                                @Html.HiddenFor(model => model.desig_id, new { @id = "desig_idval" })*@
-                                                @Html.Partial("_designationbinddropdown")
-                                                <div class="text-danger" id="Designation_error_msg"></div>
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-6" style="padding-right: 0px;padding-left: 0px;">
-                                            <div class="form-group">
-                                                <label>Contact person <span class="text-danger">*</span></label>
-                                                @Html.Partial("_dropdowncontacperson")
-                                                <div class="text-danger" id="ContactPerson_error_msg"></div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6" style="padding-right: 0px;">
-
-                                            <div class="form-group">
-                                                <label>Notice Period<span class="text-danger"></span></label>
-                                                @Html.TextBoxFor(a => a.NoticePeriod, new { @class = "form-control", placeholder = "Enter Notice Period", title = "Notice Period", @id = "NoticePeriod" })
-                                                @Html.ValidationMessageFor(model => model.NoticePeriod, "", new { @class = "text-danger" })
-                                                <div class="text-danger" id="Notice_Period_error_msg"></div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-
-                                </fieldset>
+                            </fieldset>
                             <fieldset>
                                 <legend style=" border-bottom-color:  #bdb8ba; font-size: 18px;">Position Details:</legend>
 
@@ -639,3 +256,283 @@
 </div>
 <div id="pageLoader" style="display:none; ">
 </div>
+<script>
+    $(document).ready(function () {
+        
+        $('#location_id').chosen({
+            disable_search: true
+        });
+        $("#location_id").chosen().change(function () {
+            values = $("#location_id").chosen().val();
+        });
+       
+    });
+
+        $('#btnsave').on('click', function (e) {
+            e.preventDefault();
+                    var error = 0;
+                    if ($('#Designation').val() == '') {
+                        error = 1;
+                        $('#Designation_error_msg').html("The Position field is required.");
+                        $('#Designation_error_msg').show();
+                    }
+                    else {
+                        $('#Designation_error_msg').hide();
+                    }
+                    if ($('#SectorId').val() == '') {
+                        error = 1;
+                        $('#SectorName_error_msg').html("Please select position sector.");
+                        $('#SectorName_error_msg').show();
+                    }
+                    else {
+                        $('#SectorName_error_msg').hide();
+                    }
+                    if ($('#Client_id').val() == 0) {
+                        error = 1;
+                        $('#ClientName_error_msg').html(" please Select Client Name.");
+                        $('#ClientName_error_msg').show();
+                    }
+                    else {
+                        $('#ClientName_error_msg').hide();
+                    }
+
+                    if ($('#RoleResp').val() == 0) {
+                        error = 1;
+                        $('#Role_Resp_error_msg').html(" please Enter role and resposbilities.");
+                        $('#Role_Resp_error_msg').show();
+                    }
+                    else {
+                        $('#Role_Resp_error_msg').hide();
+                    }
+
+                    if ($('#KnowledgeSkill').val() == 0) {
+                        error = 1;
+                        $('#Knowledge_Skill_error_msg').html(" please Enter knowdge and skills.");
+                        $('#Knowledge_Skill_error_msg').show();
+                    }
+                    else {
+                        $('#Knowledge_Skill_error_msg').hide();
+                    }
+
+                    if ($('#ReqTitle').val() == '') {
+                        error = 1;
+                        $('#ReqTitle_error_msg').html("Please Enter Requirment Title.");
+                        $('#ReqTitle_error_msg').show();
+                    }
+                    else {
+                        $('#ReqTitle_error_msg').hide();
+                    }
+
+                    if ($('#Description').val() == '') {
+                        error = 1;
+                        $('#Description_error_msg').html("Please Enter Description.");
+                        $('#Description_error_msg').show();
+                    }
+                    else {
+                        $('#Description_error_msg').hide();
+                    }
+
+                    if ($('#ExpMax').val() == 0) {
+                        error = 1;
+                        $('#ExpMax_error_msg').html("The Maximum Experienece field is required.");
+                        $('#ExpMax_error_msg').show();
+                    }
+                    else {
+                        $('#ExpMax_error_msg').hide();
+                    }
+
+                    if ($('#ExpMin').val() == 0) {
+                        error = 1;
+                        $('#ExpMin_error_msg').html("The Minimum Experienece field is required.");
+                        $('#ExpMin_error_msg').show();
+                    }
+                    else {
+                        $('#ExpMin_error_msg').hide();
+                    }
+
+                    if ($('#SalMax').val() == 0) {
+                        error = 1;
+                        $('#SalMax_error_msg').html("The Maximum Salary field is required.");
+                        $('#SalMax_error_msg').show();
+                    }
+                    else {
+                        $('#SalMax_error_msg').hide();
+                    }
+
+                    if ($('#SalMin').val() == 0) {
+                        error = 1;
+                        $('#SalMin_error_msg').html("The Minimum Salary field is required.");
+                        $('#SalMin_error_msg').show();
+                    }
+                    else {
+                        $('#SalMin_error_msg').hide();
+                    }
+
+                    if ($('#tbl').html() == "") {
+
+                        error = 1;
+                        $('#locationtable_error_msg').html("please select location and click on add button.");
+                        $('#locationtable_error_msg').show();
+                    }
+                    else {
+                       $('#locationtable_error_msg').hide();
+                    }
+
+                   if ($('#ContactPerson').val() == 0) {
+                        error = 1;
+                        $('#ContactPerson_error_msg').html("please select Contact Person.");
+                        $('#ContactPerson_error_msg').show();
+                    }
+                    else {
+                        $('#ContactPerson_error_msg').hide();
+                    }
+
+                    if (error) {
+                        return false;
+                    } else
+                    {
+
+                        $.ajax({
+                            type: "POST",
+                            cache: false,
+                            url: "/Placement/AddJOb",
+                            data: {
+                                "ReqTitle": $("#ReqTitle").val(), "Position": 1, "desig_id": $("#Designation").val(), Description: $("#Description").val(),
+                                "ExpMax": $("#ExpMax").val(), "ExpMin": $("#ExpMin").val(), SalMin: $("#SalMin").val(), SalMax: $("#SalMax").val(), Client_ID: $("#Client_id").val(), ContactPerson: $("#ContactPerson").val(),
+                                PositionLevel: $("#PositionLevel").val(),
+                                 location_id: $("#location_id").val(),
+                                  MinimumQulification: $("#MinimumQulification").val(),
+                                   RoleResp: $("#RoleResp").val(),
+                                    KnowledgeSkill: $("#KnowledgeSkill").val(),
+                                     Age: $("#Age").val(),
+                                NoticePeriod: $("#NoticePeriod").val(),
+                                SectorId: $("#SectorId").val()
+                            },
+                            success: function (result) {
+                                toastr.success("Requirement Added successfully.");
+                                $("#mdlAddJob .close").click()
+                                if (result.Success) {
+                                }
+                            },
+                            error: function (errorData) {
+                            }
+                        });
+
+                        bindlocation();
+                    }
+                    return true;
+                });
+
+
+                toastr.options = {
+                    "closeButton": true,
+                    "positionClass": "toast-top-right",
+                    "onclick": null,
+                    "showDuration": "0",
+                    "hideDuration": "0",
+                    "timeOut": "0",
+                    "showMethod": "fadeIn"
+                };
+          
+    $('#Client_id').change(function ()
+    {
+            $.ajax({
+            url: "@Url.Action("filtercontactperson", "Placement")",
+            contentType: "application/json",
+            data: JSON.stringify( {
+            clientid: $('#Client_id').val(),
+            }),
+            dataType: "text",
+            type: "POST",
+            async: true,
+            success: function (data) {
+                $('#ContactPerson').html(data);
+
+            },
+            error: function (data) {
+
+
+            },
+            complete: function () {
+
+            }
+
+            });
+            return true;
+
+    });
+
+   //  ==========================================save multipal location function ==========================================
+
+    function saveOrder(data) {
+
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Placement/add_MultipalLocation",
+            data: data,
+            success: function (result) {
+               // toastr.success("Location Added successfully.");;
+                // location.reload();
+                $("#mdlAddDesignationForManual .close").click()
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+    }
+  
+
+    function bindlocation()
+    {
+
+            var orderArr = [];
+            orderArr.length = 0;
+            var temp = values.toString().split(",");
+            for (var i = 0; i < temp.length; i++) {
+                orderArr.push({
+                location_id: temp[i],
+            });
+            }
+            var data = JSON.stringify({
+            Requirement: orderArr
+            });
+
+            $.when(saveOrder(data)).then(function (response) {
+                console.log(response);
+            }).fail(function (err) {
+                console.log(err);
+            });
+
+    }
+
+    $("#Design_GroupID").change(function () {
+
+             $.ajax({
+                 url: "@Url.Action("FllterDesignation", "Placement")",
+                 contentType: "application/json",
+                 data: JSON.stringify({ GroupId: $("#Design_GroupID").val() }),
+                 dataType: "text",
+                 type: "POST",
+                 async: true,
+                 success: function (data) {
+                     $('#Designation').html(data);
+                     $("#pageLoader .close").click()
+
+                 },
+                 error: function (data) {
+
+
+                 },
+                 complete: function () {
+
+                 }
+
+
+             });
+             return true;
+
+         });
+
+</script>

@@ -1240,6 +1240,10 @@
     <Content Include="Views\Master\_tableforEditClientContactPerson.cshtml" />
     <Content Include="Views\Master\_UserPermissionList.cshtml" />
     <Content Include="Views\Placement\_dropdowncontacperson.cshtml" />
+    <Content Include="Views\Placement\_UserListForAssignPosition.cshtml" />
+    <Content Include="Views\Placement\_CityListForAssignPosition.cshtml" />
+    <Content Include="Views\Placement\_VerticalListForAssignPosition.cshtml" />
+    <Content Include="Views\Placement\_UserProfileForAssignUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

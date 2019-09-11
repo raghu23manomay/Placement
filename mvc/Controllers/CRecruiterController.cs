@@ -214,8 +214,8 @@ namespace mvc.Controllers
                 DbPath = rm.ProflieImg;
             }
            
-            jobDbContext db = new jobDbContext();
-                    var res = db.Database.ExecuteSqlCommand(@"exec SpUpdatedata @userid,@F_Name,@M_Name,@L_Name,@phone,@Mobile,@Password,@emailId,@summery,@totalYearsOfExp,@location,
+                     jobDbContext db = new jobDbContext();
+                     var res = db.Database.ExecuteSqlCommand(@"exec SpUpdatedata @userid,@F_Name,@M_Name,@L_Name,@phone,@Mobile,@Password,@emailId,@summery,@totalYearsOfExp,@location,
                      @graduation,@pG,@currentlyWorkingWith,@cPosition,@cDetailProfile,@lastWorkingWith,@lPosition,@lDetailProfile,@KeyArea,
                      @industrySpecialisation,@verticalSpecalization,@expertise,@achivement,@languagesKnow,@profileImg",
                                        new SqlParameter("@userid", rm.UserId),
@@ -244,7 +244,6 @@ namespace mvc.Controllers
                                        new SqlParameter("@achivement", rm.Achivement == null ? (object)DBNull.Value : rm.Achivement),
                                        new SqlParameter("@LanguagesKnow", rm.LanguagesKnow == null ? (object)DBNull.Value : rm.LanguagesKnow),
                                        new SqlParameter("@profileImg", DbPath));
-
                 
             
             return Json("Data Updated Sucessfully");

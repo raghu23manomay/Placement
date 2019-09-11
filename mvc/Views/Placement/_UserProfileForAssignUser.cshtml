@@ -1,0 +1,89 @@
+﻿
+@model mvc.Models.RecruiterList
+
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-7">
+                <h4 style="margin-bottom: 5px;">@Model.Name</h4>
+                <span style="color:darkgray;"><i class="fa fa-map-marker" style="font-size:14px;">  @Model.Location  </i> </span><br />
+                @*<span style="color:darkgray;"><i class="fa fa-mobile-phone">  @Model.Mobile  </i></span><br />*@
+                <span style="color:darkgray;"><i style="display:inline-flex; font-size:14px;" class="fa fa-envelope"> &nbsp; @Model.emailId  </i></span>   <br />
+                <span style="color:darkgray;"><i style="display:inline-flex; font-size:14px;" class="fa fa-suitcase" aria-hidden="true">&nbsp; @Model.TotalYearsOfExp Years Experiance  </i></span><br />
+                <span style="color:darkgray;"><i style="display:inline-flex; font-size:14px;" class="fa fa-graduation-cap" aria-hidden="true">&nbsp; @Model.Graduation </i></span><br />
+                <span style="color:darkgray;"><i style="display:inline-flex; font-size:14px;" class="fa fa-graduation-cap" aria-hidden="true">&nbsp; @Model.PG </i></span><br />
+                <span style="color:darkgray;"><i style="display:inline-flex; font-size:14px;" class="fa fa-language" aria-hidden="true">&nbsp; @Model.LanguagesKnow </i></span><br />
+            </div>
+            <div class="col-sm-5">
+                <img class="pull-right" src="@Model.ProflieImg" height="150" width="150" />
+            </div>
+        </div>
+
+
+        <h5 style="margin-top:10px;">Experties</h5>
+        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+        <span>@Model.Expertise</span>
+
+        <h5 style="margin-top:10px;">Achivement</h5>
+        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+        <span>@Model.Achivement</span>
+
+        <h5 style="margin-top:10px;">Key Area</h5>
+        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+        <span>@Model.KeyArea</span>
+
+        <h5 style="margin-top:10px;">About</h5>
+        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+        <div style="max-height: 127px;overflow-y: auto;">
+            <span> @Model.Summery</span>
+            <br />
+            <span>@Model.Graduation  @Model.PG</span>
+            <br />
+        </div>
+        <div>
+            @Model.TotalYearsOfExp  years experience
+            @Model.KeyArea
+        </div>
+        <h5 style="margin-top:10px;">Profile Detail</h5>
+        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+        <div class="media-body ">
+            @*<small class="pull-right text-navy">1m ago</small>*@
+            <span> @Model.Name currently working on @Model.CurrentlyWorkingWith as @Model.CurrentPosition</span>. <br>
+            <span>
+                @Model.CurrentDetailProfile
+            </span>
+        </div>
+
+        <h5 style="margin-top:10px;">Current Working Details</h5>
+        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+
+        <span><b>@Model.CurrentlyWorkingWith</b></span><br />
+        <span style="color:darkgray;font-size: smaller;">@Model.CurrentPosition </span>
+        <br />
+        <div style="max-height: 127px;overflow-y: auto;">
+            <span>@Model.CurrentDetailProfile</span>
+            <br />
+        </div>
+
+        <h5 style="margin-top:10px;">Last Working Details</h5>
+        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+
+        <span><b>@Model.LastWorkingWith</b></span>
+        <br />
+        <span style="color:darkgray;font-size: smaller;">@Model.LastPosition </span>
+        <br />
+        <div style="max-height: 127px;overflow-y: auto;">
+            <span>@Model.LastDetailProfile</span>
+            <br />
+        </div>
+    </div>
+    
+</div>

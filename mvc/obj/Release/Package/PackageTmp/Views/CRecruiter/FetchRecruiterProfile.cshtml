@@ -168,23 +168,7 @@
                             @Html.TextBoxFor(a => a.PG, new { @class = "form-control", placeholder = "Enter Post Graduation", title = "Area", @id = "pg" })
 
                         </div>
-                        @*<div class="form-group">
-                            <label for="position">Vertical Specalization</label>
-                            @Html.TextBoxFor(a => a.VerticalSpecalization, new { @class = "form-control", placeholder = "Enter Vertical Specalization", title = "Area", @id = "verticalSpecalization" })
-                            </div>*@
-                        <div class="form-group">
-                            @*<select data-placeholder="Your Favorite Types of Bear" multiple id="test" tabindex="8" >
-                                    <option value=""></option>
-                                    <option>American Black Bear</option>
-                                    <option>Asiatic Black Bear</option>
-                                    <option>Brown Bear</option>
-                                    <option value="7" selected ="selected">Giant Panda</option>
-                                    <option value="4" >Sloth Bear</option>
-                                    <option disabled>Sun Bear</option>
-                                    <option value="5" selected ="selected">Polar Bear</option>
-                                    <option disabled>Spectacled Bear</option>
-                                </select>*@
-
+                       <div class="form-group">
                             <label for="position">Vertical Specalization</label>
                             @Html.DropDownList("modal.VerticalSpecalization", new SelectList((System.Collections.IEnumerable)ViewData["PositionSectorList"], "Value", "Text"), "Select Location", new { @class = "form-control chosen-select", @id = "VerticalSpecalization", @multiple = "multiple" })
                             <div class="text-danger" id="sector_error_msg"></div>
@@ -298,10 +282,10 @@
 <script>
 
     $(document).ready(function () {
+
         $('#VerticalSpecalization').chosen({
             disable_search: true
         });
-
 
         var my_val = "@ViewBag.Verticaldata";
         var str_array = my_val.split(',');

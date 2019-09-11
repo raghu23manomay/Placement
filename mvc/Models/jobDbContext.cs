@@ -70,7 +70,13 @@ namespace mvc.Models
         public DbSet<ClientGrid> ClientGrid { get; set; }
         public DbSet<RecruiterList> editlist { get; set; }
         public DbSet<clientlocationdetail> clientlocationdetail { get; set; }
+        public DbSet<VerticalDetails> VerticalDetails { get; set; }
+        public DbSet<CityDetails> CityDetails { get; set; }
+        public DbSet<GetUserEmail> GetUserEmail { get; set; }
+        
+
+
 
     }
-    
+
 }

@@ -37,8 +37,10 @@ namespace mvc.Controllers
                 Session["User_id"] = data.User_id;
                 Session["RoleName"] = data.RoleName;
                 Session["RoleID"] = data.RoleID;
+                
 
                 setPermissionData(data.User_id); //set user permission to session using data table 
+                setUserOnlineStatus(data.User_id); //set userlogin status
 
                 if (data.RoleName == "Business development")
                 {
@@ -98,6 +100,17 @@ namespace mvc.Controllers
                               
             }
 
+        }
+
+        public void setUserOnlineStatus(int? userid)
+        {
+            jobDbContext _db = new jobDbContext();
+            var result = _db.Database.ExecuteSqlCommand(@"exec UpdateUSerOnlineStatus 
+                @UserId,@status",
+                new SqlParameter("@UserId", userid),
+                 new SqlParameter("@status", 1));
+            
+                Session["OnlineStatus"] = 1;            
         }
 
         public ActionResult About()

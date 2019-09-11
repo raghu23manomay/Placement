@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">Date_Of_Submission</th><th scope="col">Agency_Name</th><th scope="col">ModeOfHire</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Skills</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Cost_Per_Month</th><th scope="col">Notice_Period</th><th scope="col">Current_Location</th><th scope="col">PreferedLocation</th><th scope="col">DOB</th>
+		</tr><tr>
+			<td>raghu mudgal</td><td>new position</td><td>9/9/2019 12:00:00 AM</td><td>asd</td><td>asd</td><td>Executive</td><td>rmudgal23@gmail.com</td><td>8237175481</td><td>asdas</td><td>asdsad</td><td>&nbsp;</td><td>sda</td><td>23</td><td>Sep 28 2019 12:00AM</td><td>sad</td><td>sa</td><td>sdad</td><td>asd</td><td>0</td><td>asd</td><td>baga</td><td>&nbsp;</td><td>9/25/2019 12:00:00 AM</td>
+		</tr>
+	</table>
+</div>

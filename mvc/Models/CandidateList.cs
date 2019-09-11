@@ -536,9 +536,11 @@ namespace mvc.Models
     public partial class AssignUsertoJobPosition
     {
         [Key]
-        public int AssignId { get; set; }
+        public int? AssignId { get; set; }
         public int? ReqId { get; set; }
         public int UserId { get; set; }
+        public int? IsAssign { get; set; }
+        
     }
 
     public partial class FromMail
@@ -602,12 +604,13 @@ namespace mvc.Models
     public partial class AssignMultipalUsertoJobPosition
     {
         [Key]
-        public int Assignid { get; set; }
-        public int userid { get; set; }
         public string FullName { get; set; }
+        public int Assignid { get; set; }
+        public int userid { get; set; }        
         public int? req_id { get; set; }
-        
-
+        public int? IsAssign { get; set; }
+        public string Verticals { get; set; }
+        public int? IsOnline { get; set; }        
     }
 
     public class Chart
@@ -695,5 +698,18 @@ namespace mvc.Models
         public int PermissionValue { get; set; }
     }
 
+    public partial class VerticalDetails
+    {
+        [Key]
+        public int? SectorId { get; set; }
+        public string SectorName { get; set; }
+        public int? IsActive { get; set; }
+    }
 
+    public partial class CityDetails
+    {
+       [Key]
+       public int? location_id { get; set; }
+       public string loc_desc { get; set; }
+    }
 }

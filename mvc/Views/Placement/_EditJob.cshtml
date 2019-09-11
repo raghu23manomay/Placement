@@ -75,7 +75,6 @@
                                             @Html.DropDownList("model.Location", new SelectList((System.Collections.IEnumerable)ViewData["LocationList"], "Value", "Text"), "Select Location", new { @class = "form-control chosen-select", @id = "location_id", Title = "location_id", @multiple = "multiple" })
                                             @Html.HiddenFor(model => model.location_id)
                                             <div class="text-danger" id="locationtable_error_msg"></div>
-
                                         </div>
                                     </div>
                                     @*<div class="col-sm-2" style="padding-right: 0px;">
@@ -83,7 +82,6 @@
 
                                             <a id="add" class="btn btn-primary">Add </a>
                                         </div>*@
-
 
                                 </div>
 
@@ -139,7 +137,6 @@
                                             @Html.ValidationMessageFor(model => model.NoticePeriod, "", new { @class = "text-danger" })
                                             <div class="text-danger" id="Notice_Period_error_msg"></div>
                                         </div>
-
 
                                     </div>
                                 </div>
@@ -259,9 +256,9 @@
 
         //code for binding multiple location to location dropdown
         var my_val = "@ViewBag.multilocation";
-        var str_array = my_val.split(',');
+        var str_array = my_val.split(',');        
         $("#location_id").val(str_array).trigger("chosen:updated");
-      
+              
         //this is function call for binding client contact person on load page
         BindClientWsieContactPerson(@Model.client_id); 
 
@@ -468,12 +465,9 @@
                  },
                  error: function (data) {
 
-
                  },
                  complete: function () {
-
                  }
-
 
              });
              return true;
@@ -530,12 +524,10 @@
             url: "/Placement/Update_MultipalLocation",
             data: data,
             success: function (result) {
-                // toastr.success("Location Added successfully.");;
-                // location.reload();
-                $("#mdlAddDesignationForManual .close").click()
+                
             },
-            error: function () {
-                alert("Error!")
+            error: function (result) {
+                alert(result)
             }
         });
     }

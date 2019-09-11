@@ -1,0 +1,13 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Candidate_Name</th><th scope="col">Applied_Position</th><th scope="col">Date_Of_Submission</th><th scope="col">Agency_Name</th><th scope="col">ModeOfHire</th><th scope="col">vendor</th><th scope="col">emailid</th><th scope="col">mobile</th><th scope="col">Skills</th><th scope="col">Qualification</th><th scope="col">Qualification_PG</th><th scope="col">SkypeID</th><th scope="col">Total_Exp</th><th scope="col">working_from_Date</th><th scope="col">current_Company</th><th scope="col">Current_Position</th><th scope="col">currently_Drawn_Salary</th><th scope="col">Expected_Salary</th><th scope="col">Cost_Per_Month</th><th scope="col">Notice_Period</th><th scope="col">Current_Location</th><th scope="col">PreferedLocation</th><th scope="col">DOB</th>
+		</tr><tr>
+			<td>NISHANT YADAV </td><td>Marketing Manager</td><td>9/9/2019 12:00:00 AM</td><td>Executive Placement India</td><td>Permanent</td><td>Executive</td><td>nishant.phl@gmail.com</td><td>7619820009</td><td>He is interested for marketing profile thats way looking for new opportunity</td><td>B.Pharma (Pharmacy)</td><td>&nbsp;</td><td>&nbsp;</td><td>9 yrs</td><td>&nbsp;</td><td>Glenmark Pharmaceuticals Limited</td><td>Sales Manager</td><td>7 lpa</td><td>As per company standards</td><td>0</td><td>1 month</td><td>delhi</td><td>Gurgaon</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>UDIT CHANDNA</td><td>Marketing Manager</td><td>9/9/2019 12:00:00 AM</td><td>Executive placement india</td><td>Permanent</td><td>Executive</td><td>uditchandna.udy@gmail.com</td><td>8010096380</td><td>&nbsp;</td><td>B.Pharma (Pharmacy)</td><td>&nbsp;</td><td>&nbsp;</td><td>8+ yrs</td><td>&nbsp;</td><td>B Braun Medical India Pvt. Ltd.</td><td>Key Accounts Manager </td><td>8 lpa</td><td>25% hike</td><td>0</td><td>1 month</td><td>delhi</td><td>Gurgaon</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>ATUL KUMAR</td><td>Marketing Manager</td><td>9/9/2019 12:00:00 AM</td><td>Executive placement India</td><td>Permanent</td><td>Executive</td><td>1987atulkumar@gmail.com</td><td>9579647809</td><td>&nbsp;</td><td>MBA/PGDM (Marketing)</td><td>&nbsp;</td><td>&nbsp;</td><td>8 yrs</td><td>&nbsp;</td><td>Brinton Pharmaceuticals LTD</td><td>Area Business Manager</td><td>7.5 lpa</td><td>20% hike</td><td>0</td><td>1 month</td><td>delhi</td><td>Gurgaon</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

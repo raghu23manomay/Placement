@@ -218,7 +218,8 @@
                                 System.Data.DataRow[] HeadingFields2 = dt.Select("submenuname = 'DeletePosition' and FeatureName = 'Delete Position'");
                                 if (HeadingFields2[0].ItemArray[6].ToString() == "1")
                                 {
-                                    <li> <a href="@Url.Action("DeletePosition", "Placement", new { req_id = @item.ReqID })"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Delete Position</span></a></li>
+                                    @*<li> <a href="@Url.Action("DeletePosition", "Placement", new { req_id = @item.ReqID })" id="@item.ReqID"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Delete Position</span></a></li>*@
+                                    <li> <a class="deleteposition" href="#" id="@item.ReqID"> <i class="fa fa-pencil-square-o m-r-sm" aria-hidden="true"></i><span>Delete Position</span></a></li>
                                 }
                                 System.Data.DataRow[] HeadingFields3 = dt.Select("submenuname = 'UploadJd' and FeatureName = 'Upload JD'");
                                 if (HeadingFields3[0].ItemArray[6].ToString() == "1")
@@ -250,7 +251,7 @@
         </div>
 
     }
-    <p id="message" class="hidden">@ViewBag.error<i class="fa fa-fw fa-sort"></i></p>
+    
     <span id="openmodal" class="popupTrigger" data-toggle="modal" data-target="#mdlAddJob"></span>
 </div>
 
@@ -265,19 +266,13 @@
 </div>
 <div id="mdlmailtracker" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
 </div>
-<div id="mdlassignuser" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+<div id="mdlassignuser" class="modal fade" style="width:100%;" data-backdrop="static" data-keyboard="false" role="dialog">
 </div>
 <div id="mdlInterviewTracker" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
 </div>
 <script>
     $(document).ready(function () {
-        if ($("#message").text() == "") {
-
-        }
-        else {
-            toastr.success("Position Deleted");
-        }
-
+      
            $('.Editjob').on('click', function () {
             var Reqid = $(this).attr('id');
          
@@ -291,13 +286,39 @@
             }
 
         });
-      });
+        });
+
+
+        $('.deleteposition').click(function () {
+            if (confirm("Are you sure?")) {
+                var idValue = $(this).attr('id');
+                
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "/Placement/DeletePosition",
+                    data:
+                    {
+                        req_id: idValue,                        
+                    },
+
+                    success: function (result) {
+                        toastr.success(result);
+                        location.reload();
+                    },
+
+                    error: function (errorData) {
+                    }
+                });
+            }
+
+        });
+
 
     });
-
+    
     $('.statusclass').click(function () {
-        if (confirm("Are you sure?"))
-        {
+        if (confirm("Are you sure?")) {
             var idValue = $(this).attr('id');
             var nameValue = $(this).attr('name');
             var ReqeValue = $(this).attr('value');
@@ -323,6 +344,6 @@
             });
         }
 
-    })
+    });
 
 </script>

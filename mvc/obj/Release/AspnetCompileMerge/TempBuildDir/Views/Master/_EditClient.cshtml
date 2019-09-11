@@ -7,9 +7,9 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 @model mvc.Models.EditClient
-@using PagedList;
+@*@using PagedList;
 @using PagedList.Mvc;
-@using GridMvc.Html
+@using GridMvc.Html*@
 
 @{
     /**/
@@ -18,8 +18,6 @@
 }
 
 <!DOCTYPE html>
-
-
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "", @id = "frmCandidate" }))
 {
@@ -71,14 +69,10 @@
                 @Html.TextBoxFor(a => a.loc_desc, new { @class = "form-control ", @id = "LocationList", placeholder = "Location" })
                 @Html.HiddenFor(model => model.location_id, new { @id = "location_id" })
                 <p id="location" style="color:red;">select Location</p>
-
             </div>
-
-
         </div>
 
         <div class="col-sm-6">
-
             <div class="form-group">
                 <label for="name">Client Name<span class="text-danger">*</span></label>
                 @Html.TextBoxFor(a => a.Client_Name, new { @class = "form-control", placeholder = "Enter Client Name", title = "Client_Name", @id = "Client_Name" })
@@ -89,18 +83,12 @@
                 @Html.TextBoxFor(a => a.ClientType, new { @class = "form-control ", @id = "ClientTypeList", placeholder = "client type name" })
                 @Html.HiddenFor(model => model.Client_Type_id, new { id = "Client_Type_id" })
                 <p id="clientype" style="color:red;">select client type</p>
-
-
-
             </div>
-
 
             <div class="form-group">
                 <label for="name">products</label>
                 @Html.TextBoxFor(a => a.products, new { @class = "form-control", placeholder = "Enter product", title = "products", @id = "products" })
-
-
-            </div>
+             </div>
 
             <div class="form-group">
                 <label for="name">Fax No</label>
@@ -110,9 +98,7 @@
             <div class="form-group">
                 <label for="name">Enter Website</label>
                 @Html.TextBoxFor(a => a.Website, new { @class = "form-control", placeholder = "Enter Website", title = "Website", @id = "Website" })
-
             </div>
-
 
             <div class="form-group">
                 <label for="name">DID No</label>

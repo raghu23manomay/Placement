@@ -1,0 +1,100 @@
+﻿
+
+@model IEnumerable<mvc.Models.AssignMultipalUsertoJobPosition>
+
+@{
+
+    Layout = null;
+
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+@foreach (var item in Model)
+{
+<div style="padding: 3px;">
+
+    <label class="container">
+        
+            @if (item.IsOnline == 1)
+            {
+                <i class="fa fa-circle" style="color:#51c351; font-size: xx-small;"></i>
+
+            }
+            else
+            {
+                <i class="fa fa-circle" style="color:#f96767;font-size: xx-small;"></i>
+
+            }  @item.FullName
+                <a href="#" class="viewUserProfile pull-right" id="@item.userid">View</a><br />
+        <span style="color: darkgray;font-size: x-small;">@item.Verticals</span>
+        @if (item.IsAssign == 1)
+        {
+            <input class="userassign" type="checkbox" value="@item.IsAssign" id="@item.userid" reqid="@item.req_id" checked="checked">
+        }
+        else
+        {
+            <input class="userassign" type="checkbox" value="@item.IsAssign" id="@item.userid" reqid="@item.req_id">
+        }
+
+        <span class="checkmark"></span>
+    </label>
+   
+
+
+</div>
+}
+<script>
+        
+        
+    $(document).ready(function () {
+    $('.viewUserProfile').click(function () {
+        var id = $(this).attr("id");
+                $.ajax({
+                url: "@Url.Action("GetUserDetailsForAssignUser", "Placement")",
+                contentType: "application/json",
+                    data: JSON.stringify({ userid: id,}),
+                dataType: "text",
+                type: "POST",
+                async: true,
+                success: function (data) {
+                    $('#UserProfile').html(data);
+
+                },
+                error: function (data) {
+
+                },
+                complete: function () {
+                }
+
+                });
+        });
+
+        $('.userassign').on("click", function () {
+            var idValue = $(this).attr('value');
+            var userid = $(this).attr('id');
+            if (idValue != 0) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '/Placement/DeleteAssignedUserInJobPosition',
+
+                    data:
+                    {
+                        UserId: userid,
+                        ReqId: $('#reqid').val(),
+
+                    },
+                    success: function (da) {
+                        // alert(da);
+                    },
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+
+        });
+    });
+</script>

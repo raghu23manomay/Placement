@@ -310,36 +310,7 @@
 
     <script src="~/Scripts/toastr.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-
-
-    @*<script type="text/javascript">
-
-
-        var str = window.location.href;
-        var lastLetter = str[str.length], i, temp;
-        var con = "";
-
-        for (i = 0; i < str.length; i++) {
-            if (str[i] == '=') {
-                myfun(i);
-                break;
-            }
-        }
-
-        function myfun(temp) {
-
-            temp = temp + 1;
-            for (i = temp; i < [str.length]; i++) {
-
-                con = con + str[i];
-            }
-            parseInt(con);
-
-        }
-
-
-    </script>*@
-
+ 
     <script>
     $(document).ready(function () {
 
@@ -390,9 +361,8 @@
                 success: function (result) {
                     toastr.success("Candidate updated successfully.");
 
-                   // $('#mdlEditCandidate').modal('hide');
-                    $("#mdlEditCandidate .close").click()
-                    refresh();
+                  //  $('#mdlEditCandidate').modal('hide');
+                    $("#mdlEditCandidate .close").click()                  
 
                     if (result.Success) {
 
@@ -563,89 +533,6 @@
                   });
     }
 
-    function refresh() {
-
-               // $('#pageLoader').show();
-
-                $.ajax({
-                    url: "@Url.Action("LoadData", "Placement")",
-                    contentType: "application/json",
-                    data: JSON.stringify({ page: con, Name:null }),
-                    dataType: "text",
-                    type: "POST",
-                    async: true,
-                    success: function (data) {
-                        $('#grid1').html(data);
-                        $("#pageLoader .close").click();
-                        $('.modal-backdrop').remove();
-
-
-
-                    },
-                    error: function (data) {
-                        $('#pageLoader').hide();
-
-                        $("#pageLoader .close").click();
-                        $('.modal-backdrop').remove();
-
-                    },
-                    complete: function () {
-                        $('#pageLoader').hide();
-                        $("#pageLoader .close").click()
-                        $('.modal-backdrop').remove();
-
-
-                    }
-
-
-        });
-        return true;
-
-    }
-
-    function refreshforclosebutton() {
-
-               // $('#pageLoader').show();
-
-                $.ajax({
-                    url: "@Url.Action("LoadData", "Placement")",
-                    contentType: "application/json",
-                    data: JSON.stringify({ page: con, Name:null }),
-                    dataType: "text",
-                    type: "POST",
-                    async: true,
-                    success: function (data) {
-                        $('#grid1').html(data);
-                        $("#pageLoader .close").click();
-                        $("#mdlEditCandidate .close").click();
-                        $('.modal-backdrop').remove();
-
-
-                    },
-                    error: function (data) {
-                        $('#pageLoader').hide();
-                        $("#pageLoader .close").click();
-                        $("#mdlEditCandidate .close").click();
-                        $('.modal-backdrop').remove();
-
-
-                    },
-                    complete: function () {
-                        $('#pageLoader').hide();
-                        $("#pageLoader .close").click();
-                        $("#mdlEditCandidate .close").click();
-                        $('.modal-backdrop').remove();
-
-                    }
-
-
-        });
-        return true;
-
-    }
-
-
-
     $("#ReqID").change(function () {
 
              // $('#pageLoader').show();
@@ -672,7 +559,6 @@
                  async: true,
                  success: function (data) {
                      $('#locationgrid').html(data);
-
                      //$("#pageLoader .close").click()
                  },
                  error: function (data) {
@@ -686,10 +572,7 @@
         });
         return true;
     }
-
-
     </script>
-
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
